@@ -1,7 +1,13 @@
+const { path } = require('@vuepress/utils')
+
 module.exports = {
-  base: '/',
+  base: '/resume/',
   lang: 'zh-CN',
   title: '陈泽辉的简历',
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },],
+  ],
   themeConfig: {
     sidebar: false,
     sidebarDepth: 2,
@@ -15,5 +21,13 @@ module.exports = {
     code: {
       lineNumbers: false // 代码块显示行号
     }
-  }
+  },
+  plugins: [
+    [
+      '@vuepress/register-components',
+      {
+        componentsDir: path.resolve(__dirname, './components')
+      }
+    ]
+  ]
 }
