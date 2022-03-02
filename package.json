@@ -1,7 +1,7 @@
 {
   "name": "resume",
   "version": "1.0.0",
-  "description": "",
+  "description": "陈泽辉的简历",
   "main": "index.js",
   "scripts": {
     "start": "npm run docs:dev",
