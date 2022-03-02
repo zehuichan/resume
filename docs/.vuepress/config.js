@@ -8,6 +8,7 @@ module.exports = {
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },],
   ],
+  theme: path.resolve(__dirname, './theme'),
   themeConfig: {
     sidebar: false,
     sidebarDepth: 2,
@@ -29,5 +30,5 @@ module.exports = {
         componentsDir: path.resolve(__dirname, './components')
       }
     ]
-  ]
+  ],
 }

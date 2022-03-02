@@ -35,7 +35,7 @@ const defaultOptions = {
 }
 
 export default {
-  name: 'html2pdf',
+  name: 'HtmlToPdf',
   methods: {
     async onClick() {
       const canvas = await html2canvas(document.querySelector('.page'), defaultOptions)
@@ -68,9 +68,6 @@ export default {
 
 <style lang="scss">
 .html2pdf {
-  position: absolute;
-  right: 1.5rem;
-  top: 80px;
 }
 
 .iconfont {
@@ -83,8 +80,8 @@ export default {
 }
 
 .btn {
-  height: 32px;
-  line-height: 32px;
+  height: 35px;
+  line-height: 35px;
   font-size: 14px;
   padding-left: 15px;
   padding-right: 15px;
