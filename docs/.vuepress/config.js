@@ -10,20 +10,25 @@ module.exports = {
   ],
   theme: path.resolve(__dirname, './theme'),
   themeConfig: {
+    home: '/',
+    repo: 'https://github.com/zehuichan',
+    repoLabel: 'Github',
     sidebar: false,
-    sidebarDepth: 2,
     editLink: false,
     lastUpdated: true,
     lastUpdatedText: '上次更新',
     contributors: true,
     contributorsText: '贡献者'
   },
-  markdown: {
-    code: {
-      lineNumbers: false // 代码块显示行号
-    }
-  },
   plugins: [
+    [
+      '@vuepress/plugin-container',
+      {
+        type: 'experience-card',
+        before: (info) => `<ExperienceCard title="${info}">\n`,
+        after: () => '</ExperienceCard>\n'
+      }
+    ],
     [
       '@vuepress/register-components',
       {
