@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 .experience-card {
-  margin: 1rem 0;
+  margin-top: 1rem;
   padding: 0.5rem;
   line-height: 24px;
   color: var(--c-text);
@@ -44,7 +44,7 @@ export default {
 }
 
 .experience-card-header__title {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .experience-card-header__value {
