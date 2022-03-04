@@ -11,51 +11,67 @@ pageClass: chenzehui
 
 `element-ui` | `vant` | `vant-weapp` | `uniapp` | `taro` | `vue`
 
-- 6年以上前端开发经验，4年vue使用经验，参与过大型移动端、PC端项目
+- 6年以上前端开发经验，熟悉 vue + vue-router + vuex + axios + element-ui 技术栈
+- 熟悉微信小程序、uni-app、微信公众号开发
 - 重度极客，致力于代码的整体结构规范及优化
 - 组件库作者
 
 #### 工作经历
 
 <ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 前端工程师" value="2020.09 - 至今">
-<template #footer>
 
-`vue全家桶` | `es6` | `element-ui` | `vant`
+`vue` | `es6` | `element-ui` | `vant` | `小程序`
 
-</template>
 </ExperienceCard>
 
+<ExperienceCard title="广州创思云网络科技有限公司 | 技术部 | 前端工程师" value="2019.04 - 2019.12">
 
+`react` | `vue` | `ant-design` | `vant`
 
-广州创思云网络科技有限公司 | 技术部 | 前端工程师 <div class="fr">_2019.04 - 2019.12_</div>
+</ExperienceCard>
 
-`react` | `vue全家桶` | `umijs` | `dvajs` | `ant-design`
+<ExperienceCard title="佛山市电子口岸有限公司 | 技术部 | 前端工程师" value="2015.11 - 2019.04">
 
-佛山市电子口岸有限公司 | 技术部 | 前端工程师 <div class="fr">_2015.11 - 2019.04_</div>
+`less/scss` | `es6` | `vue` | `jQuery` | `element-ui` | `vux` | `vant`
 
-`less/scss` | `es6` | `vue全家桶` | `axios` | `element-ui` | `vux` | `vant`
+</ExperienceCard>
 
-广东优匙网络技术有限公司 | 技术部 | 前端实习 <div class="fr">_2015.02 - 2015.08_</div>
+<ExperienceCard title="广东优匙网络技术有限公司 | 技术部 | 前端实习" value="2015.02 - 2015.08">
 
 `html` | `javascript` | `css` | `jQuery` | `bootstrap`
 
-#### 项目经历
-
-<ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今" background>
-  <template #footer>
-
-- 要的1
-- 要的1
-- 
-- 
-- 
-
-  </template>
 </ExperienceCard>
 
-<ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今" background></ExperienceCard>
+#### 项目经历
 
-<ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今" background></ExperienceCard>
+<ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今">
+
+中视 ETC 一站式发行平台，是一个建立于支付宝生态下，与全国各省 ETC 发行方对接客货车 ETC 发行、通行免密扣费、售 后处理、车主服务的系统服务平台。 主要功能模块包括：ETC
+发行、审核、售后、激活、通行扣费等模块。目前平台已接入了广西、内蒙古、黑龙江、北京、安徽、江苏等省份的 ETC 发行业务，日均发行量为 10000+，总用户规模达到了 100 万。
+
+工作职责：
+
+- 主要负责省方 ETC 小程序、配套的管理后台的维护版本迭代
+- 主导公司内部管理后台重构，并以此为基础裂变出其他产品后台
+- 配合运维搭建基于Gitlab、Jenkins的持续集成（CI\CD）流程
+- 沉淀公司业务组件，针对element-ui组件二次封装，并最终输出组件库
+- 积极参与前端小组的技术选型、框架搭建、code review
+- 同期输出组件库，cli脚手架
+
+</ExperienceCard>
+
+<ExperienceCard title="佛山智慧码头" value="2020.09 - 至今">
+
+佛山智慧口岸的建设总体思路主要是基于单一窗口，建设一个与海关系统及码头操作系统对接，且适用于佛山市各区码头的公共基础应用平台，应用平台提供查验指令、集装箱动态、舱单查询等功能，并为海关提供风险预警分析。
+该应用平台是单一窗口地方特色应用的重要功能补充。平台建设以信息化程度高的码头着手，基于可开放数据进行功能设计，实现稳步推进、逐步优化。
+
+工作职责：
+
+- 基于vue-element-admin扩展项目，
+- 负责相关项目功能模块开发
+- 积极参与前期需求设计、项目原型图产出、相关技术文档编写
+
+</ExperienceCard>
 
 #### 教育经历
 
@@ -74,7 +90,3 @@ pageClass: chenzehui
 #### 致谢
 
 感谢您花时间阅读我的简历，期待能有机会和您共事
-
-::: experience-card 广东中视信息科技有限公司 | 技术中心 | 前端工程师
-123
-:::
