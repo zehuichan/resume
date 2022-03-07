@@ -60,16 +60,33 @@ pageClass: chenzehui
 
 </ExperienceCard>
 
-<ExperienceCard title="佛山智慧码头" value="2020.09 - 至今">
+<ExperienceCard title="公众号、小程序开发" value="2018.12 - 2020.07">
+
+公众号医药类微信商城，支持医生预约，商品下单，购物车，优惠券等功能
+
+工作职责：
+
+- 主要负责前端的整站建设，包括前端框架搭建、技术选型、ui库选择
+- 沉淀业务组件，Antv/F2可视化组件的封装，ECharts图表组件的封装
+- 基于vue技术封装的公众号前端授权登录的插件 `Auth`
+- 基于vue技术封装的微信JS-SDK的插件 `JWeixin`
+- 主要负责整站的页面搭建、api联调、版本迭代、日常维护
+- 同期输出移动端易上手模板
+
+</ExperienceCard>
+
+<ExperienceCard title="佛山智慧码头" value="2018.04 - 2018.08">
 
 佛山智慧口岸的建设总体思路主要是基于单一窗口，建设一个与海关系统及码头操作系统对接，且适用于佛山市各区码头的公共基础应用平台，应用平台提供查验指令、集装箱动态、舱单查询等功能，并为海关提供风险预警分析。
 该应用平台是单一窗口地方特色应用的重要功能补充。平台建设以信息化程度高的码头着手，基于可开放数据进行功能设计，实现稳步推进、逐步优化。
 
 工作职责：
 
-- 基于vue-element-admin扩展项目，
-- 负责相关项目功能模块开发
+- 基于vue-element-admin扩展项目，支持动态菜单，按钮权限，数据字典
+- 参与权限系统设计，并担任项目组核心前端开发
+- 主要负责整站的页面搭建、api联调、版本迭代、日常维护
 - 积极参与前期需求设计、项目原型图产出、相关技术文档编写
+- 同期输出管理后台易上手模板
 
 </ExperienceCard>
 
@@ -80,12 +97,12 @@ pageClass: chenzehui
 
 #### 开源项目
 
-| 项目   | 描述                                            |
-| ------ |-----------------------------------------------|
-| [element-components](https://github.com/zehuichan/element-components)  | 基于element-ui的二次封装组件库，欢迎大家使用                   |
-| [vant-components](https://github.com/zehuichan/vant-components)  | 基于vant-ui的二次封装组件库，欢迎大家使用                      |
-| [vant-tpl](https://github.com/zehuichan/vant-tpl) | 基于vue2、vant2、vue-cli4、vw视口适配，开箱即用的H5移动端项目基础模板 |
-| [vant-mall-admin](https://github.com/zehuichan/vant-mall-admin)  | 基于vue-element-admin，管理后台基础模板                  |
+| 项目   | 描述                                          |
+| ------ |---------------------------------------------|
+| [element-components](https://github.com/zehuichan/element-components)  | 基于element-ui的二次封装组件库，欢迎大家使用                 |
+| [vant-components](https://github.com/zehuichan/vant-components)  | 基于vant-ui的二次封装组件库，欢迎大家使用                    |
+| [vant-tpl](https://github.com/zehuichan/vant-tpl) | 基于vue2、vant2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板 |
+| [vant-mall-admin](https://github.com/zehuichan/vant-mall-admin)  | 基于vue-element-admin，管理后台基础模板                |
 
 #### 致谢
 

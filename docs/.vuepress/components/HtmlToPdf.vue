@@ -66,7 +66,10 @@ export default {
 
 <style lang="scss">
 .html2pdf {
-  margin-right: 1rem;
+}
+
+.navbar-items {
+  margin-left: 1rem;
 }
 
 .iconfont {

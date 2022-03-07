@@ -51,4 +51,7 @@ export default {
   text-align: right;
   font-style: italic;
 }
+
+.experience-card__footer {
+}
 </style>
