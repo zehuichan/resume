@@ -11,6 +11,7 @@ body {
 p {
   font-size: 14px;
   line-height: 1.5715;
+  word-spacing: 0.05em;
 }
 
 table {
@@ -28,14 +29,14 @@ ol {
 
 ul:not([class]),
 ol:not([class]) {
-  line-height: 22px;
-  margin-top: 8px;
-  margin-left: 8px;
+  line-height: 1.6rem;
+  margin-top: 0.6rem;
+  margin-left: 0.6rem;
   list-style-type: disc;
 
   > li {
-    line-height: 28px;
-    margin-left: 20px;
+    line-height: 1.8rem;
+    margin-left: 1.6rem;
     list-style: circle;
   }
 }

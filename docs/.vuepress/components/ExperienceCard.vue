@@ -1,5 +1,5 @@
 <template>
-  <div class="experience-card" :class="background ? 'is-background' : ''">
+  <div class="experience-card" :class="_class">
     <div class="experience-card-header">
       <div class="experience-card-header__title">{{ title }}</div>
       <div class="experience-card-header__value">{{ value }}</div>
@@ -16,7 +16,20 @@ export default {
   props: {
     title: String,
     value: String,
+    size: {
+      type: String,
+      default: 'normal'
+    },
     background: Boolean
+  },
+  computed: {
+    _class() {
+      const { size, background } = this
+      return {
+        ['experience-card--' + size]: size,
+        'is-background': background
+      }
+    }
   }
 }
 </script>
@@ -24,7 +37,6 @@ export default {
 <style lang="scss">
 .experience-card {
   margin-top: 1rem;
-  padding: 0.5rem;
   line-height: 24px;
   color: var(--c-text);
 
@@ -32,6 +44,14 @@ export default {
     border-radius: 4px;
     background-color: var(--c-bg-lighter);
   }
+}
+
+.experience-card--normal {
+  padding: 1.6em;
+}
+
+.experience-card--small {
+  padding: 0.5em;
 }
 
 .experience-card-header {
@@ -53,5 +73,10 @@ export default {
 }
 
 .experience-card__footer {
+
+  > p {
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
 }
 </style>
