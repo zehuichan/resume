@@ -24,7 +24,6 @@ ul,
 ol {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
 ul:not([class]),
@@ -32,7 +31,6 @@ ol:not([class]) {
   line-height: 1.6rem;
   margin-top: 0.6rem;
   margin-left: 0.6rem;
-  list-style-type: disc;
 
   > li {
     line-height: 1.8rem;
