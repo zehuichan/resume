@@ -2,25 +2,32 @@
 pageClass: chenzehui
 ---
 
-::: tip 陈泽辉 | 本科 | 1991 | {{ new Date().getFullYear() - 2015 }} 年前端
+::: tip 陈泽辉 | 本科 | 1991 | {{ new Date().getFullYear() - 2015 }}年前端
 
 电话：15800066380 | 邮箱：jasonchenzehui@gmail.com
 :::
 
 #### 个人优势
 
-`element-ui` | `vant` | `vant-weapp` | `uniapp` | `taro` | `vue`
+`vue2/3` | `pinia` | `element-ui` | `vant` | `vant-weapp` | `uniapp` | `taro3`
 
-- 6年以上前端开发经验，熟悉 vue + vue-router + vuex + axios + element-ui 技术栈
-- 熟悉微信小程序、uni-app、微信公众号开发
+- {{ new Date().getFullYear() - 2015 }}年前端开发经验
+- 熟悉 vue、taro3、uniapp、小程序/公众号，具备以上框架多个项目实战开发上线经验
 - 重度极客，致力于代码的整体结构规范及优化
-- 组件库作者(https://github.com/zehuichan)
+- 组件库作者
 
 #### 工作经历
 
 <ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 前端工程师" value="2020.09 - 至今" size="small">
 
-`vue` | `es6` | `element-ui` | `vant` | `小程序`
+`vue2/3` | `taro` | `uniapp` | `element-ui` | `vant` | `小程序`
+
+1. 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范
+2. 参与制定代码规范、前端开发流程等规范性文件
+3. 研究新的前端技术，优化产品体验，前端表现层与后端的交 互设计和开发以及前端架构选型
+4. 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点
+5. 负责前端团队的任务拆解分配，主要功能模块实现，公共组件抽离
+6. 配合运维搭建基于Gitlab、Jenkins的持续集成(CI\CD)流程
 
 </ExperienceCard>
 
@@ -28,11 +35,20 @@ pageClass: chenzehui
 
 `react` | `vue` | `ant-design` | `vant`
 
+1. 负责门户网站更新迭代优化升级以及原有项目功能迭代
+2. 负责公司各类H5站点以及商户后台开发
+3. 负责维护原有项目，配合测试修复bug
+
 </ExperienceCard>
 
 <ExperienceCard title="佛山市电子口岸有限公司 | 技术部 | 前端工程师" value="2015.11 - 2019.04" size="small">
 
 `less/scss` | `es6` | `vue` | `jQuery` | `element-ui` | `vux` | `vant`
+
+1. 负责开发h5、公众号、管理后台
+2. 负责维护原有项目，配合测试修复bug
+3. 参与需求评审、原型设计，对产品提出意见和建议
+4. 尝试前端技术栈、ui库选型，搭建前端项目
 
 </ExperienceCard>
 
@@ -60,19 +76,11 @@ pageClass: chenzehui
 
 </ExperienceCard>
 
-<ExperienceCard title="公众号、小程序开发" value="2018.12 - 2020.07" background>
+<ExperienceCard title="小程序开发(多项目)" value="2018.12 - 2020.07" background>
 
-公众号医药类微信商城，支持医生预约，商品下单，购物车，优惠券，微信支付等功能。
-小程序法律咨询项目，面向c端用户，区分用户端、律师端，旨在为客户提供在线的法律咨询工具，支持即时通讯、课程购买、微信支付等功能。
+</ExperienceCard>
 
-工作职责：
-
-- 主要负责前端的整站建设，包括前端框架搭建、技术选型、ui库选择
-- 沉淀业务组件，Antv/F2可视化组件的封装，ECharts图表组件的封装
-- 基于vue技术封装的公众号前端授权登录的插件 `Auth`
-- 基于vue技术封装的微信JS-SDK的插件 `JWeixin`
-- 主要负责整站的页面搭建、api联调、版本迭代、日常维护
-- 同期输出移动端易上手模板
+<ExperienceCard title="公众号开发(多项目)" value="2018.12 - 2020.07" background>
 
 </ExperienceCard>
 

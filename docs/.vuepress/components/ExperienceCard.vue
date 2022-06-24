@@ -5,7 +5,7 @@
       <div class="experience-card-header__value">{{ value }}</div>
     </div>
     <div class="experience-card__footer">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
