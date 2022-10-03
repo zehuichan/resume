@@ -11,7 +11,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'ExperienceCard',
   props: {
     title: String,
@@ -31,7 +33,7 @@ export default {
       }
     }
   }
-}
+})
 </script>
 
 <style lang="scss">

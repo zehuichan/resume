@@ -4,9 +4,9 @@
   "description": "陈泽辉的简历",
   "main": "index.js",
   "scripts": {
-    "start": "npm run docs:dev",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
     "release": "release-it && git push --follow-tags origin main",
     "gh-pages": "npm run docs:build && gh-pages -d docs/.vuepress/dist || gh-pages.sh"
   },
@@ -21,11 +21,14 @@
     "url": "https://github.com/zehuichan/resume/issues"
   },
   "homepage": "https://github.com/zehuichan/resume#readme",
+  "dependencies": {
+    "vitepress": "^1.0.0-alpha.18",
+    "vue": "^3.2.40"
+  },
   "devDependencies": {
-    "@vuepress/plugin-register-components": "^2.0.0-beta.48",
     "gh-pages": "^4.0.0",
     "release-it": "^15.1.0",
-    "vuepress": "^2.0.0-beta.48"
+    "sass": "^1.55.0"
   },
   "release-it": {
     "npm": {

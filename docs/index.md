@@ -1,22 +1,23 @@
----
-pageClass: chenzehui
----
+<script setup>
+import UserInfo from './components/UserInfo.vue';
+import ExperienceCard from './components/ExperienceCard.vue';
+</script>
 
-::: tip 陈泽辉 | 本科 | 1991 | {{ new Date().getFullYear() - 2015 }}年前端
+<UserInfo>
 
-电话：15800066380 | 邮箱：jasonchenzehui@gmail.com
-:::
 
-#### 个人优势
+</UserInfo>
+
+## 个人优势
 
 `vue2/3` | `pinia` | `element-ui` | `vant` | `vant-weapp` | `uniapp` | `taro3`
 
-- {{ new Date().getFullYear() - 2015 }}年前端开发经验
-- 熟悉 vue、taro3、uniapp、小程序/公众号，具备以上框架多个项目实战开发上线经验
-- 重度极客，致力于代码的整体结构规范及优化
-- 组件库作者
+- 多年前端开发经验，善于组件抽象、前端架构与性能优化；
+- 精通vue2、vue3、taro3、uniapp开发模式，熟悉模块化开发，有框架设计能力；
+- 重度极客，致力于代码的整体结构规范及优化；
+- 爱好跑步、游水、codeing、源码阅读。
 
-#### 工作经历
+## 工作经历
 
 <ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 前端工程师" value="2020.09 - 至今" size="small">
 
@@ -56,13 +57,19 @@ pageClass: chenzehui
 
 `html` | `javascript` | `css` | `jQuery` | `bootstrap`
 
+1. 负责产品功能的前端开发工作
+2. 根据设计图完成静态页的编写
+3. 完成前后端联调
+4. 修复测试、验收过程中发现的 bug
+5. 完成前端代码的发布
+
 </ExperienceCard>
 
-#### 项目经历
+## 项目经历
 
 <ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今" background>
 
-中视ETC一站式发行平台，是一个建立于支付宝生态下，与全国各省ETC发行方对接客货车ETC发行、通行免密扣费、售 后处理、车主服务的系统服务平台。 主要功能模块包括：ETC发行、审核、售后、激活、通行扣费等模块。
+中视ETC一站式发行平台，是一个建立于支付宝生态下，与全国各省ETC发行方对接客货车ETC发行、通行免密扣费、售后处理、车主服务的系统服务平台。 主要功能模块包括：ETC发行、审核、售后、激活、通行扣费等模块。
 目前平台已接入了广西、内蒙古、黑龙江、北京、安徽、江苏等省份的ETC发行业务，日均发行量为10000+，总用户规模达到了100万。
 
 工作职责：
@@ -84,7 +91,7 @@ pageClass: chenzehui
 
 </ExperienceCard>
 
-<ExperienceCard title="佛山智慧码头" value="2018.04 - 2018.08" background>
+<ExperienceCard title="佛山智慧口岸" value="2018.04 - 2018.08" background>
 
 佛山智慧口岸的建设总体思路主要是基于单一窗口，建设一个与海关系统及码头操作系统对接，且适用于佛山市各区码头的公共基础应用平台，应用平台提供查验指令、集装箱动态、舱单查询等功能，并为海关提供风险预警分析。
 该应用平台是单一窗口地方特色应用的重要功能补充。平台建设以信息化程度高的码头着手，基于可开放数据进行功能设计，实现稳步推进、逐步优化。
@@ -99,12 +106,12 @@ pageClass: chenzehui
 
 </ExperienceCard>
 
-#### 教育经历
+## 教育经历
 
 - **广东外语外贸大学** | 工商管理 | 本科
 - **广东机电职业技术学院** | 应用电子技术 | 大专
 
-#### 开源项目
+## 开源项目
 
 | 项目   | 描述                                          |
 | ------ |---------------------------------------------|
@@ -113,6 +120,6 @@ pageClass: chenzehui
 | [vant-tpl](https://github.com/zehuichan/vant-tpl) | 基于vue2、vant2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板 |
 | [vant-mall-admin](https://github.com/zehuichan/vant-mall-admin)  | 基于vue-element-admin，管理后台基础模板                |
 
-#### 致谢
+## 致谢
 
 感谢您花时间阅读我的简历，期待能有机会和您共事
