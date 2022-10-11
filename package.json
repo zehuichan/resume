@@ -8,7 +8,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "release": "release-it && git push --follow-tags origin main",
-    "gh-pages": "npm run docs:build && gh-pages -d docs/.vuepress/dist || gh-pages.sh"
+    "gh-pages": "npm run docs:build && gh-pages -d docs/.vitepress/dist || gh-pages.sh"
   },
   "repository": {
     "type": "git",
