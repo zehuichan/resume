@@ -6,20 +6,24 @@ export default defineConfig({
   title: '陈泽辉的简历',
   lastUpdated: true,
   head: [
-    ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
-    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }]
+    ['link', { rel: 'icon', type: 'image/svg+xml', sizes: '16x16', href: '/vite.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', sizes: '32x32', href: '/vite.svg' }]
   ],
   themeConfig: {
-    home: '/',
+    logo: '/vite.svg',
+    siteTitle: false,
+    nav: [
+      {
+        text: 'Interview',
+        items: [
+          { text: 'Javascript', link: '/interview/javascript' }
+        ]
+      }
+    ],
     sidebar: false,
     outlineTitle: 'Outline',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/zehuichan' }
-    ],
-    editLink: false,
-    footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2015-present zeHuiChan.'
-    }
+    ]
   }
 })

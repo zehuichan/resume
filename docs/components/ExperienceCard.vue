@@ -66,12 +66,15 @@ export default defineComponent({
 }
 
 .experience-card-header__title {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 15px;
 }
 
 .experience-card-header__value {
   text-align: right;
   font-style: italic;
+  font-size: 12px;
+  flex: none;
 }
 
 .experience-card__footer {

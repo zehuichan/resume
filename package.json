@@ -22,12 +22,12 @@
   },
   "homepage": "https://github.com/zehuichan/resume#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.18",
+    "vitepress": "^1.0.0-alpha.19",
     "vue": "^3.2.40"
   },
   "devDependencies": {
     "gh-pages": "^4.0.0",
-    "release-it": "^15.1.0",
+    "release-it": "^15.5.0",
     "sass": "^1.55.0"
   },
   "release-it": {
