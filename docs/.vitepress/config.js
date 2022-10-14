@@ -16,7 +16,8 @@ export default defineConfig({
       {
         text: 'Interview',
         items: [
-          { text: 'Javascript', link: '/interview/javascript' }
+          { text: 'Javascript', link: '/interview/javascript' },
+          { text: 'Framework', link: '/interview/framework' },
         ]
       }
     ],

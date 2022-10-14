@@ -7,8 +7,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "release": "release-it && git push --follow-tags origin main",
-    "gh-pages": "npm run docs:build && gh-pages -d docs/.vitepress/dist || gh-pages.sh"
+    "release": "release-it && git push --follow-tags origin main"
   },
   "repository": {
     "type": "git",
@@ -22,11 +21,10 @@
   },
   "homepage": "https://github.com/zehuichan/resume#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.19",
+    "vitepress": "^1.0.0-alpha.20",
     "vue": "^3.2.40"
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0",
     "release-it": "^15.5.0",
     "sass": "^1.55.0"
   },
