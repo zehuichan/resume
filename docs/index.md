@@ -27,11 +27,11 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 `vue2/3` | `taro3` | `uniapp` | `element-ui` | `vant` | `小程序`
 
-- 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范 
-- 参与制定代码规范、前端开发流程等规范性文件 
-- 研究新的前端技术，优化产品体验，前端表现层与后端的交 互设计和开发以及前端架构选型 
-- 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点 
-- 负责前端团队的任务拆解分配，主要功能模块实现，公共组件抽离 
+- 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范
+- 参与制定代码规范、前端开发流程等规范性文件
+- 研究新的前端技术，优化产品体验，前端表现层与后端的交 互设计和开发以及前端架构选型
+- 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点
+- 负责前端团队的任务拆解分配，主要功能模块实现，公共组件抽离
 - 配合运维搭建基于Gitlab、Jenkins的持续集成(CI\CD)流程
 
 </ExperienceCard>
@@ -40,10 +40,10 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 `react` | `vue` | `ant-design` | `vant`
 
-- 参与前端小组的技术选型、框架搭建 
-- 参与需求评审，与项目经理，后端开发人员等进行讨论项目细节 
-- 负责 webapp 及其配套的管理后台开发 
-- 设计开发高效可复用的基础组件，动态路由 
+- 参与前端小组的技术选型、框架搭建
+- 参与需求评审，与项目经理，后端开发人员等进行讨论项目细节
+- 负责 webapp 及其配套的管理后台开发
+- 设计开发高效可复用的基础组件，动态路由
 - 配合项目负责人完成项目指标，根据业务需求，优化完善项目方案
 
 </ExperienceCard>
@@ -52,10 +52,10 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 `less/scss` | `es6` | `vue` | `jQuery` | `element-ui` | `vux` | `vant`
 
-- 参与前期需求设计、文档编写 
-- 负责前端技术选型，前端框架搭建，项目原型图产出 
-- 负责公司前端技术选型、框架的搭建、核心功能开发，能独立负责前端项目 
-- 能独立分析和解决问题，并协助其他开发人员解决问题 
+- 参与前期需求设计、文档编写
+- 负责前端技术选型，前端框架搭建，项目原型图产出
+- 负责公司前端技术选型、框架的搭建、核心功能开发，能独立负责前端项目
+- 能独立分析和解决问题，并协助其他开发人员解决问题
 - 熟练使用 vue 全家桶及其 UI 框架，例如：Element-ui、vux、vant等
 
 </ExperienceCard>
@@ -64,10 +64,10 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 `html` | `javascript` | `css` | `jQuery` | `bootstrap`
 
-- 负责产品功能的前端开发工作 
-- 根据设计图完成静态页的编写 
-- 完成前后端联调 
-- 修复测试、验收过程中发现的 bug 
+- 负责产品功能的前端开发工作
+- 根据设计图完成静态页的编写
+- 完成前后端联调
+- 修复测试、验收过程中发现的 bug
 - 完成前端代码的发布
 
 </ExperienceCard>
@@ -106,6 +106,9 @@ vue2/3、vite、pinia、taro、uniapp、原生小程序
 
 - 主要负责项目前端整站建设包括界面设计，页面搭建，数据对接，前端规范、架构设计
 - 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
+- 基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的hooks，支持双向数据绑定
+- 基于 `Taro.uploadFile` 封装的oss图片上传组件，支持 `v-model`
+- 基于 `Taro.uploadFile` 封装的ocr文字识别组件，支持 `v-model`
 
 **技术栈：**
 
@@ -123,6 +126,9 @@ taro、vue3、pinia、hooks、nutui
 
 - 主要负责项目前端整站建设包括界面设计，页面搭建，数据对接，前端规范、架构设计
 - 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
+- 基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的hooks，支持双向数据绑定
+- 基于 `Taro.uploadFile` 封装的oss图片上传组件，支持 `v-model`
+- 基于 `Taro.uploadFile` 封装的ocr文字识别组件，支持 `v-model`
 
 **技术栈：**
 
