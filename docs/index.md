@@ -36,7 +36,7 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 </ExperienceCard>
 
-<ExperienceCard title="广州创思云网络科技有限公司 | 技术部 | 前端工程师" value="2019.04 - 2019.12" size="small">
+<ExperienceCard title="广州创思云网络科技有限公司 | 技术部 | 前端工程师" value="2019.04 - 2020.06" size="small">
 
 `react` | `vue` | `ant-design` | `vant`
 
