@@ -23,9 +23,21 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 ## 工作经历
 
-<ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 前端工程师" value="2020.09 - 至今" size="small">
+<ExperienceCard title="广州兴工科技有限公司 | 技术中心 | 高级前端" value="2022.11 - 至今" size="small">
 
-`vue2/3` | `taro3` | `uniapp` | `element-ui` | `vant` | `小程序`
+`vue2/3` | `taro3` | `uniapp` | `element-plus` | `vant2/3/4` | `小程序`
+
+- 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范
+- 参与制定代码规范、前端开发流程等规范性文件
+- 研究新的前端技术，优化产品体验，前端表现层与后端的交 互设计和开发以及前端架构选型
+- 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点
+- 负责前端团队的任务拆解分配，主要功能模块实现，公共组件抽离
+
+</ExperienceCard>
+
+<ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 前端工程师" value="2020.09 - 2022.10" size="small">
+
+`vue2/3` | `taro3` | `uniapp` | `element-ui` | `vant2/3/4` | `小程序`
 
 - 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范
 - 参与制定代码规范、前端开发流程等规范性文件
