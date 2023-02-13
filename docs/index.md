@@ -1,6 +1,6 @@
 <script setup>
-import UserInfo from './components/UserInfo.vue';
-import ExperienceCard from './components/ExperienceCard.vue';
+import UserInfo from './components/UserInfo.vue'
+import ExperienceCard from './components/ExperienceCard.vue'
 </script>
 
 <UserInfo />
@@ -29,13 +29,13 @@ import ExperienceCard from './components/ExperienceCard.vue';
 
 - 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范
 - 参与制定代码规范、前端开发流程等规范性文件
-- 研究新的前端技术，优化产品体验，前端表现层与后端的交 互设计和开发以及前端架构选型
+- 研究新的前端技术，优化产品体验，前端表现层与后端的交互设计和开发以及前端架构选型
 - 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点
 - 负责前端团队的任务拆解分配，主要功能模块实现，公共组件抽离
 
 </ExperienceCard>
 
-<ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 前端工程师" value="2020.09 - 2022.10" size="small">
+<ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 高级前端" value="2020.09 - 2022.10" size="small">
 
 `vue2/3` | `taro3` | `uniapp` | `element-ui` | `vant2/3/4` | `小程序`
 
@@ -97,8 +97,9 @@ import ExperienceCard from './components/ExperienceCard.vue';
 **工作职责：**
 
 - 主要负责省方ETC小程序、配套的管理后台的维护版本迭代
+- 负责管理后台的重构工作，包括统一处理请求方法、公共组件搭建、前端字典的引入、菜单+按钮权限的适配
+- 基于 `element-ui` 封装公共组件库的日常维护、版本迭代、文档维护
 - 配合运维搭建基于Gitlab、Jenkins的持续集成(CI\CD)流程
-- 基于 element-ui 封装公共组件库的日常维护、版本迭代、文档维护
 - 负责前端小组的技术选型、框架搭建、code review
 
 **技术栈：**
@@ -107,20 +108,24 @@ vue2/3、vite、pinia、taro、uniapp、原生小程序
 
 </ExperienceCard>
 
-<ExperienceCard title="4S店SAAS系统-用户端小程序" value="2022.02 - 2022.8" background>
+<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.8" background>
 
 **项目描述：**
 
-针对4s店锁客难等痛点，基于支付宝开放能力（芝麻go，花呗分期）等信用能力，设计2年三次承诺到店保养可享7折优惠等活动，单店月保养GMV达到40w；
+考虑到用户角色使用场景问题，加上产品定位的划分，分为两个小程序（用户端，商户端）去承接业务方。
+
+用户端：针对4s店锁客难等痛点，基于支付宝开放能力（芝麻go，花呗分期）等信用能力，设计2年三次承诺到店保养可享7折优惠等活动，单店月保养GMV达到40w；
 并基于支付宝端3千万认证车主的公域内流量，利用支付宝域内消息通知、灯火平台等触达能力，设计支付宝域内运营工具。
+
+商户端：针对用户端小程序功能设计了对应的活动发布、订单管理、营销短信管理、券码核销等管理功能，方便快速进行用户端小程序管理。
 
 **工作职责：**
 
-- 主要负责项目前端整站建设包括界面设计，页面搭建，数据对接，前端规范、架构设计
+- 主要负责项目前端整站建设包括界面搭建，数据对接，规范设计
 - 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
-- 基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的hooks，支持双向数据绑定
-- 基于 `Taro.uploadFile` 封装的oss图片上传组件，支持 `v-model`
-- 基于 `Taro.uploadFile` 封装的ocr文字识别组件，支持 `v-model`
+- 负责小程序授权登录流程的对接、用户中心模块的开发
+- 负责公共组件搭建，包括oss图片上传组件、ocr文字识别组件、车牌选择器
+- 负责公共hooks的封装，基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的useStorage，支持响应式数据
 
 **技术栈：**
 
@@ -128,23 +133,8 @@ taro、vue3、pinia、hooks、nutui
 
 </ExperienceCard>
 
-<ExperienceCard title="4S店SAAS系统-商户端小程序" value="2022.02 - 2022.8" background>
+<ExperienceCard title="待续..." value="" background>
 
-**项目描述：**
-
-针对用户端小程序功能设计了对应的活动发布、订单管理、营销短信管理、券码核销等管理功能，方便快速进行用户端小程序管理。
-
-**工作职责：**
-
-- 主要负责项目前端整站建设包括界面设计，页面搭建，数据对接，前端规范、架构设计
-- 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
-- 基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的hooks，支持双向数据绑定
-- 基于 `Taro.uploadFile` 封装的oss图片上传组件，支持 `v-model`
-- 基于 `Taro.uploadFile` 封装的ocr文字识别组件，支持 `v-model`
-
-**技术栈：**
-
-taro、vue3、pinia、hooks、nutui
 
 </ExperienceCard>
 
@@ -155,12 +145,13 @@ taro、vue3、pinia、hooks、nutui
 
 ## 开源项目
 
-| 项目   | 描述                                          |
-| ------ |---------------------------------------------|
-| [element-components](https://github.com/zehuichan/element-components)  | 基于element-ui的二次封装组件库，欢迎大家使用                 |
-| [vant-components](https://github.com/zehuichan/vant-components)  | 基于vant-ui的二次封装组件库，欢迎大家使用                    |
-| [vant-tpl](https://github.com/zehuichan/vant-tpl) | 基于vue2、vant2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板 |
-| [vant-mall-admin](https://github.com/zehuichan/vant-mall-admin)  | 基于vue-element-admin，管理后台基础模板                |
+| 项目                                                                    | 描述                                                  |
+|-----------------------------------------------------------------------|-----------------------------------------------------|
+| [vant-mall-admin](https://github.com/zehuichan/vant-mall-admin)       | 管理后台基础模板，技术路线：vue@2.7+pinia+vue-router@3+element-ui |
+| [vant-mall-admin2](https://github.com/zehuichan/vant-mall-admin-next) | 管理后台基础模板，技术路线：vue@3+pinia+vue-router@4+element-plus |
+| [element-components](https://github.com/zehuichan/element-components) | 基于element-ui的二次封装组件库，欢迎大家使用                         |
+| [vant-components](https://github.com/zehuichan/vant-components)       | 基于vant-ui的二次封装组件库，欢迎大家使用                            |
+| [vant-tpl](https://github.com/zehuichan/vant-tpl)                     | 基于vue@2.6、vant@2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板     |
 
 ## 致谢
 

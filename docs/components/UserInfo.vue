@@ -6,7 +6,7 @@
     <div class="user-info__content">
       <div class="name">陈泽辉</div>
       <div class="desc">高级前端-广州兴工</div>
-      <div class="desc">{{ new Date().getFullYear() - 2015 }}年前端 | 本科 | 1991-05</div>
+      <div class="desc">{{ new Date().getFullYear() - 2015 }}年前端 | 本科</div>
     </div>
     <div class="action">18-22k</div>
   </div>

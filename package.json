@@ -6,8 +6,7 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
-    "release": "release-it && git push --follow-tags origin main"
+    "docs:serve": "vitepress serve docs"
   },
   "repository": {
     "type": "git",
@@ -21,12 +20,11 @@
   },
   "homepage": "https://github.com/zehuichan/resume#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-alpha.38",
-    "vue": "^3.2.45"
+    "vitepress": "^1.0.0-alpha.46",
+    "vue": "^3.2.47"
   },
   "devDependencies": {
-    "release-it": "^15.6.0",
-    "sass": "^1.57.1"
+    "sass": "^1.58.0"
   },
   "release-it": {
     "npm": {
