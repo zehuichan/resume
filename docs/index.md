@@ -10,14 +10,14 @@ import ExperienceCard from './components/ExperienceCard.vue'
 `vue2/3` | `pinia` | `vite` | `element-ui` | `vant` | `vant-weapp` | `uniapp` | `taro3`
 
 - 多年前端开发经验，能独立开发项目，善于组件抽象、前端架构与性能优化
-- 熟悉 vue2、vue3、taro(vue3)、uniapp 开发模式，熟悉模块化开发，有框架设计能力
-- 熟悉 axios 数据请求方式，使用 mockjs，JSON-Server 模拟后台数据
-- 熟悉前端⼯程化，掌握 webpack、vite 代码打包工具，能针对项目进行性能分析以及性能优化
-- 熟悉 yarn、npm、pnpm 包管理工具
-- 熟悉 eslint、stylelint、prettier、husky 配套的开发模式
-- 熟悉组件库搭建，支持 npm 包发布，包括 element-components、vant-components
-- 了解 Gitlab 持续集成(CI\CD)流程
-- 了解 Node.js 及 express、koa 框架，体验输出接口思想
+- 熟悉 `vue2`、`vue3`、`taro(vue3)`、`uniapp` 开发模式，熟悉模块化开发，有框架设计能力
+- 熟悉 `axios` 数据请求方式，使用 `mockjs`，`JSON-Server` 模拟后台数据
+- 熟悉前端⼯程化，掌握 `webpack`、`vite` 代码打包工具，能针对项目进行性能分析以及性能优化
+- 熟悉 `yarn`、`npm`、`pnpm` 包管理工具
+- 熟悉 `eslint`、`stylelint`、`prettier`、`husky` 配套的开发模式
+- 熟悉组件库搭建，支持 `npm` 包发布，包括 `element-components`、`vant-components`
+- 了解 `Gitlab` 持续集成(CI\CD)流程
+- 了解 `Node.js` 及 `express`、`koa` 框架，体验输出接口思想
 - 重度极客，致力于代码的整体结构规范及优化
 - 爱好跑步、游水、codeing、源码阅读
 
@@ -28,7 +28,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 `vue2/3` | `taro3` | `uniapp` | `element-plus` | `vant2/3/4` | `小程序`
 
 - 设计、维护通用业务组件库，为公司组件库贡献多个组件，加快开发效率，有良好的编码规范
-- 参与制定代码规范、前端开发流程等规范性文件
+- 参与制定代码规范、前端开发流程等规范性文件，担任核心主程，负责攻坚项目难点
 - 研究新的前端技术，优化产品体验，前端表现层与后端的交互设计和开发以及前端架构选型
 - 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点
 - 负责前端团队的任务拆解分配，主要功能模块实现，公共组件抽离
@@ -104,7 +104,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 **技术栈：**
 
-vue2/3、vite、pinia、taro、uniapp、原生小程序
+`vue2/3`、`vite`、`pinia`、`taro`、`uniapp`、`原生小程序`
 
 </ExperienceCard>
 
@@ -129,11 +129,11 @@ vue2/3、vite、pinia、taro、uniapp、原生小程序
 
 **技术栈：**
 
-taro、vue3、pinia、hooks、nutui
+`taro`、`vue3`、`pinia`、`hooks`、`nutui`
 
 </ExperienceCard>
 
-<ExperienceCard title="待续..." value="" background>
+<ExperienceCard title="同律人-法律咨询" value="" background>
 
 
 </ExperienceCard>
