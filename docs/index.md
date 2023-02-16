@@ -86,6 +86,31 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 ## 项目经历
 
+<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.8" background>
+
+**项目描述：**
+
+考虑到用户角色使用场景问题，加上产品定位的划分，分为两个小程序（用户端，商户端）去承接业务方。
+
+用户端：针对4s店锁客难等痛点，基于支付宝开放能力（芝麻go，花呗分期）等信用能力，设计2年三次承诺到店保养可享7折优惠等活动，单店月保养GMV达到40w；
+并基于支付宝端3千万认证车主的公域内流量，利用支付宝域内消息通知、灯火平台等触达能力，设计支付宝域内运营工具。
+
+商户端：针对用户端小程序功能设计了对应的活动发布、订单管理、营销短信管理、券码核销等管理功能，方便快速进行用户端小程序管理。
+
+**工作职责：**
+
+- 主要负责项目前端整站建设包括界面搭建，数据对接，规范设计
+- 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
+- 负责小程序授权登录流程的对接、用户中心模块的开发
+- 负责公共组件搭建，包括oss图片上传组件、ocr文字识别组件、车牌选择器、toggle选择器
+- 负责公共hooks的封装，基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的useStorage，支持响应式数据
+
+**技术栈：**
+
+`taro`、`vue3`、`pinia`、`hooks`、`nutui`
+
+</ExperienceCard>
+
 <ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今" background>
 
 **项目描述：**
@@ -108,33 +133,20 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.8" background>
+<ExperienceCard title="同律人-法律咨询" value="2020.01 - 2020.7" background>
 
 **项目描述：**
 
-考虑到用户角色使用场景问题，加上产品定位的划分，分为两个小程序（用户端，商户端）去承接业务方。
-
-用户端：针对4s店锁客难等痛点，基于支付宝开放能力（芝麻go，花呗分期）等信用能力，设计2年三次承诺到店保养可享7折优惠等活动，单店月保养GMV达到40w；
-并基于支付宝端3千万认证车主的公域内流量，利用支付宝域内消息通知、灯火平台等触达能力，设计支付宝域内运营工具。
-
-商户端：针对用户端小程序功能设计了对应的活动发布、订单管理、营销短信管理、券码核销等管理功能，方便快速进行用户端小程序管理。
+法律咨询平台，为用户提供了更为便利的法律咨询平台，有利于帮助群众增加法律常识和守法意识。
+主要功能有：文章课程、法律产品、时事新闻、在线咨询、在线支付、地址管理、钱包管理、发票管理、订单管理、个人中心、投诉建议、人才招聘等等，其他功能涉及商业保密。
 
 **工作职责：**
 
-- 主要负责项目前端整站建设包括界面搭建，数据对接，规范设计
-- 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
-- 负责小程序授权登录流程的对接、用户中心模块的开发
-- 负责公共组件搭建，包括oss图片上传组件、ocr文字识别组件、车牌选择器
-- 负责公共hooks的封装，基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的useStorage，支持响应式数据
+- 独立负责前端整站搭建，包括统一处理请求方法、菜单+按钮权限的适配
 
 **技术栈：**
 
-`taro`、`vue3`、`pinia`、`hooks`、`nutui`
-
-</ExperienceCard>
-
-<ExperienceCard title="同律人-法律咨询" value="" background>
-
+`vue2`、`webpack`、`uniapp`、`less`、`vant`、`tim-js-sdk`
 
 </ExperienceCard>
 
