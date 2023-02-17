@@ -142,7 +142,8 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 **工作职责：**
 
-- 独立负责前端整站搭建，包括统一处理请求方法、菜单+按钮权限的适配
+- 独立负责前端整站搭建，包括统一请求方法、模块页面编写、接口联调
+- 
 
 **技术栈：**
 
