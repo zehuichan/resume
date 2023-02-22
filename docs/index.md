@@ -86,7 +86,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 ## 项目经历
 
-<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.8" background>
+<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.08" background>
 
 **项目描述：**
 
@@ -111,7 +111,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-<ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 至今" background>
+<ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 2022.10" background>
 
 **项目描述：**
 
@@ -133,21 +133,41 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-<ExperienceCard title="同律人-法律咨询" value="2020.01 - 2020.7" background>
+<ExperienceCard title="同律人-法律咨询" value="2020.01 - 2020.07" background>
 
 **项目描述：**
 
-法律咨询平台，为用户提供了更为便利的法律咨询平台，有利于帮助群众增加法律常识和守法意识。
+法律咨询App，为用户提供了更为便利的法律咨询平台，有利于帮助群众增加法律常识和守法意识。
 主要功能有：文章课程、法律产品、时事新闻、在线咨询、在线支付、地址管理、钱包管理、发票管理、订单管理、个人中心、投诉建议、人才招聘等等，其他功能涉及商业保密。
 
 **工作职责：**
 
 - 独立负责前端整站搭建，包括统一请求方法、模块页面编写、接口联调
-- 
+- 在全局前置守卫初始化 `wx.config`，以实现每个页面支持微信分享功能
+- 在线咨询使用 `tim-js-sdk` 搭建即时通信功能
+- 使用 `wx.chooseImage`、`wx.getLocalImgData` 封装上传图片组件
 
 **技术栈：**
 
-`vue2`、`webpack`、`uniapp`、`less`、`vant`、`tim-js-sdk`
+`vue2`、`webpack`、`uniapp`、`less`、`vant`、`tim-js-sdk`、`jweixin`
+
+</ExperienceCard>
+
+<ExperienceCard title="公司-内部管理后台" value="2019.08 - 2020.12" background>
+
+**项目描述：**
+
+内部使用的saas管理后台。
+主要功能有：系统设置、收款设置、提款设置、开户管理、公告管理、消息管理、充值种类、反馈管理、角色管理等等，其他功能涉及商业保密。
+
+**工作职责：**
+
+- 负责主要功能的前端开发，包括页面编写、接口联调
+- 项目日常维护、版本迭代
+
+**技术栈：**
+
+`react16`、`ant-design-pro`、`ant-design`、`dva`、`less`、`es6`
 
 </ExperienceCard>
 
