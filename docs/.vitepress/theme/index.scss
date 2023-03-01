@@ -3,7 +3,7 @@
   --bg-color-scroll: rgba(0, 0, 0, .14);
   --td-text-color-anti: #fff;
   --td-success-color: #00A870;
-  --c-bg-lighter: var(--vp-c-white-mute);
+  --c-bg-lighter: var(--vp-c-mute);
 }
 
 html.dark {
@@ -11,7 +11,7 @@ html.dark {
   --bg-color-scroll: hsla(0, 0%, 100%, .14);
   --td-text-color-anti: #fff;
   --td-success-color: #059465;
-  --c-bg-lighter: var(--vp-c-black-mute);
+  --c-bg-lighter: var(--vp-c-mute);
 }
 
 html::-webkit-scrollbar-corner,
