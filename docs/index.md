@@ -124,7 +124,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 - 主要负责省方ETC小程序、配套的管理后台的维护版本迭代
 - 管理后台主要负责其重构工作，包括统一处理请求方法、公共组件搭建、前端字典的引入、菜单+按钮权限的适配
-- 小程序主要负责其首页界面可配置化、公告配置、售后服务中心包括（取消订单，设备更换，ETC  注销，设备补办，生态回流补签，设备检测，免密代购补签）
+- 小程序主要负责其首页界面可配置化、公告配置、售后服务中心包括（取消订单，设备更换，ETC 注销，设备补办，生态回流补签，设备检测，免密代购补签）
 - 基于 `element-ui` 封装公共组件库的日常维护、版本迭代、文档维护
 - 配合运维搭建基于Gitlab、Jenkins的持续集成(CI\CD)流程
 - 负责前端小组的技术选型、框架搭建、code review
@@ -266,13 +266,13 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 ## 开源项目
 
-| 项目                                                                    | 描述                                                  |
-|-----------------------------------------------------------------------|-----------------------------------------------------|
-| [vant-mall-admin](https://github.com/zehuichan/vant-mall-admin)       | 管理后台基础模板，技术路线：vue@2.7+pinia+vue-router@3+element-ui |
-| [vant-mall-admin2](https://github.com/zehuichan/vant-mall-admin-next) | 管理后台基础模板，技术路线：vue@3+pinia+vue-router@4+element-plus |
-| [element-components](https://github.com/zehuichan/element-components) | 基于element-ui的二次封装组件库，欢迎大家使用                         |
-| [vant-components](https://github.com/zehuichan/vant-components)       | 基于vant-ui的二次封装组件库，欢迎大家使用                            |
-| [vant-tpl](https://github.com/zehuichan/vant-tpl)                     | 基于vue@2.6、vant@2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板     |
+| 项目                                                              | 描述                                                  |
+|-----------------------------------------------------------------|-----------------------------------------------------|
+| [vue2.7-admin](https://github.com/zehuichan/vant-mall-admin)    | 管理后台基础模板，技术路线：vue@2.7+pinia+vue-router@3+element-ui |
+| [vue3-admin](https://github.com/zehuichan/vant-mall-admin-next) | 管理后台基础模板，技术路线：vue@3+pinia+vue-router@4+element-plus |
+| [element扩展组件](https://github.com/zehuichan/element-components)  | 基于element-ui的二次封装组件库，欢迎大家使用                         |
+| [vant扩展组件](https://github.com/zehuichan/vant-components)        | 基于vant-ui的二次封装组件库，欢迎大家使用                            |
+| [vant-tpl](https://github.com/zehuichan/vant-tpl)               | 基于vue@2.6、vant@2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板     |
 
 ## 致谢
 

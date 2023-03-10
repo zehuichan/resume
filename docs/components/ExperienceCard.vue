@@ -40,11 +40,11 @@ export default defineComponent({
 .experience-card {
   margin-top: 1rem;
   line-height: 24px;
-  color: var(--c-text);
+  color: var(--vp-c-text-1);
 
   &.is-background {
     border-radius: 4px;
-    background-color: var(--c-bg-lighter);
+    background-color: var(--vp-c-bg-soft);
   }
 }
 

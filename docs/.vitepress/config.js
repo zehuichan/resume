@@ -14,13 +14,21 @@ export default defineConfig({
     siteTitle: false,
     nav: [
       {
+        text: 'Specification',
+        items: [
+          { text: 'Project', link: '/specification/project' },
+          { text: 'Component', link: '/specification/component' }
+        ]
+      },
+      {
         text: 'Interview',
         items: [
-          { text: 'About', link: '/interview/about' },
           { text: 'Javascript', link: '/interview/javascript' },
           { text: 'Framework', link: '/interview/framework' }
         ]
-      }
+      },
+      { text: 'Summary', link: '/summary' },
+      { text: 'About', link: '/about' }
     ],
     sidebar: false,
     outlineTitle: 'Outline',
