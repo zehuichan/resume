@@ -26,8 +26,6 @@ to be continued...
 
 #### taro(vue3)
 
-- 
-
 #### uniapp(vue2)
 
 ## to be continued...
