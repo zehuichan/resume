@@ -99,29 +99,6 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.08" background>
-
-**项目描述：**
-
-用户端针对4s店锁客难等痛点，基于支付宝开放能力（芝麻go，花呗分期）等信用能力，设计2年三次承诺到店保养可享7折优惠等活动，单店月保养GMV达到40w；
-并基于支付宝端3千万认证车主的公域内流量，利用支付宝域内消息通知、灯火平台等触达能力，设计支付宝域内运营工具。
-
-商户端针对用户端小程序功能设计了对应的活动发布、订单管理、营销短信管理、券码核销等管理功能，方便快速进行用户端小程序管理。
-
-**工作职责：**
-
-- 主要负责项目前端整站建设包括界面搭建，数据对接，规范设计
-- 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
-- 负责小程序授权登录流程的对接、用户中心模块的开发
-- 负责公共组件搭建，包括oss图片上传组件、ocr文字识别组件、车牌号输入框、车牌号选择器、toggle选择器
-- 负责公共hooks的封装，基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的useStorage，支持响应式数据
-
-**技术栈：**
-
-`taro`、`vue3`、`pinia`、`hooks`、`nutui`
-
-</ExperienceCard>
-
 <ExperienceCard title="中视ETC一站式发行平台" value="2020.09 - 2022.10" background>
 
 **项目描述：**
@@ -143,6 +120,29 @@ import ExperienceCard from './components/ExperienceCard.vue'
 **技术栈：**
 
 `vue2/3`、`vite`、`pinia`、`taro`、`uniapp`、`原生小程序`
+
+</ExperienceCard>
+
+<ExperienceCard title="4S店SAAS系统-支付宝小程序" value="2022.02 - 2022.08" background>
+
+**项目描述：**
+
+用户端针对4s店锁客难等痛点，基于支付宝开放能力（芝麻go，花呗分期）等信用能力，设计2年三次承诺到店保养可享7折优惠等活动，单店月保养GMV达到40w；
+并基于支付宝端3千万认证车主的公域内流量，利用支付宝域内消息通知、灯火平台等触达能力，设计支付宝域内运营工具。
+
+商户端针对用户端小程序功能设计了对应的活动发布、订单管理、营销短信管理、券码核销等管理功能，方便快速进行用户端小程序管理。
+
+**工作职责：**
+
+- 主要负责项目前端整站建设包括界面搭建，数据对接，规范设计
+- 统一处理请求方法，公共组件搭建，基础缓存方法，增强代码可复用性
+- 负责小程序授权登录流程的对接、用户中心模块的开发
+- 负责公共组件搭建，包括oss图片上传组件、ocr文字识别组件、车牌号输入框、车牌号选择器、toggle选择器
+- 负责公共hooks的封装，基于 `Taro.setStorageSync` 和 `Taro.getStorageSync` 封装的useStorage，支持响应式数据
+
+**技术栈：**
+
+`taro`、`vue3`、`pinia`、`hooks`、`nutui`
 
 </ExperienceCard>
 
