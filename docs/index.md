@@ -88,7 +88,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 **工作职责：**
 
-- 负责整站业务需求评审与开发落地工作，熟练运用 Vue3 及其相关生态的工具（Pinia / Vue Router / Element Plus）推动项目如期落地。
+- 负责整站业务需求评审与开发落地工作，熟练运用 Vue3 及其相关生态的工具（Pinia / Vue Router / Element Plus）推动项目如期落地
 - 统一处理请求方法，基础缓存方法，工具函数，增强代码可复用性
 - 根据设计图，抽离公共组件，加快开发效率
 - 整合 `即构 zego` 实时音视频、超级白板功能，搭建专家直播平台
