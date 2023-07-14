@@ -31,6 +31,7 @@ export default defineConfig({
       { text: 'About', link: '/about' }
     ],
     sidebar: false,
+    outline: false,
     outlineTitle: 'Outline',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/zehuichan' }

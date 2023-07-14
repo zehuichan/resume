@@ -3,11 +3,15 @@
 :root {
   --bg-color-page: #f5f5f5;
   --bg-color-scroll: rgba(0, 0, 0, .14);
+  --vp-c-mute: rgba(0, 0, 0, 0.04);
+  --border-color: rgba(5, 5, 5, 0.06);
 }
 
 html.dark {
   --bg-color-page: #242424;
   --bg-color-scroll: hsla(0, 0%, 100%, .14);
+  --vp-c-mute: #313136;
+  --border-color: rgba(253, 253, 253, 0.12);
 }
 
 html::-webkit-scrollbar-corner,
@@ -59,6 +63,7 @@ ol:not([class]) {
   line-height: 1.6rem;
   margin-top: 0.6rem;
   margin-left: 0.6rem;
+  padding-left: 0;
 
   > li {
     line-height: 1.8rem;

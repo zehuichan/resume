@@ -1,41 +1,51 @@
 <script setup>
-import UserInfo from './components/UserInfo.vue'
-import ExperienceCard from './components/ExperienceCard.vue'
+import UserInfo from './components/UserInfo.vue';
+import ExperienceCard from './components/ExperienceCard.vue';
+import Divider from './components/Divider.vue';
 </script>
 
 <UserInfo />
 
-## 个人优势
+### 个人优势
 
-`vue2/3` | `pinia` | `vite` | `element-ui` | `vant` | `vant-weapp` | `uniapp` | `taro3`
+`vue2/3`<Divider />`pinia`<Divider />`vite`<Divider />`element-ui`<Divider />`vant`<Divider />`vant-weapp`<Divider />`uniapp`<Divider />`taro3`
 
+- 组件库 `element-components`、`vant-components` 作者
 - 多年前端开发经验，能独立开发项目，善于组件抽象、前端架构与性能优化
 - 熟悉 `vue2`、`vue3`、`taro(vue3)`、`uniapp` 开发模式，熟悉模块化开发，有框架设计能力
 - 熟悉 `axios` 数据请求方式，使用 `mockjs`，`JSON-Server` 模拟后台数据
 - 熟悉前端⼯程化，掌握 `webpack`、`vite` 代码打包工具，能针对项目进行性能分析以及性能优化
 - 熟悉 `yarn`、`npm`、`pnpm` 包管理工具
 - 熟悉 `eslint`、`stylelint`、`prettier`、`husky` 配套的开发模式
-- 熟悉组件库搭建，支持 `npm` 包发布，包括 `element-components`、`vant-components`
 - 了解 `Gitlab` 持续集成(CI\CD)流程
 - 了解 `Node.js` 及 `express`、`koa` 框架，体验输出接口思想
 - 重度极客，致力于代码的整体结构规范及优化
 - 爱好跑步、游水、codeing、源码阅读
 
-## 工作经历
+### 工作经历
 
-<ExperienceCard title="广州兴工科技有限公司 | 技术中心 | 高级前端" value="2022.11 - 至今" size="small">
+<ExperienceCard value="2022.11 - 至今" size="small">
 
-`vue2/3` | `pinia` | `taro3` | `uniapp` | `element-plus` | `vant` | `小程序`
+<template #title>
+广州兴工科技有限公司<Divider />技术中心<Divider />高级前端
+</template>
+
+`vue2/3`<Divider />`pinia`<Divider />`taro3`<Divider />`uniapp`<Divider />`element-plus`<Divider />`vant`<Divider />`小程序`
 
 - 负责众包服务平台务需求评审与开发落地工作，包括任务拆分、人员分配
 - 担任核心主程，负责主要功能模块实现，公共组件封装
 - 制定前端组技术规划，优化前端开发流程，包括但不限于 `Git` 分支管理策略，`Code Review` 流程
+- 配合运维搭建基于Gitlab、Jenkins的持续集成(CI\CD)流程
 
 </ExperienceCard>
 
-<ExperienceCard title="广东中视信息科技有限公司 | 技术中心 | 高级前端" value="2020.09 - 2022.10" size="small">
+<ExperienceCard value="2020.09 - 2022.10" size="small">
 
-`vue2/3` | `taro3` | `uniapp` | `element-ui` | `vant` | `小程序`
+<template #title>
+广东中视信息科技有限公司<Divider />技术中心<Divider />高级前端
+</template>
+
+`vue2/3`<Divider />`taro3`<Divider />`uniapp`<Divider />`element-ui`<Divider />`vant`<Divider />`小程序`
 
 - 主导并设计、维护公司通用业务组件库，支持 `npm` 私有化发布，加快开发效率
 - 参与需求评审会议与产品沟通需求合理性，及时提出疑问点及优化点
@@ -44,20 +54,28 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-<ExperienceCard title="广州创思云网络科技有限公司 | 技术部 | 中级前端" value="2019.04 - 2020.06" size="small">
+<ExperienceCard value="2019.04 - 2020.06" size="small">
 
-`react` | `vue` | `ant-design` | `vant`
+<template #title>
+广州创思云网络科技有限公司<Divider />技术部<Divider />中级前端
+</template>
+
+`react`<Divider />`vue`<Divider />`ant-design`<Divider />`vant`
 
 - 参与前端小组的技术选型、框架搭建
-- 负责 webapp 及其配套的管理后台开发
+- 负责 `h5app` 及其配套的管理后台开发
 - 设计开发高效可复用的基础组件，动态路由实现
 - 配合项目负责人完成项目指标，根据业务需求，优化完善项目代码
 
 </ExperienceCard>
 
-<ExperienceCard title="佛山市电子口岸有限公司 | 技术部 | 中级前端" value="2015.11 - 2019.04" size="small">
+<ExperienceCard value="2015.11 - 2019.04" size="small">
 
-`less/scss` | `es6` | `vue` | `jQuery` | `element-ui` | `vux` | `vant`
+<template #title>
+佛山市电子口岸有限公司<Divider />技术部<Divider />中级前端
+</template>
+
+`less/scss`<Divider />`es6`<Divider />`vue`<Divider />`jQuery`<Divider />`element-ui`<Divider />`vux`<Divider />`vant`
 
 - 参与项目需求分析编写文档，根据文档输出产品原型图
 - 独立负责前端项目，包括项目搭建、技术选型
@@ -66,9 +84,9 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-<ExperienceCard title="广东优匙网络技术有限公司 | 技术部 | 前端实习" value="2015.02 - 2015.08" size="small">
+<ExperienceCard title="广东优匙网络技术有限公司<Divider />技术部<Divider />前端实习" value="2015.02 - 2015.08" size="small">
 
-`html` | `javascript` | `css` | `jQuery` | `bootstrap`
+`html`<Divider />`javascript`<Divider />`css`<Divider />`jQuery`<Divider />`bootstrap`
 
 - 根据设计图完成静态页的编写
 - 完成前后端联调
@@ -76,7 +94,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-## 项目经历
+### 项目经历
 
 <ExperienceCard title="广东科技成果转移转化中心全链条线上平台" value="2022.11 - 2023.06" background>
 
@@ -95,7 +113,7 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 **技术栈：**
 
-`taro`、`vue3`、`pinia`、`hooks`、`nutui`
+`taro`、`vue3`、`pinia`、`vueuse`、`element-plus`、`nutui`
 
 </ExperienceCard>
 
@@ -270,12 +288,12 @@ import ExperienceCard from './components/ExperienceCard.vue'
 
 </ExperienceCard>
 
-## 教育经历
+### 教育经历
 
-- **广东外语外贸大学** | 工商管理 | 本科
-- **广东机电职业技术学院** | 应用电子技术 | 大专
+- **广东外语外贸大学**<Divider />工商管理<Divider />本科
+- **广东机电职业技术学院**<Divider />应用电子技术<Divider />大专
 
-## 开源项目
+### 开源项目
 
 | 项目                                                              | 描述                                                  |
 |-----------------------------------------------------------------|-----------------------------------------------------|

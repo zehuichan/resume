@@ -1,7 +1,9 @@
 <template>
   <div class="experience-card" :class="_class">
     <div class="experience-card-header">
-      <div class="experience-card-header__title">{{ title }}</div>
+      <div class="experience-card-header__title">
+        <slot name="title">{{ title }}</slot>
+      </div>
       <div class="experience-card-header__value">{{ value }}</div>
     </div>
     <div class="experience-card__footer">
