@@ -1,7 +1,7 @@
 <script setup>
-import UserInfo from './components/UserInfo.vue';
-import ExperienceCard from './components/ExperienceCard.vue';
-import Divider from './components/Divider.vue';
+import UserInfo from './components/UserInfo.vue'
+import ExperienceCard from './components/ExperienceCard.vue'
+import Divider from './components/Divider.vue'
 </script>
 
 <UserInfo />
@@ -84,7 +84,11 @@ import Divider from './components/Divider.vue';
 
 </ExperienceCard>
 
-<ExperienceCard title="广东优匙网络技术有限公司<Divider />技术部<Divider />前端实习" value="2015.02 - 2015.08" size="small">
+<ExperienceCard value="2015.02 - 2015.08" size="small">
+
+<template #title>
+广东优匙网络技术有限公司<Divider />技术部<Divider />前端实习
+</template>
 
 `html`<Divider />`javascript`<Divider />`css`<Divider />`jQuery`<Divider />`bootstrap`
 
