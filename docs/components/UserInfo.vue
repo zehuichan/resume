@@ -6,13 +6,21 @@
     <div class="user-info__content">
       <div class="name">陈泽辉</div>
       <div class="desc">高级前端-广州兴工科技有限公司</div>
-      <div class="desc">{{ new Date().getFullYear() - 2015 }}年前端 | 本科</div>
+      <div class="desc">
+        {{ new Date().getFullYear() - 2015 }}年前端
+        <divider />
+        本科
+      </div>
+      <div class="desc">Mail: jasonchenzehui@gmail.com</div>
+      <div class="desc">Github: https://github.com/zehuichan</div>
     </div>
     <div class="action">18-22k</div>
   </div>
 </template>
 
 <script setup>
+import Divider from './Divider.vue'
+
 defineOptions({
   name: 'UserInfo'
 })
@@ -25,8 +33,8 @@ defineOptions({
   .avatar {
     position: relative;
     flex: none;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     margin-right: 1.6rem;
   }
 
@@ -49,6 +57,7 @@ defineOptions({
 
   .desc {
     font-size: 14px;
+    line-height: 1.8;
   }
 }
 </style>
