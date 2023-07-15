@@ -59,10 +59,10 @@ root:.
 
 ## Taro + Vue3 架构
 
-紧适用于 `小程序`
+仅适用于 `小程序`
 
 ```
-D:.
+root:.
 │  .editorconfig
 │  .gitignore
 │  babel.config.js
