@@ -12,8 +12,6 @@ import Divider from './components/Divider.vue'
 
 ### 个人优势
 
-`vue2/3`<Divider/>`pinia`<Divider />`vite`<Divider />`element-ui`<Divider />`vant`<Divider />`vant-weapp`<Divider />`uniapp`<Divider />`taro3`
-
 - 组件库 `element-components`、`vant-components` 作者
 - 多年前端开发经验，能独立开发项目，善于组件抽象、前端架构与性能优化
 - 熟悉 `vue2`、`vue3`、`taro(vue3)`、`uniapp` 开发模式，熟悉模块化开发，有框架设计能力
