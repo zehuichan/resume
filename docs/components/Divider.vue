@@ -3,7 +3,9 @@
 </template>
 
 <script setup>
-
+defineOptions({
+  name: 'Divider'
+})
 </script>
 
 <style lang="scss">

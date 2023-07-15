@@ -1,3 +1,7 @@
+---
+hello: world
+---
+
 <script setup>
 import UserInfo from './components/UserInfo.vue'
 import ExperienceCard from './components/ExperienceCard.vue'
@@ -8,7 +12,7 @@ import Divider from './components/Divider.vue'
 
 ### 个人优势
 
-`vue2/3`<Divider />`pinia`<Divider />`vite`<Divider />`element-ui`<Divider />`vant`<Divider />`vant-weapp`<Divider />`uniapp`<Divider />`taro3`
+`vue2/3`<Divider/>`pinia`<Divider />`vite`<Divider />`element-ui`<Divider />`vant`<Divider />`vant-weapp`<Divider />`uniapp`<Divider />`taro3`
 
 - 组件库 `element-components`、`vant-components` 作者
 - 多年前端开发经验，能独立开发项目，善于组件抽象、前端架构与性能优化
@@ -26,9 +30,7 @@ import Divider from './components/Divider.vue'
 
 <ExperienceCard value="2022.11 - 至今" size="small">
 
-<template #title>
-广州兴工科技有限公司<Divider />技术中心<Divider />高级前端
-</template>
+<template #title>广州兴工科技有限公司<Divider />技术中心<Divider />高级前端</template>
 
 `vue2/3`<Divider />`pinia`<Divider />`taro3`<Divider />`uniapp`<Divider />`element-plus`<Divider />`vant`<Divider />`小程序`
 
@@ -41,9 +43,7 @@ import Divider from './components/Divider.vue'
 
 <ExperienceCard value="2020.09 - 2022.10" size="small">
 
-<template #title>
-广东中视信息科技有限公司<Divider />技术中心<Divider />高级前端
-</template>
+<template #title>广东中视信息科技有限公司<Divider />技术中心<Divider />高级前端</template>
 
 `vue2/3`<Divider />`taro3`<Divider />`uniapp`<Divider />`element-ui`<Divider />`vant`<Divider />`小程序`
 
@@ -56,9 +56,7 @@ import Divider from './components/Divider.vue'
 
 <ExperienceCard value="2019.04 - 2020.06" size="small">
 
-<template #title>
-广州创思云网络科技有限公司<Divider />技术部<Divider />中级前端
-</template>
+<template #title>广州创思云网络科技有限公司<Divider />技术部<Divider />中级前端</template>
 
 `react`<Divider />`vue`<Divider />`ant-design`<Divider />`vant`
 
@@ -71,9 +69,7 @@ import Divider from './components/Divider.vue'
 
 <ExperienceCard value="2015.11 - 2019.04" size="small">
 
-<template #title>
-佛山市电子口岸有限公司<Divider />技术部<Divider />中级前端
-</template>
+<template #title>佛山市电子口岸有限公司<Divider />技术部<Divider />中级前端</template>
 
 `less/scss`<Divider />`es6`<Divider />`vue`<Divider />`jQuery`<Divider />`element-ui`<Divider />`vux`<Divider />`vant`
 
@@ -86,9 +82,7 @@ import Divider from './components/Divider.vue'
 
 <ExperienceCard value="2015.02 - 2015.08" size="small">
 
-<template #title>
-广东优匙网络技术有限公司<Divider />技术部<Divider />前端实习
-</template>
+<template #title>广东优匙网络技术有限公司<Divider />技术部<Divider />前端实习</template>
 
 `html`<Divider />`javascript`<Divider />`css`<Divider />`jQuery`<Divider />`bootstrap`
 

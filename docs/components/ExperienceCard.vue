@@ -12,28 +12,28 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { computed } from 'vue'
 
-export default defineComponent({
-  name: 'ExperienceCard',
-  props: {
-    title: String,
-    value: String,
-    size: {
-      type: String,
-      default: 'normal'
-    },
-    background: Boolean
+defineOptions({
+  name: 'ExperienceCard'
+})
+
+const props = defineProps({
+  title: String,
+  value: String,
+  size: {
+    type: String,
+    default: 'normal'
   },
-  computed: {
-    _class() {
-      const { size, background } = this
-      return {
-        ['experience-card--' + size]: size,
-        'is-background': background
-      }
-    }
+  background: Boolean
+})
+
+const _class = computed(() => {
+  const { size, background } = props
+  return {
+    ['experience-card--' + size]: size,
+    'is-background': background
   }
 })
 </script>
