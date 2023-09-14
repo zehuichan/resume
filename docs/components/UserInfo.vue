@@ -11,10 +11,10 @@
         <divider />
         本科
       </div>
-      <div class="desc">Mail: jasonchenzehui@gmail.com</div>
+      <div class="desc">EMail: jasonchenzehui@gmail.com</div>
       <div class="desc">Github: https://github.com/zehuichan</div>
     </div>
-    <div class="action">18-22k</div>
+    <div class="action">面议</div>
   </div>
 </template>
 

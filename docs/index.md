@@ -3,9 +3,9 @@ hello: world
 ---
 
 <script setup>
-import UserInfo from './components/UserInfo.vue'
-import ExperienceCard from './components/ExperienceCard.vue'
-import Divider from './components/Divider.vue'
+import UserInfo from './components/UserInfo.vue';
+import ExperienceCard from './components/ExperienceCard.vue';
+import Divider from './components/Divider.vue';
 </script>
 
 <UserInfo />
@@ -14,7 +14,7 @@ import Divider from './components/Divider.vue'
 
 - 组件库 `element-components`、`vant-components` 作者
 - 多年前端开发经验，能独立开发项目，善于组件抽象、前端架构与性能优化
-- 熟悉 `vue2`、`vue3`、`taro(vue3)`、`uniapp` 开发模式，熟悉模块化开发，有框架设计能力
+- 熟悉 `vue2`、`vue3`、`taro(vue3)`、`uniapp(vue2/3)` 开发模式，熟悉模块化开发，有框架设计能力
 - 熟悉 `axios` 数据请求方式，使用 `mockjs`，`JSON-Server` 模拟后台数据
 - 熟悉前端⼯程化，掌握 `webpack`、`vite` 代码打包工具，能针对项目进行性能分析以及性能优化
 - 熟悉 `yarn`、`npm`、`pnpm` 包管理工具
@@ -32,7 +32,7 @@ import Divider from './components/Divider.vue'
 
 `vue2/3`<Divider />`pinia`<Divider />`taro3`<Divider />`uniapp`<Divider />`element-plus`<Divider />`vant`<Divider />`小程序`
 
-- 负责众包服务平台务需求评审与开发落地工作，包括任务拆分、人员分配
+- 负责众包服务平台需求评审及开发落地工作，包括任务拆分、人员分配、工作排期
 - 担任核心主程，负责主要功能模块实现，公共组件封装
 - 制定前端组技术规划，优化前端开发流程，包括但不限于 `Git` 分支管理策略，`Code Review` 流程
 - 配合运维搭建基于Gitlab、Jenkins的持续集成(CI\CD)流程
@@ -59,7 +59,7 @@ import Divider from './components/Divider.vue'
 `react`<Divider />`vue`<Divider />`ant-design`<Divider />`vant`
 
 - 参与前端小组的技术选型、框架搭建
-- 负责 `h5app` 及其配套的管理后台开发
+- 负责h5app及其配套的管理后台开发
 - 设计开发高效可复用的基础组件，动态路由实现
 - 配合项目负责人完成项目指标，根据业务需求，优化完善项目代码
 
@@ -98,13 +98,13 @@ import Divider from './components/Divider.vue'
 
 其定位是提供专家科研成果、知识产权、项⽬课题、个⼈荣誉等集中管理和展⽰，推动专家成果与企业需求的有效对接，并且为企业寻找高端人才、突破技术瓶颈、汇聚科技资源，提升核心竞争力。
 
-主要功能模块包括：众包服务平台前站、配套的管理后台、专家小程序、专家直播平台。
+主要应用板块包括：众包服务平台前站、配套的管理后台、专家小程序、专家直播平台4大项目。
 
 **工作职责：**
 
 - 负责整站业务需求评审与开发落地工作，熟练运用 Vue3 及其相关生态的工具（Pinia / Vue Router / Element Plus）推动项目如期落地
 - 统一处理请求方法，基础缓存方法，工具函数，增强代码可复用性
-- 根据设计图，抽离公共组件，加快开发效率
+- 根据设计图，抽离公共组件，加快开发效率，包括oss图片上传、keywords关键字、desc描述、dynamic-input动态录入等组件
 - 整合 `即构 zego` 实时音视频、超级白板功能，搭建专家直播平台
 
 **技术栈：**
