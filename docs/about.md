@@ -18,5 +18,22 @@
 
 DOTA2、游泳、codeing
 
+## Introduce myself
+
+First of all, thanks for giving me this opportunity to introduce myself, I'm glad to have this interview, I'll introduce
+myself briefly now.
+
+Hi, I am [chenzehui] and I have [8] years of experience as a senior [front-end developer].
+
+I'm skilled in frontend frameworks like [React and Vue.js], as well as [HTML, CSS, and JavaScript]. I have also worked
+with APIs and familiar with version control programs like Git. I'm a self-starter who values working in a team as well
+as alone. I also pay close attention to details and aim to write legible, clean code.
+
+I was excited to find this position as an [front-end developer] at [Company] and believe I would be a great fit for this
+role. My belief is that I am the right candidate for this profile since I have the required skills and experience. I
+assure you that I will give my best Responsibility.
+
+briefly | experience | familiar | legible
+
 ## to be continued...
 
