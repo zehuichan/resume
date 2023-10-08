@@ -31,7 +31,7 @@ as alone. I also pay close attention to details and aim to write legible, clean 
 
 I was excited to find this position as an [front-end developer] at [Company] and believe I would be a great fit for this
 role. My belief is that I am the right candidate for this profile since I have the required skills and experience. I
-assure you that I will give my best Responsibility.
+assure you that I will give my best responsibility.
 
 briefly | experience | familiar | legible
 
