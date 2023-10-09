@@ -26,14 +26,14 @@ myself briefly now.
 Hi, I am [chenzehui] and I have [8] years of experience as a senior [front-end developer].
 
 I'm skilled in frontend frameworks like [React and Vue.js], as well as [HTML, CSS, and JavaScript]. I have also worked
-with APIs and familiar with version control programs like Git. I'm a self-starter who values working in a team as well
-as alone. I also pay close attention to details and aim to write legible, clean code.
+with APIs and familiar with version control programs like Git or SVN. I'm a self-starter who values working in a team as
+well as alone. I also pay close attention to details and aim to write legible, clean code.
 
-I was excited to find this position as an [front-end developer] at [Company] and believe I would be a great fit for this
-role. My belief is that I am the right candidate for this profile since I have the required skills and experience. I
-assure you that I will give my best responsibility.
+In last, I was excited to find this position as an [front-end developer] at [Company] and believe that I would be a
+great fit for this role. My belief is that I am the right candidate for this profile since I have the required skills
+and experience. I assure you that I will give my best responsibility to [Company]. Thank you!
 
-briefly | experience | familiar | legible
+briefly | experience | senior | familiar | legible | candidate
 
 ## to be continued...
 
