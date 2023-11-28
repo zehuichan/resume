@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/zehuichan/resume#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-rc.13",
-    "vue": "^3.3.4"
+    "vitepress": "^1.0.0-rc.25",
+    "vue": "^3.3.8"
   },
   "devDependencies": {
-    "sass": "^1.67.0"
+    "sass": "^1.69.5"
   },
   "release-it": {
     "npm": {

@@ -3,9 +3,9 @@ hello: world
 ---
 
 <script setup>
-import UserInfo from './components/UserInfo.vue';
-import ExperienceCard from './components/ExperienceCard.vue';
-import Divider from './components/Divider.vue';
+import UserInfo from './components/UserInfo.vue'
+import ExperienceCard from './components/ExperienceCard.vue'
+import Divider from './components/Divider.vue'
 </script>
 
 <UserInfo />
@@ -80,7 +80,7 @@ import Divider from './components/Divider.vue';
 
 <ExperienceCard value="2015.02 - 2015.08" size="small">
 
-<template #title>广东优匙网络技术有限公司<Divider />技术部<Divider />前端实习</template>
+<template #title>广东优匙网络技术有限公司<Divider />技术部<Divider />前端开发</template>
 
 `html`<Divider />`javascript`<Divider />`css`<Divider />`jQuery`<Divider />`bootstrap`
 
@@ -91,6 +91,24 @@ import Divider from './components/Divider.vue';
 </ExperienceCard>
 
 ### 项目经历
+
+<ExperienceCard title="和林国际物流信息管理系统" value="2023.06 - 至今" background>
+
+**项目描述：**
+
+本套系统国际物流系统是指在全球范围内进行货物运输和物流管理的一套综合性系统。它涉及到了货物的收发、运输、仓储、报关、跟踪等一系列环节，通过高效的协调和管理，确保货物能够按时、安全地送达目的地。
+
+主要功能模块包括：下单、配载、订舱、清关、派送、签收、财务报表等等，其他功能涉及商业保密。
+
+**工作职责：**
+
+-
+
+**技术栈：**
+
+`vue3`、`pinia`、`vueuse`、`element-plus`、`vant`、`jweixin`
+
+</ExperienceCard>
 
 <ExperienceCard title="广东科技成果转移转化中心全链条线上平台" value="2022.11 - 2023.06" background>
 
