@@ -3,9 +3,9 @@ hello: world
 ---
 
 <script setup>
-import UserInfo from './components/UserInfo.vue'
-import ExperienceCard from './components/ExperienceCard.vue'
-import Divider from './components/Divider.vue'
+import UserInfo from './components/UserInfo.vue';
+import ExperienceCard from './components/ExperienceCard.vue';
+import Divider from './components/Divider.vue';
 </script>
 
 <UserInfo />
