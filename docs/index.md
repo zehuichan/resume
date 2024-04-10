@@ -78,38 +78,7 @@ import Divider from './components/Divider.vue';
 
 </ExperienceCard>
 
-<ExperienceCard value="2015.02 - 2015.08" size="small">
-
-<template #title>广东优匙网络技术有限公司<Divider />技术部<Divider />前端开发</template>
-
-`html`<Divider />`javascript`<Divider />`css`<Divider />`jQuery`<Divider />`bootstrap`
-
-- 根据设计图完成静态页的编写
-- 完成前后端联调
-- 修复测试、验收过程中发现的 bug
-
-</ExperienceCard>
-
 ### 项目经历
-
-<ExperienceCard title="田园牧客点餐系统" value="2023.12 - 至今" background>
-
-**项目描述：**
-
-田园牧客点餐系统是一个基于小程序技术搭建的点餐平台，旨在为用户提供方便、快捷的点餐服务。
-用户端小程序主要功能包括：菜单展示、点餐、购物车、订单提交、微信支付、历史记录。
-商家端管理后台主要功能包括：餐厅基本信息管理、餐桌参数管理、订座信息管理、菜品管理、订单管理、系统管理。
-
-**工作职责：**
-
-- 主导 `taro3/vue3` 技术栈，搭建项目框架，编写公共组件，实现项目功能
-- 使用 `unocss` 原子样式，实现组件样式复用，提高开发效率
-
-**技术栈：**
-
-`vue3`、`pinia`、`vueuse`、`element-plus`、`unocss`、`nutui4`、`taro3/vue3`
-
-</ExperienceCard>
 
 <ExperienceCard title="和林国际物流信息管理系统" value="2023.07 - 至今" background>
 
@@ -124,7 +93,7 @@ import Divider from './components/Divider.vue';
 **工作职责：**
 
 - 主导 `vue3` 技术栈，搭建项目框架，编写公共组件，实现项目功能
-- 
+-
 
 **技术栈：**
 
@@ -331,13 +300,10 @@ import Divider from './components/Divider.vue';
 
 ### 开源项目
 
-| 项目                                                              | 描述                                                  |
-|-----------------------------------------------------------------|-----------------------------------------------------|
-| [vue2.7-admin](https://github.com/zehuichan/vant-mall-admin)    | 管理后台基础模板，技术路线：vue@2.7+pinia+vue-router@3+element-ui |
-| [vue3-admin](https://github.com/zehuichan/vant-mall-admin-next) | 管理后台基础模板，技术路线：vue@3+pinia+vue-router@4+element-plus |
-| [element扩展组件](https://github.com/zehuichan/element-components)  | 基于element-ui的二次封装组件库，欢迎大家使用                         |
-| [vant扩展组件](https://github.com/zehuichan/vant-components)        | 基于vant-ui的二次封装组件库，欢迎大家使用                            |
-| [vant-tpl](https://github.com/zehuichan/vant-tpl)               | 基于vue@2.6、vant@2、vue-cli4、vw适配，开箱即用的H5移动端项目基础模板     |
+| 项目                                                             | 描述                          |
+|----------------------------------------------------------------|-----------------------------|
+| [element扩展组件](https://github.com/zehuichan/element-components) | 基于element-ui的二次封装组件库，欢迎大家使用 |
+| [vant扩展组件](https://github.com/zehuichan/vant-components)       | 基于vant-ui的二次封装组件库，欢迎大家使用    |
 
 ## 致谢
 

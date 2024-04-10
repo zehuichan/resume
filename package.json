@@ -13,7 +13,10 @@
     "type": "git",
     "url": "git+https://github.com/zehuichan/resume.git"
   },
-  "keywords": [],
+  "keywords": [
+    "cv",
+    "resume"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -21,11 +24,11 @@
   },
   "homepage": "https://github.com/zehuichan/resume#readme",
   "dependencies": {
-    "vitepress": "^1.0.0-rc.36",
-    "vue": "^3.4.9"
+    "vitepress": "^1.1.0",
+    "vue": "^3.4.21"
   },
   "devDependencies": {
-    "sass": "^1.69.7"
+    "sass": "^1.74.1"
   },
   "release-it": {
     "npm": {
