@@ -51,5 +51,5 @@ npm run preview  # 预览构建产物
 
 ## 部署
 
-推送到 `main` 分支后，GitHub Actions 自动构建并发布到 GitHub Pages。
+推送到 `main` 分支后，GitHub Actions 自动构建并将 `dist/` 发布到 `gh-pages` 分支（Pages Source = 从 `gh-pages` 分支部署）。
 如部署到自定义域名或仓库根路径，请相应调整 `vite.config.ts` 中的 `base`。
