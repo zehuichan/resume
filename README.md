@@ -1,62 +1,55 @@
 # 陈泽辉的简历
 
+一份数据驱动的单页简历，编辑风工程档案设计。默认皮肤「红石 / Redstone」为暖纸底 + 锈红强调的编辑风格（呼应同名分享 talk 的设计语言），另含暗色 / Linear / Vercel / Notion 共 5 套皮肤一键切换，支持一键导出 PDF。
+
 ## 技术栈
 
-1. vue@3.x
-2. vite
-3. vitepress
+- [Vue 3](https://vuejs.org/) + `<script setup>`
+- [Vite](https://vitejs.dev/) 构建
+- [TypeScript](https://www.typescriptlang.org/) 类型化内容
+- [Tailwind CSS v4](https://tailwindcss.com/)（`@tailwindcss/vite`，CSS-first `@theme` 配置）
+- [@lucide/vue](https://lucide.dev/) 图标组件
 
-## 准备
-
-- [node](http://nodejs.org/) 和 [git](https://git-scm.com/) -项目开发环境
-- [Vite](https://vitejs.dev/) - 熟悉 vite 特性
-- [Vue3](https://v3.vuejs.org/) - 熟悉 Vue 基础语法
-- [Es6+](http://es6.ruanyifeng.com/) - 熟悉 es6 基本语法
-- [Vue-Router-Next](https://next.router.vuejs.org/) - 熟悉 vue-router 基本使用
-- [Element-Plus](https://element-plus.org/zh-CN/) - ui 基本使用（需要的话）
-- [Element](https://element.eleme.io/) - ui 基本使用（需要的话）
-- [Vant4](https://vant-ui.github.io/vant/) - ui 基本使用（需要的话）
-- [Vant3](https://vant-ui.github.io/vant/v3) - ui 基本使用（需要的话）
-- [Vant2](https://vant-ui.github.io/vant/v2) - ui 基本使用（需要的话）
-
-## 起步
-
-- 安装依赖
+## 本地开发
 
 ```bash
-cd [project]
-
 npm install
+npm run dev      # 本地开发
+npm run build    # 生产构建，产物在 dist/
+npm run preview  # 预览构建产物
 ```
 
-- 运行
+## 维护内容
 
-```bash
-npm run dev
+所有简历内容集中在一份类型化数据文件里，改这里即可，无需动样式与组件：
+
+- 数据：`src/data/resume.ts`
+- 类型：`src/types.ts`
+
+行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。
+
+经验年限由 `profile.experienceStartYear` 自动计算（页面显示「N 年+」），按需修改起算年份即可。
+
+## 目录结构
+
+```
+.
+├─ index.html             # 引入 Google Fonts
+├─ vite.config.ts         # base 已设为 /resume/（GitHub Pages 项目站点）
+├─ public/                # avatar.png、favicon.svg
+└─ src/
+   ├─ App.vue             # 页面组装
+   ├─ data/resume.ts      # 简历内容（唯一需要维护的文件）
+   ├─ types.ts            # 数据类型
+   ├─ styles/main.css     # @import tailwindcss + @theme 设计令牌 + 打印/PDF 规则
+   └─ components/         # Header / Section / RichText / TechTag / Seal / Toolbar
 ```
 
-## 提测流程
+## 导出 PDF
 
-1. 各自开发分支合并代码到dev
-2. jenkins点击发布
+右下角「导出 PDF」按钮（或 `Ctrl/Cmd + P`）调用浏览器打印，已针对 A4 做了分页与防截断处理；打印时自动隐藏工具栏、去除纸张投影。
 
-## 发版流程
+## 部署
 
-1. 各自开发分支合并代码到dev
-2. dev-xxx -> master
-3. master -> npm run release
-4. jenkins点击发布
-
-## GIT 相关
-
-- master 主干
-- dev 测试
-- dev-xxx 对应到各个前端人员
-
-## 常见问题
-
-### 首先有任何报错，最简单的方法是把报错信息复制到浏览器里面搜索一下！！！
-
-- [Google 点我](https://www.google.com/)
-- [百度点我](https://www.baidu.com/)
-
+推送到 `main` 分支后，GitHub Actions 自动构建并发布到 GitHub Pages。
+如部署到自定义域名或仓库根路径，请相应调整 `vite.config.ts` 中的 `base`。

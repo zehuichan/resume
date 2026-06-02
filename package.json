@@ -1,43 +1,26 @@
 {
   "name": "resume",
-  "version": "1.0.0",
+  "version": "2.0.0",
+  "private": true,
   "description": "陈泽辉的简历",
-  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "serve": "vitepress serve docs"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit -p tsconfig.app.json && vue-tsc --noEmit -p tsconfig.node.json && vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zehuichan/resume.git"
-  },
-  "keywords": [
-    "cv",
-    "resume"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zehuichan/resume/issues"
-  },
-  "homepage": "https://github.com/zehuichan/resume#readme",
+  "author": "chenzehui",
+  "license": "MIT",
   "dependencies": {
-    "vitepress": "^1.1.0",
-    "vue": "^3.4.21"
+    "@lucide/vue": "^1.17.0",
+    "vue": "^3.5.35"
   },
   "devDependencies": {
-    "sass": "^1.74.1"
-  },
-  "release-it": {
-    "npm": {
-      "publish": false
-    },
-    "git": {
-      "push": false,
-      "tagName": "v${version}",
-      "commitMessage": "chore: release v${version}"
-    }
+    "@tailwindcss/vite": "^4.3.0",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vue-tsc": "^3.3.3"
   }
 }

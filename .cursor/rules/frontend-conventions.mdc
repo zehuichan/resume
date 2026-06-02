@@ -1,0 +1,84 @@
+---
+description: Frontend code conventions for this Vue 3 + Vite + TS + Tailwind v4 resume
+globs: src/**/*.{vue,ts,css}
+alwaysApply: false
+---
+
+# Frontend Conventions
+
+Data-driven single-page resume: Vue 3 `<script setup>`, Vite, strict TS, Tailwind v4, `@lucide/vue`.
+
+## File naming
+
+- Use **kebab-case** for every source file — components, composables, data, types, styles. Never PascalCase or camelCase filenames.
+- The component's local name in imports/templates stays **PascalCase**; only the *filename* is kebab-case.
+- Import components via the `src/components` barrel (`./components`), not deep paths — but intra-`components/` sibling imports stay direct to avoid cycles.
+
+```text
+✅ rich-text.vue   section-header.vue   resume-header.vue   use-theme.ts   themes.ts
+❌ RichText.vue    SectionHeader.vue    useTheme.ts
+```
+
+```ts
+// ✅ kebab-case file, PascalCase local name + usage
+import RichText from './components/rich-text.vue' // <RichText :text="..." />
+```
+
+## Formatting (match `.prettierrc.json` / `.editorconfig` — do not deviate)
+
+- 2-space indent, **no semicolons**, **single quotes**, no trailing commas, LF, final newline.
+- Max line length 120. UTF-8. Trim trailing whitespace.
+
+## TypeScript (strict)
+
+- `strict`, `noUnusedLocals`, `noUnusedParameters` are on — no dead vars/params, no implicit `any`.
+- `verbatimModuleSyntax` is on: import types with `import type`, never a value import.
+
+```ts
+// ✅ GOOD
+import type { Profile } from '../types'
+// ❌ BAD — breaks verbatimModuleSyntax
+import { Profile } from '../types'
+```
+
+## Vue components
+
+- Always `<script setup lang="ts">`. Block order: `<script>`, `<template>`, then `<style>` (only if needed).
+- Props via generics. Use `withDefaults` only when defaults exist; capture `props` only when the script reads them.
+
+```vue
+<!-- ✅ template-only props -->
+defineProps<{ label: string }>()
+<!-- ✅ defaults needed -->
+const props = withDefaults(defineProps<{ text: string; tag?: string }>(), { tag: 'span' })
+<!-- ✅ derived state -->
+const years = computed(() => new Date().getFullYear() - props.profile.experienceStartYear)
+```
+
+- Components are presentational and content-agnostic — they take typed props, never import `resume` data.
+
+## Content / data
+
+- All resume content lives in `src/data/resume.ts`, typed by `Resume` in `src/types.ts`. Edit data there, not in templates.
+- Inline tech terms use backticks in data strings (e.g. `` '熟悉 `vue3` 开发' ``); `RichText.vue` renders `` `code` `` and `**bold**`. Don't hand-write `<code class="tech">` in markup.
+
+## Styling — Tailwind v4
+
+- Layout/spacing/color via utilities. Design tokens are CSS-first in `@theme` (`src/styles/main.css`): colors `paper` `paper-soft` `ink` `ink-soft` `ink-faint` `seal` `seal-deep` `line`; fonts `display` `sans` `mono`.
+- Use token utilities (`text-ink`, `bg-paper/40`, `border-line`, `font-display`); never raw hex in markup.
+- Named font-weight utilities (`font-semibold`), **not** `font-600`. Arbitrary values use brackets: `text-[13.5px]`, `max-w-[900px]`.
+- Reach for scoped `<style>`/`main.css` only when utilities can't express it (e.g. masks/noise in `SealStamp.vue`, `.sheet`, `.tech`, keyframes).
+
+## Icons (`@lucide/vue`)
+
+- Import by name; size with numeric `:size`, color with text utilities. Brand icons (e.g. GitHub) don't exist — substitute (`Code` is used for GitHub).
+
+```vue
+import { Printer } from '@lucide/vue'
+<Printer :size="15" class="text-seal" />
+```
+
+## Print / build
+
+- `.no-print` for screen-only UI (toolbar); `.break-avoid` to keep blocks together across A4 pages. Print/`@page` rules live in `main.css`.
+- Vite `base` is `/resume/`; build assets with `import.meta.env.BASE_URL`, not hardcoded paths.

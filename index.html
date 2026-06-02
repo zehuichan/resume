@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/resume/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="陈泽辉 · 高级前端工程师简历 · 7 年+ Vue / Taro / uniapp 实战经验" />
+    <meta name="theme-color" content="#faf8f3" />
+    <script>
+      // 防闪烁：在首帧绘制前把保存的皮肤写到 <html data-theme>
+      ;(function () {
+        try {
+          document.documentElement.dataset.theme = localStorage.getItem('resume-theme') || 'redstone'
+        } catch (e) {
+          document.documentElement.dataset.theme = 'redstone'
+        }
+      })()
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Hanken+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap"
+      rel="stylesheet"
+    />
+    <title>陈泽辉 · 高级前端工程师</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

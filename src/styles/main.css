@@ -1,0 +1,285 @@
+@import 'tailwindcss';
+
+@theme {
+  /* 默认皮肤 = 红石 / Redstone：暖纸底 + 锈红强调（呼应同名分享 talk 的编辑风设计） */
+  --color-paper: #faf8f3;
+  --color-paper-soft: #f3f0e8;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #3a3a3a;
+  --color-ink-faint: #6b6b6b;
+  --color-seal: #a3411d;
+  --color-seal-deep: #7c2d12;
+  --color-line: #c9c4b8;
+
+  --font-display: 'Fraunces', 'Songti SC', 'STSong', 'Noto Serif SC', Georgia, serif;
+  --font-sans: 'Hanken Grotesk', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', system-ui,
+    sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', 'PingFang SC', ui-monospace, monospace;
+}
+
+/* 非 Tailwind token 的皮肤变量，默认值 = 红石 / Redstone。放在未分层的 :root，
+   皮肤覆盖块（:root[data-theme='...']）凭更高特异性胜出。 */
+:root {
+  color-scheme: light;
+
+  --sheet-bg: #ffffff;
+  --sheet-border: #e6e1d3;
+  --sheet-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 18px 50px -32px rgba(20, 18, 12, 0.22);
+  /* body::before 噪点叠层强度（暖纸细颗粒），亮色/极简皮肤会调低或关闭 */
+  --texture-opacity: 0.4;
+  /* 干净的编辑风暖纸底：仅靠 paper 底色 + 细颗粒，无暗岩纹理、无红石辉光 */
+  --body-texture: none;
+}
+
+/* ---------- 换肤：覆盖 @theme 编译出的 CSS 变量 ----------
+   皆为未分层的普通 CSS（位于 @theme 之后），凭借未分层 + 属性选择器特异性，
+   稳定胜过 @theme 默认值。redstone（默认）不需要覆盖块，直接用 :root 默认值；
+   防闪烁脚本写入 data-theme='redstone' 时无覆盖块命中，回落到 :root 红石默认值。 */
+
+/* 暗色 / Ink Dark：深暖炭底、浅暖灰字、更亮朱砂，纹理调淡 */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-paper: #14110e;
+  --color-paper-soft: #1f1a14;
+  --color-ink: #ece4d6;
+  --color-ink-soft: #c0b6a6;
+  --color-ink-faint: #8a8073;
+  --color-seal: #e0573f;
+  --color-seal-deep: #f08a72;
+  --color-line: #322b22;
+
+  --sheet-bg: #1a1610;
+  --sheet-border: rgba(236, 228, 214, 0.08);
+  --sheet-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 26px 72px -34px rgba(0, 0, 0, 0.7);
+  --texture-opacity: 0.12;
+  --body-texture: radial-gradient(120% 120% at 0% 0%, rgba(224, 87, 63, 0.06) 0%, transparent 42%),
+    radial-gradient(120% 120% at 100% 100%, rgba(159, 142, 110, 0.05) 0%, transparent 45%);
+}
+
+/* Linear：偏冷近黑、浅灰字、靛紫强调、无纹理、无衬线标题 */
+:root[data-theme='linear'] {
+  color-scheme: dark;
+  --color-paper: #0a0a0f;
+  --color-paper-soft: #15161e;
+  --color-ink: #eceef3;
+  --color-ink-soft: #b1b5c3;
+  --color-ink-faint: #6f7385;
+  --color-seal: #5e6ad2;
+  --color-seal-deep: #8d96e8;
+  --color-line: #222431;
+
+  --sheet-bg: #0e0f16;
+  --sheet-border: rgba(255, 255, 255, 0.06);
+  --sheet-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 26px 72px -34px rgba(0, 0, 0, 0.8);
+  --texture-opacity: 0;
+  --body-texture: radial-gradient(120% 120% at 100% 0%, rgba(94, 106, 210, 0.08) 0%, transparent 45%);
+
+  --font-display: var(--font-sans);
+}
+
+/* Vercel：高对比极简、纯白底、近黑字、电光蓝、无纹理、无衬线标题 */
+:root[data-theme='vercel'] {
+  color-scheme: light;
+  --color-paper: #ffffff;
+  --color-paper-soft: #fafafa;
+  --color-ink: #0a0a0a;
+  --color-ink-soft: #4d4d4d;
+  --color-ink-faint: #8f8f8f;
+  --color-seal: #0070f3;
+  --color-seal-deep: #0060df;
+  --color-line: #eaeaea;
+
+  --sheet-bg: #ffffff;
+  --sheet-border: #eaeaea;
+  --sheet-shadow: 0 18px 60px -36px rgba(0, 0, 0, 0.25);
+  --texture-opacity: 0;
+  --body-texture: none;
+
+  --font-display: var(--font-sans);
+}
+
+/* Notion：暖文档白、深墨字、柔灰线、低饱和蓝，干净如文档 */
+:root[data-theme='notion'] {
+  color-scheme: light;
+  --color-paper: #f7f6f3;
+  --color-paper-soft: #efeeec;
+  --color-ink: #37352f;
+  --color-ink-soft: #6b6a64;
+  --color-ink-faint: #9b9a97;
+  --color-seal: #2383e2;
+  --color-seal-deep: #1a6fc4;
+  --color-line: #e7e6e1;
+
+  --sheet-bg: #ffffff;
+  --sheet-border: #e7e6e1;
+  --sheet-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 16px 44px -30px rgba(15, 15, 15, 0.22);
+  --texture-opacity: 0;
+  --body-texture: none;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  background-image: var(--body-texture);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+
+/* 细颗粒胶点噪点叠层，营造纸张质感（强度随皮肤切换） */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--texture-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 纸张：浮于桌面之上的一页 */
+.sheet {
+  position: relative;
+  z-index: 1;
+  background: var(--sheet-bg);
+  border: 1px solid var(--sheet-border);
+  border-radius: 8px;
+  padding: clamp(26px, 5vw, 58px);
+  box-shadow: var(--sheet-shadow);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-seal) 22%, transparent);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-faint);
+}
+
+/* 内联技术标签（RichText 渲染） */
+.tech {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  font-weight: 500;
+  color: var(--color-seal-deep);
+  background: color-mix(in srgb, var(--color-seal) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-seal) 18%, transparent);
+  border-radius: 4px;
+  padding: 0.05em 0.36em;
+  white-space: nowrap;
+}
+
+/* ---------- 入场动画 ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ---------- 打印 / 导出 PDF ---------- */
+@page {
+  size: A4;
+  margin: 14mm 0;
+}
+
+@media print {
+  /* 无论选了哪个皮肤，打印一律回到浅色稿：深墨字 + 纯白底 + 锈红强调（与默认红石屏幕稿一致）。
+     自定义属性用 !important 才能稳定盖过 :root[data-theme='...'] 的覆盖。 */
+  :root {
+    --color-paper: #ffffff !important;
+    --color-paper-soft: #f3f0e8 !important;
+    --color-ink: #0a0a0a !important;
+    --color-ink-soft: #3a3a3a !important;
+    --color-ink-faint: #6b6b6b !important;
+    --color-seal: #a3411d !important;
+    --color-seal-deep: #7c2d12 !important;
+    --color-line: #c9c4b8 !important;
+
+    --sheet-bg: #ffffff !important;
+    --sheet-border: #e6e1d3 !important;
+    --texture-opacity: 0 !important;
+    --body-texture: none !important;
+
+    --font-display: 'Fraunces', 'Songti SC', 'STSong', 'Noto Serif SC', Georgia, serif !important;
+  }
+
+  body {
+    background: #fff !important;
+    background-image: none !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .reveal {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .sheet {
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    width: auto !important;
+    max-width: 180mm !important;
+    padding: 0 6mm !important;
+  }
+
+  .break-avoid {
+    break-inside: avoid;
+  }
+
+  a {
+    color: inherit !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
