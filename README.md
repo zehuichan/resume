@@ -12,11 +12,13 @@
 
 ## 本地开发
 
+需要 [Node.js](https://nodejs.org/) `^20.19.0 || >=22.12.0` 与 [pnpm](https://pnpm.io/) `>=10`（版本见 `package.json` 的 `packageManager` 字段）。
+
 ```bash
-npm install
-npm run dev      # 本地开发
-npm run build    # 生产构建，产物在 dist/
-npm run preview  # 预览构建产物
+pnpm install
+pnpm dev      # 本地开发
+pnpm build    # 生产构建，产物在 dist/
+pnpm preview  # 预览构建产物
 ```
 
 ## 维护内容
