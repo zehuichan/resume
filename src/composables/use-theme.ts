@@ -1,5 +1,5 @@
 import { readonly, ref } from 'vue'
-import type { Theme, ThemeId } from '../types'
+import type { ThemeId } from '../types'
 import { themes } from '../data'
 
 const STORAGE_KEY = 'resume-theme'
@@ -47,7 +47,7 @@ export function useTheme() {
 
   return {
     current: readonly(current),
-    themes: themes as readonly Theme[],
+    themes,
     setTheme,
     sync
   }

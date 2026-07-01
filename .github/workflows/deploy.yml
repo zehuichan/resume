@@ -9,9 +9,15 @@ on:
 permissions:
   contents: write
 
+# 同一时间只保留最新一次部署在跑，旧的排队/进行中的部署直接取消，避免并发写 gh-pages 分支相互覆盖
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

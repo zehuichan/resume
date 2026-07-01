@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { Check, Code, Palette, Printer } from '@lucide/vue'
 import type { ThemeId } from '../types'
 import { useTheme } from '../composables/use-theme'
@@ -8,24 +8,41 @@ const { current, themes, setTheme, sync } = useTheme()
 
 const open = ref(false)
 const root = ref<HTMLElement | null>(null)
+const menu = ref<HTMLElement | null>(null)
+const trigger = ref<HTMLButtonElement | null>(null)
 
 const print = () => window.print()
 
+/** 菜单弹出后把焦点移入当前选中项，方便键盘/屏幕阅读器用户直接操作 */
+const focusActiveThemeItem = async () => {
+  await nextTick()
+  const item =
+    menu.value?.querySelector<HTMLElement>('[aria-checked="true"]') ??
+    menu.value?.querySelector<HTMLElement>('button')
+  item?.focus()
+}
+
+const close = (returnFocus = false) => {
+  open.value = false
+  if (returnFocus) trigger.value?.focus()
+}
+
 const toggle = () => {
   open.value = !open.value
+  if (open.value) focusActiveThemeItem()
 }
 
 const choose = (id: ThemeId) => {
   setTheme(id)
-  open.value = false
+  close(true)
 }
 
 const onPointerDown = (e: PointerEvent) => {
-  if (open.value && root.value && !root.value.contains(e.target as Node)) open.value = false
+  if (open.value && root.value && !root.value.contains(e.target as Node)) close()
 }
 
 const onKeydown = (e: KeyboardEvent) => {
-  if (e.key === 'Escape') open.value = false
+  if (e.key === 'Escape' && open.value) close(true)
 }
 
 onMounted(() => {
@@ -57,6 +74,7 @@ onBeforeUnmount(() => {
 
     <div class="relative">
       <button
+        ref="trigger"
         type="button"
         title="切换主题 / Theme"
         aria-label="切换主题"
@@ -71,6 +89,7 @@ onBeforeUnmount(() => {
 
       <div
         v-if="open"
+        ref="menu"
         role="menu"
         aria-label="主题"
         class="absolute bottom-full right-0 mb-3 w-44 rounded-2xl border border-line bg-paper/95 p-1.5 shadow-[0_18px_44px_-18px_rgba(31,27,22,0.55)] backdrop-blur"

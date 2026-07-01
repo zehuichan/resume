@@ -7,6 +7,6 @@ export default defineConfig({
   base: '/resume/',
   plugins: [tailwindcss(), vue()],
   server: {
-    strictPort: true,
+    strictPort: true
   }
 })

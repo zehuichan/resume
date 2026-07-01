@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { CircleCheck } from '@lucide/vue'
 import type { Profile } from '../types'
+import { getExperienceYears } from '../utils/experience'
 import SealStamp from './seal-stamp.vue'
 
 const props = defineProps<{ profile: Profile }>()
 
-const years = computed(() => new Date().getFullYear() - props.profile.experienceStartYear)
+const years = computed(() => getExperienceYears(props.profile.experienceStartYear))
 const avatarUrl = computed(() => `${import.meta.env.BASE_URL}${props.profile.avatar}`)
-const surname = computed(() => props.profile.name.charAt(0))
+const surname = computed(() => props.profile.name.charAt(0) || '?')
+
+/** 头像文件缺失或加载失败时，回退到姓氏占位块，避免露出浏览器默认的裂图图标 */
+const avatarFailed = ref(false)
 </script>
 
 <template>
@@ -70,7 +74,19 @@ const surname = computed(() => props.profile.name.charAt(0))
 
     <div class="relative flex-none">
       <div class="w-[108px] h-[108px] rounded-[14px] overflow-hidden border border-line bg-paper-soft shadow-[0_10px_30px_-12px_rgba(31,27,22,0.45)]">
-        <img :src="avatarUrl" :alt="profile.name" class="w-full h-full object-cover" />
+        <img
+          v-if="!avatarFailed"
+          :src="avatarUrl"
+          :alt="profile.name"
+          class="w-full h-full object-cover"
+          @error="avatarFailed = true"
+        />
+        <div
+          v-else
+          class="flex w-full h-full items-center justify-center font-display text-[38px] font-semibold text-ink-faint"
+        >
+          {{ surname }}
+        </div>
       </div>
       <div class="absolute -bottom-3 -right-3">
         <SealStamp :text="surname" />

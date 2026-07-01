@@ -14,7 +14,7 @@ const year = new Date().getFullYear()
       <!-- 01 个人优势 -->
       <section class="reveal" style="animation-delay: 0.08s">
         <SectionHeader index="01" zh="个人优势" en="Highlights" />
-        <ul class="grid sm:grid-cols-2 gap-x-9 gap-y-2.5 list-none p-0 m-0">
+        <ul class="grid sm:grid-cols-2 gap-x-9 gap-y-4 list-none p-0 m-0">
           <li
             v-for="(h, i) in resume.highlights"
             :key="i"
@@ -31,8 +31,8 @@ const year = new Date().getFullYear()
         <SectionHeader index="02" zh="工作经历" en="Experience" />
         <div class="flex flex-col gap-7">
           <article
-            v-for="job in resume.jobs"
-            :key="job.company"
+            v-for="(job, jobIndex) in resume.jobs"
+            :key="jobIndex"
             class="break-avoid relative pl-6 border-l border-line"
           >
             <span
@@ -70,8 +70,8 @@ const year = new Date().getFullYear()
         <SectionHeader index="03" zh="项目经历" en="Projects" />
         <div class="flex flex-col gap-4">
           <article
-            v-for="p in resume.projects"
-            :key="p.name"
+            v-for="(p, projectIndex) in resume.projects"
+            :key="projectIndex"
             class="break-avoid rounded-lg border border-line bg-paper/40 p-5"
           >
             <div class="flex flex-wrap items-baseline justify-between gap-x-3">
@@ -101,8 +101,8 @@ const year = new Date().getFullYear()
         <SectionHeader index="04" zh="教育经历" en="Education" />
         <ul class="list-none p-0 m-0 flex flex-col gap-2.5">
           <li
-            v-for="e in resume.education"
-            :key="e.school"
+            v-for="(e, eduIndex) in resume.education"
+            :key="eduIndex"
             class="break-avoid flex flex-wrap items-baseline gap-x-3 gap-y-1"
           >
             <span class="font-display text-[15.5px] font-semibold text-ink">{{ e.school }}</span>
@@ -122,7 +122,7 @@ const year = new Date().getFullYear()
         <div class="grid sm:grid-cols-2 gap-3">
           <a
             v-for="o in resume.openSource"
-            :key="o.name"
+            :key="o.href"
             :href="o.href"
             target="_blank"
             rel="noreferrer"
