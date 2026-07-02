@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { ArrowUpRight, Check, ChevronRight, GitBranch } from '@lucide/vue'
+import { computed } from 'vue'
 import { resume } from './data'
-import { ResumeHeader, SectionHeader, RichText, TechTag, Toolbar } from './components'
+import { ProjectItem, ResumeHeader, RichText, SectionHeader, Toolbar } from './components'
+import { getExperienceYears } from './utils/experience'
 
 const year = new Date().getFullYear()
+const experienceYears = computed(() => getExperienceYears(resume.profile.experienceStartYear))
+
+/** 第一张数字卡由起算年份实时计算，其余来自数据文件 */
+const metrics = computed(() => [
+  { value: String(experienceYears.value), unit: '年+', label: '前端研发经验' },
+  ...resume.metrics
+])
 </script>
 
 <template>
@@ -11,150 +19,136 @@ const year = new Date().getFullYear()
     <main class="sheet w-full max-w-[900px]">
       <ResumeHeader :profile="resume.profile" />
 
-      <!-- 01 个人优势 -->
-      <section class="reveal" style="animation-delay: 0.08s">
-        <SectionHeader index="01" zh="个人优势" en="Highlights" />
-        <ul class="grid sm:grid-cols-2 gap-x-9 gap-y-4 list-none p-0 m-0">
-          <li
-            v-for="(h, i) in resume.highlights"
-            :key="i"
-            class="break-avoid flex gap-2.5 text-[13.5px] leading-[1.7] text-ink-soft"
-          >
-            <Check :size="13" class="mt-[3px] text-seal flex-none" />
-            <RichText :text="h" />
-          </li>
-        </ul>
+      <!-- 数字卡：先立量级 -->
+      <div class="reveal grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-4 mt-6" style="animation-delay: 0.06s">
+        <div v-for="m in metrics" :key="m.label" class="break-avoid">
+          <div class="font-display text-[24px] font-medium text-seal leading-none tabular-nums">
+            {{ m.value }}<span class="text-[16px] ml-0.5">{{ m.unit }}</span>
+          </div>
+          <div class="mt-1.5 text-[12.5px] text-ink-faint">{{ m.label }}</div>
+        </div>
+      </div>
+
+      <!-- 个人简介 -->
+      <section class="reveal" style="animation-delay: 0.12s">
+        <SectionHeader title="个人简介" />
+        <RichText tag="p" :text="resume.profile.summary" class="m-0 text-[14px] leading-[1.85] text-ink-soft" />
       </section>
 
-      <!-- 02 工作经历 -->
-      <section class="reveal" style="animation-delay: 0.16s">
-        <SectionHeader index="02" zh="工作经历" en="Experience" />
-        <div class="flex flex-col gap-7">
-          <article
-            v-for="(job, jobIndex) in resume.jobs"
-            :key="jobIndex"
-            class="break-avoid relative pl-6 border-l border-line"
-          >
-            <span
-              class="absolute -left-[5px] top-[6px] w-[10px] h-[10px] rounded-full bg-seal ring-4 ring-[var(--sheet-bg)]"
-            />
-            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
-              <h3 class="font-display text-[17px] font-semibold text-ink m-0">
-                {{ job.company }}
-                <span v-if="job.department" class="font-sans text-[13px] font-normal text-ink-faint">
-                  · {{ job.department }}
-                </span>
-              </h3>
-              <span class="font-mono text-[12px] text-ink-faint">{{ job.period }}</span>
+      <!-- 工作经历：时间线 + 核心项目 -->
+      <section class="reveal" style="animation-delay: 0.18s">
+        <SectionHeader title="工作经历" :sub="resume.experience.sub" />
+
+        <div class="grid sm:grid-cols-3 gap-x-7 gap-y-4 mb-4">
+          <div v-for="step in resume.experience.timeline" :key="step.year" class="break-avoid">
+            <div class="flex items-baseline gap-2">
+              <span class="font-display text-[15.5px] font-medium text-seal tabular-nums">{{ step.year }}</span>
+              <span class="font-display text-[14.5px] font-medium text-ink">{{ step.head }}</span>
             </div>
-            <div class="mt-0.5 font-mono text-[12.5px] text-seal-deep">{{ job.role }}</div>
-            <div class="mt-2.5 flex flex-wrap gap-1.5">
-              <TechTag v-for="s in job.stack" :key="s" :label="s" />
-            </div>
-            <ul class="mt-3 list-none p-0 m-0 flex flex-col gap-1.5">
-              <li
-                v-for="(b, i) in job.bullets"
-                :key="i"
-                class="flex gap-2 text-[13.5px] leading-[1.7] text-ink-soft"
-              >
-                <span class="text-line mt-px select-none">—</span>
-                <RichText :text="b" />
-              </li>
-            </ul>
-          </article>
+            <p class="mt-1 mb-0 text-[12.5px] leading-[1.7] text-ink-faint">{{ step.body }}</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col divide-y divide-line/60">
+          <ProjectItem v-for="p in resume.experience.projects" :key="p.name" :project="p" />
         </div>
       </section>
 
-      <!-- 03 项目经历 -->
+      <!-- 更多项目 -->
       <section class="reveal" style="animation-delay: 0.24s">
-        <SectionHeader index="03" zh="项目经历" en="Projects" />
-        <div class="flex flex-col gap-4">
-          <article
-            v-for="(p, projectIndex) in resume.projects"
-            :key="projectIndex"
-            class="break-avoid rounded-lg border border-line bg-paper/40 p-5"
-          >
-            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
-              <h3 class="font-display text-[17px] font-semibold text-ink m-0">{{ p.name }}</h3>
-              <span class="font-mono text-[12px] text-ink-faint">{{ p.period }}</span>
-            </div>
-            <p class="mt-2 mb-0 text-[12.5px] leading-[1.75] text-ink-soft">{{ p.description }}</p>
-            <ul class="mt-3 list-none p-0 m-0 flex flex-col gap-1.5">
-              <li
-                v-for="(r, i) in p.responsibilities"
-                :key="i"
-                class="flex gap-2 text-[13.5px] leading-[1.7] text-ink"
-              >
-                <ChevronRight :size="13" class="text-seal mt-[3px] flex-none" />
-                <RichText :text="r" />
-              </li>
-            </ul>
-            <div class="mt-3 flex flex-wrap gap-1.5">
-              <TechTag v-for="s in p.stack" :key="s" :label="s" />
-            </div>
-          </article>
+        <SectionHeader title="更多项目" :sub="resume.moreProjects.sub" />
+        <div class="flex flex-col divide-y divide-line/60">
+          <ProjectItem v-for="p in resume.moreProjects.projects" :key="p.name" :project="p" />
         </div>
       </section>
 
-      <!-- 04 教育经历 -->
-      <section class="reveal" style="animation-delay: 0.32s">
-        <SectionHeader index="04" zh="教育经历" en="Education" />
-        <ul class="list-none p-0 m-0 flex flex-col gap-2.5">
+      <!-- 工作经历一览 -->
+      <section class="reveal" style="animation-delay: 0.3s">
+        <SectionHeader
+          title="工作经历一览"
+          :sub="`${resume.companies.length} 家公司 · ${resume.experience.sub.split(' · ')[0]}`"
+        />
+        <ul class="list-none p-0 m-0">
           <li
-            v-for="(e, eduIndex) in resume.education"
-            :key="eduIndex"
-            class="break-avoid flex flex-wrap items-baseline gap-x-3 gap-y-1"
+            v-for="c in resume.companies"
+            :key="c.name"
+            class="break-avoid flex flex-wrap items-baseline gap-x-3 gap-y-0.5 py-2"
           >
-            <span class="font-display text-[15.5px] font-semibold text-ink">{{ e.school }}</span>
-            <span class="font-mono text-[12.5px] text-ink-soft">{{ e.major }}</span>
-            <span
-              class="font-mono text-[11px] text-seal-deep border border-seal/25 rounded px-1.5 py-0.5"
-            >
-              {{ e.degree }}
-            </span>
+            <span class="font-display text-[15px] font-medium text-ink">{{ c.name }}</span>
+            <span class="text-[13px] text-ink-faint">· {{ c.department }} · {{ c.role }}</span>
+            <span class="ml-auto text-[12.5px] text-ink-faint tabular-nums">{{ c.period }}</span>
           </li>
         </ul>
       </section>
 
-      <!-- 05 开源项目 -->
-      <section class="reveal" style="animation-delay: 0.4s">
-        <SectionHeader index="05" zh="开源项目" en="Open Source" />
-        <div class="grid sm:grid-cols-2 gap-3">
-          <a
-            v-for="o in resume.openSource"
+      <!-- 开源项目 -->
+      <section class="reveal" style="animation-delay: 0.36s">
+        <SectionHeader title="开源项目" :sub="resume.openSource.sub" />
+        <RichText
+          tag="p"
+          :text="resume.openSource.intro"
+          class="m-0 mb-3 text-[13.5px] leading-[1.8] text-ink-soft"
+        />
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+          <div
+            v-for="o in resume.openSource.items"
             :key="o.href"
-            :href="o.href"
-            target="_blank"
-            rel="noreferrer"
-            class="group break-avoid block rounded-lg border border-line bg-paper/40 p-4 transition-colors hover:border-seal/40 hover:bg-seal/5"
+            class="break-avoid flex items-baseline gap-3 py-1.5 border-b border-dotted border-line"
           >
-            <div class="flex items-center gap-2">
-              <GitBranch :size="15" class="text-seal" />
-              <span
-                class="font-display text-[15px] font-semibold text-ink transition-colors group-hover:text-seal"
-              >
-                {{ o.name }}
-              </span>
-              <ArrowUpRight
-                :size="14"
-                class="ml-auto text-ink-faint transition-all group-hover:text-seal group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </div>
-            <p class="mt-1.5 mb-0 text-[12.5px] leading-snug text-ink-soft">{{ o.description }}</p>
-            <p class="mt-1 mb-0 font-mono text-[11px] text-ink-faint truncate">
-              {{ o.href.replace('https://', '') }}
-            </p>
-          </a>
+            <a
+              :href="o.href"
+              target="_blank"
+              rel="noreferrer"
+              class="font-display text-[14px] font-medium text-seal whitespace-nowrap transition-colors hover:text-seal-deep"
+            >
+              {{ o.name }}
+            </a>
+            <span class="text-[12.5px] leading-[1.6] text-ink-faint">{{ o.desc }}</span>
+          </div>
+        </div>
+        <div class="break-avoid mt-4 rounded-[3px] bg-seal/10 px-3.5 py-2.5 text-[13px] leading-[1.7] text-ink-soft">
+          <span
+            class="inline-block mr-2 rounded-[3px] bg-seal px-1.5 py-0.5 text-[11.5px] font-medium text-paper -translate-y-px"
+          >
+            {{ resume.openSource.highlightTag }}
+          </span>{{ resume.openSource.highlight }}
         </div>
       </section>
 
-      <footer
-        class="mt-12 pt-6 border-t border-line flex flex-wrap items-center justify-between gap-3"
-      >
-        <p class="m-0 font-display italic text-[15px] text-ink-soft">{{ resume.closing }}</p>
-        <span class="font-mono text-[11px] text-ink-faint">
-          © {{ year }} {{ resume.profile.name }}
-        </span>
+      <!-- 核心能力 -->
+      <section class="reveal" style="animation-delay: 0.42s">
+        <SectionHeader title="核心能力" />
+        <div class="flex flex-col">
+          <div
+            v-for="s in resume.skills"
+            :key="s.label"
+            class="break-avoid flex flex-col sm:flex-row gap-x-4 gap-y-1 py-2.5 border-b border-dotted border-line last:border-b-0"
+          >
+            <span class="flex-none sm:w-24 text-[13px] font-medium text-seal tracking-wide">{{ s.label }}</span>
+            <RichText :text="s.body" class="min-w-0 text-[13.5px] leading-[1.7] text-ink-soft" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 教育背景 -->
+      <section class="reveal" style="animation-delay: 0.48s">
+        <SectionHeader title="教育背景" />
+        <ul class="list-none p-0 m-0">
+          <li
+            v-for="e in resume.education"
+            :key="e.school"
+            class="break-avoid flex flex-wrap items-baseline gap-x-3 py-2"
+          >
+            <span class="font-display text-[15px] font-medium text-ink">{{ e.school }}</span>
+            <span class="text-[13px] text-ink-faint">· {{ e.major }}</span>
+            <span class="ml-auto text-[12.5px] text-ink-faint">{{ e.degree }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="mt-10 pt-5 border-t border-line flex flex-wrap items-center justify-between gap-3">
+        <p class="m-0 text-[13px] text-ink-faint">{{ resume.closing }}</p>
+        <span class="text-[12px] text-ink-faint tabular-nums">© {{ year }} {{ resume.profile.name }}</span>
       </footer>
     </main>
 

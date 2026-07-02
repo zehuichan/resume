@@ -6,6 +6,12 @@
       "sourceType": "github",
       "skillPath": "skills/git-commit/SKILL.md",
       "computedHash": "2607fc60629b82b257136dd2a7a373f0a4466c0b49df7746d845d59313c99b21"
+    },
+    "kami": {
+      "source": "tw93/kami",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "8e865a42f5a88bca8ad688d49178c5c50f1918782ee3d15ac9fd4ddb988f0c98"
     }
   }
 }

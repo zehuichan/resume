@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { CircleCheck } from '@lucide/vue'
 import type { Profile } from '../types'
 import { getExperienceYears } from '../utils/experience'
-import SealStamp from './seal-stamp.vue'
 
 const props = defineProps<{ profile: Profile }>()
 
@@ -16,64 +14,44 @@ const avatarFailed = ref(false)
 </script>
 
 <template>
-  <header class="reveal flex items-start gap-7 flex-col-reverse sm:flex-row">
-    <div class="flex-1 min-w-0">
-      <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-ink-faint m-0 mb-3">
-        Curriculum Vitae · 简历
-      </p>
-
-      <h1 class="font-display font-bold text-ink leading-[0.95] m-0 text-[clamp(2.6rem,7vw,3.6rem)]">
+  <header class="reveal flex flex-wrap items-end justify-between gap-x-6 gap-y-4 pb-4 border-b border-line">
+    <div class="min-w-0">
+      <h1
+        class="font-display font-medium text-ink leading-none m-0 tracking-wide text-[clamp(2.4rem,6.5vw,3.2rem)]"
+      >
         {{ profile.name }}
       </h1>
-
-      <div class="mt-3 flex items-center flex-wrap gap-x-3 gap-y-1">
-        <span class="font-display italic text-[20px] text-seal-deep">{{ profile.title }}</span>
-        <span class="text-line">/</span>
-        <span class="font-mono text-[13px] text-ink-soft">{{ years }} 年+ 前端经验</span>
-      </div>
-
-      <p class="mt-4 mb-0 max-w-[52ch] text-[14.5px] leading-7 text-ink-soft">
-        {{ profile.summary }}
-      </p>
-
-      <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
-        <a
-          v-for="c in profile.contacts"
-          :key="c.label"
-          :href="c.href"
-          target="_blank"
-          rel="noreferrer"
-          class="group inline-flex items-center gap-2 text-[13.5px] text-ink hover:text-seal transition-colors"
-        >
-          <component
-            :is="c.icon"
-            :size="15"
-            class="text-ink-faint group-hover:text-seal transition-colors"
-          />
-          <span class="font-mono border-b border-transparent group-hover:border-seal/40 pb-px">
-            {{ c.value }}
-          </span>
-        </a>
-      </div>
-
-      <div class="mt-4 flex flex-wrap gap-2">
-        <span
-          class="inline-flex items-center gap-1.5 font-mono text-[11.5px] text-seal-deep bg-seal/10 border border-seal/20 rounded-full px-3 py-1"
-        >
-          <CircleCheck :size="13" />薪资 · {{ profile.availability }}
-        </span>
-        <span
-          v-for="m in profile.meta"
-          :key="m"
-          class="font-mono text-[11.5px] text-ink-soft bg-paper-soft/60 border border-line rounded-full px-3 py-1"
-        >
-          {{ m }}
-        </span>
-      </div>
     </div>
 
-    <div class="relative flex-none">
-      <div class="w-[108px] h-[108px] rounded-[14px] overflow-hidden border border-line bg-paper-soft shadow-[0_10px_30px_-12px_rgba(31,27,22,0.45)]">
+    <div class="flex items-end gap-5">
+      <div class="text-left sm:text-right text-[13px] leading-[1.75] text-ink-faint">
+        <div class="font-display text-[15.5px] font-medium text-seal">
+          {{ profile.title }}
+          <span class="text-ink-faint font-normal text-[12.5px]">· {{ years }} 年+ 经验</span>
+        </div>
+        <div>
+          <template v-for="(c, i) in profile.contacts" :key="c.label">
+            <a
+              :href="c.href"
+              target="_blank"
+              rel="noreferrer"
+              class="text-ink-soft transition-colors hover:text-seal"
+            >
+              {{ c.value }}
+            </a>
+            <span v-if="i < profile.contacts.length - 1" class="text-line mx-1.5">·</span>
+          </template>
+        </div>
+        <div>
+          <template v-for="(m, i) in profile.meta" :key="m">
+            <span :class="i === 0 ? 'text-ink-soft font-medium' : ''">{{ m }}</span>
+            <span v-if="i < profile.meta.length - 1" class="text-line mx-1.5">·</span>
+          </template>
+        </div>
+      </div>
+
+      <!-- kami 式头像：适度尺寸、暖灰细边、无重投影 -->
+      <div class="flex-none w-[76px] h-[76px] rounded-lg overflow-hidden border border-line bg-paper-soft">
         <img
           v-if="!avatarFailed"
           :src="avatarUrl"
@@ -83,13 +61,10 @@ const avatarFailed = ref(false)
         />
         <div
           v-else
-          class="flex w-full h-full items-center justify-center font-display text-[38px] font-semibold text-ink-faint"
+          class="flex w-full h-full items-center justify-center font-display text-[30px] font-medium text-ink-faint"
         >
           {{ surname }}
         </div>
-      </div>
-      <div class="absolute -bottom-3 -right-3">
-        <SealStamp :text="surname" />
       </div>
     </div>
   </header>

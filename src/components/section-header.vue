@@ -1,14 +1,10 @@
 <script setup lang="ts">
-defineProps<{ index: string; zh: string; en: string }>()
+defineProps<{ title: string; sub?: string }>()
 </script>
 
 <template>
-  <div class="break-avoid flex items-baseline gap-3 mt-12 mb-6">
-    <span class="font-mono text-[13px] font-semibold text-seal tabular-nums">{{ index }}</span>
-    <h2 class="font-display text-[23px] font-semibold text-ink leading-none m-0">{{ zh }}</h2>
-    <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint translate-y-[-1px]">
-      {{ en }}
-    </span>
-    <span class="flex-1 h-px bg-line" />
+  <div class="break-avoid flex items-baseline justify-between gap-3 mt-11 mb-4 pb-1.5 border-b border-line">
+    <h2 class="font-display text-[19px] font-medium text-ink leading-none m-0">{{ title }}</h2>
+    <span v-if="sub" class="text-[12px] text-ink-faint tracking-wide">{{ sub }}</span>
   </div>
 </template>

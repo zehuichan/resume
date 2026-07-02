@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 具体年限由 main.ts 在运行时依据 experienceStartYear 计算后覆盖，这里不写死数字避免逐年过期 -->
     <meta name="description" content="陈泽辉 · 高级前端工程师简历 · Vue / Taro / uniapp 实战经验" />
-    <meta name="theme-color" content="#faf8f3" />
+    <meta name="theme-color" content="#f5f4ed" />
     <script>
-      // 防闪烁：在首帧绘制前把保存的皮肤写到 <html data-theme>
+      // 防闪烁：在首帧绘制前把保存的主题写到 <html data-theme>（只有 kami / dark 两种）
       ;(function () {
+        var theme = 'kami'
         try {
-          document.documentElement.dataset.theme = localStorage.getItem('resume-theme') || 'redstone'
+          if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
         } catch (e) {
-          document.documentElement.dataset.theme = 'redstone'
+          /* localStorage 不可用时用默认值 */
         }
+        document.documentElement.dataset.theme = theme
       })()
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Hanken+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..600&family=Noto+Serif+SC:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <title>陈泽辉 · 高级前端工程师</title>

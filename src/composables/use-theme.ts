@@ -3,7 +3,7 @@ import type { ThemeId } from '../types'
 import { themes } from '../data'
 
 const STORAGE_KEY = 'resume-theme'
-const DEFAULT_THEME: ThemeId = 'redstone'
+const DEFAULT_THEME: ThemeId = 'kami'
 
 const isThemeId = (value: string | null | undefined): value is ThemeId =>
   themes.some((t) => t.id === value)
