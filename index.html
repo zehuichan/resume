@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 具体年限由 main.ts 在运行时依据 experienceStartYear 计算后覆盖，这里不写死数字避免逐年过期 -->
     <meta name="description" content="陈泽辉 · 前端负责人简历 · Vue / Taro / uniapp 实战经验" />
-    <meta name="theme-color" content="#f5f4ed" />
+    <meta name="theme-color" content="#fafaf8" />
     <script>
-      // 防闪烁：在首帧绘制前把保存的主题写到 <html data-theme>（只有 kami / dark 两种）
+      // 防闪烁：在首帧绘制前把保存的主题写到 <html data-theme>（兼容旧版 kami 主题值）
       ;(function () {
-        var theme = 'kami'
+        var theme = 'light'
         try {
-          if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
+          var stored = localStorage.getItem('resume-theme')
+          if (stored === 'dark') theme = 'dark'
         } catch (e) {
           /* localStorage 不可用时用默认值 */
         }
@@ -22,12 +23,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..600&family=Noto+Serif+SC:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=JetBrains+Mono:wght@400..700&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <title>陈泽辉 · 前端负责人</title>
-    <script type="module" crossorigin src="/resume/assets/index-Dk3iT-GB.js"></script>
-    <link rel="stylesheet" crossorigin href="/resume/assets/index-CraC3LX_.css">
+    <script type="module" crossorigin src="/resume/assets/index-BXM3o112.js"></script>
+    <link rel="stylesheet" crossorigin href="/resume/assets/index-BHubhQLt.css">
   </head>
   <body>
     <div id="app"></div>
