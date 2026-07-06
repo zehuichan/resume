@@ -1,67 +1,54 @@
 @import 'tailwindcss';
 
 @theme {
-  /* 默认主题 = 紙 Kami：羊皮纸底 + 墨蓝强调 + 通页衬线（暖灰梯度、字重 500、无斜体） */
-  --color-paper: #f5f4ed;
-  --color-paper-soft: #e8e6dc;
-  --color-ink: #141413;
-  --color-ink-soft: #3d3d3a;
-  --color-ink-faint: #6b6a64;
-  --color-seal: #1b365d;
-  --color-seal-deep: #16294a;
-  --color-line: #e0ddd0;
+  /* Modern engineer spec sheet: near-white paper, graphite ink, one terminal-green accent. */
+  --color-paper: #fafaf8;
+  --color-paper-soft: #f0f1ed;
+  --color-ink: #111312;
+  --color-ink-soft: #3d4340;
+  --color-ink-faint: #747b76;
+  --color-accent: #0f7a4a;
+  --color-accent-deep: #0a5a38;
+  --color-seal: #0f7a4a;
+  --color-seal-deep: #0a5a38;
+  --color-line: #e5e8e2;
 
-  /* kami：一页只用一种衬线，标题与正文同族（TsangerJinKai02 的 web 回退链） */
-  --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', Georgia, serif;
-  --font-sans: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', Georgia, serif;
+  --font-display: 'Archivo', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', 'PingFang SC', ui-monospace, monospace;
 }
 
-/* 非 Tailwind token 的主题变量，默认值 = kami 亮色。放在未分层的 :root，
-   暗色覆盖块（:root[data-theme='dark']）凭更高特异性胜出。 */
 :root {
   color-scheme: light;
 
-  --sheet-bg: #faf9f5;
-  --sheet-border: #e8e6dc;
-  /* kami whisper shadow：只允许极轻的环形投影，不用硬阴影 */
-  --sheet-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 4px 24px rgba(20, 19, 18, 0.06);
-  /* body::before 噪点叠层强度（暖纸细颗粒） */
-  --texture-opacity: 0.22;
-  --body-texture: none;
+  --sheet-bg: rgba(255, 255, 253, 0.82);
+  --sheet-border: #e4e7e1;
+  --sheet-shadow: 0 0 0 1px rgba(17, 19, 18, 0.035);
+  --grid-color: rgba(15, 122, 74, 0.08);
+  --grid-strong: rgba(17, 19, 18, 0.045);
+  --toolbar-bg: rgba(250, 250, 248, 0.88);
 }
 
-/* kami 规范（两套主题共用）：衬线字重锁定 500（不用粗体），编辑风禁用斜体。
-   未分层规则稳定盖过 @layer utilities 中的 Tailwind 工具类。 */
-.font-bold,
-.font-semibold {
-  font-weight: 500;
-}
-.italic {
-  font-style: normal;
-}
-
-/* 墨 Dark：kami 的暗色面——深暖炭底、暖银正文、象牙标题、提亮的墨蓝强调 */
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --color-paper: #141413;
-  --color-paper-soft: #232220;
-  --color-ink: #ece9e2;
-  --color-ink-soft: #b0aea5;
-  --color-ink-faint: #85837a;
-  --color-seal: #6f9bce;
-  --color-seal-deep: #9dbddf;
-  --color-line: #33312c;
 
-  --sheet-bg: #1b1a18;
-  --sheet-border: rgba(250, 249, 245, 0.07);
-  --sheet-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.03) inset,
-    0 26px 72px -34px rgba(0, 0, 0, 0.7);
-  --texture-opacity: 0.1;
-  --body-texture: none;
+  --color-paper: #0b0f0d;
+  --color-paper-soft: #141a17;
+  --color-ink: #f5f7f3;
+  --color-ink-soft: #c7cec8;
+  --color-ink-faint: #818c84;
+  --color-accent: #34d399;
+  --color-accent-deep: #86efac;
+  --color-seal: #34d399;
+  --color-seal-deep: #86efac;
+  --color-line: #2d3932;
+
+  --sheet-bg: rgba(13, 18, 15, 0.86);
+  --sheet-border: rgba(245, 247, 243, 0.1);
+  --sheet-shadow: 0 0 0 1px rgba(245, 247, 243, 0.04);
+  --grid-color: rgba(52, 211, 153, 0.1);
+  --grid-strong: rgba(245, 247, 243, 0.055);
+  --toolbar-bg: rgba(11, 15, 13, 0.82);
 }
 
 body {
@@ -69,22 +56,36 @@ body {
   font-family: var(--font-sans);
   color: var(--color-ink);
   background-color: var(--color-paper);
-  background-image: var(--body-texture);
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px);
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    22px 22px,
+    22px 22px,
+    110px 110px,
+    110px 110px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.6;
 }
 
-/* 细颗粒胶点噪点叠层，营造纸张质感（强度随皮肤切换） */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: var(--texture-opacity);
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 36%),
+    linear-gradient(90deg, var(--color-paper) 0, transparent 18%, transparent 82%, var(--color-paper) 100%);
+  opacity: 0.7;
 }
 
 a {
@@ -92,19 +93,19 @@ a {
   text-decoration: none;
 }
 
-/* 纸张：浮于桌面之上的一页 */
 .sheet {
   position: relative;
   z-index: 1;
   background: var(--sheet-bg);
   border: 1px solid var(--sheet-border);
-  border-radius: 8px;
-  padding: clamp(26px, 5vw, 58px);
+  border-radius: 18px;
+  padding: clamp(28px, 5vw, 60px);
   box-shadow: var(--sheet-shadow);
+  backdrop-filter: blur(12px);
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-seal) 22%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 22%, transparent);
 }
 
 ::-webkit-scrollbar {
@@ -119,30 +120,27 @@ a {
   background: var(--color-ink-faint);
 }
 
-/* 关键数字 / 关键短语的墨蓝强调（RichText 的 ==高亮== 渲染，对应 kami 的 .hl） */
 .hl {
-  color: var(--color-seal);
-  font-weight: 500;
+  color: var(--color-accent);
+  font-weight: 700;
 }
 
-/* 内联技术标签（RichText 渲染） */
 .tech {
   font-family: var(--font-mono);
-  font-size: 0.86em;
-  font-weight: 500;
-  color: var(--color-seal-deep);
-  background: color-mix(in srgb, var(--color-seal) 8%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-seal) 18%, transparent);
-  border-radius: 4px;
-  padding: 0.05em 0.36em;
+  font-size: 0.84em;
+  font-weight: 600;
+  color: var(--color-accent-deep);
+  background: color-mix(in srgb, var(--color-accent) 9%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+  border-radius: 999px;
+  padding: 0.02em 0.42em;
   white-space: nowrap;
 }
 
-/* ---------- 入场动画 ---------- */
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -152,7 +150,7 @@ a {
 
 .reveal {
   opacity: 0;
-  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -162,45 +160,32 @@ a {
   }
 }
 
-/* ---------- 打印 / 导出 PDF ---------- */
 @page {
   size: A4;
-  margin: 14mm 0;
+  margin: 12mm 0;
 }
 
 @media print {
-  /* 无论选了哪个皮肤，打印一律回到 kami 纸稿：羊皮纸底 + 深墨字 + 墨蓝强调 + 通页衬线。
-     自定义属性用 !important 才能稳定盖过 :root[data-theme='...'] 的覆盖。 */
   :root {
-    --color-paper: #f5f4ed !important;
-    --color-paper-soft: #e8e6dc !important;
-    --color-ink: #141413 !important;
-    --color-ink-soft: #3d3d3a !important;
-    --color-ink-faint: #6b6a64 !important;
-    --color-seal: #1b365d !important;
-    --color-seal-deep: #16294a !important;
-    --color-line: #e0ddd0 !important;
+    --color-paper: #fafaf8 !important;
+    --color-paper-soft: #f0f1ed !important;
+    --color-ink: #111312 !important;
+    --color-ink-soft: #3d4340 !important;
+    --color-ink-faint: #747b76 !important;
+    --color-accent: #0f7a4a !important;
+    --color-accent-deep: #0a5a38 !important;
+    --color-seal: #0f7a4a !important;
+    --color-seal-deep: #0a5a38 !important;
+    --color-line: #d8ddd7 !important;
 
-    --sheet-bg: #f5f4ed !important;
+    --sheet-bg: #fafaf8 !important;
     --sheet-border: transparent !important;
-    --texture-opacity: 0 !important;
-    --body-texture: none !important;
-
-    --font-display: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', 'STSong', Georgia, serif !important;
-    --font-sans: var(--font-display) !important;
-  }
-
-  /* kami 纸面规范：衬线字重锁 500、无斜体 */
-  .font-bold,
-  .font-semibold {
-    font-weight: 500 !important;
-  }
-  .italic {
-    font-style: normal !important;
+    --grid-color: transparent !important;
+    --grid-strong: transparent !important;
   }
 
   body {
-    background: #f5f4ed !important;
+    background: #fafaf8 !important;
     background-image: none !important;
   }
 
@@ -218,12 +203,31 @@ a {
   }
 
   .sheet {
+    background: #fafaf8 !important;
+    backdrop-filter: none !important;
     box-shadow: none !important;
     border: none !important;
+    border-radius: 0 !important;
     margin: 0 auto !important;
     width: auto !important;
-    max-width: 180mm !important;
-    padding: 0 6mm !important;
+    max-width: 184mm !important;
+    padding: 0 5mm !important;
+  }
+
+  .sheet header {
+    padding-bottom: 5mm !important;
+  }
+
+  .sheet section {
+    page-break-inside: auto;
+  }
+
+  .sheet section + section {
+    margin-top: 0 !important;
+  }
+
+  .tech {
+    background: transparent !important;
   }
 
   .break-avoid {
@@ -232,6 +236,10 @@ a {
 
   a {
     color: inherit !important;
+  }
+
+  .print-compact {
+    margin-top: 9mm !important;
   }
 
   * {

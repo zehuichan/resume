@@ -10,15 +10,15 @@ export interface ContactLink {
 
 export interface Profile {
   name: string
-  /** 岗位定位，展示在页头右侧（墨蓝强调） */
+  /** 岗位定位，展示在页头规格行 */
   title: string
   /** public 目录下的头像文件名 */
   avatar: string
   /** 经验年限的起算年份，页面据此自动计算「N 年+」 */
   experienceStartYear: number
-  /** 页头右下的一行元信息，如 城市 / 学历 / 到岗时间 */
+  /** 页头规格行元信息，如 城市 / 学历 / 到岗时间 */
   meta: string[]
-  /** 个人简介。支持 ==文本== 墨蓝高亮与 `代码` 行内标签 */
+  /** 个人简介。支持 ==文本== 终端绿高亮与 `代码` 行内标签 */
   summary: string
   contacts: ContactLink[]
 }
@@ -37,7 +37,7 @@ export interface TimelineStep {
   body: string
 }
 
-/** 项目条目，严格遵守 kami 角色 / 动作 / 结果 三段式 */
+/** 项目条目：精选项目保留 场景 / 动作 / 结果 三段式，紧凑项目只展示结果摘要 */
 export interface Project {
   name: string
   /** 项目类型，如「国际物流全链路」 */
@@ -51,6 +51,10 @@ export interface Project {
   action: string
   /** 结果行：数据为王，==关键数字== 高亮 1-2 处 */
   result: string
+  /** 是否进入精选项目卡片区 */
+  featured?: boolean
+  /** 紧凑项目排序用日期，格式 YYYY.MM；不填时从 period 中推断 */
+  sortDate?: string
 }
 
 export interface Company {
@@ -107,8 +111,8 @@ export interface Resume {
   closing: string
 }
 
-/** 主题标识：kami 亮色（默认）与其暗色面 */
-export type ThemeId = 'kami' | 'dark'
+/** 主题标识：现代工程师亮色（默认）与暗色面 */
+export type ThemeId = 'light' | 'dark'
 
 export interface Theme {
   id: ThemeId

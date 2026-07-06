@@ -1,5 +1,6 @@
 export { default as RichText } from './rich-text.vue'
 export { default as SectionHeader } from './section-header.vue'
 export { default as ProjectItem } from './project-item.vue'
+export { default as CompactProjectItem } from './compact-project-item.vue'
 export { default as ResumeHeader } from './resume-header.vue'
 export { default as Toolbar } from './toolbar.vue'

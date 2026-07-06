@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { Code, Moon, Printer, Sun } from '@lucide/vue'
+import { Link, Moon, Printer, Sun } from '@lucide/vue'
 import { useTheme } from '../composables/use-theme'
 
 const { current, setTheme, sync } = useTheme()
@@ -8,19 +8,19 @@ const { current, setTheme, sync } = useTheme()
 const isDark = computed(() => current.value === 'dark')
 
 const print = () => window.print()
-const toggleTheme = () => setTheme(isDark.value ? 'kami' : 'dark')
+const toggleTheme = () => setTheme(isDark.value ? 'light' : 'dark')
 
 onMounted(sync)
 </script>
 
 <template>
   <div
-    class="no-print fixed bottom-5 right-5 z-50 flex items-center gap-1 rounded-full border border-line bg-paper/90 px-1.5 py-1.5 shadow-[0_8px_28px_-10px_rgba(31,27,22,0.4)] backdrop-blur"
+    class="no-print fixed bottom-5 right-5 z-50 flex items-center gap-1 border border-line bg-[var(--toolbar-bg)] px-1.5 py-1.5 backdrop-blur"
   >
     <button
       type="button"
       title="打印 / 导出 PDF"
-      class="group flex items-center gap-2 rounded-full bg-seal px-4 py-2 text-[13px] font-medium text-paper transition-transform hover:scale-[1.03] active:scale-95"
+      class="group flex items-center gap-2 bg-accent px-4 py-2 font-mono text-[11.5px] font-bold uppercase tracking-[0.1em] text-paper transition-colors hover:bg-accent-deep active:scale-95"
       @click="print"
     >
       <Printer :size="15" />
@@ -29,10 +29,10 @@ onMounted(sync)
 
     <button
       type="button"
-      :title="isDark ? '切换到亮色 / 紙 Kami' : '切换到暗黑'"
+      :title="isDark ? '切换到 Light Spec' : '切换到 Dark Spec'"
       :aria-label="isDark ? '切换到亮色主题' : '切换到暗黑主题'"
       :aria-pressed="isDark"
-      class="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-paper-soft hover:text-ink"
+      class="flex h-9 w-9 items-center justify-center text-ink-soft transition-colors hover:bg-paper-soft hover:text-accent"
       @click="toggleTheme"
     >
       <Sun v-if="isDark" :size="17" />
@@ -44,9 +44,9 @@ onMounted(sync)
       target="_blank"
       rel="noreferrer"
       title="GitHub"
-      class="flex h-9 w-9 items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-paper-soft hover:text-ink"
+      class="flex h-9 w-9 items-center justify-center text-ink-soft transition-colors hover:bg-paper-soft hover:text-accent"
     >
-      <Code :size="17" />
+      <Link :size="17" />
     </a>
   </div>
 </template>

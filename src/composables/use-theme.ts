@@ -3,20 +3,24 @@ import type { ThemeId } from '../types'
 import { themes } from '../data'
 
 const STORAGE_KEY = 'resume-theme'
-const DEFAULT_THEME: ThemeId = 'kami'
+const DEFAULT_THEME: ThemeId = 'light'
 
-const isThemeId = (value: string | null | undefined): value is ThemeId =>
-  themes.some((t) => t.id === value)
+const normalizeThemeId = (value: string | null | undefined): ThemeId | undefined => {
+  if (value === 'kami') return 'light'
+  return themes.some((t) => t.id === value) ? (value as ThemeId) : undefined
+}
 
 /** 初始值优先取 `<html data-theme>`（由 index.html 的防闪烁脚本写入），其次取 localStorage */
 const readInitial = (): ThemeId => {
   if (typeof document !== 'undefined') {
     const fromDom = document.documentElement.dataset.theme
-    if (isThemeId(fromDom)) return fromDom
+    const normalized = normalizeThemeId(fromDom)
+    if (normalized) return normalized
   }
   try {
     const stored = localStorage.getItem(STORAGE_KEY)
-    if (isThemeId(stored)) return stored
+    const normalized = normalizeThemeId(stored)
+    if (normalized) return normalized
   } catch {
     // localStorage 不可用时忽略
   }
