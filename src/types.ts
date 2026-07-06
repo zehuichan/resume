@@ -83,7 +83,7 @@ export interface Resume {
   /** 页头数字卡的后三张（第一张「N 年+」由页面计算） */
   metrics: Metric[]
   experience: {
-    /** 分节线右侧的副标题，如「2015.11 - 至今 · 从独立开发到前端主程」 */
+    /** 分节线右侧的副标题，如「2015.11 - 至今 · 从独立开发到前端负责人」 */
     sub: string
     timeline: TimelineStep[]
     projects: Project[]

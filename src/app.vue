@@ -39,7 +39,7 @@ const metrics = computed(() => [
       <section class="reveal" style="animation-delay: 0.18s">
         <SectionHeader title="工作经历" :sub="resume.experience.sub" />
 
-        <div class="grid sm:grid-cols-3 gap-x-7 gap-y-4 mb-4">
+        <div class="grid sm:grid-cols-4 gap-x-7 gap-y-4 mb-4">
           <div v-for="step in resume.experience.timeline" :key="step.year" class="break-avoid">
             <div class="flex items-baseline gap-2">
               <span class="font-display text-[15.5px] font-medium text-seal tabular-nums">{{ step.year }}</span>
