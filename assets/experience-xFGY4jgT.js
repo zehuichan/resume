@@ -1,0 +1,1 @@
+function e(e,t=new Date){return Math.max(0,t.getFullYear()-e)}export{e as t};
