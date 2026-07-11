@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { Profile } from '../types'
-import { getExperienceYears } from '../utils/experience'
+import { getExperienceYears } from '../../../shared/utils/experience'
 
 const props = defineProps<{ profile: Profile }>()
 
@@ -16,16 +16,16 @@ const avatarFailed = ref(false)
 </script>
 
 <template>
-  <header class="reveal break-avoid border-b border-line pb-5">
+  <header class="reveal break-avoid border-b border-classic-line pb-5">
     <div class="flex items-start justify-between gap-5">
       <div class="min-w-0">
-        <div class="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-accent">Frontend Lead</div>
-        <h1 class="mt-2 mb-0 font-sans text-[clamp(2.2rem,6.4vw,3.9rem)] font-bold leading-[1.05] tracking-[-0.03em] text-ink">
+        <div class="font-classic-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-classic-accent">Frontend Lead</div>
+        <h1 class="mt-2 mb-0 font-classic-sans text-[clamp(2.2rem,6.4vw,3.9rem)] font-bold leading-[1.05] tracking-[-0.03em] text-classic-ink">
           {{ profile.name }}
         </h1>
       </div>
 
-      <div class="flex-none w-[68px] h-[68px] overflow-hidden border border-line bg-paper-soft sm:w-[78px] sm:h-[78px]">
+      <div class="flex-none w-[68px] h-[68px] overflow-hidden border border-classic-line bg-classic-paper-soft sm:w-[78px] sm:h-[78px]">
         <img
           v-if="!avatarFailed"
           :src="avatarUrl"
@@ -35,26 +35,26 @@ const avatarFailed = ref(false)
         />
         <div
           v-else
-          class="flex h-full w-full items-center justify-center font-display text-[32px] font-black text-ink-faint"
+          class="flex h-full w-full items-center justify-center font-classic-display text-[32px] font-black text-classic-ink-faint"
         >
           {{ surname }}
         </div>
       </div>
     </div>
 
-    <div class="mt-4 grid gap-2 border-t border-line pt-3 text-[11px] leading-relaxed sm:grid-cols-[1.15fr_1fr]">
-      <div class="font-mono font-semibold uppercase tracking-[0.08em] text-ink">{{ specLine }}</div>
-      <div class="flex min-w-0 flex-wrap gap-x-3 gap-y-1 font-mono text-ink-faint sm:justify-end">
+    <div class="mt-4 grid gap-2 border-t border-classic-line pt-3 text-[11px] leading-relaxed sm:grid-cols-[1.15fr_1fr]">
+      <div class="font-classic-mono font-semibold uppercase tracking-[0.08em] text-classic-ink">{{ specLine }}</div>
+      <div class="flex min-w-0 flex-wrap gap-x-3 gap-y-1 font-classic-mono text-classic-ink-faint sm:justify-end">
         <template v-for="(c, i) in profile.contacts" :key="c.label">
           <a
             :href="c.href"
             target="_blank"
             rel="noreferrer"
-            class="transition-colors hover:text-accent"
+            class="transition-colors hover:text-classic-accent"
           >
             {{ c.value }}
           </a>
-          <span v-if="i < profile.contacts.length - 1" class="text-line">/</span>
+          <span v-if="i < profile.contacts.length - 1" class="text-classic-line">/</span>
         </template>
       </div>
     </div>

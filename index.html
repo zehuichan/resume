@@ -4,20 +4,24 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 具体年限由 main.ts 在运行时依据 experienceStartYear 计算后覆盖，这里不写死数字避免逐年过期 -->
+    <!-- 路由就绪后由对应版本的元数据覆盖 -->
     <meta name="description" content="陈泽辉 · 前端负责人简历 · Vue / Taro / uniapp 实战经验" />
     <meta name="theme-color" content="#fafaf8" />
     <script>
-      // 防闪烁：在首帧绘制前把保存的主题写到 <html data-theme>（兼容旧版 kami 主题值）
       ;(function () {
-        var theme = 'light'
-        try {
-          var stored = localStorage.getItem('resume-theme')
-          if (stored === 'dark') theme = 'dark'
-        } catch (e) {
-          /* localStorage 不可用时用默认值 */
+        var hashPath = window.location.hash.slice(1).split(/[?#]/)[0]
+        var isClassic = hashPath === '/classic' || hashPath === '/classic/'
+        document.documentElement.dataset.resume = isClassic ? 'classic' : 'ai-first'
+
+        if (isClassic) {
+          var theme = 'light'
+          try {
+            if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
+          } catch (e) {
+            /* localStorage 不可用时用默认值 */
+          }
+          document.documentElement.dataset.theme = theme
         }
-        document.documentElement.dataset.theme = theme
       })()
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

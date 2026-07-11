@@ -23,14 +23,15 @@ pnpm preview  # 预览构建产物
 
 ## 维护内容
 
-所有简历内容集中在一份类型化数据文件里，改这里即可，无需动样式与组件：
+默认简历：`/#/`（AI-First）
+经典简历：`/#/classic`
 
-- 数据：`src/data/resume.ts`
-- 类型：`src/types.ts`
+AI-First 内容：`src/views/ai-first/data/resume.ts`
+经典版内容：`src/views/classic/data/resume.ts`
 
-行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。
+两个版本有意保持独立，不共享内容组件或样式。维护时请只修改对应版本目录，避免一个版本的内容或视觉变更影响另一个版本。
 
-经验年限由 `profile.experienceStartYear` 自动计算（页面显示「N 年+」），按需修改起算年份即可。
+经典版行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。两个版本的经验年限都由各自数据文件中的 `profile.experienceStartYear` 自动计算，按需分别修改起算年份即可。
 
 ## 目录结构
 
@@ -40,11 +41,12 @@ pnpm preview  # 预览构建产物
 ├─ vite.config.ts         # base 已设为 /resume/（GitHub Pages 项目站点）
 ├─ public/                # avatar.png、favicon.svg
 └─ src/
-   ├─ App.vue             # 页面组装
-   ├─ data/resume.ts      # 简历内容（唯一需要维护的文件）
-   ├─ types.ts            # 数据类型
-   ├─ styles/main.css     # @import tailwindcss + @theme 设计令牌 + 打印/PDF 规则
-   └─ components/         # Header / Section / RichText / TechTag / Seal / Toolbar
+   ├─ app.vue              # 路由出口
+   ├─ router/              # 双版本路由与页面标题
+   ├─ shared/              # 版本导航与共享工具
+   └─ views/
+      ├─ ai-first/         # AI-First 内容、组件与样式
+      └─ classic/          # 经典版内容、组件与样式
 ```
 
 ## 导出 PDF

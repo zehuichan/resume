@@ -24,7 +24,7 @@ const tokens = computed<Token[]>(() => {
   <component :is="tag">
     <template v-for="(t, i) in tokens" :key="i">
       <code v-if="t.type === 'code'" class="tech">{{ t.value }}</code>
-      <strong v-else-if="t.type === 'bold'" class="font-semibold text-ink">{{ t.value }}</strong>
+      <strong v-else-if="t.type === 'bold'" class="font-semibold text-classic-ink">{{ t.value }}</strong>
       <span v-else-if="t.type === 'hl'" class="hl">{{ t.value }}</span>
       <template v-else>{{ t.value }}</template>
     </template>

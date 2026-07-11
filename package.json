@@ -13,6 +13,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit -p tsconfig.app.json && vue-tsc --noEmit -p tsconfig.node.json && vite build",
     "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
     "clean": "node ./scripts/clean.mjs",
     "reinstall": "pnpm run clean -- --del-lock && pnpm install"
   },
@@ -20,14 +22,18 @@
   "license": "MIT",
   "dependencies": {
     "@lucide/vue": "^1.23.0",
-    "vue": "^3.5.39"
+    "vue": "^3.5.39",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.1",
     "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/test-utils": "^2.4.11",
+    "jsdom": "^26.1.0",
     "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
     "vite": "^8.1.0",
+    "vitest": "^3.2.7",
     "vue-tsc": "^3.3.5"
   }
 }
