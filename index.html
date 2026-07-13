@@ -13,15 +13,13 @@
         var isClassic = hashPath === '/classic' || hashPath === '/classic/'
         document.documentElement.dataset.resume = isClassic ? 'classic' : 'ai-first'
 
-        if (isClassic) {
-          var theme = 'light'
-          try {
-            if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
-          } catch (e) {
-            /* localStorage 不可用时用默认值 */
-          }
-          document.documentElement.dataset.theme = theme
+        var theme = 'light'
+        try {
+          if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
+        } catch (e) {
+          /* localStorage 不可用时用默认值 */
         }
+        document.documentElement.dataset.theme = theme
       })()
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,7 +29,7 @@
       rel="stylesheet"
     />
     <title>陈泽辉 · 前端负责人</title>
-    <script type="module" crossorigin src="/resume/assets/index-Dk8o1koq.js"></script>
+    <script type="module" crossorigin src="/resume/assets/index-BvTc6A4g.js"></script>
     <link rel="stylesheet" crossorigin href="/resume/assets/index-BpXMfiNa.css">
   </head>
   <body>
