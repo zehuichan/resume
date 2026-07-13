@@ -13,15 +13,13 @@
         var isClassic = hashPath === '/classic' || hashPath === '/classic/'
         document.documentElement.dataset.resume = isClassic ? 'classic' : 'ai-first'
 
-        if (isClassic) {
-          var theme = 'light'
-          try {
-            if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
-          } catch (e) {
-            /* localStorage 不可用时用默认值 */
-          }
-          document.documentElement.dataset.theme = theme
+        var theme = 'light'
+        try {
+          if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
+        } catch (e) {
+          /* localStorage 不可用时用默认值 */
         }
+        document.documentElement.dataset.theme = theme
       })()
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

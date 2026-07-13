@@ -3,13 +3,13 @@ import type { AiResume } from '../types'
 export const aiResume: AiResume = {
   profile: {
     name: '陈泽辉',
-    eyebrow: 'AI-NATIVE FRONTEND LEAD',
-    title: '前端负责人｜AI 编码工程化',
+    eyebrow: 'VIBE-CODING',
+    title: '前端负责人｜把 AI 产码跑进真实项目',
     avatar: 'avatar.png',
     experienceStartYear: 2015,
     meta: ['广州', '本科', '随时到岗'],
     summary:
-      '10 年+ 前端研发与 6 人团队管理经验。以 Vue3 与多端架构为交付底座，把 Agent Skills、上下文约束、质检脚本、Code Review、CI/CD 与监控串成团队级 Vibe-Coding 闭环，让 AI 生成代码能够稳定进入真实项目。',
+      '10 年+ 前端研发，带 6 人团队。以 Vue3 与多端架构为交付底座，把 Skills、上下文约束、质检脚本、Code Review、CI/CD 串成 Vibe-Coding 闭环，让 AI 生成的代码能稳定合进真实项目。',
     contacts: [
       {
         label: 'Email',
@@ -31,37 +31,37 @@ export const aiResume: AiResume = {
   pipeline: [
     {
       index: '01',
-      label: 'Define',
+      label: '定边界',
       owner: 'Human',
-      detail: '负责人确认需求边界、架构取舍和不可接受风险。',
-      output: '任务契约'
+      detail: '确认需求范围、架构取舍和不能碰的风险。',
+      output: '任务约定'
     },
     {
       index: '02',
-      label: 'Context',
+      label: '喂规范',
       owner: 'System',
-      detail: '项目规范、组件约束、OpenAPI 与示例代码进入上下文。',
+      detail: '把项目规范、组件约定、OpenAPI 和示例放进上下文。',
       output: '受控上下文'
     },
     {
       index: '03',
-      label: 'Generate',
+      label: 'Agent 生成',
       owner: 'Agent',
-      detail: 'Agent 按 Skills 生成 CRUD、组件与配套代码。',
+      detail: '按 Skills 生成 CRUD、组件和配套代码。',
       output: '候选实现'
     },
     {
       index: '04',
-      label: 'Verify',
+      label: 'Review',
       owner: 'Human',
-      detail: '质检脚本、类型检查与 Code Review 共同验证结果。',
+      detail: '质检脚本、类型检查和 Code Review 一起验结果。',
       output: '可合并代码'
     },
     {
       index: '05',
-      label: 'Deliver',
+      label: '上线',
       owner: 'System',
-      detail: 'CI/CD 发布并由监控承接上线后的质量反馈。',
+      detail: 'CI/CD 发布，监控承接上线后的质量反馈。',
       output: '生产交付'
     }
   ],
@@ -107,7 +107,7 @@ export const aiResume: AiResume = {
     }
   ],
   capabilities: [
-    { label: 'Vibe-Coding', proof: '把提示词经验升级为可安装 Skills、受控上下文、质检脚本与交付门禁。' },
+    { label: 'Vibe-Coding', proof: '把个人提示词经验收成可安装 Skills、受控上下文、质检脚本和交付门禁。' },
     { label: '团队管理', proof: '直接带领 6 名前端，负责排期、分工、Review、培养和结果交付。' },
     { label: 'Vue3 架构', proof: '从启动模板、组件矩阵到 Schema、物料与插件体系，持续沉淀可复用资产。' },
     { label: '跨端交付', proof: '覆盖后台、H5、公众号、小程序与低代码平台，多业务线并行推进。' },
@@ -119,5 +119,5 @@ export const aiResume: AiResume = {
     '4S 店 SaaS：独立交付支付宝双端，单店月保养 GMV 40 万。',
     '科技成果平台：前站、后台、专家小程序与直播平台四个子系统按期上线。'
   ],
-  closing: 'Human sets the boundary. Agent accelerates the path. System guards the result.'
+  closing: '先定边界，再让 Agent 加速，最后用系统和 Review 兜底。'
 }

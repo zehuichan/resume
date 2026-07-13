@@ -12,7 +12,7 @@ defineProps<{ project: AiCase; index: number }>()
   >
     <header class="ai-case-card__header">
       <div class="ai-case-card__index" aria-hidden="true">
-        CASE / {{ String(index + 1).padStart(2, '0') }}
+        案例 {{ String(index + 1).padStart(2, '0') }}
       </div>
       <div class="ai-case-card__heading">
         <p class="ai-case-card__kind">{{ project.kind }}</p>
@@ -28,25 +28,25 @@ defineProps<{ project: AiCase; index: number }>()
 
     <dl class="ai-case-flow">
       <div class="ai-case-flow__item">
-        <dt class="ai-case-flow__label">01 / INPUT</dt>
+        <dt class="ai-case-flow__label">场景</dt>
         <dd class="ai-case-flow__value">
           <AiRichText :text="project.input" />
         </dd>
       </div>
       <div class="ai-case-flow__item">
-        <dt class="ai-case-flow__label">02 / CONSTRAINTS</dt>
+        <dt class="ai-case-flow__label">约束</dt>
         <dd class="ai-case-flow__value">
           <AiRichText :text="project.constraints" />
         </dd>
       </div>
       <div class="ai-case-flow__item ai-case-flow__item--agent">
-        <dt class="ai-case-flow__label">03 / AGENT EXECUTION</dt>
+        <dt class="ai-case-flow__label">Agent 执行</dt>
         <dd class="ai-case-flow__value">
           <AiRichText :text="project.agentExecution" />
         </dd>
       </div>
       <div class="ai-case-flow__item ai-case-flow__item--human">
-        <dt class="ai-case-flow__label">04 / HUMAN REVIEW</dt>
+        <dt class="ai-case-flow__label">我把关</dt>
         <dd class="ai-case-flow__value">
           <AiRichText :text="project.humanReview" />
         </dd>
@@ -54,7 +54,7 @@ defineProps<{ project: AiCase; index: number }>()
     </dl>
 
     <div class="ai-case-card__outcome">
-      <span class="ai-case-card__outcome-label">VERIFIED OUTCOME</span>
+      <span class="ai-case-card__outcome-label">结果</span>
       <p class="ai-case-card__outcome-value">
         <AiRichText :text="project.outcome" />
       </p>

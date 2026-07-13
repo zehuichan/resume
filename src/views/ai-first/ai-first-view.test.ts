@@ -11,7 +11,7 @@ describe('AiFirstResumeView', () => {
     const metrics = wrapper.findAll('.ai-metric')
 
     expect(wrapper.get('[data-testid="ai-hero"]').text()).toContain(
-      '前端负责人｜AI 编码工程化',
+      '前端负责人｜把 AI 产码跑进真实项目',
     )
     expect(metrics).toHaveLength(4)
     expect(metrics[0].text()).toContain(
@@ -22,6 +22,12 @@ describe('AiFirstResumeView', () => {
     expect(wrapper.get('[data-testid="ai-pipeline"]').text()).toContain('Agent')
     expect(wrapper.findAll('[data-testid="ai-case"]')).toHaveLength(3)
     expect(wrapper.text()).toContain('日均发行 10000+')
+    expect(wrapper.text()).not.toContain('CONTROL PLANE')
+    expect(wrapper.text()).not.toContain('ACP://')
+    expect(wrapper.text()).not.toContain('SYS.01')
+    expect(wrapper.text()).not.toContain('MISSION RECORDS')
+    expect(wrapper.text()).toContain('Vibe-Coding 怎么跑')
+    expect(wrapper.text()).toContain('代表案例')
   })
 
   it('keeps an accessible avatar name when the profile image fails', async () => {
@@ -45,6 +51,21 @@ describe('AiFirstResumeView', () => {
     expect(printCss).toContain('.ai-case-flow__label,')
     expect(printCss).not.toMatch(/font-size:\s*[0-8](?:\.\d+)?pt/)
     expect(printCss).toMatch(/\.ai-footer\s*\{\s*margin-top:\s*3mm;/)
+  })
+
+  it('toggles data-theme between light and dark from the toolbar', async () => {
+    localStorage.removeItem('resume-theme')
+    document.documentElement.dataset.theme = 'light'
+    const wrapper = mount(AiFirstResumeView)
+
+    const toggle = wrapper.get('button[aria-label="切换到暗黑主题"]')
+    await toggle.trigger('click')
+
+    expect(document.documentElement.dataset.theme).toBe('dark')
+    expect(localStorage.getItem('resume-theme')).toBe('dark')
+
+    await wrapper.get('button[aria-label="切换到亮色主题"]').trigger('click')
+    expect(document.documentElement.dataset.theme).toBe('light')
   })
 })
 

@@ -1,6 +1,21 @@
 @import 'tailwindcss';
 
 html[data-resume='ai-first'] {
+  color-scheme: light;
+  --ai-bg: #f7f4ee;
+  --ai-panel: #ffffff;
+  --ai-panel-strong: #f3f0e8;
+  --ai-ink: #161a17;
+  --ai-ink-soft: #3d4340;
+  --ai-ink-faint: #747b76;
+  --ai-signal: #0f7a4a;
+  --ai-signal-cool: #0f766e;
+  --ai-line: #e5e8e2;
+  --ai-grid: rgba(15, 122, 74, 0.06);
+  --toolbar-bg: rgba(247, 244, 238, 0.92);
+}
+
+html[data-resume='ai-first'][data-theme='dark'] {
   color-scheme: dark;
   --ai-bg: #070b09;
   --ai-panel: #0d1410;
@@ -12,6 +27,7 @@ html[data-resume='ai-first'] {
   --ai-signal-cool: #67e8f9;
   --ai-line: #223128;
   --ai-grid: rgba(74, 222, 128, 0.07);
+  --toolbar-bg: rgba(7, 11, 9, 0.88);
 }
 
 html[data-resume='ai-first'] body {
@@ -42,20 +58,13 @@ html[data-resume='ai-first'] button:focus-visible {
   color: var(--ai-ink);
   font-family: 'IBM Plex Sans', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
   background:
-    radial-gradient(circle at 88% 4%, rgba(103, 232, 249, 0.1), transparent 26rem),
-    radial-gradient(circle at 4% 30%, rgba(74, 222, 128, 0.08), transparent 32rem);
+    radial-gradient(circle at 88% 4%, color-mix(in srgb, var(--ai-signal-cool) 12%, transparent), transparent 26rem),
+    radial-gradient(circle at 4% 30%, color-mix(in srgb, var(--ai-signal) 10%, transparent), transparent 32rem);
   page: ai-resume-page;
 }
 
 .ai-resume::before {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  content: '';
-  background-image:
-    linear-gradient(105deg, transparent 0 48%, rgba(74, 222, 128, 0.025) 48% 48.2%, transparent 48.2%),
-    repeating-linear-gradient(0deg, transparent 0 3px, rgba(255, 255, 255, 0.008) 3px 4px);
+  display: none;
 }
 
 .ai-shell {
@@ -326,7 +335,7 @@ html[data-resume='ai-first'] button:focus-visible {
 
 .ai-section-heading {
   display: grid;
-  grid-template-columns: 54px auto minmax(60px, 1fr);
+  grid-template-columns: auto minmax(60px, 1fr);
   gap: 14px;
   align-items: center;
   margin-bottom: 20px;
@@ -838,31 +847,13 @@ html[data-resume='ai-first'] button:focus-visible {
   bottom: 22px;
   z-index: 20;
   display: flex;
-  gap: 16px;
+  gap: 4px;
   align-items: center;
-  padding: 8px 8px 8px 14px;
+  padding: 6px;
   border: 1px solid var(--ai-line);
-  background: rgba(7, 11, 9, 0.92);
-  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.42);
+  background: var(--toolbar-bg);
+  box-shadow: 0 14px 40px color-mix(in srgb, var(--ai-ink) 12%, transparent);
   backdrop-filter: blur(12px);
-}
-
-.ai-toolbar__status {
-  display: flex;
-  gap: 7px;
-  align-items: center;
-  color: var(--ai-ink-faint);
-  font-family: 'Cascadia Code', 'SFMono-Regular', monospace;
-  font-size: 8px;
-  letter-spacing: 0.1em;
-}
-
-.ai-toolbar__status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--ai-signal);
-  box-shadow: 0 0 10px var(--ai-signal);
 }
 
 .ai-toolbar__button {
@@ -871,7 +862,7 @@ html[data-resume='ai-first'] button:focus-visible {
   align-items: center;
   min-height: 36px;
   padding: 0 14px;
-  color: #071009;
+  color: var(--ai-bg);
   font-family: 'Cascadia Code', 'SFMono-Regular', monospace;
   font-size: 9px;
   font-weight: 800;
@@ -884,13 +875,36 @@ html[data-resume='ai-first'] button:focus-visible {
     transform 160ms ease;
 }
 
-.ai-toolbar__button:hover {
+.ai-toolbar__button--primary {
+  color: #f7f4ee;
+  background: var(--ai-signal);
+}
+
+.ai-toolbar__button:hover,
+.ai-toolbar__button--primary:hover {
   background: var(--ai-signal-cool);
   transform: translateY(-1px);
 }
 
-.ai-toolbar__button-icon {
-  font-size: 16px;
+.ai-toolbar__icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--ai-ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  transition:
+    color 160ms ease,
+    background 160ms ease;
+}
+
+.ai-toolbar__icon-button:hover {
+  color: var(--ai-signal);
+  background: color-mix(in srgb, var(--ai-panel-strong) 80%, transparent);
 }
 
 @keyframes ai-pulse {
@@ -1047,7 +1061,7 @@ html[data-resume='ai-first'] button:focus-visible {
   }
 
   .ai-section-heading {
-    grid-template-columns: 42px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
   }
 
@@ -1141,6 +1155,11 @@ html[data-resume='ai-first'] button:focus-visible {
 
   .ai-toolbar__button {
     min-height: 44px;
+  }
+
+  .ai-toolbar__icon-button {
+    width: 44px;
+    height: 44px;
   }
 }
 

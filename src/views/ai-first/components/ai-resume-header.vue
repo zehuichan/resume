@@ -47,7 +47,7 @@ const avatarFailed = ref(false)
     </div>
 
     <address class="ai-contact-panel">
-      <p class="ai-contact-panel__label">SECURE CHANNELS</p>
+      <p class="ai-contact-panel__label">联系方式</p>
       <a
         v-for="contact in profile.contacts"
         :key="contact.label"

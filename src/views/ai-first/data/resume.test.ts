@@ -2,11 +2,16 @@ import { describe, expect, it } from 'vitest'
 import { aiResume } from './resume'
 
 describe('aiResume', () => {
-  it('uses the approved AI-First positioning and evidence', () => {
-    expect(aiResume.profile.title).toBe('前端负责人｜AI 编码工程化')
+  it('uses the approved Vibe-Coding positioning and evidence', () => {
+    expect(aiResume.profile.eyebrow).toBe('VIBE-CODING')
+    expect(aiResume.profile.title).toBe('前端负责人｜把 AI 产码跑进真实项目')
+    expect(aiResume.profile.summary).toContain('Vibe-Coding')
     expect(aiResume.metrics.map((metric) => metric.value)).toContain('6')
     expect(aiResume.metrics.map((metric) => metric.value)).toContain('7')
     expect(aiResume.cases[0]?.name).toBe('GeorgeGroup Agent Skills · AI 编码基建')
+    expect(aiResume.capabilities[0]?.label).toBe('Vibe-Coding')
+    expect(aiResume.closing).toContain('边界')
+    expect(aiResume.closing).not.toMatch(/Human sets the boundary/i)
   })
 
   it('does not overclaim unsupported experience', () => {

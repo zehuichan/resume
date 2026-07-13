@@ -58,3 +58,12 @@ export interface AiResume {
   classicEvidence: string[]
   closing: string
 }
+
+/** 主题标识：浅色默认与暗色面 */
+export type ThemeId = 'light' | 'dark'
+
+export interface Theme {
+  id: ThemeId
+  label: string
+  swatch: string
+}

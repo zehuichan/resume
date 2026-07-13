@@ -5,7 +5,7 @@ defineProps<{ stages: DeliveryStage[] }>()
 </script>
 
 <template>
-  <ol class="ai-pipeline" aria-label="AI 协同交付流水线">
+  <ol class="ai-pipeline" aria-label="Vibe-Coding 交付步骤">
     <li
       v-for="stage in stages"
       :key="stage.index"
@@ -23,7 +23,7 @@ defineProps<{ stages: DeliveryStage[] }>()
       <h3 class="ai-pipeline-stage__label">{{ stage.label }}</h3>
       <p class="ai-pipeline-stage__detail">{{ stage.detail }}</p>
       <p class="ai-pipeline-stage__output">
-        <span class="ai-pipeline-stage__output-label">OUTPUT</span>
+        <span class="ai-pipeline-stage__output-label">产出</span>
         {{ stage.output }}
       </p>
     </li>

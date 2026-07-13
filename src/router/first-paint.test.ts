@@ -38,15 +38,17 @@ describe('first-paint resume classification', () => {
     expect(document.documentElement.dataset.resume).toBe(expectedVersion)
   })
 
-  it('restores the saved theme only for an exact classic hash path', () => {
+  it('restores the saved theme for both resume versions', () => {
     const getItem = vi.spyOn(Storage.prototype, 'getItem').mockReturnValue('dark')
 
-    runFirstPaintScript('#/classical')
-    expect(getItem).not.toHaveBeenCalled()
-    expect(document.documentElement.dataset.theme).toBeUndefined()
+    runFirstPaintScript('#/')
+    expect(getItem).toHaveBeenCalledWith('resume-theme')
+    expect(document.documentElement.dataset.resume).toBe('ai-first')
+    expect(document.documentElement.dataset.theme).toBe('dark')
 
     runFirstPaintScript('#/classic?print=1')
     expect(getItem).toHaveBeenCalledWith('resume-theme')
+    expect(document.documentElement.dataset.resume).toBe('classic')
     expect(document.documentElement.dataset.theme).toBe('dark')
   })
 })
