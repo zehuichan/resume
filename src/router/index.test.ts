@@ -3,27 +3,27 @@ import { describe, expect, it } from 'vitest'
 import { createResumeRouter } from './index'
 
 describe('resume router', () => {
-  it('uses AI-First as the default and preserves the classic route', async () => {
+  it('uses the mainstream resume as the default and preserves AI-First', async () => {
     const router = createResumeRouter(createMemoryHistory())
 
     await router.push('/')
-    expect(router.currentRoute.value.name).toBe('ai-first')
-
-    await router.push('/classic')
     expect(router.currentRoute.value.name).toBe('classic')
+
+    await router.push('/ai-first')
+    expect(router.currentRoute.value.name).toBe('ai-first')
   })
 
-  it('redirects unknown paths to AI-First', async () => {
+  it('redirects unknown paths to the mainstream resume', async () => {
     const router = createResumeRouter(createMemoryHistory())
 
     await router.push('/missing')
-    expect(router.currentRoute.value.name).toBe('ai-first')
+    expect(router.currentRoute.value.name).toBe('classic')
   })
 
-  it('accepts the optional trailing slash on the classic route', async () => {
+  it('keeps the former classic route as a compatibility redirect', async () => {
     const router = createResumeRouter(createMemoryHistory())
 
-    await router.push('/classic/')
+    await router.push('/classic')
     expect(router.currentRoute.value.name).toBe('classic')
   })
 })

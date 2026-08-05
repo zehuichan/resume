@@ -4,22 +4,15 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 路由就绪后由对应版本的元数据覆盖 -->
+    <!-- 路由就绪后由对应页面的元数据覆盖 -->
     <meta name="description" content="陈泽辉 · 前端负责人简历 · Vue / Taro / uniapp 实战经验" />
     <meta name="theme-color" content="#fafaf8" />
     <script>
       ;(function () {
         var hashPath = window.location.hash.slice(1).split(/[?#]/)[0]
-        var isClassic = hashPath === '/classic' || hashPath === '/classic/'
-        document.documentElement.dataset.resume = isClassic ? 'classic' : 'ai-first'
-
-        var theme = 'light'
-        try {
-          if (localStorage.getItem('resume-theme') === 'dark') theme = 'dark'
-        } catch (e) {
-          /* localStorage 不可用时用默认值 */
-        }
-        document.documentElement.dataset.theme = theme
+        var isAiFirst = hashPath === '/ai-first' || hashPath === '/ai-first/'
+        document.documentElement.dataset.resume = isAiFirst ? 'ai-first' : 'classic'
+        document.documentElement.dataset.theme = 'light'
       })()
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

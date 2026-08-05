@@ -1,6 +1,6 @@
 # 陈泽辉的简历
 
-一份数据驱动的单页简历，编辑风工程档案设计。默认皮肤「红石 / Redstone」为暖纸底 + 锈红强调的编辑风格（呼应同名分享 talk 的设计语言），另含暗色 / Linear / Vercel / Notion 共 5 套皮肤一键切换，支持一键导出 PDF。
+一份数据驱动、打印优先的中文技术简历。视觉采用白色 A4 纸张、深灰正文与单一低饱和蓝色强调，减少装饰以保证国内招聘平台预览、黑白打印和 PDF 导出时的可读性。
 
 ## 技术栈
 
@@ -23,15 +23,15 @@ pnpm preview  # 预览构建产物
 
 ## 维护内容
 
-默认简历：`/#/`（AI-First）
-经典简历：`/#/classic`
+默认简历：`/#/`（招聘版 · 前端负责人）
+Agent 版：`/#/ai-first`（转行 Agent 应用开发工程师）
 
-AI-First 内容：`src/views/ai-first/data/resume.ts`
-经典版内容：`src/views/classic/data/resume.ts`
+右上角可在「招聘版 / Agent 版」之间切换；两版版式一致，仅内容定位不同。
 
-两个版本有意保持独立，不共享内容组件或样式。维护时请只修改对应版本目录，避免一个版本的内容或视觉变更影响另一个版本。
+招聘版内容：`src/views/classic/data/resume.ts`
+Agent 版内容：`src/views/ai-first/data/resume.ts`
 
-经典版行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。两个版本的经验年限都由各自数据文件中的 `profile.experienceStartYear` 自动计算，按需分别修改起算年份即可。
+Agent 版复用招聘版布局与样式，内容独立维护。行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。经验年限由各自数据文件中的 `profile.experienceStartYear` 自动计算。
 
 ## 目录结构
 
@@ -42,11 +42,11 @@ AI-First 内容：`src/views/ai-first/data/resume.ts`
 ├─ public/                # avatar.png、favicon.svg
 └─ src/
    ├─ app.vue              # 路由出口
-   ├─ router/              # 双版本路由与页面标题
-   ├─ shared/              # 版本导航与共享工具
+   ├─ router/              # 页面路由与标题
+   ├─ shared/              # 版本切换与共享工具
    └─ views/
-      ├─ ai-first/         # AI-First 内容、组件与样式
-      └─ classic/          # 经典版内容、组件与样式
+      ├─ ai-first/         # Agent 版内容（布局复用招聘版）
+      └─ classic/          # 招聘版内容、组件与样式
 ```
 
 ## 导出 PDF

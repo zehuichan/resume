@@ -1,16 +1,7 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import { Link, Moon, Printer, Sun } from '@lucide/vue'
-import { useTheme } from '../composables/use-theme'
-
-const { current, setTheme, sync } = useTheme()
-
-const isDark = computed(() => current.value === 'dark')
+import { Link, Printer } from '@lucide/vue'
 
 const print = () => window.print()
-const toggleTheme = () => setTheme(isDark.value ? 'light' : 'dark')
-
-onMounted(sync)
 </script>
 
 <template>
@@ -25,18 +16,6 @@ onMounted(sync)
     >
       <Printer :size="15" />
       <span>导出 PDF</span>
-    </button>
-
-    <button
-      type="button"
-      :title="isDark ? '切换到 Light Spec' : '切换到 Dark Spec'"
-      :aria-label="isDark ? '切换到亮色主题' : '切换到暗黑主题'"
-      :aria-pressed="isDark"
-      class="flex h-9 w-9 items-center justify-center text-classic-ink-soft transition-colors hover:bg-classic-paper-soft hover:text-classic-accent"
-      @click="toggleTheme"
-    >
-      <Sun v-if="isDark" :size="17" />
-      <Moon v-else :size="17" />
     </button>
 
     <a

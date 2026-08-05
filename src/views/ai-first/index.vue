@@ -1,137 +1,124 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getExperienceYears } from '../../shared/utils/experience'
-import {
-  AiCaseCard,
-  AiResumeHeader,
-  AiRichText,
-  AiToolbar,
-  DeliveryPipeline,
-  EvidenceMetric,
-} from './components'
-import { aiResume } from './data/resume'
-import type { EvidenceMetric as EvidenceMetricData } from './types'
+import { CompactProjectItem, ProjectItem, ResumeHeader, RichText, SectionHeader, Toolbar } from '../classic/components'
+import type { Project } from '../classic/types'
+import { aiResume } from './data'
 import './styles/resume.css'
 
-const metrics = computed<EvidenceMetricData[]>(() => [
-  {
-    value: String(getExperienceYears(aiResume.profile.experienceStartYear)),
-    unit: '年+',
-    label: '前端研发经验',
-    detail: `自 ${aiResume.profile.experienceStartYear} 年持续参与生产级前端交付`,
-  },
-  ...aiResume.metrics,
-])
+const year = new Date().getFullYear()
+
+const featuredProjects = computed(() => aiResume.experience.projects.filter((p) => p.featured))
+const getProjectSortValue = (project: Project) => {
+  const dateText = project.sortDate ?? project.period.split('-').at(-1)?.trim() ?? project.period
+  const match = dateText.match(/(\d{4})\.(\d{2})/)
+  if (!match) return 0
+  return Number(match[1]) * 100 + Number(match[2])
+}
+const compactProjects = computed(() =>
+  [...aiResume.experience.projects.filter((p) => !p.featured), ...aiResume.moreProjects.projects]
+    .sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a))
+    .slice(0, 5)
+)
 </script>
 
 <template>
-  <div class="ai-resume">
-    <AiToolbar />
+  <div class="classic-resume flex min-h-screen justify-center px-4 pt-7 pb-24 sm:py-12">
+    <main class="sheet w-full max-w-[980px]">
+      <ResumeHeader :profile="aiResume.profile" />
 
-    <div class="ai-shell">
-      <header class="ai-hero ai-panel ai-break-avoid" data-testid="ai-hero">
-        <AiResumeHeader :profile="aiResume.profile" />
-      </header>
+      <section class="reveal">
+        <SectionHeader title="个人优势" />
+        <RichText tag="p" :text="aiResume.profile.summary" class="m-0 text-[14px] leading-[1.85] text-classic-ink-soft" />
+      </section>
 
-      <main class="ai-main">
-        <section class="ai-section" aria-labelledby="ai-evidence-title">
-          <div class="ai-section-heading">
-            <div class="ai-section-heading__copy">
-              <h2 id="ai-evidence-title" class="ai-section-heading__title">可信交付读数</h2>
+      <section class="reveal">
+        <SectionHeader title="专业技能" />
+        <div class="flex flex-col">
+          <div
+            v-for="s in aiResume.skills"
+            :key="s.label"
+            class="break-avoid grid gap-1 border-t border-classic-line py-2.5 first:border-t-0 sm:grid-cols-[96px_1fr] sm:gap-5"
+          >
+            <span class="text-[12px] font-semibold text-classic-ink">{{ s.label }}</span>
+            <RichText :text="s.body" class="min-w-0 text-[13px] leading-[1.7] text-classic-ink-soft" />
+          </div>
+        </div>
+      </section>
+
+      <section class="reveal">
+        <SectionHeader title="工作经历" :sub="aiResume.experience.sub.split(' · ')[0]" />
+        <ul class="list-none p-0 m-0">
+          <li
+            v-for="c in aiResume.companies"
+            :key="c.name"
+            class="break-avoid grid gap-1 border-t border-classic-line py-3 first:border-t-0 sm:grid-cols-[1fr_auto]"
+          >
+            <div>
+              <span class="text-[14px] font-bold text-classic-ink">{{ c.name }}</span>
+              <span class="ml-3 text-[12px] text-classic-ink-soft">{{ c.department }} · {{ c.role }}</span>
             </div>
-            <span class="ai-section-heading__rule" aria-hidden="true"></span>
-          </div>
+            <span class="text-[11.5px] text-classic-ink-faint tabular-nums">{{ c.period }}</span>
+          </li>
+        </ul>
+      </section>
 
-          <div class="ai-metric-grid">
-            <EvidenceMetric v-for="metric in metrics" :key="metric.label" :metric="metric" />
-          </div>
-        </section>
+      <section class="reveal">
+        <SectionHeader title="项目经历" :sub="`${featuredProjects.length} 个代表项目`" />
+        <div class="divide-y divide-classic-line">
+          <ProjectItem v-for="(p, i) in featuredProjects" :key="p.name" :project="p" :index="i" />
+        </div>
+      </section>
 
-        <section
-          class="ai-section ai-pipeline-section"
-          aria-labelledby="ai-pipeline-title"
-          data-testid="ai-pipeline"
-        >
-          <div class="ai-section-heading">
-            <div class="ai-section-heading__copy">
-              <h2 id="ai-pipeline-title" class="ai-section-heading__title">Vibe-Coding 怎么跑</h2>
-            </div>
-            <span class="ai-section-heading__rule" aria-hidden="true"></span>
-          </div>
+      <section class="reveal">
+        <SectionHeader title="其他项目" />
+        <div class="border-b border-classic-line">
+          <CompactProjectItem v-for="(p, i) in compactProjects" :key="p.name" :project="p" :index="i" />
+        </div>
+      </section>
 
-          <DeliveryPipeline :stages="aiResume.pipeline" />
-        </section>
-
-        <section class="ai-section" aria-labelledby="ai-cases-title">
-          <div class="ai-section-heading">
-            <div class="ai-section-heading__copy">
-              <h2 id="ai-cases-title" class="ai-section-heading__title">代表案例</h2>
-            </div>
-            <span class="ai-section-heading__rule" aria-hidden="true"></span>
-          </div>
-
-          <div class="ai-case-grid">
-            <AiCaseCard
-              v-for="(project, index) in aiResume.cases"
-              :key="project.name"
-              :project="project"
-              :index="index"
-              data-testid="ai-case"
-            />
-          </div>
-        </section>
-
-        <section class="ai-section" aria-labelledby="ai-capabilities-title">
-          <div class="ai-section-heading">
-            <div class="ai-section-heading__copy">
-              <h2 id="ai-capabilities-title" class="ai-section-heading__title">能力</h2>
-            </div>
-            <span class="ai-section-heading__rule" aria-hidden="true"></span>
-          </div>
-
-          <div class="ai-capability-grid">
-            <article
-              v-for="(capability, index) in aiResume.capabilities"
-              :key="capability.label"
-              class="ai-capability ai-panel ai-break-avoid"
+      <section class="reveal">
+        <SectionHeader title="开源经历" :sub="aiResume.openSource.sub" />
+        <RichText tag="p" :text="aiResume.openSource.intro" class="m-0 mb-4 text-[13px] leading-[1.75] text-classic-ink-soft" />
+        <div class="grid gap-2">
+          <div
+            v-for="o in aiResume.openSource.items"
+            :key="o.href"
+            class="break-avoid flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-classic-line py-2.5"
+          >
+            <a
+              :href="o.href"
+              target="_blank"
+              rel="noreferrer"
+              class="font-classic-sans text-[14px] font-bold tracking-[-0.015em] text-classic-accent transition-colors hover:text-classic-accent-deep"
             >
-              <span class="ai-capability__index">
-                {{ String(index + 1).padStart(2, '0') }}
-              </span>
-              <h3 class="ai-capability__label">{{ capability.label }}</h3>
-              <p class="ai-capability__proof">
-                <AiRichText :text="capability.proof" />
-              </p>
-            </article>
+              {{ o.name }}
+            </a>
+            <span class="text-[12.5px] leading-[1.6] text-classic-ink-faint">/ {{ o.desc }}</span>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section
-          class="ai-section ai-field-evidence ai-panel ai-break-avoid"
-          aria-labelledby="ai-field-evidence-title"
-        >
-          <div class="ai-field-evidence__heading">
-            <h2 id="ai-field-evidence-title" class="ai-field-evidence__title">业务硬证据</h2>
-          </div>
-          <ul class="ai-field-evidence__list">
-            <li
-              v-for="(evidence, index) in aiResume.classicEvidence"
-              :key="evidence"
-              class="ai-field-evidence__item"
-            >
-              <span class="ai-field-evidence__index" aria-hidden="true">
-                {{ String(index + 1).padStart(2, '0') }}
-              </span>
-              <AiRichText :text="evidence" />
-            </li>
-          </ul>
-        </section>
-      </main>
+      <section class="reveal">
+        <SectionHeader title="教育背景" />
+        <ul class="list-none p-0 m-0">
+          <li
+            v-for="e in aiResume.education"
+            :key="e.school"
+            class="break-avoid flex flex-wrap items-baseline gap-x-3 border-t border-classic-line py-2.5 first:border-t-0"
+          >
+            <span class="font-classic-sans text-[14px] font-bold tracking-[-0.015em] text-classic-ink">{{ e.school }}</span>
+            <span class="font-classic-mono text-[11.5px] uppercase tracking-[0.06em] text-classic-ink-faint">/ {{ e.major }}</span>
+            <span class="ml-auto font-classic-mono text-[11.5px] text-classic-ink-faint">{{ e.degree }}</span>
+          </li>
+        </ul>
+      </section>
 
-      <footer class="ai-footer">
-        <p class="ai-footer__closing">{{ aiResume.closing }}</p>
-        <p class="ai-footer__signature">陈泽辉</p>
+      <footer class="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-classic-line pt-4">
+        <p class="m-0 text-[11.5px] text-classic-ink-faint">{{ aiResume.closing }}</p>
+        <span class="text-[11px] text-classic-ink-faint tabular-nums">© {{ year }} {{ aiResume.profile.name }}</span>
       </footer>
-    </div>
+    </main>
+
+    <Toolbar />
   </div>
 </template>

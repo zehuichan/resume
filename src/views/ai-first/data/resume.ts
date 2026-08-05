@@ -1,123 +1,218 @@
-import type { AiResume } from '../types'
+import { Code, Mail } from '@lucide/vue'
+import type { Resume } from '../../classic/types'
 
-export const aiResume: AiResume = {
+/** Agent 应用开发工程师投递版：结构与招聘版一致，叙事聚焦 Agent 应用落地 */
+export const aiResume: Resume = {
   profile: {
     name: '陈泽辉',
-    eyebrow: 'VIBE-CODING',
-    title: '前端负责人｜把 AI 产码跑进真实项目',
+    title: 'Agent 应用开发工程师',
     avatar: 'avatar.png',
     experienceStartYear: 2015,
     meta: ['广州', '本科', '随时到岗'],
     summary:
-      '10 年+ 前端研发，带 6 人团队。以 Vue3 与多端架构为交付底座，把 Skills、上下文约束、质检脚本、Code Review、CI/CD 串成 Vibe-Coding 闭环，让 AI 生成的代码能稳定合进真实项目。',
+      '10 年+ 前端工程与团队交付经验，现转向 ==Agent 应用开发==。把架构治理、工程化与质量门禁迁移到 Agent 系统：建设可安装 Skills、受控上下文、工具编排与人工复核闭环，让 `Cursor` / `Claude Code` 按团队规范产码并进入真实业务。现任敬城集团前端负责人，主导 Agent Skills 与前端交付底座，希望继续深耕 Agent 应用落地。',
     contacts: [
       {
+        icon: Mail,
         label: 'Email',
         value: 'jasonchenzehui@gmail.com',
         href: 'mailto:jasonchenzehui@gmail.com'
       },
       {
+        icon: Code,
         label: 'GitHub',
         value: 'github.com/zehuichan',
         href: 'https://github.com/zehuichan'
       }
     ]
   },
+
   metrics: [
-    { value: '6', unit: '人', label: '前端团队', detail: '排期、分工、Review、培养与交付结果' },
-    { value: '7', unit: '个', label: 'CI/CD 覆盖系统', detail: 'ERP3、CSS、QMS、LMS、SRM、FSSC、FIMS' },
-    { value: '分钟级', unit: '', label: '标准 CRUD 生成', detail: 'Skills 约束生成，脚本与人工 Review 兜底' }
+    { value: '6', unit: '人', label: '前端团队' },
+    { value: '7', unit: '个', label: 'CI/CD 覆盖系统' },
+    { value: '分钟级', unit: '', label: '标准 CRUD 生成' }
   ],
-  pipeline: [
+
+  experience: {
+    sub: '2015.11 - 至今 · 从前端交付到 Agent 应用开发',
+    timeline: [],
+    projects: [
+      {
+        name: 'GeorgeGroup Agent Skills · AI 编码基建',
+        kind: 'Agent 应用',
+        period: '2025.09 - 至今',
+        role: '方向负责人',
+        featured: true,
+        scene:
+          '团队开始规模化使用 `Cursor`、`Claude Code` 生成 CRUD 与业务组件，但目录结构、组件写法、OpenAPI 接入和质量校验缺少统一约束，生成结果难以直接合入生产。',
+        action:
+          '建设 GeorgeGroup Skills 仓与 `npx skills` 安装链路；沉淀 `vue-vben-crud`、`vue-components-practices`，覆盖 CRUD 生成、OpenAPI 接入、组件规范与质检脚本；明确人机分工：人定边界与 Review，Agent 执行生成，脚本兜底机械规则。',
+        result:
+          '把个人提示词经验变成团队可复用的 Agent 产码规范，标准 CRUD 与规范组件可由 Agent ==分钟级生成==，6 人团队共享同一套目录、组件和质量约束。'
+      },
+      {
+        name: '敬城集团前端架构体系路线图',
+        kind: '交付底座',
+        period: '2025.09 - 至今',
+        role: '体系主导',
+        featured: true,
+        scene:
+          '后台、H5、小程序与低代码需求并行增长，若缺少统一模板、组件、权限与发布能力，Agent 生成结果也无法稳定接入真实项目。',
+        action:
+          '把体系拆成五层：启动模板、组件矩阵、Tenon 低代码、Agent Skills、CI/CD 与监控；让 Agent 产出落在可复用工程资产与自动化发布链路上。',
+        result:
+          '形成从项目初始化、组件复用、页面搭建、AI 生成到发布监控的统一资产链路；CI/CD 已覆盖 ==ERP3、CSS、QMS、LMS、SRM、FSSC、FIMS 7 个系统==。'
+      },
+      {
+        name: 'Tenon 低代码画布引擎',
+        kind: 'Schema / 工具层',
+        period: '2026.07 - 至今',
+        role: '架构主导',
+        featured: true,
+        scene:
+          '集团中后台存在大量表单、表格、详情与流程页面，需要结构化页面协议，以便后续把生成、搭建与运行时渲染接到同一套 Schema。',
+        action:
+          '设计 `@tenon/*` monorepo 与 Schema 协议，拆分设计器、渲染器、物料与插件；通过 Vite 插件把设计器入口、物料扫描、样式注入和持久化接入收敛为一行配置。',
+        result:
+          '形成 `/__tenon__/` 设计器、`TenonRenderer`、物料注册与 GitLab npm 私服发布链路，已在后台模板中完成 ==@tenon/plugin 一行接入== 与运行时物料装填。'
+      },
+      {
+        name: '和林国际物流信息管理系统',
+        kind: '国际物流全链路',
+        period: '2023.07 - 2025.08',
+        role: '架构主导',
+        scene:
+          '国际物流全链路系统，覆盖收发、运输、仓储、报关、跟踪等环节，同时承接公众号下单查货与后台业务流转。',
+        action:
+          '主导 `vue3` 技术栈选型、工程搭建与组件分层，统一请求、权限、表单、字典等基础能力，并落地核心业务流程。',
+        result:
+          '后台稳定承载下单、配载、订舱、清关、派送、签收、财务报表 ==7 大模块==，用户端与管理端共用组件资产持续迭代。'
+      },
+      {
+        name: '广东科技成果转移转化中心线上平台',
+        kind: '众包服务平台',
+        period: '2022.11 - 2023.06',
+        role: '整站负责',
+        scene:
+          '政企科技成果转移转化平台，连接专家成果、知识产权与企业需求，包含前站、管理后台、专家小程序与直播平台四个端。',
+        action:
+          '统一请求层、缓存与工具函数；抽离 OSS 上传、动态录入等业务组件；接入 zego 实时音视频与超级白板能力。',
+        result:
+          '==四个子系统==按期上线，公共组件与工具层复用于后续需求，降低多端维护成本并稳定支撑专家直播场景。'
+      },
+      {
+        name: '中视 ETC 一站式发行平台',
+        kind: '支付宝生态',
+        period: '2020.09 - 2022.10',
+        role: '前端负责',
+        scene:
+          '支付宝生态下的全国 ETC 发行平台，对接多省发行方，覆盖客货车发行、通行扣费、售后处理与车主服务。',
+        action:
+          '负责前端选型与框架搭建，重构管理后台请求、字典、菜单权限与组件体系；基于 `element-ui` 封装业务组件库并落地 Code Review。',
+        result:
+          '平台接入广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户规模 100 万。'
+      },
+      {
+        name: '4S 店 SAAS 系统',
+        kind: '支付宝小程序',
+        period: '2022.02 - 2022.08',
+        role: '独立开发',
+        scene:
+          '基于支付宝芝麻 GO、花呗分期等信用能力的 4S 店营销工具，覆盖用户端活动承接与商户端运营管理。',
+        action:
+          '独立完成双端搭建、接口联调与规范设计；封装 OSS 上传、OCR 识别、车牌输入、选择器与响应式 `useStorage`。',
+        result: '单店月保养 GMV 达 ==40 万==，并接入支付宝域内消息与灯火平台，形成用户端营销承接与商户端运营闭环。'
+      }
+    ]
+  },
+
+  moreProjects: {
+    sub: '补充业务交付证据',
+    projects: [
+      {
+        name: '同律人 · 法律咨询',
+        kind: '移动端 App',
+        period: '2020.01 - 2020.07',
+        role: '独立开发',
+        sortDate: '2020.07',
+        scene: '法律咨询移动端 App，覆盖内容课程、在线咨询、支付、订单、钱包与个人中心。',
+        action: '独立完成前端搭建与模块联调，接入 `tim-js-sdk` 实现在线咨询。',
+        result: '整站独立交付，==IM 在线咨询==与支付、订单模块形成服务闭环。'
+      },
+      {
+        name: '南海燃气 · 燃气管家',
+        kind: '公众号 + 管理后台',
+        period: '2017.08 - 2019.03',
+        role: '核心开发',
+        sortDate: '2019.03',
+        scene: '面向燃气用户、客服与施工师傅的公众号及管理后台。',
+        action: '负责前站与配套后台主要功能开发，降低多模块维护成本。',
+        result: '用户预约、后台派单、师傅现场反馈形成线上闭环，支撑安装、维修、安检等==多类民生服务流程==。'
+      }
+    ]
+  },
+
+  companies: [
+    { name: '敬城集团', department: '技术中心', role: '前端负责人', period: '2025.09 - 至今' },
+    { name: '广州高鼎信息科技有限公司', department: '技术中心', role: '高级前端', period: '2023.07 - 2025.08' },
+    { name: '广州兴工科技有限公司', department: '技术中心', role: '高级前端', period: '2022.11 - 2023.06' },
+    { name: '广东中视信息科技有限公司', department: '技术中心', role: '高级前端', period: '2020.09 - 2022.10' },
+    { name: '广州创思云网络科技有限公司', department: '技术部', role: '中级前端', period: '2019.04 - 2020.06' },
+    { name: '佛山市电子口岸有限公司', department: '技术部', role: '中级前端', period: '2015.11 - 2019.04' }
+  ],
+
+  openSource: {
+    sub: 'github.com/zehuichan',
+    intro:
+      '习惯把重复业务和工程经验沉淀为可复用资产：独立维护 `element-components`、`vant-components`，并在团队内建设 Agent Skills 安装与质检链路。GitHub 公开仓库 **44 个**。',
+    items: [
+      {
+        name: 'element-components',
+        href: 'https://github.com/zehuichan/element-components',
+        desc: 'Vue · 基于 element-ui 二次封装的业务组件库 · PC 管理后台场景'
+      },
+      {
+        name: 'vant-components',
+        href: 'https://github.com/zehuichan/vant-components',
+        desc: 'Vue · 基于 vant-ui 二次封装的业务组件库 · 移动端业务场景'
+      }
+    ],
+    highlightTag: '资产沉淀',
+    highlight:
+      '从组件库到 Agent Skills，持续把个人经验收成可安装、可复用、可质检的团队资产。'
+  },
+
+  skills: [
     {
-      index: '01',
-      label: '定边界',
-      owner: 'Human',
-      detail: '确认需求范围、架构取舍和不能碰的风险。',
-      output: '任务约定'
+      label: 'Agent 工程',
+      body: '能把提示词经验沉淀为可安装 Skills，覆盖 CRUD 生成、组件规范、OpenAPI 接入与质检脚本，让 Agent 按团队标准产码。'
     },
     {
-      index: '02',
-      label: '喂规范',
-      owner: 'System',
-      detail: '把项目规范、组件约定、OpenAPI 和示例放进上下文。',
-      output: '受控上下文'
+      label: '上下文编排',
+      body: '熟悉把项目规范、组件约定、示例与接口契约放入受控上下文，降低 Agent 幻觉与风格漂移。'
     },
     {
-      index: '03',
-      label: 'Agent 生成',
-      owner: 'Agent',
-      detail: '按 Skills 生成 CRUD、组件和配套代码。',
-      output: '候选实现'
+      label: '人机协作',
+      body: '明确边界：人负责需求范围、架构取舍与风险判断，Agent 负责候选实现，脚本与 Code Review 负责质量兜底。'
     },
     {
-      index: '04',
-      label: 'Review',
-      owner: 'Human',
-      detail: '质检脚本、类型检查和 Code Review 一起验结果。',
-      output: '可合并代码'
+      label: '应用交付',
+      body: '能把 Agent 产出接入真实项目：配合 CI/CD、类型检查、质检脚本与发布监控，形成可合并、可上线的闭环。'
     },
     {
-      index: '05',
-      label: '上线',
-      owner: 'System',
-      detail: 'CI/CD 发布，监控承接上线后的质量反馈。',
-      output: '生产交付'
+      label: '工程底座',
+      body: '具备 `vue3`、组件体系、Schema / 低代码与多端交付经验，能为 Agent 应用提供稳定的工程与业务落点。'
+    },
+    {
+      label: '团队落地',
+      body: '直接带领 6 名前端，负责排期、分工、Review 与规范推广，已让 Agent Skills 进入团队日常使用。'
     }
   ],
-  cases: [
-    {
-      name: 'GeorgeGroup Agent Skills · AI 编码基建',
-      kind: 'AI 工程化',
-      period: '2025.09 - 至今',
-      role: '方向负责人',
-      signal: '6 人团队日常使用',
-      input: '团队在 Cursor、Claude Code 中生成 CRUD 与业务组件，但目录、写法和质量标准不一致。',
-      constraints: '生成结果必须遵循既有 Vue3 架构、组件规范、OpenAPI 接入方式和代码审查边界。',
-      agentExecution: '建设 Skills 仓与 npx skills 安装链路，沉淀 vue-vben-crud、vue-components-practices 和质检脚本。',
-      humanReview: '负责人定义需求边界、架构取舍与风险，成员通过 Review 校验业务正确性，脚本负责机械规则。',
-      outcome: '标准 CRUD 与规范组件可分钟级生成，6 人团队共享同一套目录、组件和质量约束。',
-      tech: ['Cursor', 'Claude Code', 'Agent Skills', 'OpenAPI', 'CI/CD']
-    },
-    {
-      name: '敬城集团前端架构体系路线图',
-      kind: '架构与团队治理',
-      period: '2025.09 - 至今',
-      role: '前端负责人',
-      signal: '7 个系统自动化交付',
-      input: '后台、H5、小程序与低代码需求并行增长，各项目重复搭建模板、组件、权限和发布流程。',
-      constraints: '统一架构必须兼顾多端差异、存量系统迁移、团队能力梯度和持续交付稳定性。',
-      agentExecution: '将模板、组件矩阵、Tenon、Agent Skills、CI/CD 与监控组织为五层前端能力路线图。',
-      humanReview: '负责 6 人团队排期分工、技术方案、Code Review、成员培养和跨项目交付结果。',
-      outcome: '形成项目初始化到发布监控的统一资产链路，CI/CD 覆盖 ERP3、CSS、QMS、LMS、SRM、FSSC、FIMS。',
-      tech: ['Vue3', 'Vite', 'Monorepo', 'GitLab CI/CD', 'Monitoring']
-    },
-    {
-      name: 'Tenon 低代码画布引擎',
-      kind: '低代码平台',
-      period: '2026.07 - 至今',
-      role: '架构主导',
-      signal: '@tenon/plugin 一行接入',
-      input: '集团中后台存在大量表单、表格、详情与流程页面，需要降低重复开发成本。',
-      constraints: '可视化搭建必须嵌入现有 pro-code 系统，不能牺牲源码工程的扩展性和发布链路。',
-      agentExecution: '设计 @tenon/* monorepo、Schema 协议、设计器、渲染器、物料与插件分层。',
-      humanReview: '主导协议边界、插件接口、运行时装填策略和与后台模板的集成方案。',
-      outcome: '形成 /__tenon__/ 设计器、TenonRenderer、物料注册与 GitLab npm 私服发布链路。',
-      tech: ['Vue3', 'TypeScript', 'Schema', 'Vite Plugin', 'GitLab npm']
-    }
+
+  education: [
+    { school: '广东外语外贸大学', major: '工商管理', degree: '本科' },
+    { school: '广东机电职业技术学院', major: '应用电子技术', degree: '大专' }
   ],
-  capabilities: [
-    { label: 'Vibe-Coding', proof: '把个人提示词经验收成可安装 Skills、受控上下文、质检脚本和交付门禁。' },
-    { label: '团队管理', proof: '直接带领 6 名前端，负责排期、分工、Review、培养和结果交付。' },
-    { label: 'Vue3 架构', proof: '从启动模板、组件矩阵到 Schema、物料与插件体系，持续沉淀可复用资产。' },
-    { label: '跨端交付', proof: '覆盖后台、H5、公众号、小程序与低代码平台，多业务线并行推进。' },
-    { label: '工程质量', proof: '通过请求层、权限、异常兜底、类型检查、CI/CD 与监控前移质量。' },
-    { label: '复杂问题', proof: '能从业务约束定位架构边界，拆解方案并推动团队完成生产交付。' }
-  ],
-  classicEvidence: [
-    '中视 ETC：日均发行 10000+，累计服务用户 100 万。',
-    '4S 店 SaaS：独立交付支付宝双端，单店月保养 GMV 40 万。',
-    '科技成果平台：前站、后台、专家小程序与直播平台四个子系统按期上线。'
-  ],
-  closing: '先定边界，再让 Agent 加速，最后用系统和 Review 兜底。'
+
+  closing: '寻求 Agent 应用开发工程师机会，期待用工程化方式把 Agent 能力做成可交付系统。'
 }

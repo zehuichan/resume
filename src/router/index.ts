@@ -9,25 +9,29 @@ import {
 export const routes: RouteRecordRaw[] = [
   {
     path: '/',
+    name: 'classic',
+    component: () => import('../views/classic/index.vue'),
+    meta: {
+      title: '陈泽辉 · 前端负责人',
+      description: '陈泽辉 · 10 年+ Vue3、多端架构、组件化、团队管理与 CI/CD 实战经验',
+      themeColor: '#ffffff',
+      resumeVersion: 'classic'
+    }
+  },
+  {
+    path: '/ai-first',
     name: 'ai-first',
     component: () => import('../views/ai-first/index.vue'),
     meta: {
-      title: '陈泽辉 · 前端负责人｜AI 编码工程化',
-      description: '陈泽辉 · 10 年+ 前端研发 · 6 人团队管理 · Vue3 架构与团队级 Vibe-Coding',
-      themeColor: '#070b09',
+      title: '陈泽辉 · Agent 应用开发工程师',
+      description: '陈泽辉 · Agent 应用开发 · Skills / 上下文编排 / 质检闭环 / 真实业务交付',
+      themeColor: '#ffffff',
       resumeVersion: 'ai-first'
     }
   },
   {
     path: '/classic',
-    name: 'classic',
-    component: () => import('../views/classic/index.vue'),
-    meta: {
-      title: '陈泽辉 · 前端负责人',
-      description: '陈泽辉 · 10 年+ Vue3、多端架构、组件化与 CI/CD 实战经验',
-      themeColor: '#fafaf8',
-      resumeVersion: 'classic'
-    }
+    redirect: '/'
   },
   {
     path: '/:pathMatch(.*)*',

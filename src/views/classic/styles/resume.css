@@ -1,94 +1,53 @@
-@import 'tailwindcss';
+﻿@import 'tailwindcss';
 
 @theme {
-  /* Modern engineer spec sheet: near-white paper, graphite ink, one terminal-green accent. */
+  /* Print-first resume: white paper, neutral ink, one restrained blue accent. */
   --color-*: initial;
   --font-*: initial;
 
-  --color-classic-paper: #fafaf8;
-  --color-classic-paper-soft: #f0f1ed;
-  --color-classic-ink: #111312;
-  --color-classic-ink-soft: #3d4340;
-  --color-classic-ink-faint: #747b76;
-  --color-classic-accent: #0f7a4a;
-  --color-classic-accent-deep: #0a5a38;
-  --color-classic-seal: #0f7a4a;
-  --color-classic-seal-deep: #0a5a38;
-  --color-classic-line: #e5e8e2;
+  --color-classic-paper: #ffffff;
+  --color-classic-paper-soft: #f7f8fa;
+  --color-classic-ink: #1f2937;
+  --color-classic-ink-soft: #4b5563;
+  --color-classic-ink-faint: #6b7280;
+  --color-classic-accent: #315b7d;
+  --color-classic-accent-deep: #244760;
+  --color-classic-seal: #315b7d;
+  --color-classic-seal-deep: #244760;
+  --color-classic-line: #d9dee5;
 
-  --font-classic-display: 'Archivo', 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
-  --font-classic-sans: 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
-  --font-classic-mono: 'JetBrains Mono', 'SFMono-Regular', 'PingFang SC', ui-monospace, monospace;
+  --font-classic-display: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', ui-sans-serif, system-ui, sans-serif;
+  --font-classic-sans: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', ui-sans-serif, system-ui, sans-serif;
+  --font-classic-mono: 'Cascadia Code', Consolas, 'Microsoft YaHei', ui-monospace, monospace;
 }
 
-html[data-resume='classic'] {
+html:is([data-resume='classic'], [data-resume='ai-first']) {
   color-scheme: light;
 
-  --sheet-bg: rgba(255, 255, 253, 0.82);
-  --sheet-border: #e4e7e1;
-  --sheet-shadow: 0 0 0 1px rgba(17, 19, 18, 0.035);
-  --grid-color: rgba(15, 122, 74, 0.08);
-  --grid-strong: rgba(17, 19, 18, 0.045);
-  --toolbar-bg: rgba(250, 250, 248, 0.88);
+  --sheet-bg: #ffffff;
+  --sheet-border: #e1e5ea;
+  --sheet-shadow: 0 2px 14px rgb(31 41 55 / 8%);
+  --grid-color: transparent;
+  --grid-strong: transparent;
+  --toolbar-bg: #ffffff;
 }
 
-html[data-resume='classic'][data-theme='dark'] {
-  color-scheme: dark;
-
-  --color-classic-paper: #0b0f0d;
-  --color-classic-paper-soft: #141a17;
-  --color-classic-ink: #f5f7f3;
-  --color-classic-ink-soft: #c7cec8;
-  --color-classic-ink-faint: #818c84;
-  --color-classic-accent: #34d399;
-  --color-classic-accent-deep: #86efac;
-  --color-classic-seal: #34d399;
-  --color-classic-seal-deep: #86efac;
-  --color-classic-line: #2d3932;
-
-  --sheet-bg: rgba(13, 18, 15, 0.86);
-  --sheet-border: rgba(245, 247, 243, 0.1);
-  --sheet-shadow: 0 0 0 1px rgba(245, 247, 243, 0.04);
-  --grid-color: rgba(52, 211, 153, 0.1);
-  --grid-strong: rgba(245, 247, 243, 0.055);
-  --toolbar-bg: rgba(11, 15, 13, 0.82);
+html:is([data-resume='classic'], [data-resume='ai-first'])[data-theme='dark'] {
+  color-scheme: light;
 }
 
-html[data-resume='classic'] body {
+html:is([data-resume='classic'], [data-resume='ai-first']) body {
   margin: 0;
   font-family: var(--font-classic-sans);
   color: var(--color-classic-ink);
-  background-color: var(--color-classic-paper);
-  background-image:
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
-    linear-gradient(var(--grid-strong) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px);
-  background-position:
-    0 0,
-    0 0,
-    0 0,
-    0 0;
-  background-size:
-    22px 22px,
-    22px 22px,
-    110px 110px,
-    110px 110px;
+  background: #f2f4f7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.6;
 }
 
-html[data-resume='classic'] body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--color-classic-accent) 16%, transparent), transparent 36%),
-    linear-gradient(90deg, var(--color-classic-paper) 0, transparent 18%, transparent 82%, var(--color-classic-paper) 100%);
-  opacity: 0.7;
+html:is([data-resume='classic'], [data-resume='ai-first']) body::before {
+  display: none;
 }
 
 .classic-resume {
@@ -105,10 +64,9 @@ html[data-resume='classic'] body::before {
   z-index: 1;
   background: var(--sheet-bg);
   border: 1px solid var(--sheet-border);
-  border-radius: 18px;
+  border-radius: 0;
   padding: clamp(28px, 5vw, 60px);
   box-shadow: var(--sheet-shadow);
-  backdrop-filter: blur(12px);
 }
 
 .classic-resume ::selection {
@@ -137,10 +95,10 @@ html[data-resume='classic'] body::before {
   font-size: 0.84em;
   font-weight: 600;
   color: var(--color-classic-accent-deep);
-  background: color-mix(in srgb, var(--color-classic-accent) 9%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-classic-accent) 18%, transparent);
-  border-radius: 999px;
-  padding: 0.02em 0.42em;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
   white-space: nowrap;
 }
 
@@ -156,8 +114,8 @@ html[data-resume='classic'] body::before {
 }
 
 .classic-resume .reveal {
-  opacity: 0;
-  animation: classic-resume-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 1;
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -173,31 +131,31 @@ html[data-resume='classic'] body::before {
 }
 
 @media print {
-  html[data-resume='classic'] {
-    --color-classic-paper: #fafaf8 !important;
-    --color-classic-paper-soft: #f0f1ed !important;
-    --color-classic-ink: #111312 !important;
-    --color-classic-ink-soft: #3d4340 !important;
-    --color-classic-ink-faint: #747b76 !important;
-    --color-classic-accent: #0f7a4a !important;
-    --color-classic-accent-deep: #0a5a38 !important;
-    --color-classic-seal: #0f7a4a !important;
-    --color-classic-seal-deep: #0a5a38 !important;
-    --color-classic-line: #d8ddd7 !important;
+  html:is([data-resume='classic'], [data-resume='ai-first']) {
+    --color-classic-paper: #ffffff !important;
+    --color-classic-paper-soft: #f7f8fa !important;
+    --color-classic-ink: #111827 !important;
+    --color-classic-ink-soft: #374151 !important;
+    --color-classic-ink-faint: #5f6773 !important;
+    --color-classic-accent: #284f6d !important;
+    --color-classic-accent-deep: #1f3f57 !important;
+    --color-classic-seal: #284f6d !important;
+    --color-classic-seal-deep: #1f3f57 !important;
+    --color-classic-line: #ccd2da !important;
     --classic-print-min-font-size: 9pt;
 
-    --sheet-bg: #fafaf8 !important;
+    --sheet-bg: #ffffff !important;
     --sheet-border: transparent !important;
     --grid-color: transparent !important;
     --grid-strong: transparent !important;
   }
 
-  html[data-resume='classic'] body {
-    background: #fafaf8 !important;
+  html:is([data-resume='classic'], [data-resume='ai-first']) body {
+    background: #ffffff !important;
     background-image: none !important;
   }
 
-  html[data-resume='classic'] body::before {
+  html:is([data-resume='classic'], [data-resume='ai-first']) body::before {
     display: none !important;
   }
 
@@ -211,7 +169,7 @@ html[data-resume='classic'] body::before {
   }
 
   .classic-resume .sheet {
-    background: #fafaf8 !important;
+    background: #ffffff !important;
     backdrop-filter: none !important;
     box-shadow: none !important;
     border: none !important;

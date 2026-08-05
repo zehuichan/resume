@@ -9,7 +9,7 @@ const years = computed(() => getExperienceYears(props.profile.experienceStartYea
 const avatarUrl = computed(() => `${import.meta.env.BASE_URL}${props.profile.avatar}`)
 const surname = computed(() => props.profile.name.charAt(0) || '?')
 const contactLine = computed(() => props.profile.contacts.map((c) => c.value).join(' / '))
-const specLine = computed(() => [props.profile.title, `${years.value} 年+ 经验`, ...props.profile.meta].join(' · '))
+const specLine = computed(() => [`${years.value} 年+ 工作经验`, ...props.profile.meta].join(' · '))
 
 /** 头像文件缺失或加载失败时，回退到姓氏占位块，避免露出浏览器默认的裂图图标 */
 const avatarFailed = ref(false)
@@ -19,10 +19,10 @@ const avatarFailed = ref(false)
   <header class="reveal break-avoid border-b border-classic-line pb-5">
     <div class="flex items-start justify-between gap-5">
       <div class="min-w-0">
-        <div class="font-classic-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-classic-accent">Frontend Lead</div>
-        <h1 class="mt-2 mb-0 font-classic-sans text-[clamp(2.2rem,6.4vw,3.9rem)] font-bold leading-[1.05] tracking-[-0.03em] text-classic-ink">
+        <h1 class="m-0 font-classic-sans text-[clamp(2rem,5vw,2.8rem)] font-bold leading-[1.15] text-classic-ink">
           {{ profile.name }}
         </h1>
+        <div class="mt-2 text-[17px] font-semibold text-classic-accent">{{ profile.title }}</div>
       </div>
 
       <div class="flex-none w-[68px] h-[68px] overflow-hidden border border-classic-line bg-classic-paper-soft sm:w-[78px] sm:h-[78px]">
@@ -42,9 +42,9 @@ const avatarFailed = ref(false)
       </div>
     </div>
 
-    <div class="mt-4 grid gap-2 border-t border-classic-line pt-3 text-[11px] leading-relaxed sm:grid-cols-[1.15fr_1fr]">
-      <div class="font-classic-mono font-semibold uppercase tracking-[0.08em] text-classic-ink">{{ specLine }}</div>
-      <div class="flex min-w-0 flex-wrap gap-x-3 gap-y-1 font-classic-mono text-classic-ink-faint sm:justify-end">
+    <div class="mt-4 grid gap-2 border-t border-classic-line pt-3 text-[12px] leading-relaxed sm:grid-cols-[1.15fr_1fr]">
+      <div class="font-medium text-classic-ink">{{ specLine }}</div>
+      <div class="flex min-w-0 flex-wrap gap-x-3 gap-y-1 text-classic-ink-faint sm:justify-end">
         <template v-for="(c, i) in profile.contacts" :key="c.label">
           <a
             :href="c.href"

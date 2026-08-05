@@ -25,30 +25,26 @@ afterEach(() => {
 
 describe('first-paint resume classification', () => {
   it.each([
+    ['#/', 'classic'],
     ['#/classic', 'classic'],
-    ['#/classic?print=1', 'classic'],
-    ['#/classic/', 'classic'],
-    ['#/classic/?print=1', 'classic'],
-    ['#/classical', 'ai-first'],
-    ['#/classic/missing', 'ai-first'],
-    ['#/missing', 'ai-first']
+    ['#/missing', 'classic'],
+    ['#/ai-first', 'ai-first'],
+    ['#/ai-first?print=1', 'ai-first'],
+    ['#/ai-first/', 'ai-first'],
+    ['#/ai-first/missing', 'classic']
   ])('classifies %s as %s', (hash, expectedVersion) => {
     runFirstPaintScript(hash)
 
     expect(document.documentElement.dataset.resume).toBe(expectedVersion)
   })
 
-  it('restores the saved theme for both resume versions', () => {
-    const getItem = vi.spyOn(Storage.prototype, 'getItem').mockReturnValue('dark')
-
+  it('uses the stable light theme for both resume pages', () => {
     runFirstPaintScript('#/')
-    expect(getItem).toHaveBeenCalledWith('resume-theme')
-    expect(document.documentElement.dataset.resume).toBe('ai-first')
-    expect(document.documentElement.dataset.theme).toBe('dark')
-
-    runFirstPaintScript('#/classic?print=1')
-    expect(getItem).toHaveBeenCalledWith('resume-theme')
     expect(document.documentElement.dataset.resume).toBe('classic')
-    expect(document.documentElement.dataset.theme).toBe('dark')
+    expect(document.documentElement.dataset.theme).toBe('light')
+
+    runFirstPaintScript('#/ai-first?print=1')
+    expect(document.documentElement.dataset.resume).toBe('ai-first')
+    expect(document.documentElement.dataset.theme).toBe('light')
   })
 })
