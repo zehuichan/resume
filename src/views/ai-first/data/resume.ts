@@ -10,7 +10,7 @@ export const aiResume: Resume = {
     experienceStartYear: 2015,
     meta: ['广州', '本科', '随时到岗'],
     summary:
-      '10 年+ 前端工程与团队交付经验，现转向 ==Agent 应用开发==。把架构治理、工程化与质量门禁迁移到 Agent 系统：建设可安装 Skills、受控上下文、工具编排与人工复核闭环，让 `Cursor` / `Claude Code` 按团队规范产码并进入真实业务。现任敬城集团前端负责人，主导 Agent Skills 与前端交付底座，希望继续深耕 Agent 应用落地。',
+      '10 年+ 前端工程和团队交付经验，近一年重心在 ==Agent 应用开发==。在敬城把 Agent Skills、建仓脚手架、E2E 回归和监控告警一次立齐，让 `Cursor` / `Claude Code` 按团队规范产码并能直接合进业务仓。现任敬城集团前端负责人，主导 Agent Skills 与前端交付主链路。',
     contacts: [
       {
         icon: Mail,
@@ -29,7 +29,7 @@ export const aiResume: Resume = {
 
   metrics: [
     { value: '6', unit: '人', label: '前端团队' },
-    { value: '7', unit: '个', label: 'CI/CD 覆盖系统' },
+    { value: '21', unit: '个', label: '业务前端仓库' },
     { value: '分钟级', unit: '', label: '标准 CRUD 生成' }
   ],
 
@@ -43,25 +43,22 @@ export const aiResume: Resume = {
         period: '2025.09 - 至今',
         role: '方向负责人',
         featured: true,
-        scene:
-          '团队开始规模化使用 `Cursor`、`Claude Code` 生成 CRUD 与业务组件，但目录结构、组件写法、OpenAPI 接入和质量校验缺少统一约束，生成结果难以直接合入生产。',
+        scene: '团队规模化用 `Cursor`、`Claude Code` 生成 CRUD 和组件，目录、写法、自测和评审全凭个人习惯，生成结果合不进生产。',
         action:
-          '建设 GeorgeGroup Skills 仓与 `npx skills` 安装链路；沉淀 `vue-vben-crud`、`vue-components-practices`，覆盖 CRUD 生成、OpenAPI 接入、组件规范与质检脚本；明确人机分工：人定边界与 Review，Agent 执行生成，脚本兜底机械规则。',
-        result:
-          '把个人提示词经验变成团队可复用的 Agent 产码规范，标准 CRUD 与规范组件可由 Agent ==分钟级生成==，6 人团队共享同一套目录、组件和质量约束。'
+          '把提示词做成可安装、可打版本的 Skills：`vue-vben-crud` 管 CRUD 骨架，组件实践、UI 自测、第一性原理评审各占一个；分工明确：人定边界与 Review，Agent 执行生成，机械规则丢给脚本。',
+        result: '标准 CRUD 由 Agent ==分钟级生成==，6 人团队共用同一套目录、组件和质量约束。'
       },
       {
-        name: '敬城集团前端架构体系路线图',
+        name: '敬城集团前端基建主链路',
         kind: '交付底座',
         period: '2025.09 - 至今',
         role: '体系主导',
         featured: true,
-        scene:
-          '后台、H5、小程序与低代码需求并行增长，若缺少统一模板、组件、权限与发布能力，Agent 生成结果也无法稳定接入真实项目。',
+        scene: '各业务仓模板、组件、回归层形态不一致，Agent 产出落不进去；集团后台、H5、小程序并行开仓，更需要统一标准。',
         action:
-          '把体系拆成五层：启动模板、组件矩阵、Tenon 低代码、Agent Skills、CI/CD 与监控；让 Agent 产出落在可复用工程资产与自动化发布链路上。',
+          '脚手架建仓即带三端模板、brick 组件和 Playwright 回归；接口以 Apifox 为唯一真相源统一生成；Sentry SOP 全量接入业务系统，Issue 进企微告警群。',
         result:
-          '形成从项目初始化、组件复用、页面搭建、AI 生成到发布监控的统一资产链路；CI/CD 已覆盖 ==ERP3、CSS、QMS、LMS、SRM、FSSC、FIMS 7 个系统==。'
+          '`create-app@1.0.0`、`create-e2e@1.2.0` 已发私服，新仓从开局到可回归一次给齐；ERP / QMS / SRM / OA / CRM 等 ==21== 个业务前端仓库统一跑这套，线上问题进企微告警群。'
       },
       {
         name: 'Tenon 低代码画布引擎',
@@ -69,59 +66,48 @@ export const aiResume: Resume = {
         period: '2026.07 - 至今',
         role: '架构主导',
         featured: true,
-        scene:
-          '集团中后台存在大量表单、表格、详情与流程页面，需要结构化页面协议，以便后续把生成、搭建与运行时渲染接到同一套 Schema。',
+        scene: '中后台页面要同时支持人工可视化搭建和 Agent 操作，必须共用同一份 Schema，否则搭建、渲染、Agent 各写各的。',
         action:
-          '设计 `@tenon/*` monorepo 与 Schema 协议，拆分设计器、渲染器、物料与插件；通过 Vite 插件把设计器入口、物料扫描、样式注入和持久化接入收敛为一行配置。',
-        result:
-          '形成 `/__tenon__/` 设计器、`TenonRenderer`、物料注册与 GitLab npm 私服发布链路，已在后台模板中完成 ==@tenon/plugin 一行接入== 与运行时物料装填。'
+          'Schema 协议先落定，设计器与渲染按协议解耦，业务侧一行插件接入；Agent 走 MCP 读写画布，写操作过人工审批。',
+        result: '后台模板完成 ==@tenon/plugin 一行接入==；人工搭建与 Agent 操作共用同一份 Schema，工具面已可扩展。'
       },
       {
         name: '和林国际物流信息管理系统',
         kind: '国际物流全链路',
         period: '2023.07 - 2025.08',
         role: '架构主导',
-        scene:
-          '国际物流全链路系统，覆盖收发、运输、仓储、报关、跟踪等环节，同时承接公众号下单查货与后台业务流转。',
-        action:
-          '主导 `vue3` 技术栈选型、工程搭建与组件分层，统一请求、权限、表单、字典等基础能力，并落地核心业务流程。',
-        result:
-          '后台稳定承载下单、配载、订舱、清关、派送、签收、财务报表 ==7 大模块==，用户端与管理端共用组件资产持续迭代。'
+        scene: '国际物流全链路系统，前端要同时兜住后台的重表单流转和公众号侧的下单查货。',
+        action: '从零定 `vue3` 技术栈和组件分层，请求、权限、表单、字典先做成基础层，业务流程再往上叠。',
+        result: '后台稳定跑着下单、配载、订舱、清关、派送、签收、财务报表 ==7 大模块==，用户端和管理端共用一套组件持续迭代。'
       },
       {
         name: '广东科技成果转移转化中心线上平台',
         kind: '众包服务平台',
         period: '2022.11 - 2023.06',
         role: '整站负责',
-        scene:
-          '政企科技成果转移转化平台，连接专家成果、知识产权与企业需求，包含前站、管理后台、专家小程序与直播平台四个端。',
-        action:
-          '统一请求层、缓存与工具函数；抽离 OSS 上传、动态录入等业务组件；接入 zego 实时音视频与超级白板能力。',
-        result:
-          '==四个子系统==按期上线，公共组件与工具层复用于后续需求，降低多端维护成本并稳定支撑专家直播场景。'
+        scene: '科技成果转移转化平台连接专家成果、知识产权与企业需求，前站、管理后台、专家小程序与直播四端并行开发。',
+        action: '把请求层、缓存与工具函数统一到一处，OSS 上传、动态录入等重复表单抽成业务组件；直播侧接 zego 音视频与超级白板。',
+        result: '==四个子系统==按期上线，公共组件和工具层被后面的需求直接拿去用，专家直播也稳定开播。'
       },
       {
         name: '中视 ETC 一站式发行平台',
         kind: '支付宝生态',
         period: '2020.09 - 2022.10',
         role: '前端负责',
-        scene:
-          '支付宝生态下的全国 ETC 发行平台，对接多省发行方，覆盖客货车发行、通行扣费、售后处理与车主服务。',
+        scene: '全国 ETC 发行平台对接多省发行方，客货车发行、通行扣费、售后处理与车主服务都压在同一套后台上。',
         action:
-          '负责前端选型与框架搭建，重构管理后台请求、字典、菜单权限与组件体系；基于 `element-ui` 封装业务组件库并落地 Code Review。',
+          '负责选型和框架搭建，把管理后台的请求、字典、菜单权限重构成一层公共基础；高频控件基于 `element-ui` 做成业务组件库，Code Review 也是那时候定下来的。',
         result:
-          '平台接入广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户规模 100 万。'
+          '平台落地广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户规模 100 万。'
       },
       {
         name: '4S 店 SAAS 系统',
         kind: '支付宝小程序',
         period: '2022.02 - 2022.08',
         role: '独立开发',
-        scene:
-          '基于支付宝芝麻 GO、花呗分期等信用能力的 4S 店营销工具，覆盖用户端活动承接与商户端运营管理。',
-        action:
-          '独立完成双端搭建、接口联调与规范设计；封装 OSS 上传、OCR 识别、车牌输入、选择器与响应式 `useStorage`。',
-        result: '单店月保养 GMV 达 ==40 万==，并接入支付宝域内消息与灯火平台，形成用户端营销承接与商户端运营闭环。'
+        scene: '基于支付宝芝麻 GO、花呗分期等信用能力的 4S 店营销工具，用户端接活动、商户端做运营，一人负责双端。',
+        action: '独立定双端结构与接口约定，OSS 上传、OCR 识别、车牌输入、选择器等高频交互一次封装、两端复用。',
+        result: '单店月保养 GMV 做到 ==40 万==，后续接了支付宝域内消息和灯火平台承接投放。'
       }
     ]
   },
@@ -135,9 +121,9 @@ export const aiResume: Resume = {
         period: '2020.01 - 2020.07',
         role: '独立开发',
         sortDate: '2020.07',
-        scene: '法律咨询移动端 App，覆盖内容课程、在线咨询、支付、订单、钱包与个人中心。',
-        action: '独立完成前端搭建与模块联调，接入 `tim-js-sdk` 实现在线咨询。',
-        result: '整站独立交付，==IM 在线咨询==与支付、订单模块形成服务闭环。'
+        scene: '法律咨询移动端 App，课程、在线咨询、支付、订单，一个人从零做到上线。',
+        action: '前端搭建和接口联调都是自己做，在线咨询接 `tim-js-sdk`。',
+        result: '整站独立交付，==IM 在线咨询==串起课程、支付和订单。'
       },
       {
         name: '南海燃气 · 燃气管家',
@@ -145,9 +131,9 @@ export const aiResume: Resume = {
         period: '2017.08 - 2019.03',
         role: '核心开发',
         sortDate: '2019.03',
-        scene: '面向燃气用户、客服与施工师傅的公众号及管理后台。',
-        action: '负责前站与配套后台主要功能开发，降低多模块维护成本。',
-        result: '用户预约、后台派单、师傅现场反馈形成线上闭环，支撑安装、维修、安检等==多类民生服务流程==。'
+        scene: '燃气用户、客服与施工师傅共用一套公众号加后台，缴费、安装、维修、安检都要线上流转。',
+        action: '负责前站与配套后台主要功能，用模块自动注册压掉多模块的重复接线。',
+        result: '用户预约、后台派单、师傅现场回填接成线上闭环，覆盖安装、维修、安检等==多类民生服务流程==。'
       }
     ]
   },
@@ -164,8 +150,13 @@ export const aiResume: Resume = {
   openSource: {
     sub: 'github.com/zehuichan',
     intro:
-      '习惯把重复业务和工程经验沉淀为可复用资产：独立维护 `element-components`、`vant-components`，并在团队内建设 Agent Skills 安装与质检链路。GitHub 公开仓库 **44 个**。',
+      '业余时间独立维护 `workbench`、`element-components`、`vant-components` 三个库；公司这边则在做 Agent Skills 的安装与质检那一套。GitHub 公开仓库 **44 个**。',
     items: [
+      {
+        name: 'workbench',
+        href: 'https://zehuichan.github.io/workbench/',
+        desc: 'Vue · 可编辑表格工作台（PlusTable / Filters）· 含 ERP 联动场景 playground'
+      },
       {
         name: 'element-components',
         href: 'https://github.com/zehuichan/element-components',
@@ -178,34 +169,33 @@ export const aiResume: Resume = {
       }
     ],
     highlightTag: '资产沉淀',
-    highlight:
-      '从组件库到 Agent Skills，持续把个人经验收成可安装、可复用、可质检的团队资产。'
+    highlight: '组件库、workbench，到现在的 Agent Skills，其实是同一件事：把经验做成别人装上就能用、还能自查的东西。'
   },
 
   skills: [
     {
       label: 'Agent 工程',
-      body: '能把提示词经验沉淀为可安装 Skills，覆盖 CRUD 生成、组件规范、OpenAPI 接入与质检脚本，让 Agent 按团队标准产码。'
+      body: '提示词都做成了可安装的 Skills：`vue-vben-crud`、`vue-components-practices`、`ui-autotest`、`first-principles-review`；E2E 侧的 `e2e-module-sop` 跟着 create-e2e 下发，装上就带约束。'
     },
     {
       label: '上下文编排',
-      body: '熟悉把项目规范、组件约定、示例与接口契约放入受控上下文，降低 Agent 幻觉与风格漂移。'
+      body: '项目规范、组件约定、能直接抄的示例、OpenAPI 接口契约都收进受控上下文，Agent 只有一个地方可参照，少编、少跑偏。'
     },
     {
       label: '人机协作',
-      body: '明确边界：人负责需求范围、架构取舍与风险判断，Agent 负责候选实现，脚本与 Code Review 负责质量兜底。'
+      body: '需求范围、架构取舍和风险判断我自己拿，实现方案先让 Agent 出；细节不靠人肉盯，交给脚本和 Code Review。'
     },
     {
       label: '应用交付',
-      body: '能把 Agent 产出接入真实项目：配合 CI/CD、类型检查、质检脚本与发布监控，形成可合并、可上线的闭环。'
+      body: 'Agent 的产出最终要接进真实项目：`create-app@1.0.0` / `create-e2e@1.2.0` 建仓，GitLab CI/CD 和 Playwright 收口回归；Sentry SOP 已全量接入公司系统，Issue 进企微告警群推送。'
     },
     {
       label: '工程底座',
-      body: '具备 `vue3`、组件体系、Schema / 低代码与多端交付经验，能为 Agent 应用提供稳定的工程与业务落点。'
+      body: '`vue3`、brick 三端组件、Apifox OpenAPI 标准，加上 Tenon 的 Agent / MCP 通路，给 Agent 的产出留了个稳的落点，后台、H5、小程序都能覆盖。'
     },
     {
       label: '团队落地',
-      body: '直接带领 6 名前端，负责排期、分工、Review 与规范推广，已让 Agent Skills 进入团队日常使用。'
+      body: '带 6 名前端，排期、分工、Review 和规范推广都归我；Agent Skills 已是日常工作流，覆盖工作区内 ==21== 个业务前端仓。'
     }
   ],
 
@@ -214,5 +204,5 @@ export const aiResume: Resume = {
     { school: '广东机电职业技术学院', major: '应用电子技术', degree: '大专' }
   ],
 
-  closing: '寻求 Agent 应用开发工程师机会，期待用工程化方式把 Agent 能力做成可交付系统。'
+  closing: '在找 Agent 应用开发工程师的岗位，擅长把 Agent 能力落成能交付、能回归的系统。感谢阅读。'
 }

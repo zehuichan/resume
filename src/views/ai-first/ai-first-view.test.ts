@@ -14,7 +14,7 @@ describe('AiFirstResumeView', () => {
     expect(wrapper.text()).toContain('工作经历')
     expect(wrapper.text()).toContain('项目经历')
     expect(wrapper.text()).toContain('GeorgeGroup Agent Skills · AI 编码基建')
-    expect(wrapper.text()).toContain('敬城集团前端架构体系路线图')
+    expect(wrapper.text()).toContain('敬城集团前端基建主链路')
     expect(wrapper.text()).toContain('教育背景')
     expect(wrapper.text()).not.toContain('CONTROL PLANE')
     expect(wrapper.text()).not.toContain('Vibe-Coding 怎么跑')

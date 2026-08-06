@@ -24,7 +24,7 @@ describe('ClassicResumeView', () => {
     const wrapper = mount(ClassicResumeView)
 
     expect(wrapper.get('h1').text()).toBe('陈泽辉')
-    expect(wrapper.text()).toContain('敬城集团前端架构体系路线图')
+    expect(wrapper.text()).toContain('敬城集团前端基建主链路')
     expect(wrapper.text()).toContain('Tenon 低代码画布引擎')
   })
 
