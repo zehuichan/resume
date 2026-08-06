@@ -192,7 +192,7 @@ export const resume: Resume = {
   openSource: {
     sub: 'github.com/zehuichan',
     intro:
-      '业余时间独立维护 `workbench`、`element-components`、`vant-components` 三个库，分别是可编辑表格工作台，以及 PC 端和移动端的业务组件库。GitHub 公开仓库 **44 个**。',
+'业余时间独立维护 `workbench`、`element-components`、`vant-components` 三个库，分别是可编辑表格工作台，以及 PC 端和移动端的业务组件库。GitHub 公开仓库 **8 个**。',
     items: [
       {
         name: 'workbench',

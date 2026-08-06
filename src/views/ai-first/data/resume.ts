@@ -150,7 +150,7 @@ export const aiResume: Resume = {
   openSource: {
     sub: 'github.com/zehuichan',
     intro:
-      '业余时间独立维护 `workbench`、`element-components`、`vant-components` 三个库；公司这边则在做 Agent Skills 的安装与质检那一套。GitHub 公开仓库 **44 个**。',
+'业余时间独立维护 `workbench`、`element-components`、`vant-components` 三个库；公司这边则在做 Agent Skills 的安装与质检那一套。GitHub 公开仓库 **8 个**。',
     items: [
       {
         name: 'workbench',
