@@ -13,6 +13,14 @@ describe('resume router', () => {
     expect(router.currentRoute.value.name).toBe('ai-first')
   })
 
+  it('exposes online resume content as a standalone route', async () => {
+    const router = createResumeRouter(createMemoryHistory())
+
+    await router.push('/online?source=ai-first')
+    expect(router.currentRoute.value.name).toBe('online')
+    expect(router.currentRoute.value.query.source).toBe('ai-first')
+  })
+
   it('redirects unknown paths to the mainstream resume', async () => {
     const router = createResumeRouter(createMemoryHistory())
 

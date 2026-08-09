@@ -30,6 +30,17 @@ export const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/online',
+    name: 'online',
+    component: () => import('../views/online/index.vue'),
+    meta: {
+      title: '陈泽辉 · 线上简历内容',
+      description: '陈泽辉的线上简历复制内容',
+      themeColor: '#ffffff',
+      resumeVersion: 'classic'
+    }
+  },
+  {
     path: '/classic',
     redirect: '/'
   },

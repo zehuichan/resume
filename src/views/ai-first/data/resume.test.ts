@@ -29,4 +29,11 @@ describe('aiResume', () => {
     expect(agentProject?.action).toContain('Agent 执行')
     expect(agentProject?.result).toContain('分钟级生成')
   })
+
+  it('links Tenon to the official site', () => {
+    const tenon = aiResume.experience.projects.find((project: Project) => project.name.includes('Tenon'))
+
+    expect(tenon?.href).toBe('https://tenon.gbuilderchina.com/')
+    expect(tenon?.result).toContain('https://tenon.gbuilderchina.com/')
+  })
 })

@@ -6,7 +6,7 @@ const print = () => window.print()
 
 <template>
   <div
-    class="no-print fixed bottom-5 right-5 z-50 flex items-center gap-1 border border-classic-line bg-[var(--toolbar-bg)] px-1.5 py-1.5 backdrop-blur"
+    class="no-print fixed bottom-5 right-5 z-40 flex items-center gap-1 border border-classic-line bg-[var(--toolbar-bg)] px-1.5 py-1.5 backdrop-blur"
   >
     <button
       type="button"

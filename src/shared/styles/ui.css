@@ -1,0 +1,59 @@
+/* shadcn-vue 主题层：只服务简历页外挂的工具型 UI（线上简历面板、版本切换等）。
+   简历正文排版仍归各 view 自己的 styles/resume.css，两边互不覆盖。 */
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.125rem;
+
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --popover: #ffffff;
+  --popover-foreground: #1f2937;
+  --primary: #315b7d;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f7fa;
+  --secondary-foreground: #244760;
+  --muted: #f8fafc;
+  --muted-foreground: #6b7280;
+  --accent: #eef2f7;
+  --accent-foreground: #244760;
+  --destructive: #b45309;
+  --border: #e1e5ea;
+  --input: #d9dee5;
+  --ring: #315b7d;
+}
+
+@theme {
+  --font-sans: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}

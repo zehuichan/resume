@@ -16,7 +16,16 @@ const rows = [
     <div class="mb-3 grid gap-x-4 gap-y-2 sm:grid-cols-[1fr_auto] sm:items-start">
       <div class="min-w-0">
         <h3 class="m-0 font-classic-sans text-[16px] font-bold leading-tight tracking-[-0.015em] text-classic-ink">
-          {{ project.name }}
+          <a
+            v-if="project.href"
+            :href="project.href"
+            target="_blank"
+            rel="noreferrer"
+            class="text-classic-accent transition-colors hover:text-classic-accent-deep"
+          >
+            {{ project.name }}
+          </a>
+          <template v-else>{{ project.name }}</template>
         </h3>
         <div class="mt-1.5 text-[11px] text-classic-ink-faint">
           {{ project.kind }} · {{ project.period }}

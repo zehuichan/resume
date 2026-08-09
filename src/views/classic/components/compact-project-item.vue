@@ -9,7 +9,16 @@ defineProps<{ project: Project; index?: number }>()
   <article class="break-avoid border-t border-classic-line py-3">
     <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
       <h3 class="m-0 font-classic-sans text-[13.5px] font-bold leading-snug tracking-[-0.01em] text-classic-ink">
-        {{ project.name }}
+        <a
+          v-if="project.href"
+          :href="project.href"
+          target="_blank"
+          rel="noreferrer"
+          class="text-classic-accent transition-colors hover:text-classic-accent-deep"
+        >
+          {{ project.name }}
+        </a>
+        <template v-else>{{ project.name }}</template>
       </h3>
       <span class="text-[10.5px] text-classic-ink-faint">
         {{ project.kind }} · {{ project.period }} · {{ project.role }}

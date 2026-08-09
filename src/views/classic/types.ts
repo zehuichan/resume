@@ -51,6 +51,8 @@ export interface Project {
   action: string
   /** 结果行：数据为王，==关键数字== 高亮 1-2 处 */
   result: string
+  /** 项目主页 / 官网，有则标题可点开 */
+  href?: string
   /** 是否进入精选项目卡片区 */
   featured?: boolean
   /** 紧凑项目排序用日期，格式 YYYY.MM；不填时从 period 中推断 */

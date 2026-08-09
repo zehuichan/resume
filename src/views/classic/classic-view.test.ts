@@ -26,6 +26,8 @@ describe('ClassicResumeView', () => {
     expect(wrapper.get('h1').text()).toBe('陈泽辉')
     expect(wrapper.text()).toContain('敬城集团前端基建主链路')
     expect(wrapper.text()).toContain('Tenon 低代码画布引擎')
+    expect(wrapper.get('a[href="https://tenon.gbuilderchina.com/"]').text()).toBe('Tenon 低代码画布引擎')
+    expect(wrapper.get('a[href="https://tenon.gbuilderchina.com/"]').text()).toBe('Tenon 低代码画布引擎')
   })
 
   it('reserves mobile space below the sheet for the fixed toolbar', () => {

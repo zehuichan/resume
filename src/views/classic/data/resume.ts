@@ -76,11 +76,12 @@ export const resume: Resume = {
         period: '2026.07 - 至今',
         role: '架构主导',
         featured: true,
+        href: 'https://tenon.gbuilderchina.com/',
         scene: '中后台表单、表格、流程页重复开发成本高，要在现有 pro-code 体系里补可视化搭建，同时让 Agent 操作同一套画布。',
         action:
           'Schema 协议先落定，设计器、渲染器、物料和插件按协议解耦，业务侧一行 Vite 插件接入；Agent 走 MCP 读写同一份 Schema，写操作过人工审批。',
         result:
-          '后台模板完成 ==@tenon/plugin 一行接入==；人工搭建与 Agent 操作共用同一份 Schema，已形成可扩展的物料与插件面。'
+          '后台模板完成 ==@tenon/plugin 一行接入==；人工搭建与 Agent 操作共用同一份 Schema，已形成可扩展的物料与插件面；官网 https://tenon.gbuilderchina.com/。'
       },
       {
         name: 'GeorgeGroup Agent Skills · AI 编码基建',

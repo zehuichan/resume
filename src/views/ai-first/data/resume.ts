@@ -66,10 +66,12 @@ export const aiResume: Resume = {
         period: '2026.07 - 至今',
         role: '架构主导',
         featured: true,
+        href: 'https://tenon.gbuilderchina.com/',
         scene: '中后台页面要同时支持人工可视化搭建和 Agent 操作，必须共用同一份 Schema，否则搭建、渲染、Agent 各写各的。',
         action:
           'Schema 协议先落定，设计器与渲染按协议解耦，业务侧一行插件接入；Agent 走 MCP 读写画布，写操作过人工审批。',
-        result: '后台模板完成 ==@tenon/plugin 一行接入==；人工搭建与 Agent 操作共用同一份 Schema，工具面已可扩展。'
+        result:
+          '后台模板完成 ==@tenon/plugin 一行接入==；人工搭建与 Agent 操作共用同一份 Schema，工具面已可扩展；官网 https://tenon.gbuilderchina.com/。'
       },
       {
         name: '和林国际物流信息管理系统',

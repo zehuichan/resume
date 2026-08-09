@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import ResumeVersionNav from './shared/components/resume-version-nav.vue'
+import ResumeNavbar from './shared/components/resume-navbar.vue'
 </script>
 
 <template>
   <RouterView />
-  <ResumeVersionNav />
+  <ResumeNavbar />
 </template>
