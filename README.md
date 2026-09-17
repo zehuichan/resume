@@ -24,14 +24,13 @@ pnpm preview  # 预览构建产物
 ## 维护内容
 
 默认简历：`/#/`（招聘版 · 前端负责人）
-Agent 版：`/#/ai-first`（转行 Agent 应用开发工程师）
 
-右上角可在「招聘版 / Agent 版」之间切换；两版版式一致，仅内容定位不同。
+右上角可在「简历 / 线上版」之间切换；线上版用于复制 BOSS 直聘等平台所需的分段文案。
 
-招聘版内容：`src/views/classic/data/resume.ts`
-Agent 版内容：`src/views/ai-first/data/resume.ts`
+简历内容：`src/views/classic/data/resume.ts`
+线上补充：`src/views/classic/data/online.ts`
 
-Agent 版复用招聘版布局与样式，内容独立维护。行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。经验年限由各自数据文件中的 `profile.experienceStartYear` 自动计算。
+行内用反引号包裹的文本（如 `` `vue3` ``）会自动渲染为技术标签。经验年限由 `profile.experienceStartYear` 自动计算。
 
 ## 目录结构
 
@@ -43,10 +42,10 @@ Agent 版复用招聘版布局与样式，内容独立维护。行内用反引�
 └─ src/
    ├─ app.vue              # 路由出口
    ├─ router/              # 页面路由与标题
-   ├─ shared/              # 版本切换与共享工具
+   ├─ shared/              # 导航与共享工具
    └─ views/
-      ├─ ai-first/         # Agent 版内容（布局复用招聘版）
-      └─ classic/          # 招聘版内容、组件与样式
+      ├─ classic/          # 招聘版内容、组件与样式
+      └─ online/           # 线上简历复制页
 ```
 
 ## 导出 PDF

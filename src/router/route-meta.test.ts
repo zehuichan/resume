@@ -4,15 +4,17 @@ import { applyRouteMeta } from './route-meta'
 describe('applyRouteMeta', () => {
   it('updates title, description, theme color, and resume namespace', () => {
     applyRouteMeta({
-      title: 'AI Resume',
-      description: 'AI-First description',
-      themeColor: '#070b09',
-      resumeVersion: 'ai-first'
+      title: '陈泽辉 · 前端负责人',
+      description: '陈泽辉 · 前端负责人简历',
+      themeColor: '#ffffff',
+      resumeVersion: 'classic'
     })
 
-    expect(document.title).toBe('AI Resume')
-    expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toBe('AI-First description')
-    expect(document.querySelector('meta[name="theme-color"]')?.getAttribute('content')).toBe('#070b09')
-    expect(document.documentElement.dataset.resume).toBe('ai-first')
+    expect(document.title).toBe('陈泽辉 · 前端负责人')
+    expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toBe(
+      '陈泽辉 · 前端负责人简历'
+    )
+    expect(document.querySelector('meta[name="theme-color"]')?.getAttribute('content')).toBe('#ffffff')
+    expect(document.documentElement.dataset.resume).toBe('classic')
   })
 })

@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest'
 import { classicOnline, resume as classicResume } from '../../views/classic/data'
-import { aiOnline, aiResume } from '../../views/ai-first/data'
 import {
   buildOnlineResumeBlocks,
   getProjectSortValue,
@@ -100,30 +99,25 @@ describe('buildOnlineResumeBlocks', () => {
     expect(missing.every((c) => c.missing)).toBe(true)
   })
 
-  it('builds non-empty advantage and education for both versions', () => {
-    for (const [resume, extras] of [
-      [classicResume, classicOnline],
-      [aiResume, aiOnline]
-    ] as const) {
-      const copy = buildOnlineResumeBlocks(resume, extras)
-      const advantage = copy.blocks.find((b) => b.kind === 'advantage')
-      const education = copy.blocks.find((b) => b.kind === 'education')
-      expect(advantage?.kind).toBe('advantage')
-      expect(education?.kind).toBe('education')
-      if (advantage?.kind === 'advantage') {
-        expect(advantage.field.text.length).toBeGreaterThan(20)
-        expect(advantage.field.text).not.toMatch(/==|`|\*\*/)
-      }
-      if (education?.kind === 'education') {
-        expect(education.field.text).toContain('广东外语外贸大学')
-      }
+  it('builds non-empty advantage and education', () => {
+    const copy = buildOnlineResumeBlocks(classicResume, classicOnline)
+    const advantage = copy.blocks.find((b) => b.kind === 'advantage')
+    const education = copy.blocks.find((b) => b.kind === 'education')
+    expect(advantage?.kind).toBe('advantage')
+    expect(education?.kind).toBe('education')
+    if (advantage?.kind === 'advantage') {
+      expect(advantage.field.text.length).toBeGreaterThan(20)
+      expect(advantage.field.text).not.toMatch(/==|`|\*\*/)
+    }
+    if (education?.kind === 'education') {
+      expect(education.field.text).toContain('广东外语外贸大学')
     }
   })
 
-  it('lists all projects newest-first for ai-first', () => {
-    const copy = buildOnlineResumeBlocks(aiResume, aiOnline)
+  it('lists all projects newest-first', () => {
+    const copy = buildOnlineResumeBlocks(classicResume, classicOnline)
     expect(copy.projectCount).toBe(
-      aiResume.experience.projects.length + aiResume.moreProjects.projects.length
+      classicResume.experience.projects.length + classicResume.moreProjects.projects.length
     )
     const projects = copy.blocks.find((b) => b.kind === 'projects')
     if (projects?.kind !== 'projects') return

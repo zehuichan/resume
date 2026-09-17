@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed, ref } from 'vue'
 import { resolveResumeSource } from '@/shared/data/resume-sources'
 import { copyText } from '@/shared/lib/clipboard'
 import { buildOnlineResumeBlocks, type CopyField } from '@/shared/lib/online-resume-copy'
@@ -14,17 +13,11 @@ import {
   CardTitle
 } from '@/shared/ui/card'
 
-const route = useRoute()
 const copiedKey = ref('')
 let copiedTimer: ReturnType<typeof setTimeout> | undefined
 
-const sourceVersion = computed(() => (route.query.source === 'ai-first' ? 'ai-first' : 'classic'))
-const source = computed(() => resolveResumeSource(sourceVersion.value))
-const copy = computed(() => buildOnlineResumeBlocks(source.value.resume, source.value.extras))
-
-watch(sourceVersion, () => {
-  copiedKey.value = ''
-})
+const source = resolveResumeSource()
+const copy = computed(() => buildOnlineResumeBlocks(source.resume, source.extras))
 
 async function copyField(key: string, field: CopyField) {
   const ok = await copyText(field.text)
