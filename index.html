@@ -9,9 +9,7 @@
     <meta name="theme-color" content="#fafaf8" />
     <script>
       ;(function () {
-        var hashPath = window.location.hash.slice(1).split(/[?#]/)[0]
-        var isAiFirst = hashPath === '/ai-first' || hashPath === '/ai-first/'
-        document.documentElement.dataset.resume = isAiFirst ? 'ai-first' : 'classic'
+        document.documentElement.dataset.resume = 'classic'
         document.documentElement.dataset.theme = 'light'
       })()
     </script>

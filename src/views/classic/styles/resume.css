@@ -21,7 +21,7 @@
   --font-classic-mono: 'Cascadia Code', Consolas, 'Microsoft YaHei', ui-monospace, monospace;
 }
 
-html:is([data-resume='classic'], [data-resume='ai-first']) {
+html[data-resume='classic'] {
   color-scheme: light;
 
   --sheet-bg: #ffffff;
@@ -32,11 +32,11 @@ html:is([data-resume='classic'], [data-resume='ai-first']) {
   --toolbar-bg: #ffffff;
 }
 
-html:is([data-resume='classic'], [data-resume='ai-first'])[data-theme='dark'] {
+html[data-resume='classic'][data-theme='dark'] {
   color-scheme: light;
 }
 
-html:is([data-resume='classic'], [data-resume='ai-first']) body {
+html[data-resume='classic'] body {
   margin: 0;
   font-family: var(--font-classic-sans);
   color: var(--color-classic-ink);
@@ -46,7 +46,7 @@ html:is([data-resume='classic'], [data-resume='ai-first']) body {
   line-height: 1.6;
 }
 
-html:is([data-resume='classic'], [data-resume='ai-first']) body::before {
+html[data-resume='classic'] body::before {
   display: none;
 }
 
@@ -131,7 +131,7 @@ html:is([data-resume='classic'], [data-resume='ai-first']) body::before {
 }
 
 @media print {
-  html:is([data-resume='classic'], [data-resume='ai-first']) {
+  html[data-resume='classic'] {
     --color-classic-paper: #ffffff !important;
     --color-classic-paper-soft: #f7f8fa !important;
     --color-classic-ink: #111827 !important;
@@ -150,12 +150,12 @@ html:is([data-resume='classic'], [data-resume='ai-first']) body::before {
     --grid-strong: transparent !important;
   }
 
-  html:is([data-resume='classic'], [data-resume='ai-first']) body {
+  html[data-resume='classic'] body {
     background: #ffffff !important;
     background-image: none !important;
   }
 
-  html:is([data-resume='classic'], [data-resume='ai-first']) body::before {
+  html[data-resume='classic'] body::before {
     display: none !important;
   }
 

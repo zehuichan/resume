@@ -4,7 +4,7 @@ import { RouterLink, useRoute, type RouteLocationRaw } from 'vue-router'
 import { Button } from '@/shared/ui/button'
 import { ButtonGroup } from '@/shared/ui/button-group'
 
-type NavId = 'classic' | 'ai-first' | 'online'
+type NavId = 'classic' | 'online'
 
 interface NavItem {
   id: NavId
@@ -14,31 +14,18 @@ interface NavItem {
 
 const route = useRoute()
 
-const current = computed<NavId>(() => {
-  if (route.name === 'ai-first') return 'ai-first'
-  if (route.name === 'online') return 'online'
-  return 'classic'
-})
+const current = computed<NavId>(() => (route.name === 'online' ? 'online' : 'classic'))
 
-const onlineSource = computed(() =>
-  route.name === 'ai-first' || route.query.source === 'ai-first' ? 'ai-first' : 'classic'
-)
-
-const items = computed<NavItem[]>(() => [
-  { id: 'classic', label: '招聘版', to: '/' },
-  { id: 'ai-first', label: 'Agent 版', to: '/ai-first' },
-  {
-    id: 'online',
-    label: '线上版',
-    to: { name: 'online', query: { source: onlineSource.value } }
-  }
-])
+const items: NavItem[] = [
+  { id: 'classic', label: '简历', to: '/' },
+  { id: 'online', label: '线上版', to: '/online' }
+]
 </script>
 
 <template>
   <nav
     class="fixed top-4 right-4 z-40 print:hidden max-sm:inset-x-2.5 max-sm:top-2.5 max-sm:right-2.5"
-    aria-label="简历版本"
+    aria-label="简历导航"
   >
     <ButtonGroup class="w-full border border-border bg-background shadow-sm sm:w-fit">
       <Button

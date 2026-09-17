@@ -19,17 +19,6 @@ export const routes: RouteRecordRaw[] = [
     }
   },
   {
-    path: '/ai-first',
-    name: 'ai-first',
-    component: () => import('../views/ai-first/index.vue'),
-    meta: {
-      title: '陈泽辉 · Agent 应用开发工程师',
-      description: '陈泽辉 · Agent 应用开发 · Skills / 上下文编排 / 质检闭环 / 真实业务交付',
-      themeColor: '#ffffff',
-      resumeVersion: 'ai-first'
-    }
-  },
-  {
     path: '/online',
     name: 'online',
     component: () => import('../views/online/index.vue'),
@@ -42,6 +31,10 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/classic',
+    redirect: '/'
+  },
+  {
+    path: '/ai-first',
     redirect: '/'
   },
   {

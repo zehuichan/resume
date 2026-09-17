@@ -28,23 +28,18 @@ describe('first-paint resume classification', () => {
     ['#/', 'classic'],
     ['#/classic', 'classic'],
     ['#/missing', 'classic'],
-    ['#/ai-first', 'ai-first'],
-    ['#/ai-first?print=1', 'ai-first'],
-    ['#/ai-first/', 'ai-first'],
-    ['#/ai-first/missing', 'classic']
+    ['#/ai-first', 'classic'],
+    ['#/ai-first?print=1', 'classic'],
+    ['#/online', 'classic']
   ])('classifies %s as %s', (hash, expectedVersion) => {
     runFirstPaintScript(hash)
 
     expect(document.documentElement.dataset.resume).toBe(expectedVersion)
   })
 
-  it('uses the stable light theme for both resume pages', () => {
+  it('uses the stable light theme', () => {
     runFirstPaintScript('#/')
     expect(document.documentElement.dataset.resume).toBe('classic')
-    expect(document.documentElement.dataset.theme).toBe('light')
-
-    runFirstPaintScript('#/ai-first?print=1')
-    expect(document.documentElement.dataset.resume).toBe('ai-first')
     expect(document.documentElement.dataset.theme).toBe('light')
   })
 })
