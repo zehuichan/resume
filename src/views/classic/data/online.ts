@@ -6,9 +6,9 @@ import type { OnlineExtras } from '../../../shared/types/online'
  */
 export const classicOnline: OnlineExtras = {
   expectations: [
-    { title: '前端开发工程师', salary: '20-28K', cities: '广州，佛山' },
-    { title: '前端开发工程师', salary: '18-25K', cities: '广州' },
-    { title: '前端开发工程师', salary: '18-25K', cities: '佛山' }
+    { title: '前端负责人', salary: '20-28K', cities: '广州，佛山' },
+    { title: '前端架构师', salary: '20-28K', cities: '广州' },
+    { title: '前端开发工程师', salary: '18-25K', cities: '广州，佛山' }
   ],
   companies: [
     {

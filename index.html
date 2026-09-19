@@ -9,8 +9,25 @@
     <meta name="theme-color" content="#fafaf8" />
     <script>
       ;(function () {
-        document.documentElement.dataset.resume = 'classic'
-        document.documentElement.dataset.theme = 'light'
+        var root = document.documentElement
+        root.dataset.resume = 'classic'
+
+        var stored = null
+        try {
+          stored = localStorage.getItem('resume-theme')
+        } catch (e) {
+          // 隐私模式下 localStorage 不可读，退回系统偏好
+        }
+
+        var systemDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        var theme = stored === 'dark' || stored === 'light' ? stored : systemDark ? 'dark' : 'light'
+
+        root.dataset.theme = theme
+        root.classList.toggle('dark', theme === 'dark')
+        root.style.colorScheme = theme
+
+        var meta = document.querySelector('meta[name="theme-color"]')
+        if (meta) meta.content = theme === 'dark' ? '#15181d' : '#ffffff'
       })()
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

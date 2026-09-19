@@ -47,6 +47,26 @@ describe('ClassicResumeView', () => {
     expect(printCss).toContain('.classic-resume .tech')
   })
 
+  it('repaints the sheet in dark mode while keeping print output on light paper', async () => {
+    const { readFileSync } = await vi.importActual<{
+      readFileSync(path: string, encoding: 'utf8'): string
+    }>('node:fs')
+    const classicCss = readFileSync('src/views/classic/styles/resume.css', 'utf8')
+    const darkBlock = classicCss.match(/\[data-theme='dark'\]\s*\{([^}]*)\}/)?.[1] ?? ''
+    const printCss = classicCss.split('@media print').at(-1) ?? ''
+
+    expect(darkBlock).toContain('color-scheme: dark;')
+    for (const token of ['paper', 'paper-soft', 'ink', 'ink-soft', 'ink-faint', 'accent', 'accent-deep', 'line']) {
+      expect(darkBlock).toContain(`--color-classic-${token}:`)
+    }
+    expect(darkBlock).toContain('--sheet-bg:')
+    expect(darkBlock).toContain('--toolbar-bg:')
+
+    expect(printCss).toContain('color-scheme: light !important;')
+    expect(printCss).toContain('--color-classic-ink: #111827 !important;')
+    expect(printCss).toContain('background: #ffffff !important;')
+  })
+
   it('isolates classic selectors, print rules, and Tailwind tokens from other views', async () => {
     const { readFileSync } = await vi.importActual<{
       readFileSync(path: string, encoding: 'utf8'): string

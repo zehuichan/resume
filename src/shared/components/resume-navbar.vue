@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { RouterLink, useRoute, type RouteLocationRaw } from 'vue-router'
+import { Moon, Sun } from '@lucide/vue'
+import { useTheme } from '@/shared/composables/use-theme'
 import { Button } from '@/shared/ui/button'
-import { ButtonGroup } from '@/shared/ui/button-group'
+import { ButtonGroup, ButtonGroupSeparator } from '@/shared/ui/button-group'
 
 type NavId = 'classic' | 'online'
 
@@ -20,6 +22,12 @@ const items: NavItem[] = [
   { id: 'classic', label: '简历', to: '/' },
   { id: 'online', label: '线上版', to: '/online' }
 ]
+
+const { isDark, toggle, sync } = useTheme()
+
+const themeLabel = computed(() => (isDark.value ? '切换到亮色主题' : '切换到暗色主题'))
+
+onMounted(sync)
 </script>
 
 <template>
@@ -39,6 +47,22 @@ const items: NavItem[] = [
         <RouterLink :to="item.to" :aria-current="current === item.id ? 'page' : undefined">
           {{ item.label }}
         </RouterLink>
+      </Button>
+
+      <ButtonGroupSeparator />
+
+      <Button
+        type="button"
+        size="sm"
+        variant="ghost"
+        class="flex-none px-2.5"
+        :title="themeLabel"
+        :aria-label="themeLabel"
+        :aria-pressed="isDark"
+        @click="toggle"
+      >
+        <Sun v-if="isDark" :size="15" />
+        <Moon v-else :size="15" />
       </Button>
     </ButtonGroup>
   </nav>

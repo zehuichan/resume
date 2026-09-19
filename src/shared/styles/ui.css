@@ -28,6 +28,29 @@
   --ring: #315b7d;
 }
 
+.dark {
+  color-scheme: dark;
+
+  --background: #0f1115;
+  --foreground: #e6e8ec;
+  --card: #15181d;
+  --card-foreground: #e6e8ec;
+  --popover: #15181d;
+  --popover-foreground: #e6e8ec;
+  --primary: #7fb0da;
+  --primary-foreground: #10141a;
+  --secondary: #1c2129;
+  --secondary-foreground: #d6dbe3;
+  --muted: #171b21;
+  --muted-foreground: #9aa2ae;
+  --accent: #222832;
+  --accent-foreground: #e6e8ec;
+  --destructive: #d9542b;
+  --border: #2b313a;
+  --input: #333a44;
+  --ring: #7fb0da;
+}
+
 @theme {
   --font-sans: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', ui-sans-serif, system-ui, sans-serif;
 }

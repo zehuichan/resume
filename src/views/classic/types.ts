@@ -57,6 +57,8 @@ export interface Project {
   featured?: boolean
   /** 紧凑项目排序用日期，格式 YYYY.MM；不填时从 period 中推断 */
   sortDate?: string
+  /** 归档：内容已折进对应公司的业绩行，不再占招聘版卡片；线上版项目库仍保留 */
+  archived?: boolean
 }
 
 export interface Company {
@@ -64,6 +66,8 @@ export interface Company {
   department: string
   role: string
   period: string
+  /** 该段任职的职责与业绩，2-3 条；支持 ==高亮== 与 `代码` 标记 */
+  highlights?: string[]
 }
 
 export interface OpenSourceItem {
@@ -111,15 +115,4 @@ export interface Resume {
   skills: Skill[]
   education: Education[]
   closing: string
-}
-
-/** 主题标识：现代工程师亮色（默认）与暗色面 */
-export type ThemeId = 'light' | 'dark'
-
-export interface Theme {
-  id: ThemeId
-  /** 控件中展示的名称 */
-  label: string
-  /** 该主题强调色，用于色板小圆点 */
-  swatch: string
 }

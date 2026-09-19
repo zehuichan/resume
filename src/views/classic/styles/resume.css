@@ -32,8 +32,30 @@ html[data-resume='classic'] {
   --toolbar-bg: #ffffff;
 }
 
+/* 暗色面：只改 @theme 里的色值变量，排版与打印规则完全复用亮色 */
 html[data-resume='classic'][data-theme='dark'] {
-  color-scheme: light;
+  color-scheme: dark;
+
+  --color-classic-paper: #15181d;
+  --color-classic-paper-soft: #1b1f26;
+  --color-classic-ink: #e6e8ec;
+  --color-classic-ink-soft: #b7bdc7;
+  --color-classic-ink-faint: #8b929d;
+  /* 暗底上强调色调亮；hover 用的 -deep 反过来比常态更亮，保持「更强调」的语义 */
+  --color-classic-accent: #7fb0da;
+  --color-classic-accent-deep: #a6c9e8;
+  --color-classic-seal: #7fb0da;
+  --color-classic-seal-deep: #a6c9e8;
+  --color-classic-line: #2b313a;
+
+  --sheet-bg: #15181d;
+  --sheet-border: #262b33;
+  --sheet-shadow: 0 2px 18px rgb(0 0 0 / 45%);
+  --toolbar-bg: #15181d;
+}
+
+html[data-resume='classic'][data-theme='dark'] body {
+  background: #0f1115;
 }
 
 html[data-resume='classic'] body {
@@ -131,7 +153,10 @@ html[data-resume='classic'] body::before {
 }
 
 @media print {
+  /* 导出的 PDF 永远是亮色纸面：这里的 !important 压过暗色覆盖块 */
   html[data-resume='classic'] {
+    color-scheme: light !important;
+
     --color-classic-paper: #ffffff !important;
     --color-classic-paper-soft: #f7f8fa !important;
     --color-classic-ink: #111827 !important;

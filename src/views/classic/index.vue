@@ -2,22 +2,25 @@
 import { computed } from 'vue'
 import { resume } from './data'
 import { CompactProjectItem, ProjectItem, ResumeHeader, RichText, SectionHeader, Toolbar } from './components'
-import type { Project } from './types'
+import { getProjectSortValue } from '../../shared/lib/online-resume-copy'
+import { getExperienceYears } from '../../shared/utils/experience'
 import './styles/resume.css'
 
 const year = new Date().getFullYear()
 
+/** 首张「N 年+」按 experienceStartYear 计算，其余三张来自 resume.metrics */
+const metrics = computed(() => [
+  { value: String(getExperienceYears(resume.profile.experienceStartYear)), unit: '年+', label: '前端研发经验' },
+  ...resume.metrics
+])
+
 const featuredProjects = computed(() => resume.experience.projects.filter((p) => p.featured))
-const getProjectSortValue = (project: Project) => {
-  const dateText = project.sortDate ?? project.period.split('-').at(-1)?.trim() ?? project.period
-  const match = dateText.match(/(\d{4})\.(\d{2})/)
-  if (!match) return 0
-  return Number(match[1]) * 100 + Number(match[2])
-}
+
+/** archived 项目已折进对应公司的业绩行，招聘版不再给它们单独卡片 */
 const compactProjects = computed(() =>
-  [...resume.experience.projects.filter((p) => !p.featured), ...resume.moreProjects.projects].sort(
-    (a, b) => getProjectSortValue(b) - getProjectSortValue(a)
-  ).slice(0, 5)
+  [...resume.experience.projects, ...resume.moreProjects.projects]
+    .filter((p) => !p.featured && !p.archived)
+    .sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a))
 )
 </script>
 
@@ -25,6 +28,17 @@ const compactProjects = computed(() =>
   <div class="classic-resume flex min-h-screen justify-center px-4 pt-7 pb-24 sm:py-12">
     <main class="sheet w-full max-w-[980px]">
       <ResumeHeader :profile="resume.profile" />
+
+      <section
+        class="reveal break-avoid mt-6 grid grid-cols-2 gap-x-4 gap-y-3 border-b border-classic-line pb-4 sm:grid-cols-4"
+      >
+        <div v-for="m in metrics" :key="m.label">
+          <div class="font-classic-sans text-[20px] font-bold leading-none text-classic-accent">
+            {{ m.value }}<span class="ml-0.5 text-[12px] font-semibold">{{ m.unit }}</span>
+          </div>
+          <div class="mt-1 text-[11.5px] text-classic-ink-faint">{{ m.label }}</div>
+        </div>
+      </section>
 
       <section class="reveal">
         <SectionHeader title="个人优势" />
@@ -51,13 +65,21 @@ const compactProjects = computed(() =>
           <li
             v-for="c in resume.companies"
             :key="c.name"
-            class="break-avoid grid gap-1 border-t border-classic-line py-3 first:border-t-0 sm:grid-cols-[1fr_auto]"
+            class="break-avoid border-t border-classic-line py-3 first:border-t-0"
           >
-            <div>
-              <span class="text-[14px] font-bold text-classic-ink">{{ c.name }}</span>
-              <span class="ml-3 text-[12px] text-classic-ink-soft">{{ c.department }} · {{ c.role }}</span>
+            <div class="grid gap-1 sm:grid-cols-[1fr_auto]">
+              <div>
+                <span class="text-[14px] font-bold text-classic-ink">{{ c.name }}</span>
+                <span class="ml-3 text-[12px] text-classic-ink-soft">{{ c.department }} · {{ c.role }}</span>
+              </div>
+              <span class="text-[11.5px] text-classic-ink-faint tabular-nums">{{ c.period }}</span>
             </div>
-            <span class="text-[11.5px] text-classic-ink-faint tabular-nums">{{ c.period }}</span>
+            <ul v-if="c.highlights?.length" class="mt-2 flex list-none flex-col gap-1 p-0">
+              <li v-for="h in c.highlights" :key="h" class="flex gap-2">
+                <span class="text-[12.8px] leading-[1.65] text-classic-accent" aria-hidden="true">·</span>
+                <RichText :text="h" class="min-w-0 text-[12.8px] leading-[1.65] text-classic-ink-soft" />
+              </li>
+            </ul>
           </li>
         </ul>
       </section>
