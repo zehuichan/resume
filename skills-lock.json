@@ -7,12 +7,6 @@
       "skillPath": "skills/git-commit/SKILL.md",
       "computedHash": "2607fc60629b82b257136dd2a7a373f0a4466c0b49df7746d845d59313c99b21"
     },
-    "kami": {
-      "source": "tw93/kami",
-      "sourceType": "github",
-      "skillPath": "SKILL.md",
-      "computedHash": "8abefb9e1e53344b237114fe552ad9b1e98b2ca9f37ce82a983f550afb1b13c7"
-    },
     "shadcn-vue": {
       "source": "unovue/shadcn-vue",
       "sourceType": "github",

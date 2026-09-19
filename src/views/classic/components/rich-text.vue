@@ -8,7 +8,7 @@ interface Token {
   value: string
 }
 
-/** `代码` -> 行内 mono 标签；**加重** -> 深墨加重；==高亮== -> 墨蓝强调（kami 的 .hl） */
+/** `代码` -> 行内 mono 标签；**加重** -> 深墨加重；==高亮== -> 墨蓝强调 */
 const tokens = computed<Token[]>(() => {
   const parts = props.text.split(/(`[^`]+`|\*\*[^*]+\*\*|==[^=]+==)/g)
   return parts.filter(Boolean).map((p) => {
