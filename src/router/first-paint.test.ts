@@ -96,6 +96,6 @@ describe('first-paint theme resolution', () => {
     localStorage.setItem('resume-theme', 'dark')
     runFirstPaintScript('#/')
 
-    expect(meta.content).toBe('#15181d')
+    expect(meta.content).toBe('#191c1e')
   })
 })

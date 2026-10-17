@@ -6,6 +6,6 @@ import type { Theme } from '../types/theme'
  * - 工具型 UI：`src/shared/styles/ui.css` 的 `.dark` 覆盖块
  */
 export const themes: readonly Theme[] = [
-  { id: 'light', label: '亮色', swatch: '#315b7d' },
-  { id: 'dark', label: '暗色', swatch: '#7fb0da' }
+  { id: 'light', label: '亮色', swatch: '#00696e' },
+  { id: 'dark', label: '暗色', swatch: '#6cb8bc' }
 ]

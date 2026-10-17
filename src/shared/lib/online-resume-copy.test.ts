@@ -121,6 +121,10 @@ describe('buildOnlineResumeBlocks', () => {
     )
     const projects = copy.blocks.find((b) => b.kind === 'projects')
     if (projects?.kind !== 'projects') return
-    expect(projects.items[0]?.period).toMatch(/2026\.07|2025\.09/)
+    const expected = [...classicResume.experience.projects, ...classicResume.moreProjects.projects]
+      .sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a))
+      .map((p) => p.name)
+    expect(projects.items.map((p) => p.name)).toEqual(expected)
+    expect(projects.items[0]?.name).toBe('Flowgram 审批流设计器')
   })
 })

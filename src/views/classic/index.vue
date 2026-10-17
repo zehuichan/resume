@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { resume } from './data'
-import { CompactProjectItem, ProjectItem, ResumeHeader, RichText, SectionHeader, Toolbar } from './components'
+import { CompactProjectItem, ProjectItem, ResumeHeader, RichText, SectionHeader } from './components'
 import { getProjectSortValue } from '../../shared/lib/online-resume-copy'
 import { getExperienceYears } from '../../shared/utils/experience'
 import './styles/resume.css'
@@ -25,7 +25,7 @@ const compactProjects = computed(() =>
 </script>
 
 <template>
-  <div class="classic-resume flex min-h-screen justify-center px-4 pt-7 pb-24 sm:py-12">
+  <div class="classic-resume flex min-h-screen justify-center px-4 pt-4 pb-24 sm:pt-12 sm:pb-24">
     <main class="sheet w-full max-w-[980px]">
       <ResumeHeader :profile="resume.profile" />
 
@@ -140,7 +140,5 @@ const compactProjects = computed(() =>
         <span class="text-[11px] text-classic-ink-faint tabular-nums">© {{ year }} {{ resume.profile.name }}</span>
       </footer>
     </main>
-
-    <Toolbar />
   </div>
 </template>

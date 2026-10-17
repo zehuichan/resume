@@ -13,7 +13,7 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('../views/classic/index.vue'),
     meta: {
       title: '陈泽辉 · 前端负责人',
-      description: '陈泽辉 · 10 年+ Vue3、多端架构、组件化、团队管理与 CI/CD 实战经验',
+      description: '陈泽辉 · 前端负责人 / 前端架构师 · 20 人前端团队 · 前端基建、低代码与 AI 工程化',
       themeColor: '#ffffff',
       resumeVersion: 'classic'
     }

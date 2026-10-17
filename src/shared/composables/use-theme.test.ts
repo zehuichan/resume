@@ -74,7 +74,7 @@ describe('useTheme', () => {
     expect(document.documentElement.dataset.theme).toBe('dark')
     expect(document.documentElement.classList.contains('dark')).toBe(true)
     expect(document.documentElement.style.colorScheme).toBe('dark')
-    expect(themeColor()).toBe('#15181d')
+    expect(themeColor()).toBe('#191c1e')
   })
 
   it('toggles between the two themes', async () => {
@@ -113,6 +113,6 @@ describe('useTheme', () => {
 
     setTheme('dark')
     setRouteThemeColor('#ffffff')
-    expect(themeColor()).toBe('#15181d')
+    expect(themeColor()).toBe('#191c1e')
   })
 })

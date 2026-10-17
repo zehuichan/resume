@@ -9,5 +9,5 @@ export function applyRouteMeta(meta: RouteMeta): void {
   document.documentElement.dataset.resume = 'classic'
   setMetaContent('description', description)
   // theme-color 由主题层写入：暗色下要压过路由给的亮色值
-  setRouteThemeColor(String(meta.themeColor ?? '#fafaf8'))
+  setRouteThemeColor(String(meta.themeColor ?? '#ffffff'))
 }

@@ -5,7 +5,6 @@ import projectItemSource from './components/project-item.vue?raw'
 import resumeHeaderSource from './components/resume-header.vue?raw'
 import richTextSource from './components/rich-text.vue?raw'
 import sectionHeaderSource from './components/section-header.vue?raw'
-import toolbarSource from './components/toolbar.vue?raw'
 import ClassicResumeView from './index.vue'
 import classicViewSource from './index.vue?raw'
 
@@ -15,8 +14,7 @@ const classicVueSources = [
   projectItemSource,
   resumeHeaderSource,
   richTextSource,
-  sectionHeaderSource,
-  toolbarSource
+  sectionHeaderSource
 ].join('\n')
 
 describe('ClassicResumeView', () => {
@@ -30,10 +28,10 @@ describe('ClassicResumeView', () => {
     expect(wrapper.get('a[href="https://tenon.gbuilderchina.com/"]').text()).toBe('Tenon 低代码画布引擎')
   })
 
-  it('reserves mobile space below the sheet for the fixed toolbar', () => {
+  it('reserves space below the sheet for the bottom dock', () => {
     const wrapper = mount(ClassicResumeView)
 
-    expect(wrapper.get('.classic-resume').classes()).toContain('pb-24')
+    expect(wrapper.get('.classic-resume').classes()).toEqual(expect.arrayContaining(['pb-24', 'sm:pb-24']))
   })
 
   it('enforces the 9pt minimum for compact print text', async () => {
@@ -60,7 +58,6 @@ describe('ClassicResumeView', () => {
       expect(darkBlock).toContain(`--color-classic-${token}:`)
     }
     expect(darkBlock).toContain('--sheet-bg:')
-    expect(darkBlock).toContain('--toolbar-bg:')
 
     expect(printCss).toContain('color-scheme: light !important;')
     expect(printCss).toContain('--color-classic-ink: #111827 !important;')

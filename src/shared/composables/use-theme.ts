@@ -7,7 +7,7 @@ const STORAGE_KEY = 'resume-theme'
 const FALLBACK_THEME: ThemeId = 'light'
 const DARK_QUERY = '(prefers-color-scheme: dark)'
 /** 移动端浏览器 UI 配色，跟随主题切换 */
-const DARK_BROWSER_COLOR = '#15181d'
+const DARK_BROWSER_COLOR = '#191c1e'
 
 const normalizeThemeId = (value: string | null | undefined): ThemeId | undefined => {
   if (value === 'kami') return 'light'

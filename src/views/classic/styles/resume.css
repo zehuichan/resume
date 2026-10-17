@@ -1,68 +1,74 @@
 ﻿@import 'tailwindcss';
 
 @theme {
-  /* Print-first resume: white paper, neutral ink, one restrained blue accent. */
+  /* Print-first resume: cool-neutral canvas, white paper, teal accent. */
   --color-*: initial;
   --font-*: initial;
 
   --color-classic-paper: #ffffff;
-  --color-classic-paper-soft: #f7f8fa;
-  --color-classic-ink: #1f2937;
-  --color-classic-ink-soft: #4b5563;
+  --color-classic-paper-soft: #e8eaef;
+  --color-classic-ink: #111827;
+  --color-classic-ink-soft: #5b6472;
   --color-classic-ink-faint: #6b7280;
-  --color-classic-accent: #315b7d;
-  --color-classic-accent-deep: #244760;
-  --color-classic-seal: #315b7d;
-  --color-classic-seal-deep: #244760;
-  --color-classic-line: #d9dee5;
+  --color-classic-accent: #00696e;
+  --color-classic-accent-deep: #005055;
+  --color-classic-seal: #00696e;
+  --color-classic-seal-deep: #005055;
+  --color-classic-on-seal: #ffffff;
+  --color-classic-rule: #00696e;
+  --color-classic-tech: #005055;
+  --color-classic-line: rgba(17, 24, 39, 0.1);
 
-  --font-classic-display: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', ui-sans-serif, system-ui, sans-serif;
-  --font-classic-sans: 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', ui-sans-serif, system-ui, sans-serif;
-  --font-classic-mono: 'Cascadia Code', Consolas, 'Microsoft YaHei', ui-monospace, monospace;
+  --font-classic-display: 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-classic-sans: 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-classic-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
 }
 
 html[data-resume='classic'] {
   color-scheme: light;
 
   --sheet-bg: #ffffff;
-  --sheet-border: #e1e5ea;
-  --sheet-shadow: 0 2px 14px rgb(31 41 55 / 8%);
+  --sheet-border: rgba(17, 24, 39, 0.1);
+  --sheet-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.05);
   --grid-color: transparent;
   --grid-strong: transparent;
-  --toolbar-bg: #ffffff;
 }
 
 /* 暗色面：只改 @theme 里的色值变量，排版与打印规则完全复用亮色 */
 html[data-resume='classic'][data-theme='dark'] {
   color-scheme: dark;
 
-  --color-classic-paper: #15181d;
-  --color-classic-paper-soft: #1b1f26;
-  --color-classic-ink: #e6e8ec;
-  --color-classic-ink-soft: #b7bdc7;
-  --color-classic-ink-faint: #8b929d;
+  --color-classic-paper: #191c1e;
+  --color-classic-paper-soft: #23272a;
+  --color-classic-ink: #e4e7e9;
+  --color-classic-ink-soft: #b2b9bf;
+  --color-classic-ink-faint: #858d94;
   /* 暗底上强调色调亮；hover 用的 -deep 反过来比常态更亮，保持「更强调」的语义 */
-  --color-classic-accent: #7fb0da;
-  --color-classic-accent-deep: #a6c9e8;
-  --color-classic-seal: #7fb0da;
-  --color-classic-seal-deep: #a6c9e8;
-  --color-classic-line: #2b313a;
+  --color-classic-accent: #6cb8bc;
+  --color-classic-accent-deep: #8ccdd0;
+  /* 实心按钮保持品牌青 + 白字，不用浅青填充 */
+  --color-classic-seal: #0e7f84;
+  --color-classic-seal-deep: #0b6c70;
+  --color-classic-on-seal: #ffffff;
+  /* 暗底上只让标题与数字带色：分隔线降饱和，技术标签回到正文色，靠 Mono 区分 */
+  --color-classic-rule: #2f6467;
+  --color-classic-tech: #d3d8dc;
+  --color-classic-line: #30353a;
 
-  --sheet-bg: #15181d;
-  --sheet-border: #262b33;
-  --sheet-shadow: 0 2px 18px rgb(0 0 0 / 45%);
-  --toolbar-bg: #15181d;
+  --sheet-bg: #191c1e;
+  --sheet-border: #2a2e32;
+  --sheet-shadow: 0 2px 24px rgb(0 0 0 / 55%);
 }
 
 html[data-resume='classic'][data-theme='dark'] body {
-  background: #0f1115;
+  background: #0b0d0e;
 }
 
 html[data-resume='classic'] body {
   margin: 0;
   font-family: var(--font-classic-sans);
   color: var(--color-classic-ink);
-  background: #f2f4f7;
+  background: #f4f5f7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.6;
@@ -116,7 +122,7 @@ html[data-resume='classic'] body::before {
   font-family: var(--font-classic-mono);
   font-size: 0.84em;
   font-weight: 600;
-  color: var(--color-classic-accent-deep);
+  color: var(--color-classic-tech);
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -158,14 +164,17 @@ html[data-resume='classic'] body::before {
     color-scheme: light !important;
 
     --color-classic-paper: #ffffff !important;
-    --color-classic-paper-soft: #f7f8fa !important;
+    --color-classic-paper-soft: #e8eaef !important;
     --color-classic-ink: #111827 !important;
     --color-classic-ink-soft: #374151 !important;
     --color-classic-ink-faint: #5f6773 !important;
-    --color-classic-accent: #284f6d !important;
-    --color-classic-accent-deep: #1f3f57 !important;
-    --color-classic-seal: #284f6d !important;
-    --color-classic-seal-deep: #1f3f57 !important;
+    --color-classic-accent: #005055 !important;
+    --color-classic-accent-deep: #00383c !important;
+    --color-classic-seal: #005055 !important;
+    --color-classic-seal-deep: #00383c !important;
+    --color-classic-on-seal: #ffffff !important;
+    --color-classic-rule: #005055 !important;
+    --color-classic-tech: #00383c !important;
     --color-classic-line: #ccd2da !important;
     --classic-print-min-font-size: 9pt;
 

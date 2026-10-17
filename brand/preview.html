@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>陈泽辉 · Brand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* 与 Forme / Tenon 冷中性工作台同源（产品色 ↔ 品牌包双向反哺 · teal #00696e）
+         * 面阶：bg < muted（画布）< surface（卡面）< surface-soft（浮层） */
+        --primary: #00696e;
+        --primary-strong: #005055;
+        --primary-soft: rgba(0, 105, 110, 0.12);
+        --accent: #00696e;
+        --on-primary: #ffffff;
+        --ink: #111827;
+        --ink-soft: #5b6472;
+        --ink-muted: #8b93a1;
+        --ink-faint: #6b7280;
+        --bg: #f4f5f7;
+        --muted: #eef0f3;
+        --surface: #ffffff;
+        --surface-soft: #e8eaef;
+        --hairline: rgba(17, 24, 39, 0.1);
+        --paper: #ffffff;
+        --code-bg: #0b0d12;
+        --radius: 6px;
+        --font: 'IBM Plex Sans', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+        --mono: 'IBM Plex Mono', ui-monospace, monospace;
+        --cn: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      }
+      html.dark {
+        --primary: #0e7f84;
+        --primary-strong: #0b6c70;
+        --primary-soft: rgba(108, 184, 188, 0.16);
+        --accent: #6cb8bc;
+        --on-primary: #ffffff;
+        --ink: #e4e7e9;
+        --ink-soft: #b2b9bf;
+        --ink-muted: #858d94;
+        --ink-faint: #858d94;
+        --bg: #0b0d0e;
+        --muted: #141719;
+        --surface: #191c1e;
+        --surface-soft: #23272a;
+        --hairline: #30353a;
+        --paper: #ffffff;
+        --code-bg: #0b0d0e;
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.5;
+        transition:
+          background 0.2s ease,
+          color 0.2s ease;
+      }
+      .page {
+        width: min(1080px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 72px;
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 36px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .lockup {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .lockup span {
+        font-family: var(--cn);
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+      .meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+      }
+      .theme-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: 32px;
+        padding: 0 12px;
+        border: 1px solid var(--hairline);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .theme-toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .swatch-grid-label {
+        margin: 0 0 10px;
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+      }
+      .swatches + .swatch-grid-label {
+        margin-top: 18px;
+      }
+      .light-only {
+        display: block;
+      }
+      .dark-only {
+        display: none;
+      }
+      html.dark .light-only {
+        display: none;
+      }
+      html.dark .dark-only {
+        display: block;
+      }
+      h1 {
+        margin: 8px 0 0;
+        font-size: 28px;
+        letter-spacing: -0.5px;
+      }
+      h2 {
+        margin: 0 0 14px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+      }
+      section {
+        margin-top: 32px;
+        padding: 22px;
+        border: 1px solid var(--hairline);
+        border-radius: 14px;
+        background: var(--surface);
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+      }
+      .swatch {
+        border: 1px solid var(--hairline);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .swatch .chip {
+        height: 64px;
+      }
+      .swatch .info {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+      .swatch code {
+        display: block;
+        margin-top: 2px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+      }
+      .type-row {
+        display: grid;
+        gap: 14px;
+      }
+      .type-row article {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        gap: 12px;
+        align-items: baseline;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .type-row article:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+      .type-row .token {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        padding: 0 14px;
+        border-radius: var(--radius);
+        border: 1px solid transparent;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: default;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: var(--on-primary);
+      }
+      .btn-secondary {
+        background: var(--surface-soft);
+        color: var(--ink);
+        border-color: var(--hairline);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--ink-soft);
+      }
+      .badge {
+        display: inline-flex;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: var(--primary-soft);
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .sheet-stage {
+        padding: 18px;
+        border-radius: 10px;
+        background: var(--muted);
+      }
+      .mini-sheet {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 22px 24px;
+        border: 1px solid var(--hairline);
+        border-radius: 0;
+        background: var(--surface);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.05);
+      }
+      .mini-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--hairline);
+      }
+      .mini-head h3 {
+        margin: 0;
+        font-family: var(--cn);
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      .mini-head .role {
+        margin-top: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--accent);
+      }
+      .mini-avatar {
+        flex: none;
+        width: 48px;
+        height: 48px;
+        border: 1px solid var(--hairline);
+        background: var(--surface-soft);
+      }
+      .mini-meta {
+        margin-top: 10px;
+        font-size: 12px;
+        color: var(--ink-faint);
+      }
+      .mini-section {
+        margin-top: 16px;
+      }
+      .mini-section h4 {
+        margin: 0 0 8px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--hairline);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+      .mini-section p {
+        margin: 0;
+        font-size: 13px;
+        color: var(--ink-soft);
+        line-height: 1.55;
+      }
+      .hl {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .tech {
+        font-family: var(--mono);
+        font-size: 0.9em;
+        font-weight: 600;
+        color: var(--primary-strong);
+      }
+      html.dark .tech {
+        color: #d3d8dc;
+      }
+      .code {
+        margin-top: 12px;
+        padding: 14px 16px;
+        border-radius: 8px;
+        background: var(--code-bg);
+        color: var(--paper);
+        font-family: var(--mono);
+        font-size: 12.5px;
+      }
+      .marks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: end;
+      }
+      .mark-item {
+        text-align: center;
+      }
+      .mark-item small {
+        display: block;
+        margin-top: 8px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+      }
+      .lockup-boards {
+        display: grid;
+        gap: 12px;
+      }
+      .lockup-board {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 18px 20px;
+        border-radius: 12px;
+        border: 1px solid var(--hairline);
+      }
+      .lockup-board--light {
+        background: #ffffff;
+        color: #111827;
+      }
+      .lockup-board--dark {
+        background: #0b0d12;
+        color: #e8eaef;
+        border-color: rgba(232, 234, 239, 0.2);
+      }
+      .lockup-board span {
+        font-family: var(--cn);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 0;
+      }
+      footer {
+        margin-top: 28px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+      }
+      footer a {
+        color: var(--accent);
+      }
+      @media (max-width: 720px) {
+        .type-row article {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div>
+          <div class="lockup" aria-label="陈泽辉">
+            <svg width="36" height="36" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+              <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+              <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+              <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+              <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
+            </svg>
+            <span>陈泽辉</span>
+          </div>
+          <h1>Brand preview</h1>
+        </div>
+        <div class="meta-row">
+          <div class="meta">Primary · Resume sheet · Cool neutral workbench</div>
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
+            <span class="light-only">Dark →</span>
+            <span class="dark-only">← Light</span>
+          </button>
+        </div>
+      </header>
+
+      <section>
+        <h2>Brand mark · Resume sheet</h2>
+        <div class="marks">
+          <div class="mark-item">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+              <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+              <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+              <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+              <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
+            </svg>
+            <small>64 · default</small>
+          </div>
+          <div class="mark-item">
+            <svg width="32" height="32" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+              <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+              <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+              <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+              <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
+            </svg>
+            <small>32 · favicon</small>
+          </div>
+          <div class="mark-item">
+            <svg width="16" height="16" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+              <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+              <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+              <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+              <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
+            </svg>
+            <small>16 · compact</small>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Logo lockup</h2>
+        <div class="lockup-boards">
+          <div class="lockup-board lockup-board--light">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+              <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+              <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+              <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+              <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
+            </svg>
+            <span>陈泽辉</span>
+          </div>
+          <div class="lockup-board lockup-board--dark">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+              <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+              <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+              <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+              <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
+            </svg>
+            <span>陈泽辉</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Color palette</h2>
+        <p class="swatch-grid-label light-only">Light</p>
+        <p class="swatch-grid-label dark-only">Dark</p>
+        <div class="swatches light-only">
+          <div class="swatch">
+            <div class="chip" style="background: #00696e"></div>
+            <div class="info">primary<code>#00696E</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #005055"></div>
+            <div class="info">primary-strong<code>#005055</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: rgba(0, 105, 110, 0.12)"></div>
+            <div class="info">primary-soft<code>rgba(0,105,110,.12)</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #ffffff; border-bottom: 1px solid #e5e7eb"></div>
+            <div class="info">on-mark / surface<code>#FFFFFF</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #111827"></div>
+            <div class="info">ink<code>#111827</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #6b7280"></div>
+            <div class="info">ink-faint<code>#6B7280</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #f4f5f7; border-bottom: 1px solid #e5e7eb"></div>
+            <div class="info">bg<code>#F4F5F7</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #e8eaef"></div>
+            <div class="info">surface-soft<code>#E8EAEF</code></div>
+          </div>
+        </div>
+        <div class="swatches dark-only">
+          <div class="swatch">
+            <div class="chip" style="background: #00696e"></div>
+            <div class="info">primary / mark<code>#00696E</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #6cb8bc"></div>
+            <div class="info">accent text<code>#6CB8BC</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #0e7f84"></div>
+            <div class="info">button fill<code>#0E7F84</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #e4e7e9"></div>
+            <div class="info">ink<code>#E4E7E9</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #0b0d0e"></div>
+            <div class="info">bg<code>#0B0D0E</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #141719"></div>
+            <div class="info">muted / canvas<code>#141719</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #191c1e"></div>
+            <div class="info">surface / sheet<code>#191C1E</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #23272a"></div>
+            <div class="info">surface-soft<code>#23272A</code></div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Typography</h2>
+        <div class="type-row">
+          <article>
+            <div class="token">display-lg</div>
+            <div style="font-size: 36px; font-weight: 600; letter-spacing: -0.8px">
+              前端负责人 / 前端架构师
+            </div>
+          </article>
+          <article>
+            <div class="token">heading-2</div>
+            <div style="font-size: 22px; font-weight: 600; letter-spacing: -0.3px">工作经历</div>
+          </article>
+          <article>
+            <div class="token">body</div>
+            <div style="font-size: 14px; color: var(--ink-soft)">
+              打印优先的中文技术简历：冷灰页底、白色纸面与单一青绿强调，减少装饰以保证招聘平台预览与打印可读。
+            </div>
+          </article>
+          <article>
+            <div class="token">eyebrow / mono</div>
+            <div
+              style="
+                font-family: var(--mono);
+                font-size: 11px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--accent);
+              "
+            >
+              Vue 3 · Print · A4
+            </div>
+          </article>
+          <article>
+            <div class="token">code</div>
+            <div class="code">--color-classic-accent: #00696E;</div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Components</h2>
+        <div class="row" style="margin-bottom: 14px">
+          <span class="btn btn-primary">主按钮</span>
+          <span class="btn btn-secondary">线上版</span>
+          <span class="btn btn-ghost">复制</span>
+          <span class="badge">简历</span>
+        </div>
+        <div class="sheet-stage">
+          <div class="mini-sheet">
+            <div class="mini-head">
+              <div>
+                <h3>陈泽辉</h3>
+                <div class="role">前端负责人 / 前端架构师</div>
+              </div>
+              <div class="mini-avatar" aria-hidden="true"></div>
+            </div>
+            <div class="mini-meta">10 年+ 工作经验 · 广州</div>
+            <div class="mini-section">
+              <h4>个人优势</h4>
+              <p>
+                现任敬城集团前端负责人：带 <span class="hl">20 人</span>前端团队，自研
+                <span class="tech">Tenon</span> 画布与 <span class="tech">Forme</span> 表单引擎。
+              </p>
+            </div>
+            <div class="code light-only">--classic-accent: #00696E;</div>
+            <div class="code dark-only">
+              --classic-accent: #6cb8bc; /* active text */<br />--classic-accent-deep: #8ccdd0; /*
+              hover */
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        DESIGN.md:
+        <a href="../DESIGN.md">DESIGN.md</a>
+        · Assets:
+        <a href="./mark.svg">mark.svg</a>
+        ·
+        <a href="./logo.svg">logo.svg</a>
+      </footer>
+    </div>
+    <script>
+      (function () {
+        var root = document.documentElement
+        var btn = document.getElementById('theme-toggle')
+        var params = new URLSearchParams(location.search)
+        var startDark = params.get('theme') === 'dark'
+        function apply(dark) {
+          root.classList.toggle('dark', dark)
+          if (btn) btn.setAttribute('aria-pressed', dark ? 'true' : 'false')
+        }
+        apply(startDark)
+        if (btn) {
+          btn.addEventListener('click', function () {
+            apply(!root.classList.contains('dark'))
+          })
+        }
+      })()
+    </script>
+  </body>
+</html>

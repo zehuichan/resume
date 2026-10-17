@@ -7,6 +7,7 @@ import { Badge } from '@/shared/ui/badge'
 import { Button } from '@/shared/ui/button'
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
@@ -39,7 +40,7 @@ function labelFor(key: string) {
 </script>
 
 <template>
-  <div class="min-h-screen bg-muted/40 px-4 pt-20 pb-16 font-sans sm:px-6 sm:pt-24">
+  <div class="min-h-screen bg-background px-4 pt-4 pb-24 font-sans sm:px-6 sm:pt-10">
     <main class="mx-auto flex w-full max-w-5xl flex-col gap-5">
       <Card>
         <CardHeader>
@@ -55,23 +56,25 @@ function labelFor(key: string) {
 
       <template v-for="block in copy.blocks" :key="block.kind">
         <Card v-if="block.kind === 'advantage'">
-          <CardHeader class="flex-row items-center justify-between gap-3">
+          <CardHeader>
             <CardTitle class="text-base">{{ block.title }}</CardTitle>
-            <Button variant="outline" size="xs" @click="copyField('advantage', block.field)">
-              {{ labelFor('advantage') }}
-              <span class="text-muted-foreground font-normal">{{ block.field.charCount }}</span>
-            </Button>
+            <CardAction>
+              <Button variant="outline" size="xs" @click="copyField('advantage', block.field)">
+                {{ labelFor('advantage') }}
+                <span class="text-muted-foreground font-normal">{{ block.field.charCount }}</span>
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             <pre
-              class="text-foreground/90 border border-border bg-muted px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+              class="text-foreground/90 border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
               >{{ block.field.text }}</pre
             >
           </CardContent>
         </Card>
 
         <Card v-else-if="block.kind === 'expectations'">
-          <CardHeader class="flex-row items-center justify-between gap-3">
+          <CardHeader>
             <CardTitle class="text-base">{{ block.title }}</CardTitle>
             <CardDescription>BOSS 为选择器，仅作对照</CardDescription>
           </CardHeader>
@@ -93,12 +96,12 @@ function labelFor(key: string) {
         <section v-else-if="block.kind === 'companies'" class="flex flex-col gap-3">
           <h2 class="px-1 text-lg font-semibold">{{ block.title }}</h2>
           <Card v-for="item in block.items" :key="item.name">
-            <CardHeader class="flex-row items-start justify-between gap-3">
-              <div class="flex flex-col gap-1">
-                <CardTitle class="text-base">{{ item.onlineName }}</CardTitle>
-                <CardDescription>{{ item.role }} · {{ item.period }}</CardDescription>
-              </div>
-              <Badge v-if="item.missing" variant="warning">待补充</Badge>
+            <CardHeader>
+              <CardTitle class="text-base">{{ item.onlineName }}</CardTitle>
+              <CardDescription>{{ item.role }} · {{ item.period }}</CardDescription>
+              <CardAction v-if="item.missing">
+                <Badge variant="warning">待补充</Badge>
+              </CardAction>
             </CardHeader>
             <CardContent class="grid gap-4 lg:grid-cols-2">
               <div v-if="item.content" class="flex min-w-0 flex-col gap-2">
@@ -113,7 +116,7 @@ function labelFor(key: string) {
                   </Button>
                 </div>
                 <pre
-                  class="text-foreground/90 h-full border border-border bg-muted px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
                   >{{ item.content.text }}</pre
                 >
               </div>
@@ -130,7 +133,7 @@ function labelFor(key: string) {
                   </Button>
                 </div>
                 <pre
-                  class="text-foreground/90 h-full border border-border bg-muted px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
                   >{{ item.result.text }}</pre
                 >
               </div>
@@ -160,7 +163,7 @@ function labelFor(key: string) {
                   </Button>
                 </div>
                 <pre
-                  class="text-foreground/90 h-full border border-border bg-muted px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
                   >{{ item.content.text }}</pre
                 >
               </div>
@@ -177,7 +180,7 @@ function labelFor(key: string) {
                   </Button>
                 </div>
                 <pre
-                  class="text-foreground/90 h-full border border-border bg-muted px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
                   >{{ item.result.text }}</pre
                 >
               </div>
@@ -186,11 +189,13 @@ function labelFor(key: string) {
         </section>
 
         <Card v-else-if="block.kind === 'education'">
-          <CardHeader class="flex-row items-center justify-between gap-3">
+          <CardHeader>
             <CardTitle class="text-base">{{ block.title }}</CardTitle>
-            <Button variant="outline" size="xs" @click="copyField('education', block.field)">
-              {{ labelFor('education') }}
-            </Button>
+            <CardAction>
+              <Button variant="outline" size="xs" @click="copyField('education', block.field)">
+                {{ labelFor('education') }}
+              </Button>
+            </CardAction>
           </CardHeader>
           <CardContent>
             <ul class="flex flex-col">

@@ -1,6 +1,18 @@
 # 陈泽辉的简历
 
-一份数据驱动、打印优先的中文技术简历。视觉采用白色 A4 纸张、深灰正文与单一低饱和蓝色强调，减少装饰以保证国内招聘平台预览、黑白打印和 PDF 导出时的可读性。
+一份数据驱动、打印优先的中文技术简历。视觉并入 Tenon / Forme 冷中性工作台家族：冷灰页底、白色 A4 纸面、单一青绿 `#00696e` 强调，IBM Plex Sans + Noto Sans SC，减少装饰以保证国内招聘平台预览与黑白打印时的可读性。
+
+## 品牌
+
+品牌包真源：[`DESIGN.md`](./DESIGN.md)。预览页：[`brand/preview.html`](./brand/preview.html)（可本地直接打开，或加 `?theme=dark` 看暗色）。
+
+资产：
+
+- [`brand/mark.svg`](./brand/mark.svg) — 「简历版面」mark
+- [`brand/logo.svg`](./brand/logo.svg) — mark + 字标「陈泽辉」
+- [`public/favicon.svg`](./public/favicon.svg) — 跟随 mark
+
+产品主题分两处：简历正文在 `src/views/classic/styles/resume.css`，工具型 UI 在 `src/shared/styles/ui.css`。识别核改动需同步品牌包与两边主题。
 
 ## 技术栈
 
@@ -25,7 +37,7 @@ pnpm preview  # 预览构建产物
 
 默认简历：`/#/`（招聘版 · 前端负责人）
 
-右上角可在「简历 / 线上版」之间切换；线上版用于复制 BOSS 直聘等平台所需的分段文案。
+底部工具条（桌面停靠右下角，移动端通栏）可在「简历 / 线上版」之间切换并切换明暗主题；线上版用于复制 BOSS 直聘等平台所需的分段文案。
 
 简历内容：`src/views/classic/data/resume.ts`
 线上补充：`src/views/classic/data/online.ts`
@@ -36,21 +48,23 @@ pnpm preview  # 预览构建产物
 
 ```
 .
-├─ index.html             # 引入 Google Fonts
+├─ DESIGN.md              # 品牌包真源
+├─ brand/                 # mark.svg · logo.svg · preview.html
+├─ index.html             # 引入 Google Fonts（IBM Plex + Noto Sans SC）
 ├─ vite.config.ts         # base 已设为 /resume/（GitHub Pages 项目站点）
 ├─ public/                # avatar.png、favicon.svg
 └─ src/
    ├─ app.vue              # 路由出口
    ├─ router/              # 页面路由与标题
-   ├─ shared/              # 导航与共享工具
+   ├─ shared/              # 底部工具条与共享工具
    └─ views/
       ├─ classic/          # 招聘版内容、组件与样式
       └─ online/           # 线上简历复制页
 ```
 
-## 导出 PDF
+## 打印
 
-右下角「导出 PDF」按钮（或 `Ctrl/Cmd + P`）调用浏览器打印，已针对 A4 做了分页与防截断处理；打印时自动隐藏工具栏、去除纸张投影。
+`Ctrl/Cmd + P` 调用浏览器打印。样式已针对 A4 做了分页与防截断处理；打印时自动隐藏工具栏、去除纸张投影，并强制亮色白纸。
 
 ## 部署
 

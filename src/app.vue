@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import ResumeNavbar from './shared/components/resume-navbar.vue'
+import ResumeDock from './shared/components/resume-dock.vue'
 </script>
 
 <template>
   <RouterView />
-  <ResumeNavbar />
+  <ResumeDock />
 </template>

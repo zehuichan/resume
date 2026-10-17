@@ -4,12 +4,12 @@ import type { Resume } from '../types'
 export const resume: Resume = {
   profile: {
     name: '陈泽辉',
-    title: '前端负责人',
+    title: '前端负责人 / 前端架构师',
     avatar: 'avatar.png',
     experienceStartYear: 2015,
     meta: ['广州', '本科', '随时到岗'],
     summary:
-      '敬城集团前端负责人，==10 年+== 前端经验。带团队交付集团后台 / H5 / 小程序三端业务，并主导前端基建、Tenon 低代码与 AI 编码标准：规范固化为脚手架、brick 组件、接口标准与 Sentry 告警，==21== 个业务仓统一建仓与回归。更早在中视前端负责 ETC 一站式发行平台，落地多省、==日均发行 10000+==。',
+      '敬城集团前端负责人，带 ==20 人==前端团队，负责前端技术路线决策、排期分工与 Code Review。集团 all in AI、研发全员配备 Cursor，我把团队规范固化为 Agent Skills 与 `create-app` 脚手架：三端模板、brick 组件库、Apifox 接口生成、Sentry 告警与 E2E 回归建仓即接齐，==21== 个业务仓统一按此交付。自研 Tenon 低代码画布、Forme 表单引擎与 Flowgram 审批流设计器，牵头 21 仓从 commonPage 渐进迁移到 Forme。此前负责中视 ETC 一站式发行平台前端，落地多省、==日均发行 10000+==。',
     contacts: [
       {
         icon: Mail,
@@ -28,8 +28,8 @@ export const resume: Resume = {
 
   /** 第一张「N 年+ 前端研发经验」由页面依据 experienceStartYear 计算 */
   metrics: [
+    { value: '20', unit: '人', label: '前端团队' },
     { value: '21', unit: '个', label: '业务前端仓' },
-    { value: '3', unit: '套', label: '端标准模板' },
     { value: '3', unit: '套', label: 'brick 组件库' }
   ],
 
@@ -44,7 +44,7 @@ export const resume: Resume = {
       {
         year: '2020',
         head: '从项目交付到组件资产化',
-        body: '中视信息将高频控件沉淀为公司级组件库发布私服，跨项目复用。'
+        body: '中视信息把高频控件沉淀为公司级组件库发布私服，跨项目复用。'
       },
       {
         year: '2022',
@@ -53,8 +53,8 @@ export const resume: Resume = {
       },
       {
         year: '2025',
-        head: '从规范治理到基建主链路',
-        body: '敬城集团落地模板、脚手架、接口标准、Agent Skills 与监控告警一体基建，建仓到上线观测走同一套。'
+        head: '从规范治理到 AI 研发链路',
+        body: '敬城集团 all in AI，模板、脚手架、接口生成、Skills 与监控告警串成一条链路，全员 Cursor 产出直接合入生产仓。'
       }
     ],
     projects: [
@@ -62,13 +62,14 @@ export const resume: Resume = {
         name: '敬城集团前端基建主链路',
         kind: '架构体系',
         period: '2025.09 - 至今',
-        role: '体系主导',
+        role: '负责人 · 体系主导',
         featured: true,
-        scene: '集团后台、H5、小程序并行开发，各仓模板、组件、接口与测试各自维护，新仓反复从零搭建。',
+        scene:
+          '20 人前端团队并行支撑集团后台、H5、小程序，各仓模板、组件、接口与测试各自维护，新仓反复从零搭建；全员用 Cursor 后，写法差异被成倍放大。',
         action:
-          '将规范固化为可安装脚手架：`create-app` 建仓即带三端模板、brick 组件与回归层；Apifox 为唯一真相源生成类型与请求；Sentry SOP 全量接入，Issue 进企微告警群。',
+          '定下「规范进工具、不靠口头约定」的路线：`create-app` 建仓即带三端模板、brick 三端组件与回归层；Apifox 作为接口唯一真相源，生成类型与请求；Sentry SOP、GitLab CI/CD、神策 / 友盟埋点统一接入，Issue 推送企微告警群。',
         result:
-          '`create-app@1.0.0`、`create-e2e@1.2.0` 发私服，新仓开局到可回归一次给齐；ERP / QMS / SRM / OA / CRM 等 ==21== 个仓统一跑这套。'
+          '`create-app@1.0.0`、`create-e2e@1.2.0` 发布私服，新仓从开局到可回归一次给齐；ERP / QMS / SRM / OA / CRM 等 ==21== 个业务仓、==20 人==团队统一运行这套链路。'
       },
       {
         name: 'Tenon 低代码画布引擎',
@@ -77,11 +78,36 @@ export const resume: Resume = {
         role: '架构主导',
         featured: true,
         href: 'https://tenon.gbuilderchina.com/',
-        scene: '中后台表单、表格、流程页重复开发成本高，需在 pro-code 体系内补可视化搭建，并让 Agent 操作同一画布。',
+        scene:
+          '中后台表单、表格、流程页重复开发成本高；需要在现有 pro-code 体系内补上可视化搭建，不另起一套，并让 Agent 操作同一画布。',
         action:
-          'Schema 协议先行，设计器、渲染器、物料与插件按协议解耦；业务侧 `@tenon/plugin` 一行接入；Agent 经 MCP 读写同份 Schema，写操作过人工审批。',
+          'Schema 协议先行，设计器、渲染器、物料与插件按协议解耦，拆成可独立发布的包；业务仓接入 `@tenon/plugin` 一行即可；Agent 经 MCP 读写同一份 Schema，写操作需人工审批。',
         result:
-          '人工搭建与 Agent 共用一份 Schema，物料与插件面可扩展；官网 https://tenon.gbuilderchina.com/。'
+          '人工搭建与 Agent 共用一份 Schema；`@tenon/*` 1.x 已接入 FIMS 业务仓；官网 https://tenon.gbuilderchina.com/。'
+      },
+      {
+        name: 'Forme 表单页面引擎',
+        kind: '低代码平台',
+        period: '2026.09 - 至今',
+        role: '架构主导',
+        featured: true,
+        scene:
+          '业务仓的列表与表单页依赖各仓自维护的 commonPage（`views/common/index.vue` 单文件 1400+ 行，tabs / tabs-form 各近千行），改一处要多仓同步。',
+        action:
+          '按协议 → 引擎 → 物料 kit → 成品壳分层：零依赖 `@forme/protocol` 定义 FormDocument，设计器与渲染器读同一份文档；ant-design-vue 物料注册进 registry，数据、权限与副作用留在宿主 pro-code；`@forme/plugin` 以一个 Vite 插件接入设计器路由与跨窗口实时预览。',
+        result:
+          '7 个包发布私服，团队成员在其上扩展搜索、表格物料与事件契约；制定 ==21== 个业务仓渐进迁移路线：新板块直接上 Forme，旧路由保留 commonPage 按板块逐步迁移，迁移期间旧板块照常运行。'
+      },
+      {
+        name: 'Flowgram 审批流设计器',
+        kind: '流程设计器',
+        period: '2026.10 - 至今',
+        role: '独立主导',
+        scene: '审批流程（发起、审批、抄送、条件、结束）原由 EasyProcess 设计器承载，存量流程数据需要直接沿用。',
+        action:
+          '迁入 EasyProcess 的递归渲染、条件分支、校验角标与平移缩放；节点配置、人员、部门与持久化交给宿主，设计器只负责画布。',
+        result:
+          '文档结构兼容 EasyProcess JSON，存量流程直接读取；包结构对齐 Vue Flow，core 与背景、控件、缩略图分包，全套发布私服。'
       },
       {
         name: 'GeorgeGroup Agent Skills · AI 编码基建',
@@ -89,10 +115,10 @@ export const resume: Resume = {
         period: '2025.09 - 至今',
         role: '独立主导',
         featured: true,
-        scene: '团队规模化用 `Cursor`、`Claude Code` 写 CRUD，目录、写法与自测全凭个人习惯，产出难合入生产。',
+        scene: '集团 all in AI，研发全员配备 `Cursor`；CRUD 产出变快，但目录、写法与自测各凭习惯，难以直接合入生产。',
         action:
-          '将提示词做成可安装 Skills：`vue-vben-crud` 管 CRUD 骨架，组件实践、UI 自测、第一性原理评审各占一个；E2E SOP 随 `create-e2e` 下发，回归统一走 Playwright。',
-        result: '标准 CRUD ==分钟级== 生成；评审与 UI 自测进日常流程，产出落到脚手架回归层。'
+          '把提示词做成可安装 Skills：`vue-vben-crud` 管 CRUD 骨架，组件实践、UI 自测、第一性原理评审各成一项；E2E SOP 随 `create-e2e` 下发，回归统一走 Playwright；配套 AI-Coding 技术分享推广到全员。',
+        result: '标准 CRUD ==分钟级==生成；==20 人==团队的 Cursor 产出按同一套 Skills 落进脚手架回归层，评审与 UI 自测纳入日常流程。'
       },
       {
         name: '和林国际物流信息管理系统',
@@ -101,24 +127,24 @@ export const resume: Resume = {
         role: '架构主导',
         scene: '国际物流全链路系统，前端同时覆盖后台重表单流转与公众号下单查货。',
         action: '从零定 `vue3` 技术栈与组件分层，请求、权限、表单、字典先做成基础层，业务流程再往上叠。',
-        result: '后台稳定运行下单、配载、订舱、清关、派送、签收、财务 ==7 大模块==，用户端与管理端共用组件持续迭代。'
+        result: '基础层先行的 `vue3` 架构支撑下单、配载、订舱、清关、派送、签收、财务 ==7 大模块==稳定运行，用户端与管理端共用组件持续迭代。'
       },
       {
         name: '广东科技成果转移转化中心线上平台',
         kind: '众包服务平台',
         period: '2022.11 - 2023.06',
-        role: '整站负责',
+        role: '整站负责 · 前端主程',
         scene: '科技成果转移转化平台连接专家成果、知识产权与企业需求，前站、管理后台、专家小程序与直播四端并行。',
-        action: '统一请求层、缓存与工具函数，OSS 上传、动态录入等重复表单抽成业务组件；直播侧接 zego 音视频与超级白板。',
-        result: '==四端==按期上线，公共组件与工具层被后续需求直接复用，专家直播稳定开播。'
+        action: '统一请求层、缓存与工具函数，OSS 上传、动态录入等重复表单抽成业务组件；直播侧接入 zego 音视频与超级白板；建立分支策略、Code Review 与 CI/CD。',
+        result: '==四端==按期上线；分支策略、Code Review 与 CI/CD 把问题前置到提交阶段，公共组件与工具层被后续需求直接复用。'
       },
       {
         name: '4S 店 SAAS 系统',
         kind: '支付宝小程序',
         period: '2022.02 - 2022.08',
         role: '独立开发',
-        scene: '基于支付宝芝麻 GO、花呗分期的 4S 店营销工具，用户端接活动、商户端做运营，一人负责双端。',
-        action: '定双端结构与接口约定，OSS 上传、OCR、车牌输入、选择器等高频交互一次封装、两端复用。',
+        scene: '基于支付宝芝麻 GO、花呗分期的 4S 店营销工具，用户端承接活动、商户端负责运营，一人负责双端。',
+        action: '定下双端结构与接口约定，OSS 上传、OCR、车牌输入、选择器等高频交互一次封装、两端复用。',
         result: '单店月保养 GMV ==40 万==，后续接入支付宝域内消息与灯火平台承接投放。'
       },
       {
@@ -129,8 +155,8 @@ export const resume: Resume = {
         featured: true,
         scene: '全国 ETC 发行平台对接多省发行方，客货车发行、通行扣费、售后与车主服务压在同一套后台。',
         action:
-          '选型与框架搭建，将请求、字典、菜单权限重构成公共基础层；高频控件基于 `element-ui` 做成业务组件库发私服，同期建立 Code Review 规范。',
-        result: '落地广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户 100 万。'
+          '负责选型与框架搭建，把请求、字典、菜单权限重构为公共基础层；高频控件基于 `element-ui` 做成业务组件库发布私服，同期建立 Code Review 规范。',
+        result: '落地广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户 100 万；公司级组件库跨项目复用。'
       }
     ]
   },
@@ -146,8 +172,8 @@ export const resume: Resume = {
         role: '独立开发',
         sortDate: '2020.07',
         archived: true,
-        scene: '法律咨询 App，内容课程、在线咨询、支付、订单与钱包，一人从零做到上线。',
-        action: '前端搭建与接口联调独立完成；在线咨询接 `tim-js-sdk`，分享配置与图片上传抽成公共能力。',
+        scene: '法律咨询 App，覆盖内容课程、在线咨询、支付、订单与钱包，一人从零做到上线。',
+        action: '前端搭建与接口联调独立完成；在线咨询接入 `tim-js-sdk`，分享配置与图片上传抽成公共能力。',
         result: '整站独立交付，==IM 在线咨询==串起课程、支付与订单。'
       },
       {
@@ -158,7 +184,7 @@ export const resume: Resume = {
         sortDate: '2019.03',
         archived: true,
         scene: '燃气用户、客服与施工师傅共用公众号加后台，缴费报数到安装、改管、维修、安检线上流转。',
-        action: '负责前站与配套后台；用全局 filters 与 `require.context` 自动注册 vuex module，压掉多模块重复接线。',
+        action: '负责前站与配套后台；用全局 filters 与 `require.context` 自动注册 vuex module，省掉多模块重复接线。',
         result: '用户预约、后台派单、师傅现场回填接成闭环，覆盖安装、维修、安检等==多类民生服务==。'
       },
       {
@@ -178,7 +204,7 @@ export const resume: Resume = {
         role: '核心开发',
         sortDate: '2019.12',
         archived: true,
-        scene: '医药电商 H5 商城，药品、保健、医疗器械、医生预约到下单支付，全在同一套移动端壳里。',
+        scene: '医药电商 H5 商城，从药品、保健、医疗器械、医生预约到下单支付，都在同一套移动端壳里。',
         action:
           '统一 `axios` 请求与异常兜底，多机型适配用 postcss-px-to-viewport 收口；地址、预约、优惠券等重复表单抽成业务组件。',
         result: '交付商品浏览、购物车、下单支付、医生预约与积分卡券==全链路==，请求层与组件沿用到后续版本。'
@@ -193,9 +219,9 @@ export const resume: Resume = {
       role: '前端负责人',
       period: '2025.09 - 至今',
       highlights: [
-        '带团队排期、分工、Code Review 与规范推广，前端技术方案由本人拍板',
-        '主导前端基建主链路、Tenon 低代码画布与 Agent Skills 三条主线并行推进',
-        'ERP / QMS / SRM / OA / CRM 等 ==21== 个业务仓统一建仓、接口与回归口径'
+        '带 ==20 人==前端团队，负责排期、分工、Code Review 与规范推广，前端技术路线与方案由本人决策，组织 AI-Coding 技术分享',
+        '集团 all in AI、研发全员 Cursor，0-1 搭建前端基建主链路（脚手架、三端模板、brick、OpenAPI、Sentry、CI/CD、埋点）、Tenon / Forme 低代码、Flowgram 审批流与 Agent Skills',
+        'ERP / QMS / SRM / OA / CRM 等 ==21== 个业务仓统一建仓、接口与回归口径，全员 AI 产出按同一套规范合入生产；牵头 21 仓从 commonPage 渐进迁移到 Forme（新板块先上、旧板块逐步迁）'
       ]
     },
     {
@@ -204,8 +230,8 @@ export const resume: Resume = {
       role: '高级前端',
       period: '2023.07 - 2025.08',
       highlights: [
-        '负责和林、双马两套国际物流平台，交付 `vue3` 管理后台与移动 H5，覆盖运营、客户、仓库、客服、派送多角色端',
-        '围绕订单、配载、出仓、财务与报表建设 Table / CRUD、Schema 表单、权限、字典与精度计算等公共能力',
+        '负责和林、双马两套国际物流平台，交付 `vue3` 管理后台与移动 H5，覆盖运营、客户、仓库、客服、派送等多角色端',
+        '从零定 `vue3` 技术栈与组件分层，围绕订单、配载、出仓、财务与报表建设 Table / CRUD、Schema 表单、权限、字典与精度计算等公共能力',
         '持续交付 ==4 个==主要前端项目，公共能力支撑两条产品线长期迭代'
       ]
     },
@@ -216,7 +242,7 @@ export const resume: Resume = {
       period: '2022.11 - 2023.06',
       highlights: [
         '整站负责广东科技成果转移转化中心线上平台，前站、管理后台、专家小程序与直播==四端==并行',
-        '做前端主程，建立分支策略、Code Review 与 CI/CD，问题前置到提交阶段'
+        '担任前端主程，建立分支策略、Code Review 与 CI/CD，把问题前置到提交阶段'
       ]
     },
     {
@@ -225,8 +251,8 @@ export const resume: Resume = {
       role: '高级前端',
       period: '2020.09 - 2022.10',
       highlights: [
-        '前端负责 ETC 一站式发行平台，选型与框架搭建，请求、字典、菜单权限重构成公共基础层',
-        '高频控件基于 `element-ui` 做成公司级组件库发私服，同期建立 Code Review 规范',
+        '负责 ETC 一站式发行平台前端，主导选型与框架搭建，把请求、字典、菜单权限重构为公共基础层',
+        '高频控件基于 `element-ui` 做成公司级组件库发布私服，同期建立 Code Review 规范',
         '独立开发 4S 店 SAAS 支付宝小程序，用户端与商户端一人交付'
       ]
     },
@@ -246,7 +272,7 @@ export const resume: Resume = {
       role: '中级前端',
       period: '2015.11 - 2019.04',
       highlights: [
-        '从页面开发到整站交付，技术选型、工程搭建与疑难排查开始由自己拍板',
+        '从页面开发成长到整站交付，开始独立负责技术选型、工程搭建与疑难排查',
         '核心开发南海燃气管家、佛山智慧口岸与国药齐富微信商城，覆盖公众号前站、H5 商城、管理后台与分级权限'
       ]
     }
@@ -275,33 +301,33 @@ export const resume: Resume = {
     ],
     highlightTag: '资产沉淀',
     highlight:
-      '个人组件库、workbench，到集团的 brick 三端组件与 Agent Skills，同一件事：把踩过的坑做成装上就能用、还能自查的东西。'
+      '从个人组件库、workbench，到集团的 brick 三端组件与 Agent Skills，做的是同一件事：把踩过的坑做成装上就能用、还能自查的工具。'
   },
 
   skills: [
     {
-      label: '跨端研发',
-      body: '物流、科技成果、ETC、商城、燃气等项目中，用 `vue2/3`、`taro`、`uniapp` 与原生小程序交付 H5、公众号、小程序与后台，多端并行压在同一套工程规范上。'
+      label: '团队管理',
+      body: '敬城带 ==20 人==前端团队，负责排期、分工、Code Review 与技术方案决策，组织 AI-Coding 技术分享；兴工建立分支策略、Code Review 与 CI/CD，中视建立 Code Review 规范。规范落进脚手架与 Skills，不靠口头约定。'
     },
     {
-      label: '架构与组件',
-      body: '建设三端标准模板与 brick / brick-mobile / brick-mini（Ant Design Vue / Vant / TDesign UniApp）；Tenon Schema 与物料分层拆成可独立发布的包。'
+      label: '架构设计',
+      body: 'Tenon / Forme 协议先行：设计器与渲染器读同一份文档，物料、插件解耦并拆成可独立发布的包，存量页面按板块渐进迁移；三端（后台 / H5 / 小程序）标准模板配 brick / brick-mobile / brick-mini（Ant Design Vue / Vant / TDesign UniApp）；Flowgram 包结构对齐 Vue Flow。'
     },
     {
-      label: '健壮性工程',
-      body: '请求层、权限、字典与异常兜底先定再写业务；Sentry SOP 全量接入业务系统，Issue 进企微告警群；业务仓用 `create-e2e` 接 Playwright 回归与 agent-browser 探路写测。'
+      label: '前端工程化',
+      body: '主导 `vite` / monorepo 与 GitLab CI/CD；`create-app`、`create-e2e` 发布私服，==21== 个业务仓统一建仓并接入回归；Apifox 作为 OpenAPI 真相源，`openapi-ts-request` 统一生成类型、请求与错误码语义。'
     },
     {
-      label: '工程化协作',
-      body: '主导 `vite` / monorepo 与 GitLab CI/CD；`create-app@1.0.0`、`create-e2e@1.2.0` 发私服，工作区 ==21== 个业务仓统一建仓与接回归。'
+      label: '质量与稳定性',
+      body: '请求层、权限、字典与异常兜底先定规范再写业务；Sentry SOP 全量接入，Issue 推送企微告警群；业务仓用 `create-e2e` 接入 Playwright 回归，agent-browser 辅助探路写测；神策 / 友盟埋点统一接入。'
     },
     {
       label: 'AI 工程化',
-      body: '维护 `agent-skills`：`vue-vben-crud`、`vue-components-practices`、`ui-autotest`、`first-principles-review`；`e2e-module-sop` 随 create-e2e 下发，Agent 按团队标准产码与写测。'
+      body: '集团研发全员 `Cursor`，维护团队 `agent-skills`：`vue-vben-crud`、`vue-components-practices`、`ui-autotest`、`first-principles-review`；`e2e-module-sop` 随 `create-e2e` 下发，Agent 按团队标准产码与写测。'
     },
     {
-      label: '接口与联调',
-      body: 'OpenAPI 以 Apifox 为真相源，`openapi-ts-request` + `pnpm gen:api` 统一 `generated/` 目录、请求适配与 `code/message/result` 错误码语义。'
+      label: '跨端研发',
+      body: '物流、科技成果、ETC、商城、燃气等项目中，用 `vue2/3`、`taro`、`uniapp` 与原生小程序交付 H5、公众号、小程序与后台，多端共用同一套工程规范。'
     }
   ],
 
