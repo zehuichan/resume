@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#A3411D" />
-  <text x="32" y="44" font-family="'Songti SC','STSong',serif" font-size="38" font-weight="700" fill="#FAF8F3" text-anchor="middle">H</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="陈泽辉简历 mark">
+  <title>陈泽辉简历 mark</title>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#00696E" />
+  <rect x="16" y="17" width="16" height="6" rx="3" fill="#FFFFFF" />
+  <rect x="36" y="17" width="12" height="12" rx="3" fill="#FFFFFF" />
+  <rect x="16" y="35" width="32" height="5" rx="2.5" fill="#FFFFFF" opacity="0.85" />
+  <rect x="16" y="43" width="22" height="5" rx="2.5" fill="#FFFFFF" opacity="0.7" />
 </svg>
