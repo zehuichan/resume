@@ -13,6 +13,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit -p tsconfig.app.json && vue-tsc --noEmit -p tsconfig.node.json && vite build",
     "preview": "vite preview",
+    "budget": "node ./scripts/check-budget.mjs",
     "test": "vitest",
     "test:run": "vitest run",
     "clean": "node ./scripts/clean.mjs",
