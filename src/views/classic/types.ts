@@ -51,6 +51,8 @@ export interface Project {
   action: string
   /** 结果行：数据为王，==关键数字== 高亮 1-2 处 */
   result: string
+  /** 收获行：这个项目让你改了什么判断，一句话；只在精选项目卡片上显示 */
+  learning?: string
   /** 项目主页 / 官网，有则标题可点开 */
   href?: string
   /** 是否进入精选项目卡片区 */
@@ -68,6 +70,11 @@ export interface Company {
   period: string
   /** 该段任职的职责与业绩，2-3 条；支持 ==高亮== 与 `代码` 标记 */
   highlights?: string[]
+  /**
+   * 行业词在前、技术在后，招聘平台按词匹配；只写这段任职里实际用过的。
+   * 纯文本，不支持标记；线上版复制成「技能标签」
+   */
+  keywords?: string[]
 }
 
 export interface OpenSourceItem {

@@ -5,6 +5,7 @@ import projectItemSource from './components/project-item.vue?raw'
 import resumeHeaderSource from './components/resume-header.vue?raw'
 import richTextSource from './components/rich-text.vue?raw'
 import sectionHeaderSource from './components/section-header.vue?raw'
+import { resume } from './data'
 import ClassicResumeView from './index.vue'
 import classicViewSource from './index.vue?raw'
 
@@ -26,6 +27,16 @@ describe('ClassicResumeView', () => {
     expect(wrapper.text()).toContain('Tenon 低代码画布引擎')
     expect(wrapper.get('a[href="https://tenon.gbuilderchina.com/"]').text()).toBe('Tenon 低代码画布引擎')
     expect(wrapper.get('a[href="https://tenon.gbuilderchina.com/"]').text()).toBe('Tenon 低代码画布引擎')
+  })
+
+  it('lists keywords under each company and a learning row on featured projects', () => {
+    const wrapper = mount(ClassicResumeView)
+    const text = wrapper.text()
+
+    expect(text).toContain('关键词国际物流 · 订舱')
+    const featured = resume.experience.projects.filter((p) => p.featured)
+    expect(featured.every((p) => p.learning)).toBe(true)
+    expect(text.split('项目收获').length - 1).toBe(featured.length)
   })
 
   it('reserves space below the sheet for the bottom dock', () => {

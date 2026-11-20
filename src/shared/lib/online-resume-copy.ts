@@ -29,6 +29,8 @@ export interface CompanyCopyCard {
   missing: boolean
   content?: CopyField
   result?: CopyField
+  /** 来自 `Company.keywords`，顿号分隔，对照 BOSS「拥有技能」逐个添加 */
+  skills?: CopyField
 }
 
 export interface CompaniesBlock {
@@ -146,7 +148,8 @@ function buildCompanies(companies: Company[], extras: OnlineExtras): CompaniesBl
       content: contentLines.length
         ? toField('内容', numbered(contentLines))
         : undefined,
-      result: resultLines.length ? toField('业绩', numbered(resultLines)) : undefined
+      result: resultLines.length ? toField('业绩', numbered(resultLines)) : undefined,
+      skills: company.keywords?.length ? toField('技能标签', company.keywords.join('、')) : undefined
     }
   })
 

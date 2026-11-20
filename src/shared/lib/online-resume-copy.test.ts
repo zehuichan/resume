@@ -88,6 +88,28 @@ describe('buildOnlineResumeBlocks', () => {
     expect(jingcheng?.result?.text).toContain('21')
   })
 
+  it('copies company keywords as skill tags', () => {
+    const copy = buildOnlineResumeBlocks(classicResume, classicOnline)
+    const companies = copy.blocks.find((b) => b.kind === 'companies')
+    if (companies?.kind !== 'companies') return
+
+    const gaoding = companies.items.find((c) => c.name === '广州高鼎信息科技有限公司')
+    expect(gaoding?.skills?.label).toBe('技能标签')
+    expect(gaoding?.skills?.text).toMatch(/^国际物流、/)
+    expect(gaoding?.skills?.text).toContain('TypeScript')
+    expect(companies.items.every((c) => c.skills)).toBe(true)
+  })
+
+  it('omits skill tags for a company without keywords', () => {
+    const copy = buildOnlineResumeBlocks(
+      { ...classicResume, companies: [{ ...classicResume.companies[0]!, keywords: undefined }] },
+      classicOnline
+    )
+    const companies = copy.blocks.find((b) => b.kind === 'companies')
+    if (companies?.kind !== 'companies') return
+    expect(companies.items[0]?.skills).toBeUndefined()
+  })
+
   it('marks companies without body as missing', () => {
     const copy = buildOnlineResumeBlocks(classicResume, {
       expectations: [],

@@ -69,7 +69,8 @@ export const resume: Resume = {
         action:
           '定下「规范进工具、不靠口头约定」的路线：`create-app` 建仓即带三端模板、brick 三端组件与回归层；Apifox 作为接口唯一真相源，生成类型与请求；Sentry SOP、GitLab CI/CD、神策 / 友盟埋点统一接入，Issue 推送企微告警群。',
         result:
-          '`create-app@1.0.0`、`create-e2e@1.2.0` 发布私服，新仓从开局到可回归一次给齐；ERP / QMS / SRM / OA / CRM 等 ==21== 个业务仓、==20 人==团队统一运行这套链路。'
+          '`create-app@1.0.0`、`create-e2e@1.2.0` 发布私服，新仓从开局到可回归一次给齐；ERP / QMS / SRM / OA / CRM 等 ==21== 个业务仓、==20 人==团队统一运行这套链路。',
+        learning: '团队一旦用 AI 写代码，口头规范就管不住；规范要做成建仓即带的工具和回归层，才会真的被执行。'
       },
       {
         name: 'Tenon 低代码画布引擎',
@@ -83,7 +84,8 @@ export const resume: Resume = {
         action:
           'Schema 协议先行，设计器、渲染器、物料与插件按协议解耦，拆成可独立发布的包；业务仓接入 `@tenon/plugin` 一行即可；Agent 经 MCP 读写同一份 Schema，写操作需人工审批。',
         result:
-          '人工搭建与 Agent 共用一份 Schema；`@tenon/*` 1.x 已接入 FIMS 业务仓；官网 https://tenon.gbuilderchina.com/。'
+          '人工搭建与 Agent 共用一份 Schema；`@tenon/*` 1.x 已接入 FIMS 业务仓；官网 https://tenon.gbuilderchina.com/。',
+        learning: '先把协议定稳再写设计器：人和 Agent 改的是同一份 Schema，Agent 的写操作必须留人工审批这道口。'
       },
       {
         name: 'Forme 表单页面引擎',
@@ -96,7 +98,8 @@ export const resume: Resume = {
         action:
           '按协议 → 引擎 → 物料 kit → 成品壳分层：零依赖 `@forme/protocol` 定义 FormDocument，设计器与渲染器读同一份文档；ant-design-vue 物料注册进 registry，数据、权限与副作用留在宿主 pro-code；`@forme/plugin` 以一个 Vite 插件接入设计器路由与跨窗口实时预览。',
         result:
-          '7 个包发布私服，团队成员在其上扩展搜索、表格物料与事件契约；制定 ==21== 个业务仓渐进迁移路线：新板块直接上 Forme，旧路由保留 commonPage 按板块逐步迁移，迁移期间旧板块照常运行。'
+          '7 个包发布私服，团队成员在其上扩展搜索、表格物料与事件契约；制定 ==21== 个业务仓渐进迁移路线：新板块直接上 Forme，旧路由保留 commonPage 按板块逐步迁移，迁移期间旧板块照常运行。',
+        learning: '换掉存量页面靠按板块渐进，不靠一次替换；引擎只管页面结构，数据、权限和副作用留给宿主。'
       },
       {
         name: 'Flowgram 审批流设计器',
@@ -118,7 +121,8 @@ export const resume: Resume = {
         scene: '集团 all in AI，研发全员配备 `Cursor`；CRUD 产出变快，但目录、写法与自测各凭习惯，难以直接合入生产。',
         action:
           '把提示词做成可安装 Skills：`vue-vben-crud` 管 CRUD 骨架，组件实践、UI 自测、第一性原理评审各成一项；E2E SOP 随 `create-e2e` 下发，回归统一走 Playwright；配套 AI-Coding 技术分享推广到全员。',
-        result: '标准 CRUD ==分钟级==生成；==20 人==团队的 Cursor 产出按同一套 Skills 落进脚手架回归层，评审与 UI 自测纳入日常流程。'
+        result: '标准 CRUD ==分钟级==生成；==20 人==团队的 Cursor 产出按同一套 Skills 落进脚手架回归层，评审与 UI 自测纳入日常流程。',
+        learning: 'AI 让产出变快，瓶颈就挪到了评审和自测；提示词要做成能安装、能回归的 Skills，团队才复用得起来。'
       },
       {
         name: '和林国际物流信息管理系统',
@@ -156,7 +160,8 @@ export const resume: Resume = {
         scene: '全国 ETC 发行平台对接多省发行方，客货车发行、通行扣费、售后与车主服务压在同一套后台。',
         action:
           '负责选型与框架搭建，把请求、字典、菜单权限重构为公共基础层；高频控件基于 `element-ui` 做成业务组件库发布私服，同期建立 Code Review 规范。',
-        result: '落地广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户 100 万；公司级组件库跨项目复用。'
+        result: '落地广西、内蒙古、黑龙江、北京、安徽、江苏等省份，==日均发行 10000+==，累计服务用户 100 万；公司级组件库跨项目复用。',
+        learning: '多个省份共用一套后台时，先把请求、字典和权限收成公共层，再往上叠各省的差异。'
       }
     ]
   },
@@ -222,6 +227,26 @@ export const resume: Resume = {
         '带 ==20 人==前端团队，负责排期、分工、Code Review 与规范推广，前端技术路线与方案由本人决策，组织 AI-Coding 技术分享',
         '集团 all in AI、研发全员 Cursor，0-1 搭建前端基建主链路（脚手架、三端模板、brick、OpenAPI、Sentry、CI/CD、埋点）、Tenon / Forme 低代码、Flowgram 审批流与 Agent Skills',
         'ERP / QMS / SRM / OA / CRM 等 ==21== 个业务仓统一建仓、接口与回归口径，全员 AI 产出按同一套规范合入生产；牵头 21 仓从 commonPage 渐进迁移到 Forme（新板块先上、旧板块逐步迁）'
+      ],
+      keywords: [
+        '集团中后台',
+        'ERP',
+        '低代码',
+        '前端架构',
+        'Vue3',
+        'TypeScript',
+        'Vite',
+        'monorepo',
+        'Ant Design Vue',
+        'Vant',
+        'TDesign UniApp',
+        'OpenAPI',
+        'Playwright',
+        'Sentry',
+        'GitLab CI/CD',
+        'Cursor',
+        'Agent Skills',
+        'MCP'
       ]
     },
     {
@@ -233,6 +258,20 @@ export const resume: Resume = {
         '负责和林、双马两套国际物流平台，交付 `vue3` 管理后台与移动 H5，覆盖运营、客户、仓库、客服、派送等多角色端',
         '从零定 `vue3` 技术栈与组件分层，围绕订单、配载、出仓、财务与报表建设 Table / CRUD、Schema 表单、权限、字典与精度计算等公共能力',
         '持续交付 ==4 个==主要前端项目，公共能力支撑两条产品线长期迭代'
+      ],
+      keywords: [
+        '国际物流',
+        '订舱',
+        '配载',
+        '清关',
+        '多角色端',
+        'Vue3',
+        'TypeScript',
+        'Schema 表单',
+        'CRUD',
+        '动态权限',
+        '移动 H5',
+        '微信支付'
       ]
     },
     {
@@ -243,7 +282,8 @@ export const resume: Resume = {
       highlights: [
         '整站负责广东科技成果转移转化中心线上平台，前站、管理后台、专家小程序与直播==四端==并行',
         '担任前端主程，建立分支策略、Code Review 与 CI/CD，把问题前置到提交阶段'
-      ]
+      ],
+      keywords: ['科技成果转化', '众包平台', '小程序', '直播', 'zego 音视频', '超级白板', 'OSS 上传', 'Code Review', 'CI/CD']
     },
     {
       name: '广东中视信息科技有限公司',
@@ -254,7 +294,8 @@ export const resume: Resume = {
         '负责 ETC 一站式发行平台前端，主导选型与框架搭建，把请求、字典、菜单权限重构为公共基础层',
         '高频控件基于 `element-ui` 做成公司级组件库发布私服，同期建立 Code Review 规范',
         '独立开发 4S 店 SAAS 支付宝小程序，用户端与商户端一人交付'
-      ]
+      ],
+      keywords: ['ETC 发行', '支付宝生态', '支付宝小程序', 'Vue2', 'element-ui', '组件库', 'npm 私服', 'OCR', 'Code Review']
     },
     {
       name: '广州创思云网络科技有限公司',
@@ -264,7 +305,8 @@ export const resume: Resume = {
       highlights: [
         '独立开发同律人法律咨询 App，前端搭建与接口联调一人完成',
         '参与前端小组技术选型与框架搭建，设计可复用基础组件并落地动态路由'
-      ]
+      ],
+      keywords: ['法律咨询', '移动端 App', '在线支付', 'IM', 'tim-js-sdk', '动态路由']
     },
     {
       name: '佛山市电子口岸有限公司',
@@ -274,6 +316,18 @@ export const resume: Resume = {
       highlights: [
         '从页面开发成长到整站交付，开始独立负责技术选型、工程搭建与疑难排查',
         '核心开发南海燃气管家、佛山智慧口岸与国药齐富微信商城，覆盖公众号前站、H5 商城、管理后台与分级权限'
+      ],
+      keywords: [
+        '口岸政务',
+        '燃气服务',
+        '医药电商',
+        'Vue2',
+        'Vuex',
+        'Vue Router',
+        'axios',
+        '公众号',
+        'H5 适配',
+        '按钮级权限'
       ]
     }
   ],

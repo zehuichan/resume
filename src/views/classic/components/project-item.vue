@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { Project } from '../types'
 import RichText from './rich-text.vue'
 
-defineProps<{ project: Project; index?: number }>()
+const props = defineProps<{ project: Project; index?: number }>()
 
-const rows = [
-  { label: '项目背景', key: 'scene' },
-  { label: '核心工作', key: 'action' },
-  { label: '项目成果', key: 'result' }
-] as const
+const rows = computed(() => [
+  { label: '项目背景', text: props.project.scene },
+  { label: '核心工作', text: props.project.action },
+  { label: '项目成果', text: props.project.result },
+  ...(props.project.learning ? [{ label: '项目收获', text: props.project.learning }] : [])
+])
 </script>
 
 <template>
@@ -43,7 +45,7 @@ const rows = [
         <span class="text-[11px] font-semibold text-classic-ink">
           {{ row.label }}
         </span>
-        <RichText :text="project[row.key]" class="min-w-0 text-[13px] leading-[1.7] text-classic-ink-soft" />
+        <RichText :text="row.text" class="min-w-0 text-[13px] leading-[1.7] text-classic-ink-soft" />
       </div>
     </div>
   </article>

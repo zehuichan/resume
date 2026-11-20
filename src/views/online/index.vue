@@ -137,6 +137,23 @@ function labelFor(key: string) {
                   >{{ item.result.text }}</pre
                 >
               </div>
+
+              <div v-if="item.skills" class="flex min-w-0 flex-col gap-2 lg:col-span-2">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="text-sm font-semibold">技能标签</h3>
+                  <Button
+                    variant="outline"
+                    size="xs"
+                    @click="copyField(`company-skills-${item.name}`, item.skills)"
+                  >
+                    {{ labelFor(`company-skills-${item.name}`) }}
+                  </Button>
+                </div>
+                <pre
+                  class="text-foreground/90 border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+                  >{{ item.skills.text }}</pre
+                >
+              </div>
             </CardContent>
           </Card>
         </section>

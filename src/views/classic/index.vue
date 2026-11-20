@@ -80,6 +80,10 @@ const compactProjects = computed(() =>
                 <RichText :text="h" class="min-w-0 text-[12.8px] leading-[1.65] text-classic-ink-soft" />
               </li>
             </ul>
+            <p v-if="c.keywords?.length" class="m-0 mt-1.5 text-[11.5px] leading-[1.6] text-classic-ink-faint">
+              <span class="mr-2 font-semibold text-classic-ink">关键词</span>
+              <template v-for="(k, i) in c.keywords" :key="k">{{ i ? ' · ' : '' }}<span class="whitespace-nowrap">{{ k }}</span></template>
+            </p>
           </li>
         </ul>
       </section>
