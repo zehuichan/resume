@@ -12,22 +12,24 @@
     />
     <style>
       :root {
-        /* 与 Forme / Tenon 冷中性工作台同源（产品色 ↔ 品牌包双向反哺 · teal #00696e）
-         * 面阶：bg < muted（画布）< surface（卡面）< surface-soft（浮层） */
+        /* 色值和 DESIGN.md 的 Colors、src/shared/styles/ui.css 一一对应；改一处同时改三处。
+         * 灰阶：bg（页面底）→ muted（次要底）→ surface-soft（悬停）→ selected（当前项）；
+         * accent / primary-strong / tech 是简历纸面的例外色，只给 mini 纸面用 */
         --primary: #00696e;
         --primary-strong: #005055;
-        --primary-soft: rgba(0, 105, 110, 0.12);
+        --primary-soft: #d2e9ea;
         --accent: #00696e;
         --on-primary: #ffffff;
-        --ink: #111827;
-        --ink-soft: #5b6472;
-        --ink-muted: #8b93a1;
+        --ink: #1f1f1f;
+        --ink-soft: #444746;
+        --ink-muted: #444746;
         --ink-faint: #6b7280;
-        --bg: #f4f5f7;
-        --muted: #eef0f3;
+        --bg: #fafafa;
+        --muted: #f5f5f5;
         --surface: #ffffff;
-        --surface-soft: #e8eaef;
-        --hairline: rgba(17, 24, 39, 0.1);
+        --surface-soft: #f0f0f0;
+        --selected: #e4e4e4;
+        --hairline: #e5e5e5;
         --paper: #ffffff;
         --code-bg: #0b0d12;
         --radius: 6px;
@@ -38,20 +40,21 @@
       html.dark {
         --primary: #0e7f84;
         --primary-strong: #0b6c70;
-        --primary-soft: rgba(108, 184, 188, 0.16);
+        --primary-soft: #1d4547;
         --accent: #6cb8bc;
         --on-primary: #ffffff;
-        --ink: #e4e7e9;
-        --ink-soft: #b2b9bf;
-        --ink-muted: #858d94;
+        --ink: #e3e3e3;
+        --ink-soft: #c4c7c5;
+        --ink-muted: #c4c7c5;
         --ink-faint: #858d94;
-        --bg: #0b0d0e;
-        --muted: #141719;
-        --surface: #191c1e;
-        --surface-soft: #23272a;
-        --hairline: #30353a;
+        --bg: #131314;
+        --muted: #1e1f20;
+        --surface: #1e1f20;
+        --surface-soft: #333537;
+        --selected: #3a3c3e;
+        --hairline: #444746;
         --paper: #ffffff;
-        --code-bg: #0b0d0e;
+        --code-bg: #131314;
         color-scheme: dark;
       }
       * {
@@ -233,22 +236,31 @@
         background: var(--primary);
         color: var(--on-primary);
       }
-      .btn-secondary {
-        background: var(--surface-soft);
+      .btn-current {
+        background: var(--selected);
         color: var(--ink);
-        border-color: var(--hairline);
       }
       .btn-ghost {
         background: transparent;
         color: var(--ink-soft);
       }
-      .badge {
+      .btn-ghost:hover {
+        background: var(--surface-soft);
+        color: var(--ink);
+      }
+      .kbd {
         display: inline-flex;
-        padding: 2px 8px;
-        border-radius: 999px;
-        background: var(--primary-soft);
-        color: var(--accent);
-        font-size: 12px;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 4px;
+        border: 1px solid var(--hairline);
+        border-radius: 4px;
+        background: var(--surface);
+        color: var(--ink-soft);
+        font-family: var(--mono);
+        font-size: 11px;
         font-weight: 500;
       }
       .sheet-stage {
@@ -413,7 +425,7 @@
           <h1>Brand preview</h1>
         </div>
         <div class="meta-row">
-          <div class="meta">Primary · Resume sheet · Cool neutral workbench</div>
+          <div class="meta">Primary · Resume sheet · Neutral gray</div>
           <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false">
             <span class="light-only">Dark →</span>
             <span class="dark-only">← Light</span>
@@ -493,66 +505,82 @@
             <div class="info">primary<code>#00696E</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #005055"></div>
-            <div class="info">primary-strong<code>#005055</code></div>
+            <div class="chip" style="background: #d2e9ea"></div>
+            <div class="info">primary-soft · 选区<code>#D2E9EA</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: rgba(0, 105, 110, 0.12)"></div>
-            <div class="info">primary-soft<code>rgba(0,105,110,.12)</code></div>
+            <div class="chip" style="background: #fafafa; border-bottom: 1px solid #e5e5e5"></div>
+            <div class="info">background<code>#FAFAFA</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #ffffff; border-bottom: 1px solid #e5e7eb"></div>
-            <div class="info">on-mark / surface<code>#FFFFFF</code></div>
+            <div class="chip" style="background: #ffffff; border-bottom: 1px solid #e5e5e5"></div>
+            <div class="info">card<code>#FFFFFF</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #111827"></div>
-            <div class="info">ink<code>#111827</code></div>
+            <div class="chip" style="background: #f5f5f5"></div>
+            <div class="info">muted<code>#F5F5F5</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #6b7280"></div>
-            <div class="info">ink-faint<code>#6B7280</code></div>
+            <div class="chip" style="background: #f0f0f0"></div>
+            <div class="info">accent · 悬停<code>#F0F0F0</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #f4f5f7; border-bottom: 1px solid #e5e7eb"></div>
-            <div class="info">bg<code>#F4F5F7</code></div>
+            <div class="chip" style="background: #e4e4e4"></div>
+            <div class="info">selected · 当前项<code>#E4E4E4</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #e8eaef"></div>
-            <div class="info">surface-soft<code>#E8EAEF</code></div>
+            <div class="chip" style="background: #e5e5e5"></div>
+            <div class="info">border<code>#E5E5E5</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #1f1f1f"></div>
+            <div class="info">foreground<code>#1F1F1F</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #444746"></div>
+            <div class="info">muted-foreground<code>#444746</code></div>
           </div>
         </div>
         <div class="swatches dark-only">
           <div class="swatch">
-            <div class="chip" style="background: #00696e"></div>
-            <div class="info">primary / mark<code>#00696E</code></div>
+            <div class="chip" style="background: #0e7f84"></div>
+            <div class="info">primary · 按钮<code>#0E7F84</code></div>
           </div>
           <div class="swatch">
             <div class="chip" style="background: #6cb8bc"></div>
-            <div class="info">accent text<code>#6CB8BC</code></div>
+            <div class="info">link · ring<code>#6CB8BC</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #0e7f84"></div>
-            <div class="info">button fill<code>#0E7F84</code></div>
+            <div class="chip" style="background: #1d4547"></div>
+            <div class="info">primary-soft · 选区<code>#1D4547</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #e4e7e9"></div>
-            <div class="info">ink<code>#E4E7E9</code></div>
+            <div class="chip" style="background: #131314"></div>
+            <div class="info">background<code>#131314</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #0b0d0e"></div>
-            <div class="info">bg<code>#0B0D0E</code></div>
+            <div class="chip" style="background: #1e1f20"></div>
+            <div class="info">card<code>#1E1F20</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #141719"></div>
-            <div class="info">muted / canvas<code>#141719</code></div>
+            <div class="chip" style="background: #282a2c"></div>
+            <div class="info">popover<code>#282A2C</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #191c1e"></div>
-            <div class="info">surface / sheet<code>#191C1E</code></div>
+            <div class="chip" style="background: #333537"></div>
+            <div class="info">accent · 悬停<code>#333537</code></div>
           </div>
           <div class="swatch">
-            <div class="chip" style="background: #23272a"></div>
-            <div class="info">surface-soft<code>#23272A</code></div>
+            <div class="chip" style="background: #3a3c3e"></div>
+            <div class="info">selected · 当前项<code>#3A3C3E</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #444746"></div>
+            <div class="info">border<code>#444746</code></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: #e3e3e3"></div>
+            <div class="info">foreground<code>#E3E3E3</code></div>
           </div>
         </div>
       </section>
@@ -561,34 +589,26 @@
         <h2>Typography</h2>
         <div class="type-row">
           <article>
-            <div class="token">display-lg</div>
-            <div style="font-size: 36px; font-weight: 600; letter-spacing: -0.8px">
-              前端负责人 / 前端架构师
-            </div>
+            <div class="token">sheet-name</div>
+            <div style="font-size: 2.8rem; font-weight: 700; line-height: 1.15">陈泽辉</div>
           </article>
           <article>
-            <div class="token">heading-2</div>
-            <div style="font-size: 22px; font-weight: 600; letter-spacing: -0.3px">工作经历</div>
+            <div class="token">sheet-section</div>
+            <div style="font-size: 18px; font-weight: 700">工作经历</div>
           </article>
           <article>
-            <div class="token">body</div>
+            <div class="token">ui-title</div>
+            <div style="font-size: 16px; font-weight: 600">线上版</div>
+          </article>
+          <article>
+            <div class="token">ui-body</div>
             <div style="font-size: 14px; color: var(--ink-soft)">
-              打印优先的中文技术简历：冷灰页底、白色纸面与单一青绿强调，减少装饰以保证招聘平台预览与打印可读。
+              打印优先的中文技术简历：中性灰页底、白色纸面，纸面上保留青绿强调。
             </div>
           </article>
           <article>
-            <div class="token">eyebrow / mono</div>
-            <div
-              style="
-                font-family: var(--mono);
-                font-size: 11px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                color: var(--accent);
-              "
-            >
-              Vue 3 · Print · A4
-            </div>
+            <div class="token">kbd</div>
+            <div><span class="kbd">G</span> <span class="kbd">O</span> <span class="kbd">?</span></div>
           </article>
           <article>
             <div class="token">code</div>
@@ -601,9 +621,10 @@
         <h2>Components</h2>
         <div class="row" style="margin-bottom: 14px">
           <span class="btn btn-primary">主按钮</span>
-          <span class="btn btn-secondary">线上版</span>
-          <span class="btn btn-ghost">复制</span>
-          <span class="badge">简历</span>
+          <span class="btn btn-current">简历</span>
+          <span class="btn btn-ghost">线上版</span>
+          <span class="btn btn-ghost">复制为 Markdown</span>
+          <span class="kbd">G</span><span class="kbd">O</span>
         </div>
         <div class="sheet-stage">
           <div class="mini-sheet">

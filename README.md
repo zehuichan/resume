@@ -1,10 +1,12 @@
 # 陈泽辉的简历
 
-一份数据驱动、打印优先的中文技术简历。视觉并入 Tenon / Forme 冷中性工作台家族：冷灰页底、白色 A4 纸面、单一青绿 `#00696e` 强调，IBM Plex Sans + Noto Sans SC，减少装饰以保证国内招聘平台预览与黑白打印时的可读性。
+一份数据驱动、打印优先的中文技术简历。工具界面照 Linear 的手感：中性灰阶、键盘能走完全部操作、没有设置项；白色 A4 纸面保留青绿 `#00696e` 强调，IBM Plex Sans + Noto Sans SC，保证招聘平台预览与黑白打印时的可读性。
+
+功能、验收和「不做」：[`docs/规划.md`](./docs/规划.md)。接手改代码先读 [`AGENTS.md`](./AGENTS.md)。
 
 ## 品牌
 
-品牌包真源：[`DESIGN.md`](./DESIGN.md)。预览页：[`brand/preview.html`](./brand/preview.html)（可本地直接打开，或加 `?theme=dark` 看暗色）。
+设计规范：[`DESIGN.md`](./DESIGN.md)。预览页：[`brand/preview.html`](./brand/preview.html)（可本地直接打开，或加 `?theme=dark` 看暗色）。
 
 资产：
 
@@ -28,16 +30,18 @@
 
 ```bash
 pnpm install
-pnpm dev      # 本地开发
-pnpm build    # 生产构建，产物在 dist/
-pnpm preview  # 预览构建产物
+pnpm dev         # 本地开发
+pnpm test:run    # 单元测试
+pnpm build       # 生产构建，产物在 dist/
+pnpm run budget  # 构建后查首屏体积预算
+pnpm preview     # 预览构建产物
 ```
 
 ## 维护内容
 
-默认简历：`/#/`（招聘版 · 前端负责人）
+简历：`/#/`（前端负责人）；线上版：`/#/online`
 
-底部工具条（桌面停靠右下角，移动端通栏）可在「简历 / 线上版」之间切换并切换明暗主题；线上版用于复制 BOSS 直聘等平台所需的分段文案。
+底部工具条（桌面停靠右下角，移动端通栏）可在「简历 / 线上版」之间切换、把整份简历复制为 Markdown；明暗跟系统走。线上版用于复制 BOSS 直聘等平台所需的分段文案。按 `?` 看全部快捷键（`G R` / `G O` 切页，线上版 `J` / `K` 选段、`C` 复制）。简历的栏目标题可以直接链接，例如 `/#/#projects`。
 
 简历内容：`src/views/classic/data/resume.ts`
 线上补充：`src/views/classic/data/online.ts`
@@ -50,18 +54,21 @@ pnpm preview  # 预览构建产物
 
 ```
 .
-├─ DESIGN.md              # 品牌包真源
+├─ AGENTS.md              # 接手须知：规矩、改需求的流程、命令
+├─ DESIGN.md              # 设计规范
+├─ docs/规划.md           # 功能、验收、不做、技术方案、测试
 ├─ brand/                 # mark.svg · logo.svg · preview.html
-├─ index.html             # 引入 Google Fonts（IBM Plex + Noto Sans SC）
+├─ index.html             # 首帧明暗脚本；Google Fonts（IBM Plex + Noto Sans SC）不阻塞首屏
+├─ scripts/               # check-budget.mjs：首屏体积预算
 ├─ vite.config.ts         # base 已设为 /resume/（GitHub Pages 项目站点）
 ├─ public/                # avatar.png、favicon.svg
 └─ src/
    ├─ app.vue              # 路由出口
    ├─ router/              # 页面路由与标题
-   ├─ shared/              # 底部工具条与共享工具
+   ├─ shared/              # 底部工具条、命令表（commands/）与共享工具
    └─ views/
-      ├─ classic/          # 招聘版内容、组件与样式
-      └─ online/           # 线上简历复制页
+      ├─ classic/          # 简历：内容数据、组件与纸面样式
+      └─ online/           # 线上版：分段复制页
 ```
 
 ## 打印
@@ -70,5 +77,5 @@ pnpm preview  # 预览构建产物
 
 ## 部署
 
-推送到 `main` 分支后，GitHub Actions 自动构建并将 `dist/` 发布到 `gh-pages` 分支（Pages Source = 从 `gh-pages` 分支部署）。
+推送到 `main` 分支后，GitHub Actions 依次跑测试、构建、首屏体积预算，全过才把 `dist/` 发布到 `gh-pages` 分支（Pages Source = 从 `gh-pages` 分支部署）。
 如部署到自定义域名或仓库根路径，请相应调整 `vite.config.ts` 中的 `base`。

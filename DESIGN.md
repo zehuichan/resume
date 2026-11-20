@@ -1,153 +1,139 @@
 ---
 version: alpha
-name: chenzehui-brand
-description: A cool-neutral personal resume brand — teal accent on cold gray surfaces, Resume sheet mark, IBM Plex Sans + Mono with Noto Sans SC for Chinese. Light mode is the default product surface; dark mode keeps the same hierarchy on neutral graphite with a restrained accent. Print always forces white paper. No warm paper, no secondary accent.
+name: chenzehui-resume
+description: 陈泽辉简历站的设计规范。工具界面（底部工具条、线上版、快捷键清单）照 Linear 的手感：中性灰阶，主色青绿只给主按钮、链接和聚焦，层次靠底色和 1px 线。A4 简历纸面是例外，保留自己的排版和青绿强调；打印永远是白纸。
 assets:
   mark: ./brand/mark.svg
   logo: ./brand/logo.svg
   preview: ./brand/preview.html
 colors:
+  # 工具界面 · 浅色（src/shared/styles/ui.css 的 :root）
+  background: '#fafafa'
+  muted: '#f5f5f5'
+  accent: '#f0f0f0'
+  selected: '#e4e4e4'
+  border: '#e5e5e5'
+  card: '#ffffff'
+  foreground: '#1f1f1f'
+  muted-foreground: '#444746'
   primary: '#00696e'
-  primary-strong: '#005055'
-  primary-soft: 'rgba(0, 105, 110, 0.12)'
-  primary-soft-dark: 'rgba(108, 184, 188, 0.16)'
-  primary-fill-dark: '#0e7f84'
-  primary-fill-strong-dark: '#0b6c70'
-  accent: '#00696e'
-  accent-text-dark: '#6cb8bc'
-  rule-dark: '#2f6467'
-  tech-dark: '#d3d8dc'
   on-primary: '#ffffff'
-  on-mark: '#ffffff'
-  ink: '#111827'
-  ink-soft: '#5b6472'
-  ink-muted: '#8b93a1'
-  ink-faint: '#6b7280'
-  ink-dark: '#e4e7e9'
-  ink-soft-dark: '#b2b9bf'
-  ink-muted-dark: '#858d94'
-  canvas: '#f4f5f7'
-  canvas-dark: '#0b0d0e'
-  muted: '#eef0f3'
-  muted-dark: '#141719'
-  surface: '#ffffff'
-  surface-dark: '#191c1e'
-  surface-soft: '#e8eaef'
-  surface-soft-dark: '#23272a'
-  hairline: 'rgba(17, 24, 39, 0.1)'
-  hairline-dark: '#30353a'
-  code-bg: '#0b0d12'
-  brand-50: '#e5f4f4'
-  brand-100: '#c4e6e7'
-  brand-200: '#8bced1'
-  brand-300: '#4aafb4'
-  brand-400: '#178f95'
-  brand-500: '#00696e'
-  brand-600: '#005055'
-  brand-700: '#00383c'
+  primary-soft: '#d2e9ea'
+  link: '#00696e'
+  ok: '#2e7d4f'
+  warn: '#946000'
+  bad: '#b3261e'
+  done: '#5f6b7a'
+  ok-soft: '#eef5f1'
+  warn-soft: '#f6f2eb'
+  bad-soft: '#f9eeed'
+  done-soft: '#f2f3f4'
+  # 工具界面 · 深色（ui.css 的 .dark）
+  background-dark: '#131314'
+  card-dark: '#1e1f20'
+  popover-dark: '#282a2c'
+  accent-dark: '#333537'
+  selected-dark: '#3a3c3e'
+  border-dark: '#444746'
+  foreground-dark: '#e3e3e3'
+  muted-foreground-dark: '#c4c7c5'
+  primary-dark: '#0e7f84'
+  primary-soft-dark: '#1d4547'
+  link-dark: '#6cb8bc'
+  ring-dark: '#6cb8bc'
+  ok-dark: '#6dd58c'
+  warn-dark: '#f6c35b'
+  bad-dark: '#f2b8b5'
+  done-dark: '#a3adba'
+  ok-soft-dark: '#29382f'
+  warn-soft-dark: '#3c3628'
+  bad-soft-dark: '#3c3435'
+  done-soft-dark: '#313336'
+  # 简历纸面（例外，src/views/classic/styles/resume.css）
+  sheet-paper: '#ffffff'
+  sheet-ink: '#111827'
+  sheet-ink-soft: '#5b6472'
+  sheet-ink-faint: '#6b7280'
+  sheet-accent: '#00696e'
+  sheet-tech: '#005055'
+  sheet-line: 'rgba(17, 24, 39, 0.1)'
+  sheet-paper-dark: '#191c1e'
+  sheet-ink-dark: '#e4e7e9'
+  sheet-ink-soft-dark: '#b2b9bf'
+  sheet-ink-faint-dark: '#858d94'
+  sheet-accent-dark: '#6cb8bc'
+  sheet-rule-dark: '#2f6467'
+  sheet-tech-dark: '#d3d8dc'
+  # 打印（压过深色，永远白纸）
+  print-ink-soft: '#374151'
+  print-ink-faint: '#5f6773'
   print-accent: '#005055'
-  print-accent-deep: '#00383c'
+  print-tech: '#00383c'
   print-line: '#ccd2da'
-  warning: '#f4b400'
-  success: '#0fa336'
-  destructive: '#dc2626'
 
 typography:
-  display-lg:
-    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
-    fontSize: 36px
-    fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: -0.8px
-  display-md:
-    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
-    fontSize: 28px
-    fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: -0.5px
-  heading-2:
-    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
-    fontSize: 22px
-    fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: -0.3px
-  title-md:
+  ui-title:
     fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
     fontSize: 16px
     fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: -0.02em
-  body-md:
+  ui-body:
     fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
-    letterSpacing: 0
-  body-sm:
-    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
-    fontSize: 13px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  label:
-    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
-    fontSize: 13px
-    fontWeight: 500
-    lineHeight: 1.3
-    letterSpacing: 0
-  wordmark:
-    fontFamily: 'Noto Sans SC, PingFang SC, Microsoft YaHei, sans-serif'
-    fontSize: 22px
-    fontWeight: 600
-    lineHeight: 1.2
-    letterSpacing: 0
-  eyebrow:
-    fontFamily: 'IBM Plex Mono, ui-monospace, monospace'
-    fontSize: 11px
-    fontWeight: 500
-    lineHeight: 1.3
-    letterSpacing: 0.08em
-  caption:
-    fontFamily: 'IBM Plex Mono, ui-monospace, monospace'
-    fontSize: 12px
-    fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: 0
-  button:
+  ui-label:
     fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
     fontSize: 14px
     fontWeight: 500
     lineHeight: 1
-    letterSpacing: 0
-  code:
-    fontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace'
-    fontSize: 12.5px
-    fontWeight: 400
-    lineHeight: 1.5
-    letterSpacing: 0
-  nav-link:
+  ui-caption:
     fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
-    fontSize: 13.5px
-    fontWeight: 400
+    fontSize: 12px
+    fontWeight: 500
     lineHeight: 1.4
-    letterSpacing: 0
-  tech:
+  kbd:
+    fontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace'
+    fontSize: 11px
+    fontWeight: 500
+    lineHeight: 1
+  sheet-name:
+    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
+    fontSize: 2.8rem
+    fontWeight: 700
+    lineHeight: 1.15
+  sheet-section:
+    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
+    fontSize: 18px
+    fontWeight: 700
+    lineHeight: 1
+  sheet-body:
+    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.7
+  sheet-meta:
+    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
+    fontSize: 11.5px
+    fontWeight: 400
+    lineHeight: 1.6
+  sheet-highlight:
+    fontFamily: 'IBM Plex Sans, Noto Sans SC, PingFang SC, Microsoft YaHei, system-ui, sans-serif'
+    fontSize: 1em
+    fontWeight: 700
+    lineHeight: 1.7
+  sheet-tech:
     fontFamily: 'IBM Plex Mono, ui-monospace, Consolas, monospace'
     fontSize: 0.84em
     fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: 0
 
 rounded:
-  2xs: 2px
-  xs: 4px
-  sm: 6px
+  none: 0px
+  sm: 4px
   md: 6px
-  lg: 14px
-  xl: 14px
-  2xl: 22px
-  full: 9999px
-  sheet: 0
+  xl: 10px
+  mark: 14px
 
 spacing:
   xxs: 4px
@@ -156,222 +142,361 @@ spacing:
   md: 16px
   lg: 24px
   xl: 32px
-  xxl: 48px
-  section: 64px
-
-shadow:
-  xs: '0 1px 2px rgba(15, 23, 42, 0.04)'
-  sm: '0 1px 2px rgba(15, 23, 42, 0.05), 0 1px 1px rgba(15, 23, 42, 0.04)'
-  md: '0 10px 30px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.05)'
-  lg: '0 16px 40px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.06)'
+  sheet: 60px
 
 components:
+  page:
+    backgroundColor: '{colors.background}'
+    textColor: '{colors.foreground}'
+    typography: '{typography.ui-body}'
+  page-dark:
+    backgroundColor: '{colors.background-dark}'
+    textColor: '{colors.foreground-dark}'
+  page-secondary-text:
+    backgroundColor: '{colors.muted}'
+    textColor: '{colors.muted-foreground}'
+  page-secondary-text-dark:
+    backgroundColor: '{colors.background-dark}'
+    textColor: '{colors.muted-foreground-dark}'
+  card:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.foreground}'
+    rounded: '{rounded.xl}'
+    padding: '{spacing.md}'
+  card-title:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.foreground}'
+    typography: '{typography.ui-title}'
+  card-dark:
+    backgroundColor: '{colors.card-dark}'
+    textColor: '{colors.foreground-dark}'
+  popover-dark:
+    backgroundColor: '{colors.popover-dark}'
+    textColor: '{colors.foreground-dark}'
+  row-hover:
+    backgroundColor: '{colors.accent}'
+    textColor: '{colors.foreground}'
+  row-hover-dark:
+    backgroundColor: '{colors.accent-dark}'
+    textColor: '{colors.foreground-dark}'
+  current-item:
+    backgroundColor: '{colors.selected}'
+    textColor: '{colors.foreground}'
+    typography: '{typography.ui-label}'
+    rounded: '{rounded.md}'
+  current-item-dark:
+    backgroundColor: '{colors.selected-dark}'
+    textColor: '{colors.foreground-dark}'
   button-primary:
     backgroundColor: '{colors.primary}'
     textColor: '{colors.on-primary}'
-    typography: '{typography.button}'
-    rounded: '{rounded.sm}'
-    padding: 0 14px
+    typography: '{typography.ui-label}'
+    rounded: '{rounded.md}'
     height: 36px
-  button-secondary:
-    backgroundColor: '{colors.surface-soft}'
-    textColor: '{colors.ink}'
-    typography: '{typography.button}'
-    rounded: '{rounded.sm}'
-    padding: 0 14px
-    height: 36px
+  button-primary-dark:
+    backgroundColor: '{colors.primary-dark}'
+    textColor: '{colors.on-primary}'
   button-ghost:
-    backgroundColor: transparent
-    textColor: '{colors.ink-soft}'
-    typography: '{typography.button}'
-    rounded: '{rounded.sm}'
-    padding: 0 14px
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.muted-foreground}'
+    typography: '{typography.ui-label}'
+    rounded: '{rounded.md}'
     height: 36px
-  badge:
+  link:
+    backgroundColor: '{colors.background}'
+    textColor: '{colors.link}'
+  link-dark:
+    backgroundColor: '{colors.background-dark}'
+    textColor: '{colors.link-dark}'
+  text-selection:
     backgroundColor: '{colors.primary-soft}'
-    textColor: '{colors.accent}'
-    typography: '{typography.body-sm}'
-    rounded: '{rounded.full}'
-    padding: 2px 8px
-  resume-sheet:
-    backgroundColor: '{colors.surface}'
-    textColor: '{colors.ink}'
-    typography: '{typography.body-md}'
-    rounded: '{rounded.sheet}'
-    shadow: '{shadow.md}'
-  section-header:
-    textColor: '{colors.ink}'
-    typography: '{typography.heading-2}'
-    borderColor: '{colors.hairline}'
-  tech-tag:
-    textColor: '{colors.primary-strong}'
-    typography: '{typography.tech}'
-  highlight:
-    textColor: '{colors.primary}'
-    fontWeight: 700
-  resume-dock:
-    backgroundColor: '{colors.surface}'
-    textColor: '{colors.ink}'
-    typography: '{typography.button}'
-    borderColor: '{colors.hairline}'
+    textColor: '{colors.foreground}'
+  text-selection-dark:
+    backgroundColor: '{colors.primary-soft-dark}'
+    textColor: '{colors.foreground-dark}'
+  divider:
+    backgroundColor: '{colors.border}'
+    height: 1px
+  divider-dark:
+    backgroundColor: '{colors.border-dark}'
+    height: 1px
+  focus-ring-dark:
+    backgroundColor: '{colors.ring-dark}'
+    width: 3px
+  kbd:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.muted-foreground}'
+    typography: '{typography.kbd}'
     rounded: '{rounded.sm}'
-    padding: 4px
-    shadow: '{shadow.sm}'
-  online-copy-card:
-    backgroundColor: '{colors.surface}'
-    textColor: '{colors.ink}'
-    typography: '{typography.body-md}'
-    rounded: '{rounded.lg}'
-    padding: 16px
+    height: 20px
+  badge-ok:
+    backgroundColor: '{colors.ok-soft}'
+    textColor: '{colors.ok}'
+    typography: '{typography.ui-caption}'
+    rounded: '{rounded.sm}'
+  badge-warn:
+    backgroundColor: '{colors.warn-soft}'
+    textColor: '{colors.warn}'
+  badge-bad:
+    backgroundColor: '{colors.bad-soft}'
+    textColor: '{colors.bad}'
+  badge-done:
+    backgroundColor: '{colors.done-soft}'
+    textColor: '{colors.done}'
+  badge-ok-dark:
+    backgroundColor: '{colors.ok-soft-dark}'
+    textColor: '{colors.ok-dark}'
+  badge-warn-dark:
+    backgroundColor: '{colors.warn-soft-dark}'
+    textColor: '{colors.warn-dark}'
+  badge-bad-dark:
+    backgroundColor: '{colors.bad-soft-dark}'
+    textColor: '{colors.bad-dark}'
+  badge-done-dark:
+    backgroundColor: '{colors.done-soft-dark}'
+    textColor: '{colors.done-dark}'
+  resume-dock:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.foreground}'
+    rounded: '{rounded.xl}'
+    padding: '{spacing.xxs}'
+  command-tooltip:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.foreground}'
+    typography: '{typography.ui-caption}'
+    rounded: '{rounded.md}'
+  shortcut-list:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.foreground}'
+    rounded: '{rounded.xl}'
+    width: 640px
+  copy-block:
+    backgroundColor: '{colors.background}'
+    textColor: '{colors.foreground}'
+    typography: '{typography.ui-body}'
+    rounded: '{rounded.md}'
+    padding: '{spacing.sm}'
+  copy-block-active:
+    backgroundColor: '{colors.accent}'
+    textColor: '{colors.foreground}'
+  copy-failed:
+    backgroundColor: '{colors.card}'
+    textColor: '{colors.bad}'
+  resume-sheet:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-ink}'
+    typography: '{typography.sheet-body}'
+    rounded: '{rounded.none}'
+    padding: '{spacing.sheet}'
+  sheet-name:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-ink}'
+    typography: '{typography.sheet-name}'
+  sheet-section-header:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-ink}'
+    typography: '{typography.sheet-section}'
+  sheet-rule:
+    backgroundColor: '{colors.sheet-accent}'
+    height: 1px
+  sheet-line:
+    backgroundColor: '{colors.sheet-line}'
+    height: 1px
+  sheet-secondary:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-ink-soft}'
+  sheet-meta:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-ink-faint}'
+    typography: '{typography.sheet-meta}'
+  sheet-highlight:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-accent}'
+    typography: '{typography.sheet-highlight}'
+  sheet-tech:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.sheet-tech}'
+    typography: '{typography.sheet-tech}'
+  resume-sheet-dark:
+    backgroundColor: '{colors.sheet-paper-dark}'
+    textColor: '{colors.sheet-ink-dark}'
+  sheet-secondary-dark:
+    backgroundColor: '{colors.sheet-paper-dark}'
+    textColor: '{colors.sheet-ink-soft-dark}'
+  sheet-meta-dark:
+    backgroundColor: '{colors.sheet-paper-dark}'
+    textColor: '{colors.sheet-ink-faint-dark}'
+  sheet-highlight-dark:
+    backgroundColor: '{colors.sheet-paper-dark}'
+    textColor: '{colors.sheet-accent-dark}'
+  sheet-tech-dark:
+    backgroundColor: '{colors.sheet-paper-dark}'
+    textColor: '{colors.sheet-tech-dark}'
+  sheet-rule-dark:
+    backgroundColor: '{colors.sheet-rule-dark}'
+    height: 1px
+  print-secondary:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.print-ink-soft}'
+  print-meta:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.print-ink-faint}'
+  print-highlight:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.print-accent}'
+  print-tech:
+    backgroundColor: '{colors.sheet-paper}'
+    textColor: '{colors.print-tech}'
+  print-line:
+    backgroundColor: '{colors.print-line}'
+    height: 1px
+  brand-mark:
+    backgroundColor: '{colors.primary}'
+    textColor: '{colors.on-primary}'
+    rounded: '{rounded.mark}'
+    size: 64px
 ---
 
-# 陈泽辉简历 · 品牌规范
+# 陈泽辉简历 · 设计规范
 
-## 概览
+## Overview
 
-这是面向个人简历站点的**冷中性工作台**品牌。默认产品面为亮色：冷灰页底 `{colors.canvas}`、白色纸面 `{colors.surface}`、单一青绿 accent `{colors.primary}`。暗色维持同一层级，换成中性石墨面阶（不沿用 Forme / Tenon 的蓝黑，也不给底色染青），accent 只留给标题与数字。打印永远强制白纸。
+一份给招聘方看的中文技术简历，两张页面加一条底部工具条：
 
-品牌辨识来自「简历版面」mark 与清楚的纸面层级，而不是摄影横幅、装饰条或高饱和渐变。字标使用中文姓名 **陈泽辉**，Noto Sans SC 600、字距 0。
+- **简历**（`/#/`）：A4 纸面，打印或存 PDF 投递。纸面是**例外**，保留自己的排版、字号和青绿强调，下面工具界面的规矩不管它（见 [规划](docs/规划.md) 的「产品基调」）。
+- **线上版**（`/#/online`）：按招聘平台的栏目分段复制。
+- **底部工具条**：两页切换、复制为 Markdown、快捷键清单。
 
-核心特征：
+工具界面照 Linear 的手感：中性灰阶，主色青绿 `{colors.primary}` 只给主按钮、链接、聚焦和文字选区；层次靠底色和 1px 线，不靠阴影；没有设置项，明暗跟系统走；键盘能走完全部操作。
 
-- 青绿 `#00696e` 是唯一交互品牌色，用于 CTA、焦点、选中与 mark；不引入第二 accent。
-- 面阶必须可读：canvas / background < muted stage < surface card < surface-soft popover。
-- UI 用 IBM Plex Sans；中文回落 Noto Sans SC / PingFang SC / Microsoft YaHei；meta、eyebrow、代码与 `.tech` 用 IBM Plex Mono。
-- 默认交互圆角 6px；mark、卡片 14px；大型覆盖面 22px；简历纸面圆角 0。
-- 分隔主要依赖面阶与细线，阴影保持轻量。
+品牌识别只有两样：「简历版面」mark（`brand/mark.svg`，favicon 跟它）和中文字标「陈泽辉」（Noto Sans SC 600，字距 0）。主色和 Forme 天青蓝 `#0b57d0`、Tenon 钴蓝 `#2647e0` 的色相分开，mark 不复用两者的字段栈和 Cluster graph。
 
-## 与 Tenon / Forme 的同族关系
+## Colors
 
-本品牌与 Tenon、Forme 共用冷中性工作台体系、IBM Plex 字体、面阶、间距、圆角与阴影语言。三者必须保持可辨：
+先定角色再定色值。色值只写在 `src/shared/styles/ui.css`（工具界面）和 `src/views/classic/styles/resume.css`（纸面和打印）里，组件和页面只用角色类名（`bg-selected`、`text-muted-foreground`）。对比度按 WCAG 2.x 算，正文要求 ≥ 4.5:1，聚焦框等非文字元素 ≥ 3:1。
 
-- 主色青绿 `#00696e`（约 183°）；Forme 天青蓝 `#0b57d0`（约 217°）；Tenon 钴蓝 `#2647e0`（约 229°）。色相与两个兄弟分开，mark 几何与中文字标继续保持可辨。
-- 唯一 mark 是「简历版面」；不得复用 Forme 的字段栈或 Tenon 的 Cluster graph。
-- 文案围绕姓名、职位、经历、项目、打印与线上复制；Tenon 围绕 canvas / node / connection；Forme 围绕 screen / field / material。
+### 工具界面
 
-## 范围：品牌包与产品主题
+| 角色 | 令牌 | 浅色 | 深色 | 用在哪 |
+| --- | --- | --- | --- | --- |
+| 页面底 | `background` | `#fafafa` | `#131314` | 两页的页面底、未选中的复制块 |
+| 次要底 | `muted` | `#f5f5f5` | `#1e1f20` | 次要区块 |
+| 悬停、键盘停留 | `accent` | `#f0f0f0` | `#333537` | 幽灵按钮悬停、线上版 J/K 停着的复制块 |
+| 当前项 | `selected` | `#e4e4e4` 配 `#1f1f1f` | `#3a3c3e` 配 `#e3e3e3` | 工具条上「当前在哪一页」 |
+| 线 | `border` | `#e5e5e5` | `#444746` | 卡片边框、分隔线、按键框 |
+| 卡片 | `card` / `popover` | `#ffffff` | `#1e1f20` / `#282a2c` | 卡片、工具条、提示、快捷键清单 |
+| 正文 / 次要字 | `foreground` / `muted-foreground` | `#1f1f1f` / `#444746` | `#e3e3e3` / `#c4c7c5` | |
+| 主色 | `primary` | `#00696e` | `#0e7f84` | 主按钮底、聚焦框（`ring`，深色 `#6cb8bc`） |
+| 链接字 | `link` | `#00696e` | `#6cb8bc` | 链接；深色主色当字只有 3.9:1，单独取浅一档 |
+| 浅主色 | `primary-soft` | `#d2e9ea` | `#1d4547` | 只给文字选区 |
+| 状态四色 | `ok` `warn` `bad` `done` 和 `*-soft` | 绿黄红灰 | 同 | 只表示状态，例如「复制失败」用 `bad` |
 
-`DESIGN.md` 是**品牌包**真源：`brand/mark.svg`、`brand/logo.svg`、`brand/preview.html` 与营销表面。产品主题分两处：
+- 灰阶四档逐档变深：页面底 → 次要底 → 悬停 → 当前项。深色里当前项 `#3a3c3e` 比悬停 `#333537` 深一档，两者同时出现分得开。
+- 当前项用墨色灰底，不用主色。一页最多一个主色按钮；现在两页都没有，工具条上全是幽灵按钮。
 
-| 关注点 | 品牌包 | 简历正文 `resume.css` | 工具型 UI `ui.css` |
-| --- | --- | --- | --- |
-| 识别核 primary | `#00696e` | `--color-classic-accent` | `--primary` / `--ring` |
-| 亮色 ink-faint | 家族 muted `#8b93a1` | `#6b7280`（12px 联系方式与打印需 AA） | `--muted-foreground` |
-| 暗色 primary | `#00696e`（mark 恒定） | 文字 `#6cb8bc`；按钮 `#0e7f84` + 白字 | `#0e7f84` + 白字，ring `#6cb8bc` |
-| 暗色 accent 用途 | — | 标题条 `#2f6467`，`.tech` 回正文色 `#d3d8dc` | — |
-| 暗色 ink-soft | `#b2b9bf` | `#b2b9bf` | `#b2b9bf` |
-| 暗色面阶 | `#0b0d0e` → `#23272a`（中性石墨） | paper / sheet `#191c1e` | `#0b0d0e` / `#191c1e` / `#23272a` |
-| 打印 accent | — | `#005055` / `#00383c`，线 `#ccd2da` | 不参与打印 |
+对比度（实算）：
 
-改识别核要同时改品牌包与两边产品主题；只改纸面或工具 chrome 面阶时只改对应 CSS。
+| 前景 | 背景 | 比值 |
+| --- | --- | --- |
+| 主色字 `#00696e` | 白 `#ffffff` / 页面底 `#fafafa` / 次要底 `#f5f5f5` / 悬停 `#f0f0f0` / `#ececec` | 6.47 / 6.20 / 5.93 / 5.68 / 5.48 |
+| 白字 | 主色 `#00696e` / 深色主色 `#0e7f84` | 6.47 / 4.79 |
+| 正文 `#1f1f1f` | `#fafafa` / `#ffffff` / `#e4e4e4` | 15.79 / 16.48 / 12.96 |
+| 次要字 `#444746` | `#fafafa` / `#ffffff` / `#f0f0f0` / `#e4e4e4` | 9.00 / 9.39 / 8.24 / 7.39 |
+| 深色正文 `#e3e3e3` | `#131314` / `#1e1f20` / `#282a2c` / `#3a3c3e` | 14.47 / 12.86 / 11.22 / 8.63 |
+| 深色次要字 `#c4c7c5` | `#131314` / `#1e1f20` / `#333537` | 10.90 / 9.69 / 7.23 |
+| 深色链接 `#6cb8bc` | `#131314` / `#1e1f20` / `#282a2c` | 8.15 / 7.25 / 6.32 |
+| 状态字（浅） `ok` `warn` `bad` `done` | 各自的 `*-soft` | 4.56 / 4.79 / 5.75 / 4.88 |
+| 状态字（深） | 各自的 `*-soft` | 6.79 / 7.36 / 7.09 / 5.58 |
 
-## 颜色
+### 简历纸面（例外）
 
-### 品牌与交互
+纸面保留青绿强调：姓名下的职位、指标数字、`==高亮==`、标题条都是 `{colors.sheet-accent}`，技术词用 Mono 和 `{colors.sheet-tech}`。深色把强调降到 `{colors.sheet-accent-dark}`，标题条用 `{colors.sheet-rule-dark}`，技术词回到正文色，避免满屏青色。纸面外的页面底跟工具界面同一个 `background`。
 
-- **Primary** `{colors.primary}`：CTA、mark、焦点、链接、简历职位色。
-- **Primary Strong** `{colors.primary-strong}`：primary 的 hover / pressed；`.tech` 深色文字。
-- **Primary Soft** `{colors.primary-soft}` / `{colors.primary-soft-dark}`：badge、软选中底。
-- **Accent Text Dark** `{colors.accent-text-dark}`：暗色表面只用于姓名职位、指标数字、`.hl` 高亮与链接；实心按钮用 `{colors.primary-fill-dark}` + 白字，不用浅青填充。
-- **暗色克制**：section 标题条用 `{colors.rule-dark}`，技术标签用 `{colors.tech-dark}`（靠 Mono 区分，不着色），避免满屏青色。
-- **On Primary / On Mark** `{colors.on-primary}`：青绿上的白色文字与几何。
+| 前景 | 背景 | 比值 |
+| --- | --- | --- |
+| 强调 `#00696e` / 次要字 `#5b6472` / 小字 `#6b7280` | 纸 `#ffffff` | 6.47 / 5.98 / 4.83 |
+| 深色强调 `#6cb8bc` / 次要字 `#b2b9bf` / 小字 `#858d94` | 深色纸 `#191c1e` | 7.52 / 8.63 / 5.08 |
 
-### 面阶与语义
+### 打印
 
-- 亮色：canvas `{colors.canvas}` → muted `{colors.muted}` → surface `{colors.surface}` → surface-soft `{colors.surface-soft}`。
-- 暗色：canvas `{colors.canvas-dark}` → muted `{colors.muted-dark}` → surface `{colors.surface-dark}` → surface-soft `{colors.surface-soft-dark}`。
-- **Ink Faint** `{colors.ink-faint}`：联系方式等小字，产品主题保持 `#6b7280`，不降到家族 muted 的 `#8b93a1`。
-- 状态色只表达语义：warning `{colors.warning}`、success `{colors.success}`、destructive `{colors.destructive}`。
-- 不用暖纸色，不把 warning 黄色当作装饰 accent。
+打印压过深色主题，永远白纸深字：强调 `{colors.print-accent}`，技术词 `{colors.print-tech}`，分隔线 `{colors.print-line}`，小字 `{colors.print-ink-faint}`，最小字号 9pt，黑白打印也读得清。
 
-## 排版
+## Typography
 
-- UI / body：IBM Plex Sans，中文回落 Noto Sans SC。
-- 字标：Noto Sans SC 600，字距 0（中文不加负字距）。
-- meta / eyebrow / code / `.tech`：IBM Plex Mono。
-- 字标与标题用句式 / title case；不得使用全大写宽字距字标。
-- 正文基准 14px / 1.5；密集 UI 13px；按钮 14px / 500；代码 12.5px。
-- 中文正文行高不低于 1.5。
+- 字体：IBM Plex Sans，中文回落 Noto Sans SC → PingFang SC → Microsoft YaHei；按键、代码、技术词用 IBM Plex Mono。网页字体不挡首屏，连不上 Google 时用系统中文字体（见「速度和加载」）。
+- 工具界面字号只有四档：11（按键）、12（分组名、提示、徽标）、14（正文、按钮）、16（卡片标题、清单标题）。不为单个元素发明新档。
+- 纸面字号在 `resume.css` 和 `views/classic` 里，按 A4 排版定（姓名 2.8rem、栏目 18px、正文 13px、小字 11.5px），不受上面四档约束。
+- 中文正文行高不低于 1.5；字标和标题不用全大写宽字距。
 
-## 布局
+## Layout
 
-- 基础单位 4px；间距梯为 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64。
-- 简历纸面内边距约 `clamp(28px, 5vw, 60px)`；工具控件间距 8px。
-- 品牌预览最大宽度约 1080px；简历页以居中 A4 纸面组织；线上版以单列复制卡片组织。
-- 先折叠列，再缩小字号；不要把 14px 正文压到不可读。
+- 间距基数 4px：4 / 8 / 12 / 16 / 24 / 32；纸面内边距 `clamp(28px, 5vw, 60px)`。
+- 简历：居中的 A4 纸面。线上版：单列卡片，每段一个复制块，内容和业绩在宽屏并排两列。
+- 底部工具条：`< 640px` 是底部通栏（左右 12px），两页切换平分宽度，控件高 40px，不显示快捷键按钮；`≥ 640px` 停靠右下角 20px，控件高 36px。两页底部都留约 96px，末尾内容不被挡住。
+- 窄屏先折叠列，再缩字号。
 
-## 高程与形状
+## Elevation
 
-- 页底与 canvas 无阴影；纸面用 `{shadow.md}`。
-- 底部工具条用 `{shadow.sm}`；dialog / popover 使用 `{shadow.md}` 或 `{shadow.lg}`。
-- 默认交互圆角 `{rounded.sm}` 6px；微型嵌套 2 / 4px；mark 与卡片 14px；大型覆盖面 22px；简历纸面 `{rounded.sheet}` 0；pill 只给 badge / toggle。
-- 不以厚光晕或大面积渐变制造深度。
+- 层次靠底色和 1px `border`：页面底 `#fafafa` 上放白卡片，卡片不加阴影。
+- 阴影只给浮在内容上面的东西：底部工具条（`shadow-sm`，它一直浮在页面上）、悬停提示和快捷键清单（`shadow-md` / `shadow-lg`）。
+- 纸面的投影是纸面例外的一部分，打印时去掉。
+- 不用渐变、发光、插画。
 
-## 组件
+## Shapes
 
-- **Primary Button**：青绿填充、白字、高 36px、6px 圆角；hover 用 primary-strong。
-- **Secondary Button**：surface-soft 填充、ink 文字、可加 hairline。
-- **Ghost Button**：透明底、ink-soft 文字。
-- **Badge**：primary-soft 底 + accent 文字，full radius。
-- **Resume Sheet**：白色（或暗色 surface）纸面，圆角 0，hairline 边，`{shadow.md}`；打印时去边与影。
-- **Section Header**：ink 标题 + hairline 底边。
-- **Tech Tag**（`.tech`）：Mono、primary-strong 色、无底无边。
-- **Highlight**（`.hl`）：primary 色、字重 700。
-- **Resume Dock**：全站唯一的浮动工具条，surface 底 + hairline + `{shadow.sm}`，6px 圆角、4px 内边距，内部控件 2px 微型嵌套圆角。只停靠底部：线上版卡片右上角是复制按钮，顶部浮层会在滚动时盖住它。内容按路由给出：版本切换（当前项 surface-soft 底，其余 ink-soft 文字）→ 竖向 hairline → 主题切换图标。打印时隐藏。打印走浏览器 `Ctrl/Cmd + P`。
-- **Online Copy Card**：surface 卡、14px 圆角，承载分段复制文案。
+| 档 | 值 | 给谁 |
+| --- | --- | --- |
+| `sm` | 4px | 徽标、按键框、行内代码 |
+| `md` | 6px | 按钮、输入框、复制块、悬停提示 |
+| `xl` | 10px | 卡片、底部工具条、快捷键清单 |
 
-## 品牌 mark 与字标
+纸面圆角 0；mark 是 64 格里的 `rx=14`，只属于品牌资产。
 
-- **Mark**：「简历版面」—— 青绿 `rx=14` 圆角方块，白色标题条、右上头像块与两行正文条。
-- **语义**：指向一页带照片的简历文档；16px 下应先读成「文档块」，不要求辨认头像语义。
-- **字标**：mark + 「陈泽辉」，Noto Sans SC 600，字距 0。
-- **尺寸**：64 默认、32 favicon、16 compact。
-- favicon（`public/favicon.svg`）必须跟随 `brand/mark.svg`。
+## Components
 
-## 打印
+- **底部工具条**（`resume-dock.vue`）：全站唯一的浮层工具条。依次是「简历」「线上版」（当前页 `selected` 灰底）→ 竖线 →「复制为 Markdown」→ 键盘图标（打开快捷键清单）。打印时隐藏，打印交给浏览器 `Ctrl P`。
+- **悬停提示**（`command-tooltip.vue`）：只用 CSS，悬停 300ms 后或键盘聚焦时淡入；内容是命令名加按键，都从命令表读。
+- **快捷键清单**（`shortcut-list.vue`）：浏览器自带的 `<dialog>`，按分组排两列；当前页用不了的行置灰，不隐藏。
+- **复制块**（`copy-block.vue`）：标题、右上角「复制」按钮、`<pre>` 正文。键盘停着时正文底变 `accent`。复制成功按钮写「已复制」，1.6 秒后复原；失败写「复制失败」（`bad` 色），并把正文全选，方便手动 `Ctrl C`。
+- **栏目标题**（简历）：标题本身是固定链接 `#/#<栏目>`，悬停或聚焦时后面出现一个 `#`，打印不显示。
+- **按键框**（`Kbd`）：白底、1px 线、4px 圆角、11px 等宽字，一个键一个框。
+- **按钮**：工具界面只用幽灵按钮（透明底、次要字、悬停 `accent`）；颜色过渡 150ms，没有阴影。
+- **徽标**：4px 圆角；状态徽标用状态色字配 `*-soft` 底。
 
-- 打印永远强制亮色白纸，压过暗色主题。
-- 打印 accent 用 `{colors.print-accent}` / `{colors.print-accent-deep}`；分隔线 `{colors.print-line}`。
-- ink 保持 `#111827`；纸面与页底保持 `#ffffff`。
-- 工具栏、导航等 `.no-print` 元素隐藏；纸面去边、去影、圆角 0。
-- 最小字号不低于约 9pt，保证招聘平台与黑白打印可读。
+## 键盘和命令
 
-## 应做 / 不应做
+- 全站一张命令表：`src/shared/commands/commands.ts`。每条写名字、分组、按键；悬停提示、快捷键清单和按键监听都从这里读，页面里不另写按键文字。
+- 「什么时候能用」看有没有页面登记处理函数（`useCommand`）：线上版挂着时 J/K/C/Esc 才能用，清单里它们才不置灰。
+- 单键和 `G` 开头的两键（第二键 1.5 秒内）只在没在打字时响应；带 `Ctrl` / `Alt` / `⌘` 的组合键原样交给浏览器。
+- `Esc`：先关快捷键清单；线上版没有弹层时，取消选中当前复制块。
+- 没有命令面板：命令一共 8 条，一张 `?` 清单装得下。
 
-### 应做
+| 分组 | 命令 | 按键 |
+| --- | --- | --- |
+| 跳转 | 去简历 / 去线上版 | `G R` / `G O` |
+| 线上版 | 下一段 / 上一段 / 复制这一段 / 不选这一段 | `J` / `K` / `C` / `Esc` |
+| 通用 | 复制为 Markdown / 全部快捷键 | `M` / `?` |
 
-- 保持青绿为唯一交互 accent，软底从 brand ramp 生成。
-- 保持 muted / canvas 与 surface 纸面的亮度差。
-- 使用中文字标「陈泽辉」与 Noto Sans SC 600。
-- 品牌色变化时同步 `resume.css`、`ui.css` 与 `brand/preview.html`。
-- 打印路径始终验证白纸 + 深色 ink。
+## 速度和加载
 
-### 不应做
+- 预算看首屏传输体积（gzip）：首屏 JS ≤ 72 KB，CSS ≤ 19 KB，算 `index.html` 引用的文件加最重的那张页面。`pnpm run budget` 检查，部署流水线在构建后跑，超了不发布。
+- 全站是静态页，没有接口请求，没有骨架和转圈。复制是本地操作，按钮上直接给结果。
+- 网页字体按 `media="print"` 加载，到了再换成 `all`，不阻塞首屏：连不上 Google 的网络会卡到超时，阻塞的话要白屏约 30 秒。
+- 弹层和提示只淡入淡出（150ms），不缩放、不滑动；`prefers-reduced-motion` 下纸面的动效关掉。
 
-- 不复用 Forme 字段栈或 Tenon Cluster graph mark。
-- 不引入暖奶油纸底、橙色第二 accent 或摄影主视觉。
-- 不把 card 与 muted 设成同阶。
-- 不把所有控件做成 pill；不在长正文使用 Mono。
-- 不让暗色主题泄漏进打印。
+## 文案
 
-## 响应式
+- 页面上的字只有标题和字段名、数据、按钮。不写副标题、标语和「点这里复制」之类的说明；线上版顶部只写「项目 N · 工作经历 M」。
+- 留下的说明只有报错：复制失败时屏幕阅读器读出「浏览器没给剪贴板权限，换 Chrome 或 Edge 打开再试」，提示里也写这句。
+- 一个东西一个名字：「简历」（纸面页）、「线上版」（分段复制页）、「复制为 Markdown」、「快捷键」。
 
-- `< 768px`：纸面内边距收缩；display-lg 降到约 28px。
-- `768–1024px`：纸面居中，联系方式可双列。
-- 工具条：`< 640px` 为底部通栏（左右 12px），版本切换平分宽度，控件高 40px；`≥ 640px` 停靠右下角（20px），控件高 36px。两页底部都留约 96px，末尾内容不被遮挡。
-- 密集工具条按钮最低 36px；触控优先表面建议 40–44px；图标按钮命中区至少 32px。
+## Do's and Don'ts
 
-## 迭代指南
-
-1. 一次只改一个关注点：颜色、排版、圆角或组件。
-2. 文档引用 token（如 `{colors.primary}`），新代码不散落十六进制。
-3. 明暗两态保持同一语义角色，只允许值变化。
-4. 先保证层级清楚，再增加色彩强度。
-5. 识别核改动同步品牌包与产品主题；纸面或工具 chrome 面阶改动只落对应 CSS。
-6. 任何 accent 改动后跑一遍打印预览。
-
-## 已知缺口
-
-- 营销落地页不在本规范范围；需要时扩展本文件，不创建第二套 accent。
-- 字体装载策略由宿主决定；预览页与站点入口为方便使用 Google Fonts。
-- 简历纸面的分页与防截断规则在 `resume.css` 的 `@media print` 中，尚未逐组件枚举进本文件。
+- Do：工具界面的色值只走令牌；改颜色同时改 `ui.css`、`resume.css` 和 `brand/preview.html`，改完跑 `pnpm --package=@google/design.md@0.4.0 dlx designmd lint DESIGN.md`。
+- Do：新命令先加进命令表，再在页面里用 `useCommand` 登记。
+- Do：打印路径每次都看一眼：白纸、深字、工具条隐藏。
+- Don't：当前项用主色；一页放两个主色按钮。
+- Don't：给卡片加阴影，用渐变、发光或插画制造层次。
+- Don't：加主题开关之类的设置项；明暗只跟系统。
+- Don't：在页面里写操作说明或弹 `alert`；失败就在原地说。
+- Don't：让深色主题漏进打印。
