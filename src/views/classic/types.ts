@@ -59,7 +59,7 @@ export interface Project {
   featured?: boolean
   /** 紧凑项目排序用日期，格式 YYYY.MM；不填时从 period 中推断 */
   sortDate?: string
-  /** 归档：内容已折进对应公司的业绩行，不再占招聘版卡片；线上版项目库仍保留 */
+  /** 归档：内容已折进对应公司的业绩行，不再占简历上的卡片；线上版项目库仍保留 */
   archived?: boolean
 }
 

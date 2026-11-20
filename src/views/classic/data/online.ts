@@ -1,7 +1,7 @@
 import type { OnlineExtras } from '../../../shared/types/online'
 
 /**
- * 招聘版线上补充。工作经历正文从对应时段项目 scene / action / result 收束而来，
+ * 线上版补充。工作经历正文从对应时段项目 scene / action / result 收束而来，
  * 与 PDF 同源，不为线上单独长写。
  */
 export const classicOnline: OnlineExtras = {

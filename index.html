@@ -12,15 +12,8 @@
         var root = document.documentElement
         root.dataset.resume = 'classic'
 
-        var stored = null
-        try {
-          stored = localStorage.getItem('resume-theme')
-        } catch (e) {
-          // 隐私模式下 localStorage 不可读，退回系统偏好
-        }
-
         var systemDark = !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        var theme = stored === 'dark' || stored === 'light' ? stored : systemDark ? 'dark' : 'light'
+        var theme = systemDark ? 'dark' : 'light'
 
         root.dataset.theme = theme
         root.classList.toggle('dark', theme === 'dark')

@@ -1,6 +1,6 @@
-/* shadcn-vue 主题层：只服务简历页外挂的工具型 UI（线上简历面板、版本切换等）。
-   简历正文排版仍归各 view 自己的 styles/resume.css，两边互不覆盖。
-   识别核与青绿 #00696e / 冷中性工作台对齐；面阶可有意偏离，见 DESIGN.md。 */
+/* shadcn-vue 主题层：只服务简历页外挂的工具型 UI（线上版、底部工具条、快捷键清单）。
+   简历纸面排版归 views/classic/styles/resume.css，两边互不覆盖。
+   颜色按角色取值，和 DESIGN.md 的 Colors 一节一一对应；页面和组件里不写色值。 */
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -9,47 +9,74 @@
 :root {
   --radius: 6px;
 
-  --background: #f4f5f7;
-  --foreground: #111827;
+  --background: #fafafa;
+  --foreground: #1f1f1f;
   --card: #ffffff;
-  --card-foreground: #111827;
+  --card-foreground: #1f1f1f;
   --popover: #ffffff;
-  --popover-foreground: #111827;
+  --popover-foreground: #1f1f1f;
   --primary: #00696e;
   --primary-foreground: #ffffff;
-  --secondary: #e8eaef;
-  --secondary-foreground: #111827;
-  --muted: #e9ebf0;
-  --muted-foreground: #5b6472;
-  --accent: #e8eaef;
-  --accent-foreground: #111827;
-  --destructive: #dc2626;
-  --border: rgba(17, 24, 39, 0.1);
-  --input: rgba(17, 24, 39, 0.1);
+  --primary-soft: #d2e9ea;
+  --link: #00696e;
+  --secondary: #f0f0f0;
+  --secondary-foreground: #1f1f1f;
+  --muted: #f5f5f5;
+  --muted-foreground: #444746;
+  --accent: #f0f0f0;
+  --accent-foreground: #1f1f1f;
+  --selected: #e4e4e4;
+  --selected-foreground: #1f1f1f;
+  --destructive: #b3261e;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
   --ring: #00696e;
+
+  --ok: #2e7d4f;
+  --warn: #946000;
+  --bad: #b3261e;
+  --done: #5f6b7a;
+  --ok-soft: #eef5f1;
+  --warn-soft: #f6f2eb;
+  --bad-soft: #f9eeed;
+  --done-soft: #f2f3f4;
 }
 
 .dark {
   color-scheme: dark;
 
-  --background: #0b0d0e;
-  --foreground: #e4e7e9;
-  --card: #191c1e;
-  --card-foreground: #e4e7e9;
-  --popover: #23272a;
-  --popover-foreground: #e4e7e9;
+  --background: #131314;
+  --foreground: #e3e3e3;
+  --card: #1e1f20;
+  --card-foreground: #e3e3e3;
+  --popover: #282a2c;
+  --popover-foreground: #e3e3e3;
   --primary: #0e7f84;
   --primary-foreground: #ffffff;
-  --secondary: #23272a;
-  --secondary-foreground: #e4e7e9;
-  --muted: #141719;
-  --muted-foreground: #b2b9bf;
-  --accent: #2a2f33;
-  --accent-foreground: #e4e7e9;
-  --destructive: #f2726b;
-  --border: #30353a;
-  --input: #3a4045;
+  --primary-soft: #1d4547;
+  /* 暗色按钮底 #0e7f84 当字色在页面底上只有 3.9:1，链接字单独取浅一档 */
+  --link: #6cb8bc;
+  --secondary: #282a2c;
+  --secondary-foreground: #e3e3e3;
+  --muted: #1e1f20;
+  --muted-foreground: #c4c7c5;
+  --accent: #333537;
+  --accent-foreground: #e3e3e3;
+  --selected: #3a3c3e;
+  --selected-foreground: #e3e3e3;
+  --destructive: #f2b8b5;
+  --border: #444746;
+  --input: #444746;
   --ring: #6cb8bc;
+
+  --ok: #6dd58c;
+  --warn: #f6c35b;
+  --bad: #f2b8b5;
+  --done: #a3adba;
+  --ok-soft: #29382f;
+  --warn-soft: #3c3628;
+  --bad-soft: #3c3435;
+  --done-soft: #313336;
 }
 
 @theme {
@@ -57,11 +84,12 @@
   --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
 }
 
+/* 圆角三档：徽标和按键 4px，按钮和输入框 6px，卡片和工具条 10px */
 @theme inline {
-  --radius-sm: var(--radius);
+  --radius-sm: 4px;
   --radius-md: var(--radius);
   --radius-lg: var(--radius);
-  --radius-xl: var(--radius);
+  --radius-xl: 10px;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -71,14 +99,31 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-link: var(--link);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-selected: var(--selected);
+  --color-selected-foreground: var(--selected-foreground);
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-done: var(--done);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn-soft: var(--warn-soft);
+  --color-bad-soft: var(--bad-soft);
+  --color-done-soft: var(--done-soft);
+}
+
+::selection {
+  background: var(--primary-soft);
 }

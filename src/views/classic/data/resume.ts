@@ -166,7 +166,7 @@ export const resume: Resume = {
     ]
   },
 
-  /** 早期项目：内容已折进对应公司业绩行，archived 的不再进招聘版卡片 */
+  /** 早期项目：内容已折进对应公司业绩行，archived 的不再进简历上的卡片 */
   moreProjects: {
     sub: '补充 2017 - 2020 项目时间线',
     projects: [

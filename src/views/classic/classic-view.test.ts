@@ -39,6 +39,24 @@ describe('ClassicResumeView', () => {
     expect(text.split('项目收获').length - 1).toBe(featured.length)
   })
 
+  it('gives every section a fixed link that points at its own id', () => {
+    const wrapper = mount(ClassicResumeView)
+    const sections = wrapper.findAll('section[id]')
+
+    expect(sections.map((s) => s.attributes('id'))).toEqual([
+      'summary',
+      'skills',
+      'experience',
+      'projects',
+      'more-projects',
+      'open-source',
+      'education'
+    ])
+    for (const section of sections) {
+      expect(section.get('h2 a').attributes('href')).toBe(`#/#${section.attributes('id')}`)
+    }
+  })
+
   it('reserves space below the sheet for the bottom dock', () => {
     const wrapper = mount(ClassicResumeView)
 

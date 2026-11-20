@@ -6,6 +6,7 @@ type SystemChangeListener = (event: { matches: boolean }) => void
 /** 主题状态是模块级单例，每个用例都要拿到全新的模块实例 */
 async function loadTheme(options: { systemDark?: boolean } = {}): Promise<{
   useTheme: typeof UseTheme
+  setRouteThemeColor: (color: string) => void
   emitSystemChange: (dark: boolean) => void
 }> {
   const listeners: SystemChangeListener[] = []
@@ -23,10 +24,11 @@ async function loadTheme(options: { systemDark?: boolean } = {}): Promise<{
   )
 
   vi.resetModules()
-  const { useTheme } = await import('./use-theme')
+  const { useTheme, setRouteThemeColor } = await import('./use-theme')
 
   return {
     useTheme,
+    setRouteThemeColor,
     emitSystemChange: (dark: boolean) => listeners.forEach((listener) => listener({ matches: dark }))
   }
 }
@@ -43,7 +45,7 @@ afterEach(() => {
 })
 
 describe('useTheme', () => {
-  it('follows the system preference when the visitor has not chosen a theme', async () => {
+  it('follows a dark system preference and drives the html flags plus browser chrome', async () => {
     const { useTheme } = await loadTheme({ systemDark: true })
     const { current, isDark, sync } = useTheme()
     sync()
@@ -52,11 +54,13 @@ describe('useTheme', () => {
     expect(isDark.value).toBe(true)
     expect(document.documentElement.dataset.theme).toBe('dark')
     expect(document.documentElement.classList.contains('dark')).toBe(true)
+    expect(document.documentElement.style.colorScheme).toBe('dark')
+    expect(themeColor()).toBe('#191c1e')
   })
 
-  it('prefers the stored choice over the system preference', async () => {
-    localStorage.setItem('resume-theme', 'light')
-    const { useTheme } = await loadTheme({ systemDark: true })
+  it('ignores a theme stored by an earlier version that offered a toggle', async () => {
+    localStorage.setItem('resume-theme', 'dark')
+    const { useTheme } = await loadTheme({ systemDark: false })
     const { current, sync } = useTheme()
     sync()
 
@@ -64,55 +68,28 @@ describe('useTheme', () => {
     expect(document.documentElement.classList.contains('dark')).toBe(false)
   })
 
-  it('persists an explicit choice and drives the html flags plus browser chrome', async () => {
-    const { useTheme } = await loadTheme()
-    const { setTheme } = useTheme()
-
-    setTheme('dark')
-
-    expect(localStorage.getItem('resume-theme')).toBe('dark')
-    expect(document.documentElement.dataset.theme).toBe('dark')
-    expect(document.documentElement.classList.contains('dark')).toBe(true)
-    expect(document.documentElement.style.colorScheme).toBe('dark')
-    expect(themeColor()).toBe('#191c1e')
-  })
-
-  it('toggles between the two themes', async () => {
-    const { useTheme } = await loadTheme()
-    const { current, toggle, sync } = useTheme()
+  it('keeps following the system when its preference changes', async () => {
+    const { useTheme, emitSystemChange } = await loadTheme()
+    const { current, sync } = useTheme()
     sync()
 
-    expect(current.value).toBe('light')
-    toggle()
+    emitSystemChange(true)
     expect(current.value).toBe('dark')
-    toggle()
+
+    emitSystemChange(false)
     expect(current.value).toBe('light')
     expect(document.documentElement.classList.contains('dark')).toBe(false)
   })
 
-  it('keeps following the system until the visitor picks a theme', async () => {
-    const { useTheme, emitSystemChange } = await loadTheme()
-    const { current, setTheme, sync } = useTheme()
-    sync()
-
-    emitSystemChange(true)
-    expect(current.value).toBe('dark')
-
-    setTheme('light')
-    emitSystemChange(true)
-    expect(current.value).toBe('light')
-  })
-
   it('lets the route theme color through in light mode and overrides it in dark mode', async () => {
-    const { useTheme } = await loadTheme()
-    const { setRouteThemeColor } = await import('./use-theme')
-    const { setTheme } = useTheme()
-
-    setRouteThemeColor('#ffffff')
+    const light = await loadTheme()
+    light.useTheme().sync()
+    light.setRouteThemeColor('#ffffff')
     expect(themeColor()).toBe('#ffffff')
 
-    setTheme('dark')
-    setRouteThemeColor('#ffffff')
+    const dark = await loadTheme({ systemDark: true })
+    dark.useTheme().sync()
+    dark.setRouteThemeColor('#ffffff')
     expect(themeColor()).toBe('#191c1e')
   })
 })

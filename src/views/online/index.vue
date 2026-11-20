@@ -1,56 +1,113 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
+import { useCommand } from '@/shared/commands/use-commands'
+import { copyLabels, useCopyFeedback } from '@/shared/composables/use-copy-feedback'
 import { resolveResumeSource } from '@/shared/data/resume-sources'
-import { copyText } from '@/shared/lib/clipboard'
 import { buildOnlineResumeBlocks, type CopyField } from '@/shared/lib/online-resume-copy'
+import { cn } from '@/shared/lib/utils'
 import { Badge } from '@/shared/ui/badge'
 import { Button } from '@/shared/ui/button'
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from '@/shared/ui/card'
+import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/shared/ui/card'
+import CopyBlock from './components/copy-block.vue'
 
-const copiedKey = ref('')
-let copiedTimer: ReturnType<typeof setTimeout> | undefined
+interface CopyTarget {
+  key: string
+  field: CopyField
+}
 
 const source = resolveResumeSource()
 const copy = computed(() => buildOnlineResumeBlocks(source.resume, source.extras))
 
-async function copyField(key: string, field: CopyField) {
-  const ok = await copyText(field.text)
-  if (!ok) {
-    window.alert('复制失败，请手动选中文本后复制。')
-    return
-  }
+const companyKey = (name: string, part: 'content' | 'result' | 'skills') => `company-${part}-${name}`
+const projectKey = (name: string, part: 'content' | 'result') => `project-${part}-${name}`
 
-  copiedKey.value = key
-  if (copiedTimer) clearTimeout(copiedTimer)
-  copiedTimer = setTimeout(() => {
-    copiedKey.value = ''
-  }, 1600)
+/** 页面上所有能复制的段，顺序就是 J / K 走的顺序 */
+const targets = computed<CopyTarget[]>(() =>
+  copy.value.blocks.flatMap((block): CopyTarget[] => {
+    switch (block.kind) {
+      case 'advantage':
+      case 'education':
+        return [{ key: block.kind, field: block.field }]
+      case 'companies':
+        return block.items.flatMap((item) =>
+          (['content', 'result', 'skills'] as const).flatMap((part) => {
+            const field = item[part]
+            return field ? [{ key: companyKey(item.name, part), field }] : []
+          })
+        )
+      case 'projects':
+        return block.items.flatMap((item) =>
+          (['content', 'result'] as const).map((part) => ({ key: projectKey(item.name, part), field: item[part] }))
+        )
+      case 'expectations':
+        return []
+    }
+  })
+)
+
+const activeKey = ref<string>()
+const feedback = useCopyFeedback()
+
+const copyButton = (key: string) =>
+  [...document.querySelectorAll<HTMLElement>('[data-copy-key]')].find((el) => el.dataset.copyKey === key)!
+const copySource = (key: string) =>
+  [...document.querySelectorAll<HTMLElement>('[data-copy-text]')].find((el) => el.dataset.copyText === key)!
+
+/** 复制不成时选中原文，按 Ctrl C 就能手动复制 */
+function selectText(key: string) {
+  window.getSelection()?.selectAllChildren(copySource(key))
 }
 
-function labelFor(key: string) {
-  return copiedKey.value === key ? '已复制' : '复制'
+async function copyTarget(key: string) {
+  activeKey.value = key
+  const target = targets.value.find((t) => t.key === key)!
+  const ok = await feedback.copy(key, target.field.text)
+  if (!ok) selectText(key)
 }
+
+async function moveActive(step: 1 | -1) {
+  const keys = targets.value.map((t) => t.key)
+  const index = activeKey.value ? keys.indexOf(activeKey.value) : -1
+  const next = index === -1 ? (step === 1 ? 0 : keys.length - 1) : Math.min(Math.max(index + step, 0), keys.length - 1)
+  activeKey.value = keys[next]
+
+  await nextTick()
+  const button = copyButton(activeKey.value!)
+  button.focus({ preventScroll: true })
+  button.closest('[data-slot="card"]')!.scrollIntoView({ block: 'nearest' })
+}
+
+/** 鼠标点过或 Tab 停到的复制按钮，也算当前段 */
+function followFocus(event: FocusEvent) {
+  const key = (event.target as HTMLElement).closest<HTMLElement>('[data-copy-key]')?.dataset.copyKey
+  if (key) activeKey.value = key
+}
+
+useCommand('next-block', () => moveActive(1))
+useCommand('prev-block', () => moveActive(-1))
+useCommand('copy-block', () => {
+  if (activeKey.value) copyTarget(activeKey.value)
+})
+useCommand('leave-block', () => {
+  activeKey.value = undefined
+  ;(document.activeElement as HTMLElement | null)?.blur()
+})
+
+const blockProps = (key: string, field: CopyField) => ({
+  copyKey: key,
+  field,
+  status: feedback.statusOf(key),
+  active: activeKey.value === key
+})
 </script>
 
 <template>
   <div class="min-h-screen bg-background px-4 pt-4 pb-24 font-sans sm:px-6 sm:pt-10">
-    <main class="mx-auto flex w-full max-w-5xl flex-col gap-5">
+    <main class="mx-auto flex w-full max-w-5xl flex-col gap-5" @focusin="followFocus">
       <Card>
         <CardHeader>
-          <div class="flex flex-col gap-1.5">
-            <CardTitle>线上简历内容 · {{ source.label }}</CardTitle>
-            <CardDescription>
-              本版应有项目 {{ copy.projectCount }} 条 / 工作经历 {{ copy.companyCount }}
-              条；线上多出来的条目请删除。
-            </CardDescription>
-          </div>
+          <CardTitle>线上版</CardTitle>
+          <CardDescription>项目 {{ copy.projectCount }} · 工作经历 {{ copy.companyCount }}</CardDescription>
         </CardHeader>
       </Card>
 
@@ -59,15 +116,27 @@ function labelFor(key: string) {
           <CardHeader>
             <CardTitle class="text-base">{{ block.title }}</CardTitle>
             <CardAction>
-              <Button variant="outline" size="xs" @click="copyField('advantage', block.field)">
-                {{ labelFor('advantage') }}
+              <Button
+                variant="outline"
+                size="xs"
+                data-copy-key="advantage"
+                :class="feedback.statusOf('advantage') === 'failed' && 'text-bad hover:text-bad'"
+                @click="copyTarget('advantage')"
+              >
+                {{ copyLabels[feedback.statusOf('advantage')] }}
                 <span class="text-muted-foreground font-normal">{{ block.field.charCount }}</span>
               </Button>
             </CardAction>
           </CardHeader>
           <CardContent>
             <pre
-              class="text-foreground/90 border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
+              data-copy-text="advantage"
+              :class="
+                cn(
+                  'text-foreground rounded-md border border-border px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap transition-colors duration-150',
+                  activeKey === 'advantage' ? 'bg-accent' : 'bg-background'
+                )
+              "
               >{{ block.field.text }}</pre
             >
           </CardContent>
@@ -76,7 +145,6 @@ function labelFor(key: string) {
         <Card v-else-if="block.kind === 'expectations'">
           <CardHeader>
             <CardTitle class="text-base">{{ block.title }}</CardTitle>
-            <CardDescription>BOSS 为选择器，仅作对照</CardDescription>
           </CardHeader>
           <CardContent>
             <ul class="flex flex-col">
@@ -94,7 +162,7 @@ function labelFor(key: string) {
         </Card>
 
         <section v-else-if="block.kind === 'companies'" class="flex flex-col gap-3">
-          <h2 class="px-1 text-lg font-semibold">{{ block.title }}</h2>
+          <h2 class="px-1 text-base font-semibold">{{ block.title }}</h2>
           <Card v-for="item in block.items" :key="item.name">
             <CardHeader>
               <CardTitle class="text-base">{{ item.onlineName }}</CardTitle>
@@ -104,118 +172,75 @@ function labelFor(key: string) {
               </CardAction>
             </CardHeader>
             <CardContent class="grid gap-4 lg:grid-cols-2">
-              <div v-if="item.content" class="flex min-w-0 flex-col gap-2">
-                <div class="flex items-center justify-between gap-3">
-                  <h3 class="text-sm font-semibold">内容</h3>
-                  <Button
-                    variant="outline"
-                    size="xs"
-                    @click="copyField(`company-content-${item.name}`, item.content)"
-                  >
-                    {{ labelFor(`company-content-${item.name}`) }}
-                  </Button>
-                </div>
-                <pre
-                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
-                  >{{ item.content.text }}</pre
-                >
-              </div>
-
-              <div v-if="item.result" class="flex min-w-0 flex-col gap-2">
-                <div class="flex items-center justify-between gap-3">
-                  <h3 class="text-sm font-semibold">业绩</h3>
-                  <Button
-                    variant="outline"
-                    size="xs"
-                    @click="copyField(`company-result-${item.name}`, item.result)"
-                  >
-                    {{ labelFor(`company-result-${item.name}`) }}
-                  </Button>
-                </div>
-                <pre
-                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
-                  >{{ item.result.text }}</pre
-                >
-              </div>
-
-              <div v-if="item.skills" class="flex min-w-0 flex-col gap-2 lg:col-span-2">
-                <div class="flex items-center justify-between gap-3">
-                  <h3 class="text-sm font-semibold">技能标签</h3>
-                  <Button
-                    variant="outline"
-                    size="xs"
-                    @click="copyField(`company-skills-${item.name}`, item.skills)"
-                  >
-                    {{ labelFor(`company-skills-${item.name}`) }}
-                  </Button>
-                </div>
-                <pre
-                  class="text-foreground/90 border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
-                  >{{ item.skills.text }}</pre
-                >
-              </div>
+              <CopyBlock
+                v-if="item.content"
+                title="内容"
+                stretch
+                v-bind="blockProps(companyKey(item.name, 'content'), item.content)"
+                @copy="copyTarget(companyKey(item.name, 'content'))"
+              />
+              <CopyBlock
+                v-if="item.result"
+                title="业绩"
+                stretch
+                v-bind="blockProps(companyKey(item.name, 'result'), item.result)"
+                @copy="copyTarget(companyKey(item.name, 'result'))"
+              />
+              <CopyBlock
+                v-if="item.skills"
+                title="技能标签"
+                class="lg:col-span-2"
+                v-bind="blockProps(companyKey(item.name, 'skills'), item.skills)"
+                @copy="copyTarget(companyKey(item.name, 'skills'))"
+              />
             </CardContent>
           </Card>
         </section>
 
         <section v-else-if="block.kind === 'projects'" class="flex flex-col gap-3">
-          <h2 class="px-1 text-lg font-semibold">{{ block.title }}</h2>
+          <h2 class="px-1 text-base font-semibold">{{ block.title }}</h2>
           <Card v-for="item in block.items" :key="item.name">
             <CardHeader>
               <CardTitle class="text-base">{{ item.name }}</CardTitle>
-              <CardDescription>
-                {{ item.role }} · {{ item.period }} · {{ item.kind }}
-              </CardDescription>
+              <CardDescription>{{ item.role }} · {{ item.period }} · {{ item.kind }}</CardDescription>
             </CardHeader>
             <CardContent class="grid gap-4 lg:grid-cols-2">
-              <div class="flex min-w-0 flex-col gap-2">
-                <div class="flex items-center justify-between gap-3">
-                  <h3 class="text-sm font-semibold">内容</h3>
-                  <Button
-                    variant="outline"
-                    size="xs"
-                    @click="copyField(`project-content-${item.name}`, item.content)"
-                  >
-                    {{ labelFor(`project-content-${item.name}`) }}
-                  </Button>
-                </div>
-                <pre
-                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
-                  >{{ item.content.text }}</pre
-                >
-              </div>
-
-              <div class="flex min-w-0 flex-col gap-2">
-                <div class="flex items-center justify-between gap-3">
-                  <h3 class="text-sm font-semibold">业绩</h3>
-                  <Button
-                    variant="outline"
-                    size="xs"
-                    @click="copyField(`project-result-${item.name}`, item.result)"
-                  >
-                    {{ labelFor(`project-result-${item.name}`) }}
-                  </Button>
-                </div>
-                <pre
-                  class="text-foreground/90 h-full border border-border bg-background px-4 py-3 font-sans text-sm leading-relaxed break-words whitespace-pre-wrap"
-                  >{{ item.result.text }}</pre
-                >
-              </div>
+              <CopyBlock
+                title="内容"
+                stretch
+                v-bind="blockProps(projectKey(item.name, 'content'), item.content)"
+                @copy="copyTarget(projectKey(item.name, 'content'))"
+              />
+              <CopyBlock
+                title="业绩"
+                stretch
+                v-bind="blockProps(projectKey(item.name, 'result'), item.result)"
+                @copy="copyTarget(projectKey(item.name, 'result'))"
+              />
             </CardContent>
           </Card>
         </section>
 
-        <Card v-else-if="block.kind === 'education'">
+        <Card
+          v-else-if="block.kind === 'education'"
+          :class="cn('transition-colors duration-150', activeKey === 'education' && 'bg-accent')"
+        >
           <CardHeader>
             <CardTitle class="text-base">{{ block.title }}</CardTitle>
             <CardAction>
-              <Button variant="outline" size="xs" @click="copyField('education', block.field)">
-                {{ labelFor('education') }}
+              <Button
+                variant="outline"
+                size="xs"
+                data-copy-key="education"
+                :class="feedback.statusOf('education') === 'failed' && 'text-bad hover:text-bad'"
+                @click="copyTarget('education')"
+              >
+                {{ copyLabels[feedback.statusOf('education')] }}
               </Button>
             </CardAction>
           </CardHeader>
           <CardContent>
-            <ul class="flex flex-col">
+            <ul data-copy-text="education" class="flex flex-col">
               <li
                 v-for="item in block.items"
                 :key="item.school"
@@ -229,10 +254,6 @@ function labelFor(key: string) {
           </CardContent>
         </Card>
       </template>
-
-      <p class="text-muted-foreground px-1 text-xs leading-relaxed">
-        内容来自本仓库当前版本；改文案请先改数据文件，再复制到线上。
-      </p>
     </main>
   </div>
 </template>

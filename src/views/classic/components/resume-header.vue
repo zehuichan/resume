@@ -1,15 +1,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import type { Profile } from '../types'
-import { getExperienceYears } from '../../../shared/utils/experience'
+import { specLine as buildSpecLine } from '../../../shared/lib/resume-sections'
 
 const props = defineProps<{ profile: Profile }>()
 
-const years = computed(() => getExperienceYears(props.profile.experienceStartYear))
 const avatarUrl = computed(() => `${import.meta.env.BASE_URL}${props.profile.avatar}`)
 const surname = computed(() => props.profile.name.charAt(0) || '?')
 const contactLine = computed(() => props.profile.contacts.map((c) => c.value).join(' / '))
-const specLine = computed(() => [`${years.value} 年+ 工作经验`, ...props.profile.meta].join(' · '))
+const specLine = computed(() => buildSpecLine(props.profile))
 
 /** 头像文件缺失或加载失败时，回退到姓氏占位块，避免露出浏览器默认的裂图图标 */
 const avatarFailed = ref(false)

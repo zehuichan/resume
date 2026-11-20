@@ -1,6 +1,22 @@
-import { createMemoryHistory } from 'vue-router'
+import { createMemoryHistory, type RouteLocationNormalized } from 'vue-router'
 import { describe, expect, it } from 'vitest'
-import { createResumeRouter } from './index'
+import { createResumeRouter, scrollBehavior } from './index'
+
+const location = (hash: string) => ({ hash }) as RouteLocationNormalized
+
+describe('resume router scrolling', () => {
+  it('scrolls a section link like #/#projects to that section once the page has rendered', async () => {
+    await expect(scrollBehavior(location('#projects'), location(''), null)).resolves.toEqual({
+      el: '#projects',
+      top: 16
+    })
+  })
+
+  it('goes back to where the visitor was on back and forward, and to the top otherwise', () => {
+    expect(scrollBehavior(location('#projects'), location(''), { left: 0, top: 420 })).toEqual({ left: 0, top: 420 })
+    expect(scrollBehavior(location(''), location(''), null)).toEqual({ top: 0 })
+  })
+})
 
 describe('resume router', () => {
   it('uses the mainstream resume as the default', async () => {

@@ -2,26 +2,14 @@
 import { computed } from 'vue'
 import { resume } from './data'
 import { CompactProjectItem, ProjectItem, ResumeHeader, RichText, SectionHeader } from './components'
-import { getProjectSortValue } from '../../shared/lib/online-resume-copy'
-import { getExperienceYears } from '../../shared/utils/experience'
+import { compactProjects, featuredProjects, resumeMetrics } from '../../shared/lib/resume-sections'
 import './styles/resume.css'
 
 const year = new Date().getFullYear()
 
-/** 首张「N 年+」按 experienceStartYear 计算，其余三张来自 resume.metrics */
-const metrics = computed(() => [
-  { value: String(getExperienceYears(resume.profile.experienceStartYear)), unit: '年+', label: '前端研发经验' },
-  ...resume.metrics
-])
-
-const featuredProjects = computed(() => resume.experience.projects.filter((p) => p.featured))
-
-/** archived 项目已折进对应公司的业绩行，招聘版不再给它们单独卡片 */
-const compactProjects = computed(() =>
-  [...resume.experience.projects, ...resume.moreProjects.projects]
-    .filter((p) => !p.featured && !p.archived)
-    .sort((a, b) => getProjectSortValue(b) - getProjectSortValue(a))
-)
+const metrics = computed(() => resumeMetrics(resume))
+const featured = computed(() => featuredProjects(resume))
+const compact = computed(() => compactProjects(resume))
 </script>
 
 <template>
@@ -40,13 +28,13 @@ const compactProjects = computed(() =>
         </div>
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="个人优势" />
+      <section id="summary" class="reveal">
+        <SectionHeader title="个人优势" anchor="summary" />
         <RichText tag="p" :text="resume.profile.summary" class="m-0 text-[14px] leading-[1.85] text-classic-ink-soft" />
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="专业技能" />
+      <section id="skills" class="reveal">
+        <SectionHeader title="专业技能" anchor="skills" />
         <div class="flex flex-col">
           <div
             v-for="s in resume.skills"
@@ -59,8 +47,8 @@ const compactProjects = computed(() =>
         </div>
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="工作经历" :sub="resume.experience.sub.split(' · ')[0]" />
+      <section id="experience" class="reveal">
+        <SectionHeader title="工作经历" anchor="experience" :sub="resume.experience.sub.split(' · ')[0]" />
         <ul class="list-none p-0 m-0">
           <li
             v-for="c in resume.companies"
@@ -88,22 +76,22 @@ const compactProjects = computed(() =>
         </ul>
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="项目经历" :sub="`${featuredProjects.length} 个代表项目`" />
+      <section id="projects" class="reveal">
+        <SectionHeader title="项目经历" anchor="projects" :sub="`${featured.length} 个代表项目`" />
         <div class="divide-y divide-classic-line">
-          <ProjectItem v-for="(p, i) in featuredProjects" :key="p.name" :project="p" :index="i" />
+          <ProjectItem v-for="(p, i) in featured" :key="p.name" :project="p" :index="i" />
         </div>
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="其他项目" />
+      <section id="more-projects" class="reveal">
+        <SectionHeader title="其他项目" anchor="more-projects" />
         <div class="border-b border-classic-line">
-          <CompactProjectItem v-for="(p, i) in compactProjects" :key="p.name" :project="p" :index="i" />
+          <CompactProjectItem v-for="(p, i) in compact" :key="p.name" :project="p" :index="i" />
         </div>
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="开源经历" :sub="resume.openSource.sub" />
+      <section id="open-source" class="reveal">
+        <SectionHeader title="开源经历" anchor="open-source" :sub="resume.openSource.sub" />
         <RichText tag="p" :text="resume.openSource.intro" class="m-0 mb-4 text-[13px] leading-[1.75] text-classic-ink-soft" />
         <div class="grid gap-2">
           <div
@@ -124,8 +112,8 @@ const compactProjects = computed(() =>
         </div>
       </section>
 
-      <section class="reveal">
-        <SectionHeader title="教育背景" />
+      <section id="education" class="reveal">
+        <SectionHeader title="教育背景" anchor="education" />
         <ul class="list-none p-0 m-0">
           <li
             v-for="e in resume.education"

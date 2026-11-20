@@ -60,15 +60,16 @@ html[data-resume='classic'][data-theme='dark'] {
   --sheet-shadow: 0 2px 24px rgb(0 0 0 / 55%);
 }
 
+/* 页底跟工具型 UI 的 background 同值（ui.css），纸面本身是例外，见 DESIGN.md */
 html[data-resume='classic'][data-theme='dark'] body {
-  background: #0b0d0e;
+  background: #131314;
 }
 
 html[data-resume='classic'] body {
   margin: 0;
   font-family: var(--font-classic-sans);
   color: var(--color-classic-ink);
-  background: #f4f5f7;
+  background: #fafafa;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   line-height: 1.6;

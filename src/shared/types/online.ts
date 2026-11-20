@@ -1,4 +1,4 @@
-/** 线上简历（BOSS 等）补充字段：不进入 PDF 渲染，只供复制面板使用 */
+/** 线上版（BOSS 等）补充字段：不进简历纸面，只供线上版复制 */
 
 export interface OnlineExpectation {
   /** 职位名，如「前端开发工程师」 */

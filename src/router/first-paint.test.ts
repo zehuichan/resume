@@ -80,24 +80,13 @@ describe('first-paint theme resolution', () => {
     expect(document.documentElement.style.colorScheme).toBe('dark')
   })
 
-  it.each([
-    ['dark', true],
-    ['light', false]
-  ])('prefers the stored %s theme over the system preference', (stored, expectedDark) => {
-    localStorage.setItem('resume-theme', stored)
-    stubSystemTheme(!expectedDark)
-    runFirstPaintScript('#/')
-
-    expect(document.documentElement.dataset.theme).toBe(stored)
-    expect(document.documentElement.classList.contains('dark')).toBe(expectedDark)
-  })
-
-  it('ignores an unknown stored value', () => {
-    localStorage.setItem('resume-theme', 'kami')
+  it('ignores a theme stored by an earlier version that offered a toggle', () => {
+    localStorage.setItem('resume-theme', 'dark')
     stubSystemTheme(false)
     runFirstPaintScript('#/')
 
     expect(document.documentElement.dataset.theme).toBe('light')
+    expect(document.documentElement.classList.contains('dark')).toBe(false)
   })
 
   it('paints the browser chrome with the dark surface color', () => {
@@ -106,7 +95,7 @@ describe('first-paint theme resolution', () => {
     meta.content = '#ffffff'
     document.head.append(meta)
 
-    localStorage.setItem('resume-theme', 'dark')
+    stubSystemTheme(true)
     runFirstPaintScript('#/')
 
     expect(meta.content).toBe('#191c1e')
