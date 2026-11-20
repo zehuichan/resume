@@ -48,6 +48,19 @@ describe('first-paint resume classification', () => {
   })
 })
 
+describe('first-paint web fonts', () => {
+  it('loads the Google Fonts stylesheet without blocking the first paint', () => {
+    const doc = new DOMParser().parseFromString(indexHtml, 'text/html')
+    const fonts = [...doc.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]')].filter((link) =>
+      link.getAttribute('href')?.startsWith('https://fonts.googleapis.com/')
+    )
+
+    expect(fonts).toHaveLength(1)
+    expect(fonts[0]!.getAttribute('media')).toBe('print')
+    expect(fonts[0]!.getAttribute('onload')).toBe("this.media='all'")
+  })
+})
+
 describe('first-paint theme resolution', () => {
   it('falls back to light when nothing is stored and the system is light', () => {
     stubSystemTheme(false)

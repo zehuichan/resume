@@ -30,11 +30,18 @@
         if (meta) meta.content = theme === 'dark' ? '#191c1e' : '#ffffff'
       })()
     </script>
+    <!--
+      网页字体不挡首屏：先按 media="print" 加载（不阻塞渲染），到了再换成 all。
+      连不上 Google 的网络（例如国内）会卡到超时，挡着的话整页要白屏约 30 秒；不挡就先用系统中文字体显示。
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      id="web-fonts"
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
     <title>陈泽辉 · 前端负责人</title>
   </head>
